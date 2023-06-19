@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DEBUG - 顺序 - 寻址 - 分支 | Northboat Docs</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    <link rel="icon" href="/img/leaf.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="片刻寧靜">
+    
+    <link rel="preload" href="/assets/css/0.styles.70e1d524.css" as="style"><link rel="preload" href="/assets/js/app.e32663db.js" as="script"><link rel="preload" href="/assets/js/5.11f11ab6.js" as="script"><link rel="preload" href="/assets/js/102.3719584b.js" as="script"><link rel="prefetch" href="/assets/js/10.ffae476d.js"><link rel="prefetch" href="/assets/js/100.b806a0da.js"><link rel="prefetch" href="/assets/js/101.2bae3d85.js"><link rel="prefetch" href="/assets/js/103.bb2d8a54.js"><link rel="prefetch" href="/assets/js/104.1b79acc5.js"><link rel="prefetch" href="/assets/js/105.1da41d24.js"><link rel="prefetch" href="/assets/js/106.e481663b.js"><link rel="prefetch" href="/assets/js/107.faa59277.js"><link rel="prefetch" href="/assets/js/108.71a2dcaf.js"><link rel="prefetch" href="/assets/js/109.5b0f6700.js"><link rel="prefetch" href="/assets/js/11.1d7b9d56.js"><link rel="prefetch" href="/assets/js/110.c56ad5b8.js"><link rel="prefetch" href="/assets/js/111.5c2fe89e.js"><link rel="prefetch" href="/assets/js/112.5e008fbc.js"><link rel="prefetch" href="/assets/js/113.8d255f40.js"><link rel="prefetch" href="/assets/js/114.45b4f145.js"><link rel="prefetch" href="/assets/js/115.06e440f9.js"><link rel="prefetch" href="/assets/js/116.55622c81.js"><link rel="prefetch" href="/assets/js/117.ad63f066.js"><link rel="prefetch" href="/assets/js/118.ebacbe08.js"><link rel="prefetch" href="/assets/js/119.cc1790df.js"><link rel="prefetch" href="/assets/js/12.b62eb70f.js"><link rel="prefetch" href="/assets/js/120.c8363aa7.js"><link rel="prefetch" href="/assets/js/121.dd0aba20.js"><link rel="prefetch" href="/assets/js/122.845cf0ea.js"><link rel="prefetch" href="/assets/js/123.a7b80e95.js"><link rel="prefetch" href="/assets/js/124.51e459b7.js"><link rel="prefetch" href="/assets/js/125.8b7a64c3.js"><link rel="prefetch" href="/assets/js/126.c25a8d27.js"><link rel="prefetch" href="/assets/js/127.d5aeaa6a.js"><link rel="prefetch" href="/assets/js/128.50fd24c6.js"><link rel="prefetch" href="/assets/js/129.65dd74eb.js"><link rel="prefetch" href="/assets/js/13.ac304f86.js"><link rel="prefetch" href="/assets/js/130.f79f4cf4.js"><link rel="prefetch" href="/assets/js/131.992f7b89.js"><link rel="prefetch" href="/assets/js/132.2b074ed6.js"><link rel="prefetch" href="/assets/js/133.b79c9fa6.js"><link rel="prefetch" href="/assets/js/134.79d76443.js"><link rel="prefetch" href="/assets/js/135.44617073.js"><link rel="prefetch" href="/assets/js/136.67120ac3.js"><link rel="prefetch" href="/assets/js/137.51b731e7.js"><link rel="prefetch" href="/assets/js/138.91b9ef94.js"><link rel="prefetch" href="/assets/js/139.f4b6adfa.js"><link rel="prefetch" href="/assets/js/14.dc8fd6de.js"><link rel="prefetch" href="/assets/js/140.d4a17aff.js"><link rel="prefetch" href="/assets/js/141.7054de62.js"><link rel="prefetch" href="/assets/js/142.c231e08b.js"><link rel="prefetch" href="/assets/js/143.d0af2640.js"><link rel="prefetch" href="/assets/js/144.ef12220c.js"><link rel="prefetch" href="/assets/js/145.b731c883.js"><link rel="prefetch" href="/assets/js/146.6f3e3365.js"><link rel="prefetch" href="/assets/js/147.439a508d.js"><link rel="prefetch" href="/assets/js/148.8b2e667c.js"><link rel="prefetch" href="/assets/js/149.eeac3ce4.js"><link rel="prefetch" href="/assets/js/15.afafb147.js"><link rel="prefetch" href="/assets/js/150.a980f077.js"><link rel="prefetch" href="/assets/js/151.9f2a6040.js"><link rel="prefetch" href="/assets/js/152.1984a918.js"><link rel="prefetch" href="/assets/js/153.26dc9a08.js"><link rel="prefetch" href="/assets/js/154.1c12fb41.js"><link rel="prefetch" href="/assets/js/155.245f4a0d.js"><link rel="prefetch" href="/assets/js/156.2594c8cd.js"><link rel="prefetch" href="/assets/js/157.68def714.js"><link rel="prefetch" href="/assets/js/158.c7942e4b.js"><link rel="prefetch" href="/assets/js/159.0ba15294.js"><link rel="prefetch" href="/assets/js/16.09533554.js"><link rel="prefetch" href="/assets/js/160.5b2ae894.js"><link rel="prefetch" href="/assets/js/161.34aa9103.js"><link rel="prefetch" href="/assets/js/162.6067c4b9.js"><link rel="prefetch" href="/assets/js/163.eb249418.js"><link rel="prefetch" href="/assets/js/164.609a8a73.js"><link rel="prefetch" href="/assets/js/165.5dfc859f.js"><link rel="prefetch" href="/assets/js/166.36d057d6.js"><link rel="prefetch" href="/assets/js/167.ae435b2d.js"><link rel="prefetch" href="/assets/js/168.df65bdf7.js"><link rel="prefetch" href="/assets/js/169.192828ea.js"><link rel="prefetch" href="/assets/js/17.86818c79.js"><link rel="prefetch" href="/assets/js/170.d8e1f0a1.js"><link rel="prefetch" href="/assets/js/171.2478e6bc.js"><link rel="prefetch" href="/assets/js/172.dde11c19.js"><link rel="prefetch" href="/assets/js/173.5169313b.js"><link rel="prefetch" href="/assets/js/174.943645d1.js"><link rel="prefetch" href="/assets/js/175.78c9b2d5.js"><link rel="prefetch" href="/assets/js/176.d90f11e0.js"><link rel="prefetch" href="/assets/js/18.234df82b.js"><link rel="prefetch" href="/assets/js/19.d07922c2.js"><link rel="prefetch" href="/assets/js/2.bbb51ac0.js"><link rel="prefetch" href="/assets/js/20.586a9217.js"><link rel="prefetch" href="/assets/js/21.e2669f2a.js"><link rel="prefetch" href="/assets/js/22.33248222.js"><link rel="prefetch" href="/assets/js/23.1ab9d562.js"><link rel="prefetch" href="/assets/js/24.9b7b2add.js"><link rel="prefetch" href="/assets/js/25.b04306f8.js"><link rel="prefetch" href="/assets/js/26.952365af.js"><link rel="prefetch" href="/assets/js/27.d71ca71b.js"><link rel="prefetch" href="/assets/js/28.187c5430.js"><link rel="prefetch" href="/assets/js/29.270999ce.js"><link rel="prefetch" href="/assets/js/3.4edefce4.js"><link rel="prefetch" href="/assets/js/30.99be3d03.js"><link rel="prefetch" href="/assets/js/31.f2b6aa1a.js"><link rel="prefetch" href="/assets/js/32.89f3435e.js"><link rel="prefetch" href="/assets/js/33.412e492c.js"><link rel="prefetch" href="/assets/js/34.394b7975.js"><link rel="prefetch" href="/assets/js/35.d11dd982.js"><link rel="prefetch" href="/assets/js/36.fd3ee265.js"><link rel="prefetch" href="/assets/js/37.94ec645d.js"><link rel="prefetch" href="/assets/js/38.abb5af19.js"><link rel="prefetch" href="/assets/js/39.74f94588.js"><link rel="prefetch" href="/assets/js/4.5b028368.js"><link rel="prefetch" href="/assets/js/40.923aa47e.js"><link rel="prefetch" href="/assets/js/41.679d601d.js"><link rel="prefetch" href="/assets/js/42.1e2781a8.js"><link rel="prefetch" href="/assets/js/43.f9adc40f.js"><link rel="prefetch" href="/assets/js/44.30f73eb7.js"><link rel="prefetch" href="/assets/js/45.5d00694a.js"><link rel="prefetch" href="/assets/js/46.c26e2375.js"><link rel="prefetch" href="/assets/js/47.c074049e.js"><link rel="prefetch" href="/assets/js/48.e2303e29.js"><link rel="prefetch" href="/assets/js/49.0a3bc79f.js"><link rel="prefetch" href="/assets/js/50.21ca6c14.js"><link rel="prefetch" href="/assets/js/51.ebce03b0.js"><link rel="prefetch" href="/assets/js/52.0f856a1a.js"><link rel="prefetch" href="/assets/js/53.f6c444bd.js"><link rel="prefetch" href="/assets/js/54.050ae9a6.js"><link rel="prefetch" href="/assets/js/55.996ea832.js"><link rel="prefetch" href="/assets/js/56.4f94c1ec.js"><link rel="prefetch" href="/assets/js/57.c4846fc1.js"><link rel="prefetch" href="/assets/js/58.d748139b.js"><link rel="prefetch" href="/assets/js/59.82d085fb.js"><link rel="prefetch" href="/assets/js/6.f2c315b6.js"><link rel="prefetch" href="/assets/js/60.cd082917.js"><link rel="prefetch" href="/assets/js/61.68ab634a.js"><link rel="prefetch" href="/assets/js/62.97dcd49b.js"><link rel="prefetch" href="/assets/js/63.71d0f891.js"><link rel="prefetch" href="/assets/js/64.f7f7b509.js"><link rel="prefetch" href="/assets/js/65.1281b427.js"><link rel="prefetch" href="/assets/js/66.3f97044f.js"><link rel="prefetch" href="/assets/js/67.8728537b.js"><link rel="prefetch" href="/assets/js/68.9b294ca4.js"><link rel="prefetch" href="/assets/js/69.5ce9b218.js"><link rel="prefetch" href="/assets/js/7.467568c2.js"><link rel="prefetch" href="/assets/js/70.decec6bc.js"><link rel="prefetch" href="/assets/js/71.c8dca8df.js"><link rel="prefetch" href="/assets/js/72.eed3663b.js"><link rel="prefetch" href="/assets/js/73.a959d5d6.js"><link rel="prefetch" href="/assets/js/74.8efdfcc9.js"><link rel="prefetch" href="/assets/js/75.ce581d9a.js"><link rel="prefetch" href="/assets/js/76.a3f98f3c.js"><link rel="prefetch" href="/assets/js/77.ed678b79.js"><link rel="prefetch" href="/assets/js/78.4ad2515f.js"><link rel="prefetch" href="/assets/js/79.12b0d4e8.js"><link rel="prefetch" href="/assets/js/8.9fe874c0.js"><link rel="prefetch" href="/assets/js/80.3ac8e6cc.js"><link rel="prefetch" href="/assets/js/81.24408f8c.js"><link rel="prefetch" href="/assets/js/82.aee7672d.js"><link rel="prefetch" href="/assets/js/83.690becb7.js"><link rel="prefetch" href="/assets/js/84.0486a3fa.js"><link rel="prefetch" href="/assets/js/85.8b27e1bd.js"><link rel="prefetch" href="/assets/js/86.473c675b.js"><link rel="prefetch" href="/assets/js/87.f79b30c8.js"><link rel="prefetch" href="/assets/js/88.8663b0cf.js"><link rel="prefetch" href="/assets/js/89.7fcae6d1.js"><link rel="prefetch" href="/assets/js/9.29b68b47.js"><link rel="prefetch" href="/assets/js/90.1b50b9de.js"><link rel="prefetch" href="/assets/js/91.ac620de7.js"><link rel="prefetch" href="/assets/js/92.a6f57bc5.js"><link rel="prefetch" href="/assets/js/93.71f80f84.js"><link rel="prefetch" href="/assets/js/94.7208db24.js"><link rel="prefetch" href="/assets/js/95.2b1b0547.js"><link rel="prefetch" href="/assets/js/96.ab572e0b.js"><link rel="prefetch" href="/assets/js/97.15c58d69.js"><link rel="prefetch" href="/assets/js/98.7d68bdd3.js"><link rel="prefetch" href="/assets/js/99.fb2d96d9.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.70e1d524.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Northboat Docs" class="logo"> <span class="site-name can-hide">Northboat Docs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Docs
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://northpolar.netlify.app/about" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  About
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/arts/" class="nav-link">
+  Literature
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Full Stack Developer" class="dropdown-title"><span class="title">Full Stack Developer</span> <span class="arrow down"></span></button> <button type="button" aria-label="Full Stack Developer" class="mobile-dropdown-title"><span class="title">Full Stack Developer</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ Computer Science" class="dropdown-title"><span class="title">NEUQ Computer Science</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ Computer Science" class="mobile-dropdown-title"><span class="title">NEUQ Computer Science</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/datastructure/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/operating/" class="nav-link router-link-active">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/organization/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Cyber Security" class="dropdown-title"><span class="title">Cyber Security</span> <span class="arrow down"></span></button> <button type="button" aria-label="Cyber Security" class="mobile-dropdown-title"><span class="title">Cyber Security</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cyber/math/" class="nav-link">
+  Mathematics
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/code/" class="nav-link">
+  Code
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/machine/" class="nav-link">
+  Machine Learning
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/crypto/" class="nav-link">
+  Cryptography
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Docs
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://northpolar.netlify.app/about" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  About
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/arts/" class="nav-link">
+  Literature
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Full Stack Developer" class="dropdown-title"><span class="title">Full Stack Developer</span> <span class="arrow down"></span></button> <button type="button" aria-label="Full Stack Developer" class="mobile-dropdown-title"><span class="title">Full Stack Developer</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ Computer Science" class="dropdown-title"><span class="title">NEUQ Computer Science</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ Computer Science" class="mobile-dropdown-title"><span class="title">NEUQ Computer Science</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/datastructure/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/operating/" class="nav-link router-link-active">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/organization/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Cyber Security" class="dropdown-title"><span class="title">Cyber Security</span> <span class="arrow down"></span></button> <button type="button" aria-label="Cyber Security" class="mobile-dropdown-title"><span class="title">Cyber Security</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cyber/math/" class="nav-link">
+  Mathematics
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/code/" class="nav-link">
+  Code
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/machine/" class="nav-link">
+  Machine Learning
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/crypto/" class="nav-link">
+  Cryptography
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>操作系统</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>汇编语言</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/408/operating/assembly/basic.html" class="sidebar-link">汇编语言基础</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>汇编语言实验</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/408/operating/assembly/branch.html" aria-current="page" class="active sidebar-link">DEBUG - 顺序 - 寻址 - 分支</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/408/operating/assembly/branch.html#debug-和基本汇编指令" class="sidebar-link">Debug 和基本汇编指令</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/408/operating/assembly/branch.html#查看-修改寄存器值" class="sidebar-link">查看 / 修改寄存器值</a></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/branch.html#debug-显示字符串" class="sidebar-link">Debug 显示字符串</a></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/branch.html#查看生产日期" class="sidebar-link">查看生产日期</a></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/branch.html#运算-存储" class="sidebar-link">运算 / 存储</a></li></ul></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/branch.html#顺序程序设计" class="sidebar-link">顺序程序设计</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/408/operating/assembly/branch.html#输出输入字符串" class="sidebar-link">输出输入字符串</a></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/branch.html#计算并打印结果" class="sidebar-link">计算并打印结果</a></li></ul></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/branch.html#查表" class="sidebar-link">查表</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/408/operating/assembly/branch.html#汇编实现各种寻址方式" class="sidebar-link">汇编实现各种寻址方式</a></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/branch.html#根据学号查询学生姓名" class="sidebar-link">根据学号查询学生姓名</a></li></ul></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/branch.html#分支程序设计" class="sidebar-link">分支程序设计</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/408/operating/assembly/branch.html#进制转换" class="sidebar-link">进制转换</a></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/branch.html#switch实现" class="sidebar-link">Switch实现</a></li></ul></li></ul></li><li><a href="/408/operating/assembly/loop.html" class="sidebar-link">循环 - 子程序 - 模块化 - 中断</a></li></ul></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>编译原理</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><blockquote><p>基于x8086 16位寄存器的基础汇编程序编写</p></blockquote> <h2 id="debug-和基本汇编指令">Debug 和基本汇编指令</h2> <p><strong>Debug</strong></p> <p>Debug是DOS、Windows都提供的实模式(8086方式)程序的调试工具</p> <p>编辑<code>DOSBox 0.74 Options.bat</code>文件可以修改窗口大小和设置预设命令</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">mount</span> c c:<span class="token punctuation">\</span>tool<span class="token punctuation">\</span>dosbox<span class="token punctuation">\</span>virtualc
+c:
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>在windows的快捷方式属性目标后添加<code>-noconsole</code>可以去掉运行时后面的黑框框</p> <p>使用它，可以查看CPU各种寄存器中的内容、内存的情况和在机器码级别跟踪程序的运行</p> <ul><li>用Debug的R命令查看、改变CPU寄存器的内容</li> <li>用Debug的D命令查看内存中的内容</li> <li>用Debug的E命令改写内存中的内容</li> <li>用Debug的U命令将内存中的机器指令翻译成汇编指令</li> <li>用Debug的T命令执行一条机器指令</li> <li>用Debug的A命令以汇编指令的格式在内存中写入一条机器指令</li></ul> <p>win10中需要使用DOSBox模拟debug环境</p> <p>DOSBox挂载虚拟C盘</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">mount</span> c c:<span class="token punctuation">\</span>Programming<span class="token punctuation">\</span>DOSBox<span class="token punctuation">\</span>VirtualC
+
+//进入C盘
+C:
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>将<code>debug.exe、link.exe、masm.exe</code>等软件通通放在这个虚拟C盘下以供使用</p> <p><strong>寻址方式</strong></p> <p>立即寻址方式：MOV AX,1234H</p> <p>寄存器寻址方式： MOV AX,BX</p> <p>存储器寻址方式：</p> <ul><li><p>直接寻址方式：</p> <p>存储器读操作：MOV AX,DS:[2000H]</p> <p>存储器写操作：MOV DS:[4000H],AX</p> <p>符号地址寻址：MOV AX,[VALUE]</p> <p>段超越：MOV AX,ES:[VALUE]</p></li> <li><p>寄存器间接寻址方式：</p> <p>操作数的物理地址为：<code>(DS)×10H＋(SI)/(BX)/(DI)</code>或<code>(SS)×10H＋(BP)</code></p> <p>如：<code>MOV AX,[BX]</code></p></li> <li><p>寄存器相对存储方式：</p> <p>操作数的物理地址为：<code>(DS)×10H＋(SI)/(BX)/(DI)+8位（16位）位移量</code>或<code>(SS)×10H＋(BP)+8位（16位）位移量</code></p> <p>如：<code>MOV AX,[BX+1234H]</code></p></li> <li><p>基址变址寻址方式：</p> <p>操作数的物理地址为：<code>(DS)×10H+(BX)+(DI)/(SI)</code>或<code>(SS)×10H+(BP)+(DI)/(SI)</code></p> <p>如：<code>MOV AX,[BX+SI]</code></p></li> <li><p>相对基址变址寻址方式</p> <p>操作数的物理地址为：<code>(DS)×10H+(BX)+(DI)/(SI)+8位（16位）位移量</code>或<code>(SS)×10H+(BP)+(DI)/(SI)+8位（16位）位移量</code></p> <p>如：<code>MOV AX,[BX+SI].MASK</code></p></li></ul> <p>基本汇编指令：</p> <ul><li><code>mov</code>指令在寄存器和内存之间进行数据移动</li> <li><code>add</code>指令把一个数加到前面</li> <li><code>sub</code>指令，两个数相减结果存在前面</li></ul> <h3 id="查看-修改寄存器值">查看 / 修改寄存器值</h3> <p>使用R命令查看和修改8086中的寄存器。将AX值修改为<code>2021H</code>，BX值修改为<code>实验课上课日期H</code>，CX值修改为<code>当前时间H</code>,DX值修改为<code>学号后4位H</code></p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>debug
+-r ax;查看并修改单个寄存器的值
+AX 0000
+:2021
+
+-r bx
+BX 0000
+:0401
+
+-r cx
+CX 0000
+:2239
+
+-r dx
+DX 0000
+:2143
+
+-r;查看所有寄存器的值
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><h3 id="debug-显示字符串">Debug 显示字符串</h3> <p>实际上就是改写<code>DosBox</code>窗口某一位置的像素点为字符串</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>-e b800:0724 32 0f 30 0f 32 0f 30 0f 31 0f 32 0f 31 0f 34 0f 33 0f
+-e b800:0726 58 0f 5a 0f 54 0f
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>其中<code>-e</code>后的的参数为坐标，每个字符用<code>0f</code>作为结束符</p> <h3 id="查看生产日期">查看生产日期</h3> <p><code>DOSBox</code>将自己的生产日期存在内存的<code>F000-FFF0h</code>中，使用<code>d</code>命令查看内存值</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>-d f000:fff0
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="运算-存储">运算 / 存储</h3> <h4 id="减法">减法</h4> <p>使用a指令编写汇编代码，使用t指令逐步执行</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>a
+
+mov bx, 0010
+sub ax, bx
+mov [0016], bx
+
+t
+t
+t
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h4 id="加法">加法</h4> <p>与减法同理</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>a
+
+mov ax, 0034
+add ax, 0065
+es:
+mov [20], ax
+
+t
+t
+t
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h4 id="转存">转存</h4> <p>将AX寄存器中的1234H写入数据段的2号单元，读出3号单元的12H传送给BL寄存器</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>a
+
+mov ax, 1234
+mov [2], ax
+mov bl, [3]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="顺序程序设计">顺序程序设计</h2> <p>伪指令</p> <ul><li>segment: 划分程序段</li> <li>assume: 指定寄存器和对应段名</li> <li>start: 表示程序的开始，跟冒号</li> <li>end start: 通知汇编程序整个程序结束</li> <li>数据定义伪指令: db定义字节电源，dw定义字单元，dd定义双字单元</li> <li>赋值伪指令: 单元名字 equ 常数/字符串/表达式，equ不允许重复定义</li></ul> <p>中断调用指令: <code>int 21H</code></p> <p>传送指令：<code>mov</code></p> <p>算术指令：</p> <ul><li>add</li> <li>sub</li></ul> <p>Dos功能调用:</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>AH=1/2//9/10
+INT 21H
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>1：键盘输入并显示</li> <li>2：屏幕显示一个字符</li> <li>9：屏幕显示字符串</li> <li>10：获取键盘输入字符串</li></ul> <p>非压缩BCD码加法调整：<code>AAM</code></p> <p>非压缩BCD码乘法调整：<code>AAA</code></p> <h3 id="输出输入字符串">输出输入字符串</h3> <p>实现<code>&quot;Hello World!&quot;</code>的输入和输出</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>;输出输入的字符串
+data segment
+    buffer db 70,?,70 dup(0)
+data ends
+code segment
+assume cs:code,ds:data
+start:
+    ;获取键盘输入
+    mov ax,data
+    mov ds,ax
+    mov dx,offset buffer
+    mov ah,10
+    int 21h
+
+    ;添加换行
+    mov buffer[0], 0dh
+    ;找到字符串的末尾并添加字符串结束符'$'
+    mov bl,buffer[1]
+    mov bh,0
+    add bx,2
+    mov buffer[bx],'$'
+    ;0ah和0dh配合连着使用可以达到换行的效果
+    mov buffer[1],0ah
+
+    ;打印输出dx内容，即buffer
+    mov ah,9
+    int 21h
+    mov ah,4ch
+    int 21h
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><h3 id="计算并打印结果">计算并打印结果</h3> <p>实现Y=2X+3，X是一位十进制数。要求X从键盘输入，在下一行上显示“Y=2X+3=”以及十进制计算结果</p> <ul><li><code>aam</code>：在乘法运算后使用<code>aam</code>表示向高位进位，如<code>bl</code>进到<code>bh</code>，<code>bl</code>保存低位结果，<code>bh</code>保存进位结果，若不进位则只会保留低位结果</li> <li><code>aaa</code>：在加法运算后使用<code>aam</code>表示向高位进位，若不进位则只会保留低位结果</li></ul> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>data segment
+    info db &quot;nmY=2X+3=$&quot;;
+data ends
+code segment
+    assume ds:data,cs:code
+start:
+    mov ax,data
+    mov ds,ax
+    ;将info的首两个字符改为0dh和0ah，达到换行的效果
+    mov bx,0
+    mov info[bx],0dh
+    inc bx
+    mov info[bx],0ah
+    ;获取单个字符输入，存于al
+    mov ah,1
+    int 21h
+    ;调用9号功能打印info
+    mov dx,offset info
+    mov ah,9
+    int 21h
+    ;将输入数字-30，由ascii码变为数字
+    mov ah,0
+    sub al,30h
+    ;乘法，imul bx即ax*bx
+    mov bx,2
+    imul bx
+    aam ;乘法进位
+    ;加法，add ax,3即ax += 3
+    add ax,3
+    aaa ;加法进位 
+    add ax,3030h ;高低位均+30h，变回ascii码输出
+    ;输出计算结果
+    mov bx,ax ;将结果从ax移到bx
+    mov dl,bh ;将高位bh移到dl输出
+    mov ah,2 ;调用2号功能打印单个字符
+    int 21h
+    mov dl,bl ;将低位bl移到dl输出
+    int 21h
+    mov ah,4ch
+    int 21h
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br></div></div><h2 id="查表">查表</h2> <p>数据定义伪指令：</p> <ul><li><p>DB 定义字节单元</p></li> <li><p>DW定义字单元</p></li> <li><p>可以一次定义多个存储单元，以逗号隔开，像数组一样</p> <p>如<code>score dw 4,7,9,12</code></p></li></ul> <p>地址计数器<code>$</code>：表示当前的偏移地址值</p> <p>寻址指令：</p> <ul><li>直接寻址：<code>MOV AX,DS:[2000H]</code></li> <li>寄存器间接寻址：<code>MOV AX,[BX]</code></li> <li>寄存器相对寻址：<code>MOV AX,[BX+1234H]</code>等</li> <li>基址变址寻址：<code>MOV AX,[BX+SI]</code></li> <li>相对基址变址寻址：<code>MOV AX,[BX+SI+1234H]</code>等多种形式</li></ul> <h3 id="汇编实现各种寻址方式">汇编实现各种寻址方式</h3> <p>用汇编语言定义一个二维数组，这个二维数组中存储的是两个班级的学生的成绩，每个班各有5名学生，成绩用DW方式定义</p> <p>查找某一个同学的成绩。分别使用直接寻址，寄存器间接寻址，寄存器相对寻址，基址变址寻址，相对基址变址寻址完成查找成绩操作</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>;查分数表
+data segment
+score dw 100,91,98,97,93
+      dw 99,94,96,92,95
+data ends
+code segment
+    assume cs:code,ds:data
+start:
+    mov ax,data
+    mov ds,ax; ds用来存放2班3号学生的成绩
+    ;直接寻址
+    mov dx,ds:[0eh]
+    mov bx,0eh   
+    ;寄存器间接寻址
+    mov dx,[bx]
+    mov bp,0eh
+    ;段超越
+    mov dx,ds:[bp]
+    ;寄存器相对寻址
+    mov si,0eh
+    mov dx,score[si]
+    ;基址变址寻址
+    mov bx,offset score
+    mov di,0eh
+    mov dx,[bx][di]
+    ;相对基址变址寻址
+    mov bx,10
+    mov si,4
+    mov dx,score[bx][si]
+    mov ah,4ch
+    int 21h
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><h3 id="根据学号查询学生姓名">根据学号查询学生姓名</h3> <p>将学生名字按照学号顺序存储在内存中，根据学号将姓名查找出来。</p> <p>姓名定义有两种方式</p> <ul><li>第一种方式类似于一维字符数组</li> <li>第二种方式类似于指针数组</li></ul> <h4 id="一维字符数组查询">一维字符数组查询</h4> <p>固定每一个学生姓名的长度为12（换行+字符串），缺的用空格补充</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>;通过相对地址寻址的方式查学生姓名表
+data segment
+    stu0 db 0dh,0ah,'zhuo yu  $'
+    stu1 db 0dh,0ah,'li ming  $'
+    stu2 db 0dh,0ah,'li hua   $'
+    stu3 db 0dh,0ah,'zhou tong$'
+    stu4 db 0dh,0ah,'xiao ming$'
+    tip  db 0dh,0dh,'Please input stu number:$'
+data ends
+code segment
+    assume cs:code, ds:data
+start:
+    mov ax, data
+    mov ds, ax
+    ;打印提示信息
+    mov dx, offset tip;
+    mov ah, 9
+    int 21h; 提示输入学号
+    ;获取输入
+    mov ah, 1
+    int 21h
+    sub al, 30h; ASCII码转数字
+
+    ;寻址
+    mov cl, 12; 每个名字包括换行共占12个字符
+    mul cl
+    ;打印查询到的名字
+    mov dx, ax
+    mov ah, 9
+    int 21h
+    mov ah, 4ch
+    int 21h
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><h4 id="指针查询">指针查询</h4> <p>维护一个table数组，储存各学生姓名字符串的首地址，使用相对地址寻址，即<code>table[偏移量]</code>，查询学生姓名字符串</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>;table相当于一个指针数组，每个指针占用2个字节，根据输入找到相应指针，相对寻址找到数据
+data segment
+    table dw stu0,stu1,stu2,stu3,stu4
+    stu0  db 0dh,0ah,'huaxue$'; 0dh为换行
+    stu1  db 0dh,0ah,'shuxue$'
+    stu2  db 0dh,0ah,'yingyu$'
+    stu3  db 0dh,0ah,'yuwen$'
+    stu4  db 0dh,0ah,'wuli$'; 长度无需一样
+    info  db 0dh,'Please input stu no:$'
+data ends
+code segment
+    assume cs:code,ds:data
+start:
+    mov ax, data
+    mov ds, ax
+    mov dx, offset info   
+    mov ah, 9     
+    int 21h
+    mov ah, 1; 输入学号
+    int 21h
+    sub al, 30h; 将学号ascii码转数字
+    mov cl, 2; 在table中stu?占用两个字节，一个字（dw）为两个字节
+    mul cl; 相对table的偏移地址
+    mov bx, ax  
+    mov dx, table[bx] ;寄存器相对寻址
+    mov ah, 9; 显示名字
+    int 21h
+    mov ah, 4ch
+    int 21h
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><h2 id="分支程序设计">分支程序设计</h2> <p>条件判断：</p> <ul><li><p>比较指令：<code>cmp ax, 1dh</code>（compare）</p> <p>返回<code>ax-1dh</code>，有大于、等于、小于、大于等于、小于等于<code>0</code>共五种情况</p></li> <li><p>跳转指令</p> <ul><li>无条件跳转：<code>jmp</code></li> <li>小于0跳转：<code>js</code>（jump smaller）</li> <li>大于0跳转：<code>jns</code>（jump not smaller）</li> <li>等于0跳转：<code>je</code>（jump equal）</li> <li>不相等跳转：<code>jne</code>（jump not equal）</li> <li>大于等于0跳转：<code>jnc</code></li> <li>小于等于0跳转：<code>jbe</code></li></ul></li></ul> <h3 id="进制转换">进制转换</h3> <p>输出提示信息“DEC=”，输入十进制数0-255。输出提示信息“HEX=”，用取余数的方法将刚才输入的0-255，显示成相应的十六进制数</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>;0-255的十进制转十六进制
+data segment
+    tip db 0DH,0AH,'DEC=$'
+    info db 'HEX=$'
+    res db 3 dup(0)
+data ends
+code segment
+    assume cs:code,ds:data
+start: 
+    mov ax,data
+    mov ds,ax
+let:; 输入提示
+    mov dx,offset tip
+    mov ah,9    
+    int 21h
+    mov si,0;储存输入数字位数
+let0:; 输入字符并做出判断
+    mov ah,1
+    int 21h
+    cmp al,1bh;判断ESC
+    je let5;相等则跳转
+    cmp al,0dh;判断回车
+    je let1
+    sub al,30h;减去ASCII码存入res中
+    mov res[si],al
+    inc si
+    jmp let0;继续输入
+let1:
+    mov dx,offset info;输出提示信息
+    mov ah,9
+    int 21h
+    mov bx,0
+    mov di,0
+    cmp si,1;判断位数
+    je let2;若为1位数，跳转至let2
+    cmp si,2
+    je let3;若为2位数，跳转至let3
+    ;当为3位数，继续执行let1
+    mov al,res[di];di=0，将res最高位放在al中
+    inc di;di=1
+    mov cl,100
+    mul cl;将al*100倍获得百位数
+    add bx,ax;将百位结果加在bx中
+let3:
+    ;若从let1顺序执行，res为三位数，此时di=1，获取输入数字的十位
+    ;若从let1跳转过来，res为两位数，此时di=0，获取输入数字的十位
+    mov al,res[di]
+    ;di=1或di=2
+    inc di
+    mov cl,10
+    mul cl;AX=AL*CL
+    add bx,ax;将十位结果加在bx上
+let2:
+    mov al,res[di];取出输入数字的个位
+    mov ah,0
+    add bx,ax;结果加在BX上
+
+    ;10进制转16进制
+    ;ax÷cl
+    ;结果中商是16进制的低位，余数为16进制的高位
+    ;即ah中为16进制低位，al中为16进制高位
+    mov ax,bx;将输入数字转存在ax中
+    mov cl,16
+    div cl;除以
+    ;判断高位是否小于等于9，若大于则要转换为对应字母，要多加7
+    cmp al,9;
+    jbe let6;小于等于则跳转
+    add al,7
+let6:
+    add al,30h;将余数（16进制高位）转为ascii码，准备输出
+    mov cl,ah;转存商（16进制低位）到cl中
+    mov dl,al;转存余数到dl中
+    ;输出余数，即16进制高位
+    mov ah,2
+    int 21h
+    mov al,cl;将cl中的商转存到al
+    cmp al,9;判断是否小于等于9，若大于同样要加7转为相应字母的ascii码
+    jbe let7;小于等于则跳转
+    add al,7
+let7:;输出16进制低位
+    add al,30h
+    mov dl,al
+    mov ah,2
+    int 21h
+    jmp let
+let5:;退出程序
+    mov ah,4ch
+    int 21h
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br></div></div><h3 id="switch实现">Switch实现</h3> <p>在数据段中建立分支表TABLE，保存分支转移的标号（函数指针），根据用户输入的<code>0-3</code>，计算出分支标号在TABLE表中的地址，采用<code>JMP TABLE[BX]</code>实现多路转移，即<code>switch</code>功能</p> <p>三个程序分别为：</p> <ul><li>输出HelloWorld</li> <li>输入一个大写（小写）字母，转化为小写（大写）字母并输出。</li> <li>实现Y=2X+3,X是一位十进制数。要求X从键盘输入，在下一行上显示“Y=2X+3=”以及十进制计算结果</li></ul> <p>左移指令<code>shl bx, 1</code>：将<code>bx</code>对应的二进制数左移一位，相当于乘以2</p> <p>跳转指令<code>jz</code>：结果为0则跳转</p> <p>逻辑与/或指令<code>and/or</code>：<code>and/or ax,bx</code>按位对两个二进制数进行与/或操作</p> <ul><li><p>使用and指令将字母小写转大写</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>0 1 1 0 0 0 0 1 = 61h ('a')
+0 1 0 0 0 0 0 1 = 41h ('A')
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>可以发现小写大写字母ascii码二进制只有第六位不同，将小写字母第六位与0进行与操作得0</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>and ax,01000001b
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></li> <li><p>同理可以使用or指令将大小字母转成小写</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>or ax,00100000b
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></li></ul> <p>测试指令<code>test</code>：<code>test ax,bx</code>将二者进行与操作，但不改变值</p> <ul><li><p>test的一个非常普遍的用法是用来测试一方寄存器是否为空</p> <p>若<code>ecx</code>为零，则这一步test将设置ZF零标志为1，逻辑与结果为0，<code>jz</code>跳转</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>test ecx, ecx
+jz somewhere
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div></li> <li><p>若<code>ax</code>为大写字母，第六位为0，二者与结果为0，ZF零标志置为1，jz跳转</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>test ax, 00100000b
+jz somewhere
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div></li></ul> <p>传递指令<code>lea</code>：<code>lea ds,info</code>等同于<code>mov ds,offset info</code>，即传递有效地址</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>;分支程序
+;0退出
+;1输出hello world
+;2大小写字母转换
+;输入x，计算y=2x+3
+data segment
+    table dw prog0,prog1,prog2,prog3
+    info  db 0ah,0dh,'Please input 0-3:$'
+    hello db 0ah,0dh,'Hello World!$'   
+    func  db 0dh,0dh,'Y=2X+3=$' 
+    bye   db 0ah,0dh,'goodbye!$'
+data ends
+code segment
+    assume cs:code,ds:data
+start:
+    mov ax,data
+    mov ds,ax
+let0:                 ;输出提示信息，用户输入0-3
+    lea dx,info
+    mov ah,9            
+    int 21h           ;9号功能输出字符串提示用户输入
+
+    mov ah,1          ;输入
+    int 21h
+    sub al,30h        ;减去ASCII码转换输入信息为数字0-3
+    mov ah,0
+    shl ax,1          ;输入信息*2，用于找table表中对应的标号的偏移地址
+    mov bx,ax
+    jmp table[bx]     ;根据输入序号，在table中进行相对地址寻址跳转至相应程序段
+
+prog1:                ;1号程序:调用9号功能输出HelloWorld
+    mov dx,offset hello
+    mov ah,9
+    int 21h
+    jmp let0          ;返回继续输入0-3
+
+prog2:                ;2号程序，转换输入字母大小写并输出
+    mov dl,0ah
+    mov ah,2         ;调用2号功能输出一个换行
+    int 21h      
+    mov ah,1          ;调用1号功能输入
+    int 21h
+    test al,20h       ;测试指令，大小写字母ASCII码第6位不同
+    jz let1           ;大写，则转移
+    and al,0dfh       ;小写变为大写
+    jmp let2
+let1:
+    or al,20h         ;大写变为小写
+let2: ;输出转换后的字母
+    mov dl,al
+    mov ah,2          
+    int 21h
+    jmp let0     ;返回继续输入0-3
+
+prog3:          ;3号程序: y=2x+3方程
+    mov dl,0ah
+    mov ah,2
+    int 21h        ;输出换行
+    mov ah,1    ;输入数字x
+    int 21h
+    mov bl,al    ;将输入数字转存于bl
+    lea dx,func    ;lea传递有效地址
+    mov ah,9
+    int 21h        ;输出'Y=2X+3='
+    sub bl,30h
+    mov al,2
+    imul bl
+    aam        ;乘法进位
+    mov bx,3
+    add ax,bx
+    aaa        ;加法进位
+    add ax,3030h    ;变成ascii码形式准备输出
+    ;依次打印高低位显示加法结果
+    mov bx,ax    
+    mov dl,bh
+    mov ah,2
+    int 21h        
+    mov dl,bl
+    int 21h        
+    jmp let0        ;返回继续输入0-3      
+
+prog0:              ;程序终止
+    lea dx,bye
+    mov ah,9
+    int 21h
+    mov ah,4ch
+    int 21h
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">3/27/2023, 1:38:15 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/408/operating/assembly/basic.html" class="prev">
+        汇编语言基础
+      </a></span> <span class="next"><a href="/408/operating/assembly/loop.html">
+        循环 - 子程序 - 模块化 - 中断
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/song/aries.aac" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:44px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/img/error.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/img/error.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>白羊</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>northboat</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div><!----><div class="RibbonAnimation"></div><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:99;" data-v-248d85d6></canvas></div></div></div>
+    <script src="/assets/js/app.e32663db.js" defer></script><script src="/assets/js/5.11f11ab6.js" defer></script><script src="/assets/js/102.3719584b.js" defer></script>
+  </body>
+</html>

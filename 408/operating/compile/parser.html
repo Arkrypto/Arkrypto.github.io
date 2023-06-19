@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>语法分析器 | Northboat Docs</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    <link rel="icon" href="/img/leaf.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="片刻寧靜">
+    
+    <link rel="preload" href="/assets/css/0.styles.70e1d524.css" as="style"><link rel="preload" href="/assets/js/app.e32663db.js" as="script"><link rel="preload" href="/assets/js/5.11f11ab6.js" as="script"><link rel="preload" href="/assets/js/109.5b0f6700.js" as="script"><link rel="prefetch" href="/assets/js/10.ffae476d.js"><link rel="prefetch" href="/assets/js/100.b806a0da.js"><link rel="prefetch" href="/assets/js/101.2bae3d85.js"><link rel="prefetch" href="/assets/js/102.3719584b.js"><link rel="prefetch" href="/assets/js/103.bb2d8a54.js"><link rel="prefetch" href="/assets/js/104.1b79acc5.js"><link rel="prefetch" href="/assets/js/105.1da41d24.js"><link rel="prefetch" href="/assets/js/106.e481663b.js"><link rel="prefetch" href="/assets/js/107.faa59277.js"><link rel="prefetch" href="/assets/js/108.71a2dcaf.js"><link rel="prefetch" href="/assets/js/11.1d7b9d56.js"><link rel="prefetch" href="/assets/js/110.c56ad5b8.js"><link rel="prefetch" href="/assets/js/111.5c2fe89e.js"><link rel="prefetch" href="/assets/js/112.5e008fbc.js"><link rel="prefetch" href="/assets/js/113.8d255f40.js"><link rel="prefetch" href="/assets/js/114.45b4f145.js"><link rel="prefetch" href="/assets/js/115.06e440f9.js"><link rel="prefetch" href="/assets/js/116.55622c81.js"><link rel="prefetch" href="/assets/js/117.ad63f066.js"><link rel="prefetch" href="/assets/js/118.ebacbe08.js"><link rel="prefetch" href="/assets/js/119.cc1790df.js"><link rel="prefetch" href="/assets/js/12.b62eb70f.js"><link rel="prefetch" href="/assets/js/120.c8363aa7.js"><link rel="prefetch" href="/assets/js/121.dd0aba20.js"><link rel="prefetch" href="/assets/js/122.845cf0ea.js"><link rel="prefetch" href="/assets/js/123.a7b80e95.js"><link rel="prefetch" href="/assets/js/124.51e459b7.js"><link rel="prefetch" href="/assets/js/125.8b7a64c3.js"><link rel="prefetch" href="/assets/js/126.c25a8d27.js"><link rel="prefetch" href="/assets/js/127.d5aeaa6a.js"><link rel="prefetch" href="/assets/js/128.50fd24c6.js"><link rel="prefetch" href="/assets/js/129.65dd74eb.js"><link rel="prefetch" href="/assets/js/13.ac304f86.js"><link rel="prefetch" href="/assets/js/130.f79f4cf4.js"><link rel="prefetch" href="/assets/js/131.992f7b89.js"><link rel="prefetch" href="/assets/js/132.2b074ed6.js"><link rel="prefetch" href="/assets/js/133.b79c9fa6.js"><link rel="prefetch" href="/assets/js/134.79d76443.js"><link rel="prefetch" href="/assets/js/135.44617073.js"><link rel="prefetch" href="/assets/js/136.67120ac3.js"><link rel="prefetch" href="/assets/js/137.51b731e7.js"><link rel="prefetch" href="/assets/js/138.91b9ef94.js"><link rel="prefetch" href="/assets/js/139.f4b6adfa.js"><link rel="prefetch" href="/assets/js/14.dc8fd6de.js"><link rel="prefetch" href="/assets/js/140.d4a17aff.js"><link rel="prefetch" href="/assets/js/141.7054de62.js"><link rel="prefetch" href="/assets/js/142.c231e08b.js"><link rel="prefetch" href="/assets/js/143.d0af2640.js"><link rel="prefetch" href="/assets/js/144.ef12220c.js"><link rel="prefetch" href="/assets/js/145.b731c883.js"><link rel="prefetch" href="/assets/js/146.6f3e3365.js"><link rel="prefetch" href="/assets/js/147.439a508d.js"><link rel="prefetch" href="/assets/js/148.8b2e667c.js"><link rel="prefetch" href="/assets/js/149.eeac3ce4.js"><link rel="prefetch" href="/assets/js/15.afafb147.js"><link rel="prefetch" href="/assets/js/150.a980f077.js"><link rel="prefetch" href="/assets/js/151.9f2a6040.js"><link rel="prefetch" href="/assets/js/152.1984a918.js"><link rel="prefetch" href="/assets/js/153.26dc9a08.js"><link rel="prefetch" href="/assets/js/154.1c12fb41.js"><link rel="prefetch" href="/assets/js/155.245f4a0d.js"><link rel="prefetch" href="/assets/js/156.2594c8cd.js"><link rel="prefetch" href="/assets/js/157.68def714.js"><link rel="prefetch" href="/assets/js/158.c7942e4b.js"><link rel="prefetch" href="/assets/js/159.0ba15294.js"><link rel="prefetch" href="/assets/js/16.09533554.js"><link rel="prefetch" href="/assets/js/160.5b2ae894.js"><link rel="prefetch" href="/assets/js/161.34aa9103.js"><link rel="prefetch" href="/assets/js/162.6067c4b9.js"><link rel="prefetch" href="/assets/js/163.eb249418.js"><link rel="prefetch" href="/assets/js/164.609a8a73.js"><link rel="prefetch" href="/assets/js/165.5dfc859f.js"><link rel="prefetch" href="/assets/js/166.36d057d6.js"><link rel="prefetch" href="/assets/js/167.ae435b2d.js"><link rel="prefetch" href="/assets/js/168.df65bdf7.js"><link rel="prefetch" href="/assets/js/169.192828ea.js"><link rel="prefetch" href="/assets/js/17.86818c79.js"><link rel="prefetch" href="/assets/js/170.d8e1f0a1.js"><link rel="prefetch" href="/assets/js/171.2478e6bc.js"><link rel="prefetch" href="/assets/js/172.dde11c19.js"><link rel="prefetch" href="/assets/js/173.5169313b.js"><link rel="prefetch" href="/assets/js/174.943645d1.js"><link rel="prefetch" href="/assets/js/175.78c9b2d5.js"><link rel="prefetch" href="/assets/js/176.d90f11e0.js"><link rel="prefetch" href="/assets/js/18.234df82b.js"><link rel="prefetch" href="/assets/js/19.d07922c2.js"><link rel="prefetch" href="/assets/js/2.bbb51ac0.js"><link rel="prefetch" href="/assets/js/20.586a9217.js"><link rel="prefetch" href="/assets/js/21.e2669f2a.js"><link rel="prefetch" href="/assets/js/22.33248222.js"><link rel="prefetch" href="/assets/js/23.1ab9d562.js"><link rel="prefetch" href="/assets/js/24.9b7b2add.js"><link rel="prefetch" href="/assets/js/25.b04306f8.js"><link rel="prefetch" href="/assets/js/26.952365af.js"><link rel="prefetch" href="/assets/js/27.d71ca71b.js"><link rel="prefetch" href="/assets/js/28.187c5430.js"><link rel="prefetch" href="/assets/js/29.270999ce.js"><link rel="prefetch" href="/assets/js/3.4edefce4.js"><link rel="prefetch" href="/assets/js/30.99be3d03.js"><link rel="prefetch" href="/assets/js/31.f2b6aa1a.js"><link rel="prefetch" href="/assets/js/32.89f3435e.js"><link rel="prefetch" href="/assets/js/33.412e492c.js"><link rel="prefetch" href="/assets/js/34.394b7975.js"><link rel="prefetch" href="/assets/js/35.d11dd982.js"><link rel="prefetch" href="/assets/js/36.fd3ee265.js"><link rel="prefetch" href="/assets/js/37.94ec645d.js"><link rel="prefetch" href="/assets/js/38.abb5af19.js"><link rel="prefetch" href="/assets/js/39.74f94588.js"><link rel="prefetch" href="/assets/js/4.5b028368.js"><link rel="prefetch" href="/assets/js/40.923aa47e.js"><link rel="prefetch" href="/assets/js/41.679d601d.js"><link rel="prefetch" href="/assets/js/42.1e2781a8.js"><link rel="prefetch" href="/assets/js/43.f9adc40f.js"><link rel="prefetch" href="/assets/js/44.30f73eb7.js"><link rel="prefetch" href="/assets/js/45.5d00694a.js"><link rel="prefetch" href="/assets/js/46.c26e2375.js"><link rel="prefetch" href="/assets/js/47.c074049e.js"><link rel="prefetch" href="/assets/js/48.e2303e29.js"><link rel="prefetch" href="/assets/js/49.0a3bc79f.js"><link rel="prefetch" href="/assets/js/50.21ca6c14.js"><link rel="prefetch" href="/assets/js/51.ebce03b0.js"><link rel="prefetch" href="/assets/js/52.0f856a1a.js"><link rel="prefetch" href="/assets/js/53.f6c444bd.js"><link rel="prefetch" href="/assets/js/54.050ae9a6.js"><link rel="prefetch" href="/assets/js/55.996ea832.js"><link rel="prefetch" href="/assets/js/56.4f94c1ec.js"><link rel="prefetch" href="/assets/js/57.c4846fc1.js"><link rel="prefetch" href="/assets/js/58.d748139b.js"><link rel="prefetch" href="/assets/js/59.82d085fb.js"><link rel="prefetch" href="/assets/js/6.f2c315b6.js"><link rel="prefetch" href="/assets/js/60.cd082917.js"><link rel="prefetch" href="/assets/js/61.68ab634a.js"><link rel="prefetch" href="/assets/js/62.97dcd49b.js"><link rel="prefetch" href="/assets/js/63.71d0f891.js"><link rel="prefetch" href="/assets/js/64.f7f7b509.js"><link rel="prefetch" href="/assets/js/65.1281b427.js"><link rel="prefetch" href="/assets/js/66.3f97044f.js"><link rel="prefetch" href="/assets/js/67.8728537b.js"><link rel="prefetch" href="/assets/js/68.9b294ca4.js"><link rel="prefetch" href="/assets/js/69.5ce9b218.js"><link rel="prefetch" href="/assets/js/7.467568c2.js"><link rel="prefetch" href="/assets/js/70.decec6bc.js"><link rel="prefetch" href="/assets/js/71.c8dca8df.js"><link rel="prefetch" href="/assets/js/72.eed3663b.js"><link rel="prefetch" href="/assets/js/73.a959d5d6.js"><link rel="prefetch" href="/assets/js/74.8efdfcc9.js"><link rel="prefetch" href="/assets/js/75.ce581d9a.js"><link rel="prefetch" href="/assets/js/76.a3f98f3c.js"><link rel="prefetch" href="/assets/js/77.ed678b79.js"><link rel="prefetch" href="/assets/js/78.4ad2515f.js"><link rel="prefetch" href="/assets/js/79.12b0d4e8.js"><link rel="prefetch" href="/assets/js/8.9fe874c0.js"><link rel="prefetch" href="/assets/js/80.3ac8e6cc.js"><link rel="prefetch" href="/assets/js/81.24408f8c.js"><link rel="prefetch" href="/assets/js/82.aee7672d.js"><link rel="prefetch" href="/assets/js/83.690becb7.js"><link rel="prefetch" href="/assets/js/84.0486a3fa.js"><link rel="prefetch" href="/assets/js/85.8b27e1bd.js"><link rel="prefetch" href="/assets/js/86.473c675b.js"><link rel="prefetch" href="/assets/js/87.f79b30c8.js"><link rel="prefetch" href="/assets/js/88.8663b0cf.js"><link rel="prefetch" href="/assets/js/89.7fcae6d1.js"><link rel="prefetch" href="/assets/js/9.29b68b47.js"><link rel="prefetch" href="/assets/js/90.1b50b9de.js"><link rel="prefetch" href="/assets/js/91.ac620de7.js"><link rel="prefetch" href="/assets/js/92.a6f57bc5.js"><link rel="prefetch" href="/assets/js/93.71f80f84.js"><link rel="prefetch" href="/assets/js/94.7208db24.js"><link rel="prefetch" href="/assets/js/95.2b1b0547.js"><link rel="prefetch" href="/assets/js/96.ab572e0b.js"><link rel="prefetch" href="/assets/js/97.15c58d69.js"><link rel="prefetch" href="/assets/js/98.7d68bdd3.js"><link rel="prefetch" href="/assets/js/99.fb2d96d9.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.70e1d524.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Northboat Docs" class="logo"> <span class="site-name can-hide">Northboat Docs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Docs
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://northpolar.netlify.app/about" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  About
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/arts/" class="nav-link">
+  Literature
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Full Stack Developer" class="dropdown-title"><span class="title">Full Stack Developer</span> <span class="arrow down"></span></button> <button type="button" aria-label="Full Stack Developer" class="mobile-dropdown-title"><span class="title">Full Stack Developer</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ Computer Science" class="dropdown-title"><span class="title">NEUQ Computer Science</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ Computer Science" class="mobile-dropdown-title"><span class="title">NEUQ Computer Science</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/datastructure/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/operating/" class="nav-link router-link-active">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/organization/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Cyber Security" class="dropdown-title"><span class="title">Cyber Security</span> <span class="arrow down"></span></button> <button type="button" aria-label="Cyber Security" class="mobile-dropdown-title"><span class="title">Cyber Security</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cyber/math/" class="nav-link">
+  Mathematics
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/code/" class="nav-link">
+  Code
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/machine/" class="nav-link">
+  Machine Learning
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/crypto/" class="nav-link">
+  Cryptography
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Docs
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://northpolar.netlify.app/about" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  About
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/arts/" class="nav-link">
+  Literature
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Full Stack Developer" class="dropdown-title"><span class="title">Full Stack Developer</span> <span class="arrow down"></span></button> <button type="button" aria-label="Full Stack Developer" class="mobile-dropdown-title"><span class="title">Full Stack Developer</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ Computer Science" class="dropdown-title"><span class="title">NEUQ Computer Science</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ Computer Science" class="mobile-dropdown-title"><span class="title">NEUQ Computer Science</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/datastructure/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/operating/" class="nav-link router-link-active">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/organization/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Cyber Security" class="dropdown-title"><span class="title">Cyber Security</span> <span class="arrow down"></span></button> <button type="button" aria-label="Cyber Security" class="mobile-dropdown-title"><span class="title">Cyber Security</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cyber/math/" class="nav-link">
+  Mathematics
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/code/" class="nav-link">
+  Code
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/machine/" class="nav-link">
+  Machine Learning
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/crypto/" class="nav-link">
+  Cryptography
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>操作系统</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>汇编语言</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>编译原理</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/408/operating/compile/basic.html" class="sidebar-link">编译原理基础</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>编译原理实验</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/408/operating/compile/lexer.html" class="sidebar-link">词法分析器</a></li><li><a href="/408/operating/compile/parser.html" aria-current="page" class="active sidebar-link">语法分析器</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/408/operating/compile/parser.html#准备" class="sidebar-link">准备</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/408/operating/compile/parser.html#要求" class="sidebar-link">要求</a></li><li class="sidebar-sub-header"><a href="/408/operating/compile/parser.html#环境" class="sidebar-link">环境</a></li></ul></li><li class="sidebar-sub-header"><a href="/408/operating/compile/parser.html#bison" class="sidebar-link">Bison</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/408/operating/compile/parser.html#calc" class="sidebar-link">calc</a></li><li class="sidebar-sub-header"><a href="/408/operating/compile/parser.html#parser" class="sidebar-link">parser</a></li></ul></li></ul></li></ul></section></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><blockquote><p>这个语法分析器做的很失败，bison 文法定义定义不明白，功亏一篑</p></blockquote> <h2 id="准备">准备</h2> <h3 id="要求">要求</h3> <p>请根据给定的文法设计并实现语法分析程序（推荐自顶向下的递归子程序分析方法），基于词法分析实验所识别出的单词，进一步识别出各类语法成分，输入输出及处理要求如下</p> <ul><li>需按文法规则，用递归子程序法对文法中定义的所有种语法成分进行分析</li> <li>为了方便进行自动评测，输入的被编译源文件统一命名为testfile.txt；输出的结果文件统一命名为output.txt，结果文件中包含如下两种信息
+<ul><li>按词法分析识别单词的顺序，按行输出每个单词的信息（要求同词法分析作业，对于预读的情况不能输出）</li> <li>在下列高亮显示的语法分析成分分析结束前，另起一行输出当前语法成分的名字，形如“&lt;常量说明&gt;”（注：未要求输出的语法成分仍需要分析）</li></ul></li> <li>注意输出文件要求中文字符的编码格式要求是UTF-8</li></ul> <p>文法定义如下</p> <ul><li>＜加法运算符＞ ::= +｜-</li> <li>＜乘法运算符＞ ::= *｜/</li> <li>＜关系运算符＞ ::= &lt;｜&lt;=｜&gt;｜&gt;=｜!=｜==</li> <li>＜字母＞  ::= ＿｜a｜．．．｜z｜A｜．．．｜Z</li> <li>＜数字＞  ::= ０｜＜非零数字＞</li> <li>＜非零数字＞ ::= １｜．．．｜９</li> <li>＜字符＞  ::= '＜加法运算符＞'｜'＜乘法运算符＞'｜'＜字母＞'｜'＜数字＞'</li> <li>＜字符串＞  ::= &quot;｛十进制编码为32,33,35-126的ASCII字符｝&quot;</li> <li>＜程序＞  ::= ［＜常量说明＞］［＜变量说明＞］{＜有返回值函数定义＞|＜无返回值函数定义＞}＜主函数＞</li> <li>＜常量说明＞ ::= const＜常量定义＞;{ const＜常量定义＞;}</li> <li>＜常量定义＞  ::=  int＜标识符＞＝＜整数＞{,＜标识符＞＝＜整数＞} | char＜标识符＞＝＜字符＞{,＜标识符＞＝＜字符＞}</li> <li>＜无符号整数＞ ::= ＜非零数字＞｛＜数字＞｝| 0</li> <li>＜整数＞    ::= ［＋｜－］＜无符号整数＞</li> <li>＜标识符＞  ::= ＜字母＞｛＜字母＞｜＜数字＞｝</li> <li>＜声明头部＞  ::= int＜标识符＞ |char＜标识符＞</li> <li>＜变量说明＞ ::= ＜变量定义＞;{＜变量定义＞;}</li> <li>＜变量定义＞ ::= ＜类型标识符＞(＜标识符＞|＜标识符＞'['＜无符号整数＞']'){,(＜标识符＞|＜标识符＞'['＜无符号整数＞']' )}</li> <li>＜类型标识符＞   ::= int | char</li> <li>＜有返回值函数定义＞ ::= ＜声明头部＞'('＜参数表＞')' '{'＜复合语句＞'}'</li> <li>＜无返回值函数定义＞ ::= void＜标识符＞'('＜参数表＞')''{'＜复合语句＞'}'</li> <li>＜复合语句＞  ::= ［＜常量说明＞］［＜变量说明＞］＜语句列＞</li> <li>＜参数表＞  ::= ＜类型标识符＞＜标识符＞{,＜类型标识符＞＜标识符＞}| ＜空＞</li> <li>＜主函数＞  ::= void main‘(’‘)’ ‘{’＜复合语句＞‘}’</li> <li>＜表达式＞  ::= ［＋｜－］＜项＞{＜加法运算符＞＜项＞}</li> <li>＜项＞   ::= ＜因子＞{＜乘法运算符＞＜因子＞}</li> <li>＜因子＞  ::= ＜标识符＞｜＜标识符＞'['＜表达式＞']'|'('＜表达式＞')'｜＜整数＞|＜字符＞｜＜有返回值函数调用语句＞</li> <li>＜语句＞  ::= ＜条件语句＞｜＜循环语句＞| '{'＜语句列＞'}'| ＜有返回值函数调用语句＞; |＜无返回值函数调用语句＞;｜＜赋值语句＞;｜＜读语句＞;｜＜写语句＞;｜＜空＞;|＜返回语句＞;</li> <li>＜赋值语句＞  ::= ＜标识符＞＝＜表达式＞|＜标识符＞'['＜表达式＞']'=＜表达式＞</li> <li>＜条件语句＞ ::= if '('＜条件＞')'＜语句＞［else＜语句＞］</li> <li>＜条件＞  ::= ＜表达式＞＜关系运算符＞＜表达式＞ //整型表达式之间才能进行关系运算 ｜＜表达式＞  //表达式为整型，其值为0条件为假，值不为0时条件为真</li> <li>＜循环语句＞  ::= while '('＜条件＞')'＜语句＞| do＜语句＞while '('＜条件＞')' |for'('＜标识符＞＝＜表达式＞;＜条件＞;＜标识符＞＝＜标识符＞(+|-)＜步长＞')'＜语句＞</li> <li>＜步长＞::= ＜无符号整数＞</li> <li>＜有返回值函数调用语句＞ ::= ＜标识符＞'('＜值参数表＞')'</li> <li>＜无返回值函数调用语句＞ ::= ＜标识符＞'('＜值参数表＞')'</li> <li>＜值参数表＞  ::= ＜表达式＞{,＜表达式＞}｜＜空＞</li> <li>＜语句列＞  ::= ｛＜语句＞｝</li> <li>＜读语句＞  ::= scanf '('＜标识符＞{,＜标识符＞}')'</li> <li>＜写语句＞  ::= printf '(' ＜字符串＞,＜表达式＞ ')'| printf '('＜字符串＞ ')'| printf '('＜表达式＞')'</li> <li>＜返回语句＞  ::= return['('＜表达式＞')']</li></ul> <p>输入样例</p> <div class="language-c line-numbers-mode"><pre class="language-c"><code><span class="token keyword">const</span> <span class="token keyword">int</span> const1 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> const2 <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">100</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">char</span> const3 <span class="token operator">=</span> <span class="token char">'_'</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> change1<span class="token punctuation">;</span>
+<span class="token keyword">char</span> change3<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">gets1</span><span class="token punctuation">(</span><span class="token keyword">int</span> var1<span class="token punctuation">,</span><span class="token keyword">int</span> var2<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    change1 <span class="token operator">=</span> var1 <span class="token operator">+</span> var2<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>change1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Hello World&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token function">gets1</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>对应输出</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>CONSTTK const
+INTTK int
+IDENFR const1
+ASSIGN =
+INTCON 1
+&lt;无符号整数&gt;
+&lt;整数&gt;
+COMMA ,
+IDENFR const2
+ASSIGN =
+MINU -
+INTCON 100
+&lt;无符号整数&gt;
+&lt;整数&gt;
+&lt;常量定义&gt;
+SEMICN ;
+CONSTTK const
+CHARTK char
+IDENFR const3
+ASSIGN =
+CHARCON _
+&lt;常量定义&gt;
+SEMICN ;
+&lt;常量说明&gt;
+INTTK int
+IDENFR change1
+&lt;变量定义&gt;
+SEMICN ;
+CHARTK char
+IDENFR change3
+&lt;变量定义&gt;
+SEMICN ;
+&lt;变量说明&gt;
+INTTK int
+IDENFR gets1
+&lt;声明头部&gt;
+LPARENT (
+INTTK int
+IDENFR var1
+COMMA ,
+INTTK int
+IDENFR var2
+&lt;参数表&gt;
+RPARENT )
+LBRACE {
+IDENFR change1
+ASSIGN =
+IDENFR var1
+&lt;因子&gt;
+&lt;项&gt;
+PLUS +
+IDENFR var2
+&lt;因子&gt;
+&lt;项&gt;
+&lt;表达式&gt;
+&lt;赋值语句&gt;
+SEMICN ;
+&lt;语句&gt;
+RETURNTK return
+LPARENT (
+IDENFR change1
+&lt;因子&gt;
+&lt;项&gt;
+&lt;表达式&gt;
+RPARENT )
+&lt;返回语句&gt;
+SEMICN ;
+&lt;语句&gt;
+&lt;语句列&gt;
+&lt;复合语句&gt;
+RBRACE }
+&lt;有返回值函数定义&gt;
+VOIDTK void
+MAINTK main
+LPARENT (
+RPARENT )
+LBRACE {
+PRINTFTK printf
+LPARENT (
+STRCON Hello World
+&lt;字符串&gt;
+RPARENT )
+&lt;写语句&gt;
+SEMICN ;
+&lt;语句&gt;
+PRINTFTK printf
+LPARENT (
+IDENFR gets1
+LPARENT (
+INTCON 10
+&lt;无符号整数&gt;
+&lt;整数&gt;
+&lt;因子&gt;
+&lt;项&gt;
+&lt;表达式&gt;
+COMMA ,
+INTCON 20
+&lt;无符号整数&gt;
+&lt;整数&gt;
+&lt;因子&gt;
+&lt;项&gt;
+&lt;表达式&gt;
+&lt;值参数表&gt;
+RPARENT )
+&lt;有返回值函数调用语句&gt;
+&lt;因子&gt;
+&lt;项&gt;
+&lt;表达式&gt;
+RPARENT )
+&lt;写语句&gt;
+SEMICN ;
+&lt;语句&gt;
+&lt;语句列&gt;
+&lt;复合语句&gt;
+RBRACE }
+&lt;主函数&gt;
+&lt;程序&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br></div></div><h3 id="环境">环境</h3> <p>安装 bison</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>yay <span class="token parameter variable">-S</span> bison
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="bison">Bison</h2> <h3 id="calc">calc</h3> <p>使用 flex 和 bison 实现计算器</p> <p>calc.l，识别运算符和数字</p> <div class="language-c line-numbers-mode"><pre class="language-c"><code><span class="token operator">%</span><span class="token punctuation">{</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&quot;y.tab.h&quot;</span></span>
+<span class="token operator">%</span><span class="token punctuation">}</span>
+
+<span class="token operator">%</span><span class="token operator">%</span>
+<span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">+</span>          <span class="token punctuation">{</span> yylval <span class="token operator">=</span> <span class="token function">atoi</span><span class="token punctuation">(</span>yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> NUMBER<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">/</span><span class="token operator">+</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">)</span>\n<span class="token punctuation">]</span>      <span class="token punctuation">{</span> <span class="token keyword">return</span> yytext<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">.</span>               <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">/* end when meet everything else */</span> <span class="token punctuation">}</span>
+<span class="token operator">%</span><span class="token operator">%</span>
+
+<span class="token keyword">int</span> <span class="token function">yywrap</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>calc.y，处理识别到的 token，将注释去掉将可以读 / 写文件</p> <div class="language-c line-numbers-mode"><pre class="language-c"><code><span class="token operator">%</span><span class="token punctuation">{</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token keyword">void</span> <span class="token function">yyerror</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> msg<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">static</span> FILE<span class="token operator">*</span> yyout<span class="token punctuation">;</span>
+<span class="token operator">%</span><span class="token punctuation">}</span>
+
+<span class="token operator">%</span>token NUMBER
+
+<span class="token operator">%</span>left <span class="token char">'+'</span> <span class="token char">'-'</span>
+<span class="token operator">%</span>left <span class="token char">'*'</span> <span class="token char">'/'</span>
+
+<span class="token operator">%</span><span class="token operator">%</span>
+
+S   <span class="token operator">:</span>   S E <span class="token char">'\n'</span>        <span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;ans = %d\n&quot;</span><span class="token punctuation">,</span> $<span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span>   <span class="token comment">/* empty */</span>     <span class="token punctuation">{</span> <span class="token comment">/* empty */</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+E   <span class="token operator">:</span>   E <span class="token char">'+'</span> E         <span class="token punctuation">{</span> $$ <span class="token operator">=</span> $<span class="token number">1</span> <span class="token operator">+</span> $<span class="token number">3</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span>   E <span class="token char">'-'</span> E         <span class="token punctuation">{</span> $$ <span class="token operator">=</span> $<span class="token number">1</span> <span class="token operator">-</span> $<span class="token number">3</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span>   E <span class="token char">'*'</span> E         <span class="token punctuation">{</span> $$ <span class="token operator">=</span> $<span class="token number">1</span> <span class="token operator">*</span> $<span class="token number">3</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span>   E <span class="token char">'/'</span> E         <span class="token punctuation">{</span> $$ <span class="token operator">=</span> $<span class="token number">1</span> <span class="token operator">/</span> $<span class="token number">3</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span>   NUMBER          <span class="token punctuation">{</span> $$ <span class="token operator">=</span> $<span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span>   <span class="token char">'('</span> E <span class="token char">')'</span>       <span class="token punctuation">{</span> $$ <span class="token operator">=</span> $<span class="token number">2</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+<span class="token operator">%</span><span class="token operator">%</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">extern</span> FILE <span class="token operator">*</span>yyin<span class="token punctuation">;</span>
+    <span class="token comment">//yyin = fopen(&quot;testfile.txt&quot;, &quot;r&quot;);</span>
+    <span class="token keyword">extern</span> FILE <span class="token operator">*</span>yyout<span class="token punctuation">;</span>
+    <span class="token comment">//yyout = fopen(&quot;output.txt&quot;, &quot;w&quot;);</span>
+    <span class="token function">yyparse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div><p>build.sh</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>flex calc.l
+bison <span class="token parameter variable">-vtdy</span> calc.y
+gcc <span class="token parameter variable">-o</span> calc lex.yy.c y.tab.c
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>执行</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>./calc
+
+<span class="token number">1</span>+2
+<span class="token assign-left variable">ans</span><span class="token operator">=</span><span class="token number">3</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="parser">parser</h3> <h4 id="flex-部分">flex 部分</h4> <p>将词法分析器的内容稍作修改，识别时即写出</p> <ul><li>不再使用 write 函数在 main 函数中进行写出</li> <li>不再对 token 进行宏定义为 int，转而在 parser.y 中定义，再在 lex.l 中引入头文件</li></ul> <p>lex.l</p> <div class="language-c line-numbers-mode"><pre class="language-c"><code><span class="token operator">%</span><span class="token punctuation">{</span>
+<span class="token comment">/* 會直接照搬放檔頭的C code */</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&quot;y.tab.h&quot;</span></span>
+<span class="token operator">%</span><span class="token punctuation">}</span>
+
+delim		<span class="token punctuation">[</span> \t \n<span class="token punctuation">]</span>
+ws		<span class="token punctuation">{</span>delim<span class="token punctuation">}</span><span class="token operator">+</span>
+letter		<span class="token punctuation">[</span>A<span class="token operator">-</span>Za<span class="token operator">-</span>z_<span class="token punctuation">]</span>
+<span class="token keyword">unsigned</span>	<span class="token punctuation">[</span><span class="token number">1</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span>
+digit		<span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span>
+id		<span class="token punctuation">{</span>letter<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">{</span>letter<span class="token punctuation">}</span><span class="token operator">|</span><span class="token punctuation">{</span>digit<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token operator">*</span>
+number		<span class="token punctuation">{</span><span class="token keyword">unsigned</span><span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">{</span>digit<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token operator">*</span>
+zero		<span class="token number">0</span>
+
+
+<span class="token comment">/* 這裡告訴flex只要讀取輸入的檔案（不需要其他檔案）*/</span>
+
+<span class="token operator">%</span><span class="token operator">%</span>
+    <span class="token comment">/*** 規則區塊***/</span>
+    <span class="token comment">/* yytext是一個字串變數，內容是符合規則的字串本身。*/</span>
+
+\&quot;<span class="token punctuation">[</span><span class="token operator">^</span>\&quot;<span class="token punctuation">]</span><span class="token operator">*</span>\&quot;	<span class="token punctuation">{</span> 
+		    <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>yytext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	    	    <span class="token comment">//printf(&quot;%d\n&quot;, n);</span>
+	    	    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			yytext<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> yytext<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	   	    <span class="token punctuation">}</span>
+	    	    yytext<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token char">'\0'</span><span class="token punctuation">;</span>
+	    	    <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;STRCON %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		    <span class="token keyword">return</span> <span class="token punctuation">(</span>STR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span> <span class="token comment">// 识别字符串，这里要手动去掉双引号</span>
+
+<span class="token char">'[^'</span><span class="token punctuation">]</span>'		<span class="token punctuation">{</span> 
+		    <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>yytext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	    	    <span class="token comment">//printf(&quot;%d\n&quot;, n);</span>
+	    	    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			yytext<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> yytext<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	    	    <span class="token punctuation">}</span>
+	    	    yytext<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token char">'\0'</span><span class="token punctuation">;</span>
+	    	    <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;CHARCON %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	    	    <span class="token keyword">return</span> <span class="token punctuation">(</span>CHARACTER<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+		<span class="token punctuation">}</span> <span class="token comment">// 识别字符，手动去掉单引号</span>
+
+    <span class="token comment">/* 识别关键字及特殊符号 */</span>
+
+<span class="token string">&quot;const&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;CONSTTK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>CONST<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;int&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;INTTK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>INT<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;char&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;CHARTK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>CHAR<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;void&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;VOIDTK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>VOID<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;main&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;MAINTK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>MAIN<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;if&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;IFTK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>IF<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;else&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;ELSETK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>ELSE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;do&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;DOTK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>DO<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;while&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;WHILETK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>WHILE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;for&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;FORTK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>FOR<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;scanf&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;SCANFTK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>SCAN<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;printf&quot;</span>	<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;PRINTFTK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>PRINT<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;return&quot;</span>	<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;RETURNTK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>RETURN<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span>id<span class="token punctuation">}</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;IDENFR %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>ID<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// 识别标识符</span>
+<span class="token punctuation">{</span>number<span class="token punctuation">}</span>   	<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;INTCON %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>NUMBER<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// 识别整数数字</span>
+<span class="token punctuation">{</span>zero<span class="token punctuation">}</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;INTCON %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> ZERO<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span>ws<span class="token punctuation">}</span>	 	<span class="token punctuation">{</span> <span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token string">&quot;=&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;ASSIGN %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>ASSIGN<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;+&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;PLUS %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>ADD<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;-&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;MINU %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>SUB<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;*&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;MULT %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>MUL<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;/&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;DIV %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>DIV<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token string">&quot;&lt;&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;LSS %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>LSS<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;&lt;=&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;LEQ %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>LEQ<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;&gt;&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;GRE %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>GRE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;&gt;=&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;GEQ %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>GEQ<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;==&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;EQL %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>EQL<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;!=&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;NEQ %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>NEQ<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token string">&quot;;&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;SEMICN %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>SEMICOLON<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;,&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;COMMA %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>COMMA<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token string">&quot;(&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;LPARENT %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>LPARENT<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;)&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;RPARENT %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>RPARENT<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;[&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;LBRACK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>LBRACK<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;]&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;RBRACK %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>RBRACK<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;{&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;LBRACE %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>LBRACE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token string">&quot;}&quot;</span>		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;RBRACE %s\n&quot;</span><span class="token punctuation">,</span> yytext<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>RBRACE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">.</span>       	<span class="token punctuation">{</span> <span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token operator">%</span><span class="token operator">%</span>
+<span class="token comment">/*** C程式碼區塊***/</span>
+
+<span class="token keyword">int</span> <span class="token function">yywrap</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br></div></div><h4 id="bison-部分">bison 部分</h4> <p>同样分为三部分</p> <ul><li>定义区域：定义 c 头文件，token 符号，将自动分配 int 值</li> <li>规则区域：定义文法</li> <li>c 代码区域：同 flex</li></ul> <p>parser.y</p> <div class="language-c line-numbers-mode"><pre class="language-c"><code><span class="token operator">%</span><span class="token punctuation">{</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token keyword">extern</span> FILE<span class="token operator">*</span> yyout<span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">yyerror</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> msg<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">yylex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">%</span><span class="token punctuation">}</span>
+
+<span class="token operator">%</span>debug
+
+<span class="token operator">%</span>locations
+
+<span class="token operator">%</span>token STR <span class="token comment">// 字符串</span>
+<span class="token operator">%</span>token CHARACTER <span class="token comment">// 字符</span>
+
+<span class="token operator">%</span>token CONST <span class="token comment">// const</span>
+<span class="token operator">%</span>token INT <span class="token comment">// int</span>
+<span class="token operator">%</span>token CHAR <span class="token comment">// char</span>
+<span class="token operator">%</span>token VOID <span class="token comment">// void</span>
+<span class="token operator">%</span>token MAIN <span class="token comment">// main</span>
+<span class="token operator">%</span>token IF <span class="token comment">// if</span>
+<span class="token operator">%</span>token ELSE <span class="token comment">// else</span>
+<span class="token operator">%</span>token DO <span class="token comment">// do</span>
+<span class="token operator">%</span>token WHILE <span class="token comment">// while</span>
+<span class="token operator">%</span>token FOR <span class="token comment">// for</span>
+<span class="token operator">%</span>token SCAN <span class="token comment">// scanf</span>
+<span class="token operator">%</span>token PRINT <span class="token comment">// printf</span>
+<span class="token operator">%</span>token RETURN <span class="token comment">// return</span>
+
+<span class="token operator">%</span>token ID <span class="token comment">// 识别标识符</span>
+<span class="token operator">%</span>token NUMBER <span class="token comment">// 整数</span>
+<span class="token operator">%</span>token ZERO <span class="token comment">// 0</span>
+
+<span class="token operator">%</span>token LPARENT <span class="token comment">// (</span>
+<span class="token operator">%</span>token RPARENT <span class="token comment">// )</span>
+<span class="token operator">%</span>token LBRACE RBRACE RBRACK LBRACK <span class="token comment">// {}, [] </span>
+<span class="token operator">%</span>token SEMICOLON <span class="token comment">// ;</span>
+<span class="token operator">%</span>token COMMA <span class="token comment">// ,</span>
+
+<span class="token operator">%</span>left ASSIGN <span class="token comment">// 赋值 =</span>
+<span class="token operator">%</span>left NEQ EQL <span class="token comment">// 等，不等 == !=</span>
+<span class="token operator">%</span>left LSS GRE LEQ GEQ <span class="token comment">// 比较 &lt; &gt; &lt;= &gt;=</span>
+<span class="token operator">%</span>left ADD SUB <span class="token comment">// 加减 + -</span>
+<span class="token operator">%</span>left MUL DIV <span class="token comment">// 乘除 * /</span>
+
+<span class="token operator">%</span>start s
+<span class="token operator">%</span><span class="token operator">%</span>
+
+<span class="token comment">/* 语法规则 */</span>
+s
+    <span class="token operator">:</span> s program				<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;程序&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> program				
+    <span class="token punctuation">;</span>
+
+add_cal
+    <span class="token operator">:</span> ADD
+    <span class="token operator">|</span> SUB
+    <span class="token punctuation">;</span>
+
+mul_cal
+    <span class="token operator">:</span> MUL
+    <span class="token operator">|</span> DIV
+    <span class="token punctuation">;</span>
+
+relation_cal
+    <span class="token operator">:</span> NEQ
+    <span class="token operator">|</span> EQL
+    <span class="token operator">|</span> LSS
+    <span class="token operator">|</span> GRE
+    <span class="token operator">|</span> LEQ
+    <span class="token operator">|</span> GEQ
+    <span class="token punctuation">;</span>
+
+character
+    <span class="token operator">:</span> CHARACTER
+    <span class="token punctuation">;</span>
+
+type
+    <span class="token operator">:</span> INT
+    <span class="token operator">|</span> CHAR
+    <span class="token punctuation">;</span>
+
+string
+    <span class="token operator">:</span> STR				<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;字符串&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+
+program
+    <span class="token operator">:</span> declaration
+    <span class="token operator">|</span> function
+    <span class="token punctuation">;</span>
+
+declaration
+    <span class="token operator">:</span> const_declaration			<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;常量说明&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> variable_declaration		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;变量说明&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+const_declaration
+    <span class="token operator">:</span> const_declaration const_definition SEMICOLON 
+    <span class="token operator">|</span> const_definition SEMICOLON
+    <span class="token punctuation">;</span>
+
+const_definition
+    <span class="token operator">:</span> const_definition SEMICOLON CONST type const_assign  
+    <span class="token operator">|</span> CONST type const_assign  		  
+    <span class="token punctuation">;</span>
+
+const_assign
+    <span class="token operator">:</span> const_assign COMMA ID ASSIGN signed_number <span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;常量定义&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> ID ASSIGN signed_number			 <span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;常量定义&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> const_assign COMMA ID ASSIGN character	 <span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;常量定义&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> ID ASSIGN character			 <span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;常量定义&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>		
+    <span class="token punctuation">;</span>
+
+
+unsigned_number
+    <span class="token operator">:</span> num_without_sign		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;无符号整数&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+signed_number
+    <span class="token operator">:</span> num_with_sign		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;整数&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+num_with_sign
+    <span class="token operator">:</span> unsigned_number
+    <span class="token operator">|</span> ADD unsigned_number
+    <span class="token operator">|</span> SUB unsigned_number
+    <span class="token punctuation">;</span>
+
+num_without_sign
+    <span class="token operator">:</span> NUMBER
+    <span class="token operator">|</span> ZERO
+    <span class="token punctuation">;</span>
+
+variable_declaration
+    <span class="token operator">:</span> variable_declaration variable_definition SEMICOLON 
+    <span class="token operator">|</span> variable_definition SEMICOLON 			 
+    <span class="token punctuation">;</span>
+
+variable_definition 
+    <span class="token operator">:</span> type variable_assign     
+    <span class="token punctuation">;</span>
+
+variable_assign
+    <span class="token operator">:</span> variable_assign COMMA variable
+    <span class="token operator">|</span> variable
+    <span class="token punctuation">;</span>
+
+variable
+    <span class="token operator">:</span> ID				<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;变量定义&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> ID LBRACK unsigned_number RBRACK  <span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;变量定义&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+
+
+function
+    <span class="token operator">:</span> <span class="token keyword">void</span> 	<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;无返回值函数定义&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> general   <span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;有返回值函数定义&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> main      <span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;主函数&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+<span class="token keyword">void</span>
+    <span class="token operator">:</span> VOID ID LPARENT param_list RPARENT LBRACE complex_sentence RBRACE 
+    <span class="token punctuation">;</span>
+
+general
+    <span class="token operator">:</span> declaration_head LPARENT param_list RPARENT LBRACE complex_sentence RBRACE 
+    <span class="token punctuation">;</span>
+
+main
+    <span class="token operator">:</span> VOID MAIN LPARENT RPARENT LBRACE complex_sentence RBRACE 
+    <span class="token punctuation">;</span>
+
+declaration_head
+    <span class="token operator">:</span> type ID			<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;声明头部&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+param_list
+    <span class="token operator">:</span> type param	    	<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;参数表&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span>
+    <span class="token punctuation">;</span>	
+
+param
+    <span class="token operator">:</span> ID
+    <span class="token operator">|</span> param COMMA type ID
+    <span class="token punctuation">;</span>
+
+complex_sentence
+    <span class="token operator">:</span> const_declaration variable_declaration sentence_list    <span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;复合语句&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+expression
+    <span class="token operator">:</span> expression add_cal item	<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;表达式&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> expr			
+    <span class="token punctuation">;</span>
+
+expr
+    <span class="token operator">:</span> add_cal item
+    <span class="token operator">|</span> item			<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;项&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+item
+    <span class="token operator">:</span> item mul_cal fact
+    <span class="token operator">|</span> fact			<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;因子&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+fact
+    <span class="token operator">:</span> ID				<span class="token punctuation">{</span> <span class="token comment">/*fprintf(yyout, &quot;&lt;标识符&gt;&quot;);*/</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> ID LBRACK expression RBRACK
+    <span class="token operator">|</span> LPARENT expression RPARENT
+    <span class="token operator">|</span> signed_number
+    <span class="token operator">|</span> character				<span class="token punctuation">{</span> <span class="token comment">/*fprintf(yyout, &quot;&lt;字符&gt;&quot;);*/</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> call_with_return			<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;有返回值函数调用语句&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+sentence
+    <span class="token operator">:</span> condition_sentence SEMICOLON		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;条件语句&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> circle_sentence SEMICOLON			<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;循环语句&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> LBRACE sentence_list RBRACE SEMICOLON	<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;语句列&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> call_with_return SEMICOLON		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;有返回值函数调用语句&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> call_without_return SEMICOLON		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;无返回值函数调用语句&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> assign_sentence SEMICOLON			<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;赋值语句&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> read_sentence SEMICOLON			<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;读语句&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> write_sentence SEMICOLON			<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;写语句&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> SEMICOLON
+    <span class="token operator">|</span> return_sentence SEMICOLON			<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;返回语句&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+assign_sentence
+    <span class="token operator">:</span> ID ASSIGN expression
+    <span class="token operator">|</span> ID LBRACK expression RBRACK ASSIGN expression
+    <span class="token punctuation">;</span>
+
+condition_sentence
+    <span class="token operator">:</span> IF LPARENT condition RPARENT sentence		  
+    <span class="token operator">|</span> IF LPARENT condition RPARENT sentence ELSE sentence
+    <span class="token punctuation">;</span>
+
+condition
+    <span class="token operator">:</span> expression relation_cal expression <span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;条件&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span> expression			 <span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;条件&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+circle_sentence
+    <span class="token operator">:</span> WHILE LPARENT condition RPARENT sentence
+    <span class="token operator">|</span> DO sentence WHILE LPARENT condition RPARENT
+    <span class="token operator">|</span> FOR LPARENT ID ASSIGN expression SEMICOLON condition SEMICOLON ID ASSIGN ID add_cal step RPARENT sentence
+    <span class="token punctuation">;</span>
+
+step
+    <span class="token operator">:</span> unsigned_number		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;步长&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">;</span>
+
+call_with_return
+    <span class="token operator">:</span> ID LPARENT value_param_list RPARENT
+    <span class="token punctuation">;</span>
+
+call_without_return
+    <span class="token operator">:</span> ID LPARENT value_param_list RPARENT
+    <span class="token punctuation">;</span>
+
+value_param_list
+    <span class="token operator">:</span> table 		<span class="token punctuation">{</span> <span class="token function">fprintf</span><span class="token punctuation">(</span>yyout<span class="token punctuation">,</span> <span class="token string">&quot;&lt;值参数表&gt;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token operator">|</span>
+    <span class="token punctuation">;</span>
+
+table
+    <span class="token operator">:</span> expression
+    <span class="token operator">|</span> table COMMA expression
+    <span class="token punctuation">;</span>
+
+sentence_list
+    <span class="token operator">:</span> sentence_list sentence
+    <span class="token operator">|</span>
+    <span class="token punctuation">;</span>
+
+read_sentence
+    <span class="token operator">:</span> SCAN LPARENT id_list RPARENT
+    <span class="token punctuation">;</span>
+
+id_list
+    <span class="token operator">:</span> ID
+    <span class="token operator">|</span> id_list COMMA ID
+    <span class="token punctuation">;</span>
+
+write_sentence
+    <span class="token operator">:</span> PRINT LPARENT string COMMA expression RPARENT
+    <span class="token operator">|</span> PRINT LPARENT string RPARENT
+    <span class="token operator">|</span> PRINT LPARENT expression RPARENT
+    <span class="token punctuation">;</span>
+
+return_sentence
+    <span class="token operator">:</span> RETURN SEMICOLON
+    <span class="token operator">|</span> RETURN LPARENT expression RPARENT
+    <span class="token punctuation">;</span>
+
+<span class="token operator">%</span><span class="token operator">%</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">extern</span> FILE <span class="token operator">*</span>yyin<span class="token punctuation">;</span>
+    yyin <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">&quot;testfile.txt&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;r&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">extern</span> FILE <span class="token operator">*</span>yyout<span class="token punctuation">;</span>
+    yyout <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string">&quot;output.txt&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;w&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">yyparse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br><span class="line-number">231</span><br><span class="line-number">232</span><br><span class="line-number">233</span><br><span class="line-number">234</span><br><span class="line-number">235</span><br><span class="line-number">236</span><br><span class="line-number">237</span><br><span class="line-number">238</span><br><span class="line-number">239</span><br><span class="line-number">240</span><br><span class="line-number">241</span><br><span class="line-number">242</span><br><span class="line-number">243</span><br><span class="line-number">244</span><br><span class="line-number">245</span><br><span class="line-number">246</span><br><span class="line-number">247</span><br><span class="line-number">248</span><br><span class="line-number">249</span><br><span class="line-number">250</span><br><span class="line-number">251</span><br><span class="line-number">252</span><br><span class="line-number">253</span><br><span class="line-number">254</span><br><span class="line-number">255</span><br><span class="line-number">256</span><br><span class="line-number">257</span><br><span class="line-number">258</span><br><span class="line-number">259</span><br><span class="line-number">260</span><br><span class="line-number">261</span><br><span class="line-number">262</span><br><span class="line-number">263</span><br><span class="line-number">264</span><br><span class="line-number">265</span><br><span class="line-number">266</span><br><span class="line-number">267</span><br><span class="line-number">268</span><br><span class="line-number">269</span><br><span class="line-number">270</span><br><span class="line-number">271</span><br><span class="line-number">272</span><br><span class="line-number">273</span><br><span class="line-number">274</span><br><span class="line-number">275</span><br><span class="line-number">276</span><br><span class="line-number">277</span><br><span class="line-number">278</span><br><span class="line-number">279</span><br><span class="line-number">280</span><br><span class="line-number">281</span><br><span class="line-number">282</span><br><span class="line-number">283</span><br><span class="line-number">284</span><br><span class="line-number">285</span><br><span class="line-number">286</span><br><span class="line-number">287</span><br><span class="line-number">288</span><br><span class="line-number">289</span><br><span class="line-number">290</span><br><span class="line-number">291</span><br><span class="line-number">292</span><br><span class="line-number">293</span><br><span class="line-number">294</span><br><span class="line-number">295</span><br><span class="line-number">296</span><br><span class="line-number">297</span><br><span class="line-number">298</span><br><span class="line-number">299</span><br><span class="line-number">300</span><br><span class="line-number">301</span><br><span class="line-number">302</span><br><span class="line-number">303</span><br><span class="line-number">304</span><br><span class="line-number">305</span><br></div></div><h4 id="联合编译">联合编译</h4> <p>build.sh</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>flex lex.l
+bison <span class="token parameter variable">-vtdy</span> parser.y 
+gcc <span class="token parameter variable">-o</span> parser lex.yy.c y.tab.c
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>测试样例一个没过，太失败了，问题全出在文法定义区域</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>parser.y: 警告: <span class="token number">9</span> 项偏移/归约冲突 <span class="token punctuation">[</span>-Wconflicts-sr<span class="token punctuation">]</span>
+parser.y: 警告: <span class="token number">1</span> 项归约/归约冲突 <span class="token punctuation">[</span>-Wconflicts-rr<span class="token punctuation">]</span>
+parser.y: note: rerun with option <span class="token string">'-Wcounterexamples'</span> to generate conflict counterexamples
+parser.y:258.7-41: 警告: 由于冲突，解析器中的规则不起作用 <span class="token punctuation">[</span>-Wother<span class="token punctuation">]</span>
+  <span class="token number">258</span> <span class="token operator">|</span>     <span class="token builtin class-name">:</span> ID LPARENT value_param_list RPARENT
+      <span class="token operator">|</span>       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">3/27/2023, 1:38:15 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/408/operating/compile/lexer.html" class="prev">
+        词法分析器
+      </a></span> <!----></p></div> </main></div><div class="global-ui"><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/song/aries.aac" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:44px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/img/error.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/img/error.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>白羊</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>northboat</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div><!----><div class="RibbonAnimation"></div><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:99;" data-v-248d85d6></canvas></div></div></div>
+    <script src="/assets/js/app.e32663db.js" defer></script><script src="/assets/js/5.11f11ab6.js" defer></script><script src="/assets/js/109.5b0f6700.js" defer></script>
+  </body>
+</html>

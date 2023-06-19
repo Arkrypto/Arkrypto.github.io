@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>循环 - 子程序 - 模块化 - 中断 | Northboat Docs</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    <link rel="icon" href="/img/leaf.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="片刻寧靜">
+    
+    <link rel="preload" href="/assets/css/0.styles.70e1d524.css" as="style"><link rel="preload" href="/assets/js/app.e32663db.js" as="script"><link rel="preload" href="/assets/js/5.11f11ab6.js" as="script"><link rel="preload" href="/assets/js/103.bb2d8a54.js" as="script"><link rel="prefetch" href="/assets/js/10.ffae476d.js"><link rel="prefetch" href="/assets/js/100.b806a0da.js"><link rel="prefetch" href="/assets/js/101.2bae3d85.js"><link rel="prefetch" href="/assets/js/102.3719584b.js"><link rel="prefetch" href="/assets/js/104.1b79acc5.js"><link rel="prefetch" href="/assets/js/105.1da41d24.js"><link rel="prefetch" href="/assets/js/106.e481663b.js"><link rel="prefetch" href="/assets/js/107.faa59277.js"><link rel="prefetch" href="/assets/js/108.71a2dcaf.js"><link rel="prefetch" href="/assets/js/109.5b0f6700.js"><link rel="prefetch" href="/assets/js/11.1d7b9d56.js"><link rel="prefetch" href="/assets/js/110.c56ad5b8.js"><link rel="prefetch" href="/assets/js/111.5c2fe89e.js"><link rel="prefetch" href="/assets/js/112.5e008fbc.js"><link rel="prefetch" href="/assets/js/113.8d255f40.js"><link rel="prefetch" href="/assets/js/114.45b4f145.js"><link rel="prefetch" href="/assets/js/115.06e440f9.js"><link rel="prefetch" href="/assets/js/116.55622c81.js"><link rel="prefetch" href="/assets/js/117.ad63f066.js"><link rel="prefetch" href="/assets/js/118.ebacbe08.js"><link rel="prefetch" href="/assets/js/119.cc1790df.js"><link rel="prefetch" href="/assets/js/12.b62eb70f.js"><link rel="prefetch" href="/assets/js/120.c8363aa7.js"><link rel="prefetch" href="/assets/js/121.dd0aba20.js"><link rel="prefetch" href="/assets/js/122.845cf0ea.js"><link rel="prefetch" href="/assets/js/123.a7b80e95.js"><link rel="prefetch" href="/assets/js/124.51e459b7.js"><link rel="prefetch" href="/assets/js/125.8b7a64c3.js"><link rel="prefetch" href="/assets/js/126.c25a8d27.js"><link rel="prefetch" href="/assets/js/127.d5aeaa6a.js"><link rel="prefetch" href="/assets/js/128.50fd24c6.js"><link rel="prefetch" href="/assets/js/129.65dd74eb.js"><link rel="prefetch" href="/assets/js/13.ac304f86.js"><link rel="prefetch" href="/assets/js/130.f79f4cf4.js"><link rel="prefetch" href="/assets/js/131.992f7b89.js"><link rel="prefetch" href="/assets/js/132.2b074ed6.js"><link rel="prefetch" href="/assets/js/133.b79c9fa6.js"><link rel="prefetch" href="/assets/js/134.79d76443.js"><link rel="prefetch" href="/assets/js/135.44617073.js"><link rel="prefetch" href="/assets/js/136.67120ac3.js"><link rel="prefetch" href="/assets/js/137.51b731e7.js"><link rel="prefetch" href="/assets/js/138.91b9ef94.js"><link rel="prefetch" href="/assets/js/139.f4b6adfa.js"><link rel="prefetch" href="/assets/js/14.dc8fd6de.js"><link rel="prefetch" href="/assets/js/140.d4a17aff.js"><link rel="prefetch" href="/assets/js/141.7054de62.js"><link rel="prefetch" href="/assets/js/142.c231e08b.js"><link rel="prefetch" href="/assets/js/143.d0af2640.js"><link rel="prefetch" href="/assets/js/144.ef12220c.js"><link rel="prefetch" href="/assets/js/145.b731c883.js"><link rel="prefetch" href="/assets/js/146.6f3e3365.js"><link rel="prefetch" href="/assets/js/147.439a508d.js"><link rel="prefetch" href="/assets/js/148.8b2e667c.js"><link rel="prefetch" href="/assets/js/149.eeac3ce4.js"><link rel="prefetch" href="/assets/js/15.afafb147.js"><link rel="prefetch" href="/assets/js/150.a980f077.js"><link rel="prefetch" href="/assets/js/151.9f2a6040.js"><link rel="prefetch" href="/assets/js/152.1984a918.js"><link rel="prefetch" href="/assets/js/153.26dc9a08.js"><link rel="prefetch" href="/assets/js/154.1c12fb41.js"><link rel="prefetch" href="/assets/js/155.245f4a0d.js"><link rel="prefetch" href="/assets/js/156.2594c8cd.js"><link rel="prefetch" href="/assets/js/157.68def714.js"><link rel="prefetch" href="/assets/js/158.c7942e4b.js"><link rel="prefetch" href="/assets/js/159.0ba15294.js"><link rel="prefetch" href="/assets/js/16.09533554.js"><link rel="prefetch" href="/assets/js/160.5b2ae894.js"><link rel="prefetch" href="/assets/js/161.34aa9103.js"><link rel="prefetch" href="/assets/js/162.6067c4b9.js"><link rel="prefetch" href="/assets/js/163.eb249418.js"><link rel="prefetch" href="/assets/js/164.609a8a73.js"><link rel="prefetch" href="/assets/js/165.5dfc859f.js"><link rel="prefetch" href="/assets/js/166.36d057d6.js"><link rel="prefetch" href="/assets/js/167.ae435b2d.js"><link rel="prefetch" href="/assets/js/168.df65bdf7.js"><link rel="prefetch" href="/assets/js/169.192828ea.js"><link rel="prefetch" href="/assets/js/17.86818c79.js"><link rel="prefetch" href="/assets/js/170.d8e1f0a1.js"><link rel="prefetch" href="/assets/js/171.2478e6bc.js"><link rel="prefetch" href="/assets/js/172.dde11c19.js"><link rel="prefetch" href="/assets/js/173.5169313b.js"><link rel="prefetch" href="/assets/js/174.943645d1.js"><link rel="prefetch" href="/assets/js/175.78c9b2d5.js"><link rel="prefetch" href="/assets/js/176.d90f11e0.js"><link rel="prefetch" href="/assets/js/18.234df82b.js"><link rel="prefetch" href="/assets/js/19.d07922c2.js"><link rel="prefetch" href="/assets/js/2.bbb51ac0.js"><link rel="prefetch" href="/assets/js/20.586a9217.js"><link rel="prefetch" href="/assets/js/21.e2669f2a.js"><link rel="prefetch" href="/assets/js/22.33248222.js"><link rel="prefetch" href="/assets/js/23.1ab9d562.js"><link rel="prefetch" href="/assets/js/24.9b7b2add.js"><link rel="prefetch" href="/assets/js/25.b04306f8.js"><link rel="prefetch" href="/assets/js/26.952365af.js"><link rel="prefetch" href="/assets/js/27.d71ca71b.js"><link rel="prefetch" href="/assets/js/28.187c5430.js"><link rel="prefetch" href="/assets/js/29.270999ce.js"><link rel="prefetch" href="/assets/js/3.4edefce4.js"><link rel="prefetch" href="/assets/js/30.99be3d03.js"><link rel="prefetch" href="/assets/js/31.f2b6aa1a.js"><link rel="prefetch" href="/assets/js/32.89f3435e.js"><link rel="prefetch" href="/assets/js/33.412e492c.js"><link rel="prefetch" href="/assets/js/34.394b7975.js"><link rel="prefetch" href="/assets/js/35.d11dd982.js"><link rel="prefetch" href="/assets/js/36.fd3ee265.js"><link rel="prefetch" href="/assets/js/37.94ec645d.js"><link rel="prefetch" href="/assets/js/38.abb5af19.js"><link rel="prefetch" href="/assets/js/39.74f94588.js"><link rel="prefetch" href="/assets/js/4.5b028368.js"><link rel="prefetch" href="/assets/js/40.923aa47e.js"><link rel="prefetch" href="/assets/js/41.679d601d.js"><link rel="prefetch" href="/assets/js/42.1e2781a8.js"><link rel="prefetch" href="/assets/js/43.f9adc40f.js"><link rel="prefetch" href="/assets/js/44.30f73eb7.js"><link rel="prefetch" href="/assets/js/45.5d00694a.js"><link rel="prefetch" href="/assets/js/46.c26e2375.js"><link rel="prefetch" href="/assets/js/47.c074049e.js"><link rel="prefetch" href="/assets/js/48.e2303e29.js"><link rel="prefetch" href="/assets/js/49.0a3bc79f.js"><link rel="prefetch" href="/assets/js/50.21ca6c14.js"><link rel="prefetch" href="/assets/js/51.ebce03b0.js"><link rel="prefetch" href="/assets/js/52.0f856a1a.js"><link rel="prefetch" href="/assets/js/53.f6c444bd.js"><link rel="prefetch" href="/assets/js/54.050ae9a6.js"><link rel="prefetch" href="/assets/js/55.996ea832.js"><link rel="prefetch" href="/assets/js/56.4f94c1ec.js"><link rel="prefetch" href="/assets/js/57.c4846fc1.js"><link rel="prefetch" href="/assets/js/58.d748139b.js"><link rel="prefetch" href="/assets/js/59.82d085fb.js"><link rel="prefetch" href="/assets/js/6.f2c315b6.js"><link rel="prefetch" href="/assets/js/60.cd082917.js"><link rel="prefetch" href="/assets/js/61.68ab634a.js"><link rel="prefetch" href="/assets/js/62.97dcd49b.js"><link rel="prefetch" href="/assets/js/63.71d0f891.js"><link rel="prefetch" href="/assets/js/64.f7f7b509.js"><link rel="prefetch" href="/assets/js/65.1281b427.js"><link rel="prefetch" href="/assets/js/66.3f97044f.js"><link rel="prefetch" href="/assets/js/67.8728537b.js"><link rel="prefetch" href="/assets/js/68.9b294ca4.js"><link rel="prefetch" href="/assets/js/69.5ce9b218.js"><link rel="prefetch" href="/assets/js/7.467568c2.js"><link rel="prefetch" href="/assets/js/70.decec6bc.js"><link rel="prefetch" href="/assets/js/71.c8dca8df.js"><link rel="prefetch" href="/assets/js/72.eed3663b.js"><link rel="prefetch" href="/assets/js/73.a959d5d6.js"><link rel="prefetch" href="/assets/js/74.8efdfcc9.js"><link rel="prefetch" href="/assets/js/75.ce581d9a.js"><link rel="prefetch" href="/assets/js/76.a3f98f3c.js"><link rel="prefetch" href="/assets/js/77.ed678b79.js"><link rel="prefetch" href="/assets/js/78.4ad2515f.js"><link rel="prefetch" href="/assets/js/79.12b0d4e8.js"><link rel="prefetch" href="/assets/js/8.9fe874c0.js"><link rel="prefetch" href="/assets/js/80.3ac8e6cc.js"><link rel="prefetch" href="/assets/js/81.24408f8c.js"><link rel="prefetch" href="/assets/js/82.aee7672d.js"><link rel="prefetch" href="/assets/js/83.690becb7.js"><link rel="prefetch" href="/assets/js/84.0486a3fa.js"><link rel="prefetch" href="/assets/js/85.8b27e1bd.js"><link rel="prefetch" href="/assets/js/86.473c675b.js"><link rel="prefetch" href="/assets/js/87.f79b30c8.js"><link rel="prefetch" href="/assets/js/88.8663b0cf.js"><link rel="prefetch" href="/assets/js/89.7fcae6d1.js"><link rel="prefetch" href="/assets/js/9.29b68b47.js"><link rel="prefetch" href="/assets/js/90.1b50b9de.js"><link rel="prefetch" href="/assets/js/91.ac620de7.js"><link rel="prefetch" href="/assets/js/92.a6f57bc5.js"><link rel="prefetch" href="/assets/js/93.71f80f84.js"><link rel="prefetch" href="/assets/js/94.7208db24.js"><link rel="prefetch" href="/assets/js/95.2b1b0547.js"><link rel="prefetch" href="/assets/js/96.ab572e0b.js"><link rel="prefetch" href="/assets/js/97.15c58d69.js"><link rel="prefetch" href="/assets/js/98.7d68bdd3.js"><link rel="prefetch" href="/assets/js/99.fb2d96d9.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.70e1d524.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Northboat Docs" class="logo"> <span class="site-name can-hide">Northboat Docs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Docs
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://northpolar.netlify.app/about" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  About
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/arts/" class="nav-link">
+  Literature
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Full Stack Developer" class="dropdown-title"><span class="title">Full Stack Developer</span> <span class="arrow down"></span></button> <button type="button" aria-label="Full Stack Developer" class="mobile-dropdown-title"><span class="title">Full Stack Developer</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ Computer Science" class="dropdown-title"><span class="title">NEUQ Computer Science</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ Computer Science" class="mobile-dropdown-title"><span class="title">NEUQ Computer Science</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/datastructure/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/operating/" class="nav-link router-link-active">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/organization/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Cyber Security" class="dropdown-title"><span class="title">Cyber Security</span> <span class="arrow down"></span></button> <button type="button" aria-label="Cyber Security" class="mobile-dropdown-title"><span class="title">Cyber Security</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cyber/math/" class="nav-link">
+  Mathematics
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/code/" class="nav-link">
+  Code
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/machine/" class="nav-link">
+  Machine Learning
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/crypto/" class="nav-link">
+  Cryptography
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Docs
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://northpolar.netlify.app/about" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  About
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/arts/" class="nav-link">
+  Literature
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Full Stack Developer" class="dropdown-title"><span class="title">Full Stack Developer</span> <span class="arrow down"></span></button> <button type="button" aria-label="Full Stack Developer" class="mobile-dropdown-title"><span class="title">Full Stack Developer</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ Computer Science" class="dropdown-title"><span class="title">NEUQ Computer Science</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ Computer Science" class="mobile-dropdown-title"><span class="title">NEUQ Computer Science</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/datastructure/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/network/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/operating/" class="nav-link router-link-active">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/organization/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Cyber Security" class="dropdown-title"><span class="title">Cyber Security</span> <span class="arrow down"></span></button> <button type="button" aria-label="Cyber Security" class="mobile-dropdown-title"><span class="title">Cyber Security</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cyber/math/" class="nav-link">
+  Mathematics
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/code/" class="nav-link">
+  Code
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/machine/" class="nav-link">
+  Machine Learning
+</a></li><li class="dropdown-item"><!----> <a href="/cyber/crypto/" class="nav-link">
+  Cryptography
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>操作系统</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>汇编语言</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/408/operating/assembly/basic.html" class="sidebar-link">汇编语言基础</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>汇编语言实验</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/408/operating/assembly/branch.html" class="sidebar-link">DEBUG - 顺序 - 寻址 - 分支</a></li><li><a href="/408/operating/assembly/loop.html" aria-current="page" class="active sidebar-link">循环 - 子程序 - 模块化 - 中断</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/408/operating/assembly/loop.html#循环程序设计" class="sidebar-link">循环程序设计</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/408/operating/assembly/loop.html#统计i" class="sidebar-link">统计Ⅰ</a></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/loop.html#统计ii" class="sidebar-link">统计Ⅱ</a></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/loop.html#冒泡排序" class="sidebar-link">冒泡排序</a></li></ul></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/loop.html#子程序设计" class="sidebar-link">子程序设计</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/408/operating/assembly/loop.html#简易成绩管理系统" class="sidebar-link">简易成绩管理系统</a></li></ul></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/loop.html#模块化程序设计" class="sidebar-link">模块化程序设计</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/408/operating/assembly/loop.html#递归阶乘" class="sidebar-link">递归阶乘</a></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/loop.html#分文件编写成绩管理" class="sidebar-link">分文件编写成绩管理</a></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/loop.html#宏调用" class="sidebar-link">宏调用</a></li></ul></li><li class="sidebar-sub-header"><a href="/408/operating/assembly/loop.html#中断程序设计" class="sidebar-link">中断程序设计</a></li></ul></li></ul></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>编译原理</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="循环程序设计">循环程序设计</h2> <p>两种循环结构：</p> <ul><li>DO WHILE：用<code>CMP</code>指令和条件转移指令构成</li> <li>DO UNTIL：用<code>loop,loope,loopne</code>这三种指令实现</li></ul> <p>串处理指令：</p> <ul><li><code>movsb</code></li> <li><code>cmps</code></li> <li><code>scas</code></li> <li><code>lods</code></li> <li><code>stos</code></li></ul> <p>和串处理指令联合使用的重复前缀指令：</p> <ul><li><code>rep</code></li> <li><code>repz</code></li> <li><code>repnz</code></li></ul> <p>伪指令：<code>EQU</code></p> <p>操作符：<code>'$'</code></p> <p>交换指令：<code>xchg</code></p> <p>跳转指令：</p> <ul><li>大于等于：<code>jge</code>（jump greater or equal）</li> <li>小于跳转：<code>jb</code></li></ul> <h3 id="统计i">统计Ⅰ</h3> <p>分别统计3个班级中成绩优秀的人数和不及格的人数。三个班级的分数为一个<code>3xn</code>的二维数组。分别用两个一维数组存放各班90分以上和60分以下的人数（计数）</p> <ul><li>由于总共三个班，用于存储的一维数组定义为<code>good db 3 dup(0)</code>，<code>good[0]</code>表示第一个班的优秀成绩数量，以此类推</li> <li>在寻找二维数组位置时，使用<code>score[外层循环数*8][内层循环数]</code>的形式进行定位</li></ul> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>data segment
+    score db 23,45,60,90,91,88,66,77
+          db 95,86,90,95,100,0,42,23
+          db 65,64,59,91,92,78,59,44
+    good  db 3 dup(0)
+    fail  db 3 dup(0)
+    sn       db 0
+    cn    db 0
+data ends
+code segment
+    assume cs:code, ds:data
+start:
+    mov ax, data
+    mov ds, ax
+
+outer:            ;外层循环
+    cmp cn, 3    ;与班级数比较
+    jae exit    ;若大于等于则跳转，即外层循环完退出程序
+    mov sn, 0    ;初始化内层循环
+
+inner:            ;内层循环
+    cmp sn, 8    ;与班级人数比较
+    jae trans2    ;大于等于则跳转至下一层外层循环
+    mov al, cn
+    mov cl, 8    ;班级号乘8获取班级成绩首地址
+    mul cl
+    mov bx, ax    ;将班级首地址存入bx
+    mov al, sn    ;将班级序列号转存入al
+    mov ah, 0
+    mov si, ax    ;将班级序列号转存入si
+    cmp score[bx][si], 90
+    jb  less    ;小于则跳转,大于等于则继续
+    ;处理大于等于90分数，即优秀成绩
+    mov al, cn    ;外层循环数=班级号
+    mov ah, 0
+    mov di, ax    ;第几个班
+    inc good[di]
+    jmp trans1    ;转入下一次内层循环过渡
+
+less:    ;处理小于90分数
+    cmp score[bx][si], 60    ;与60比较
+    jae trans1    ;大于等于则跳转，进行下一层内层循环
+    ;处理小于60分，即不及格成绩
+    mov al, cn
+    mov ah, 0
+    mov di, ax
+    inc fail[di]
+
+trans1:            ;内层循环跳转过渡
+    inc sn
+    jmp inner
+trans2:            ;外层循环跳转过度
+    inc cn
+    jmp outer
+exit:
+    mov ah, 4ch
+    int 21h
+
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br></div></div><h3 id="统计ii">统计Ⅱ</h3> <p>分别统计3个班级中成绩优秀的成绩和不及格的成绩，与统计Ⅰ同理，但存的是分数，用于存储一维数组需要更多的字节空间</p> <ul><li>共三个班，每个班8个分数，于是用于存储分数的数组需要定义为<code>good db 24 dup(0)</code>，以防越界</li> <li>在寻找一维数组当前储存位置时，需要维护一个字节变量<code>dn</code>，每增加一个成绩，<code>dn++</code>，实时更新下标</li></ul> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>data segment
+    score db 23,45,60,90,91,88,66,77
+          db 95,86,90,95,100,0,42,23
+          db 65,64,59,91,92,78,59,44
+    good  db 24 dup(0)
+    fail  db 24 dup(0)
+    sn       db 0
+    cn    db 0
+    dn      db 0
+    bn      db 0
+data ends
+code segment
+    assume cs:code, ds:data
+start:
+    mov ax, data
+    mov ds, ax
+
+outer:            ;外层循环
+    cmp cn, 3    ;与班级数比较
+    jae exit    ;若大于等于则跳转，即外层循环完完成存储
+    mov sn, 0    ;初始化内层循环
+
+inner:            ;内层循环
+    cmp sn, 8    ;与班级人数比较
+    jae trans2    ;大于等于则跳转至下一层外层循环
+    mov al, cn    ;cn为第几个班
+    mov cl, 8    ;班级号乘8获取班级成绩首地址
+    mul cl
+    mov bx, ax    ;将班级首地址存入bx
+    mov al, sn    ;sn为班级第几号学生
+    mov ah, 0
+    mov si, ax    ;班级序列号存入si
+    cmp score[bx][si], 90
+    jb  less    ;小于则跳转,大于等于则继续
+    ;处理大于等于90的分数
+    ;dn是good数组的下标，在数据段初始化为0
+    mov al, dn
+    mov ah, 0
+    mov di, ax    ;将good数组当前下标存入di
+    mov al, score[bx][si];将分数存入al
+    mov good[di], al    ;将分数存入good数组
+    inc dn        ;dn++
+    jmp trans1    ;转入下一次内层循环
+
+less:    ;处理小于90分数
+    cmp score[bx][si], 60    ;与60比较
+    jae trans1    ;大于等于则跳转，进行下一层内层循环
+    ;bn是fail数组的下标，数据段初始化为0
+    mov al, bn    
+    mov ah, 0
+    mov di, ax
+    mov al, score[bx][si]    
+    mov fail[di], al    ;将不及格分数存入fail数组
+    inc bn
+
+trans1:            ;内层循环跳转过渡
+    inc sn
+    jmp inner
+trans2:            ;外层循环跳转过度
+    inc cn
+    jmp outer
+exit:
+    mov ah, 4ch
+    int 21h
+
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br></div></div><h3 id="冒泡排序">冒泡排序</h3> <p>在统计Ⅱ的基础上，对优秀成绩和不及格成绩的两个一维数组进行降序排序</p> <ul><li>统计的步骤和统计Ⅱ完全一致，在跳出外层循环后进入<code>sort</code>段，对两个收集到的一维数组进行排序</li></ul> <p>这个冒泡排序不太一样，他总是在相邻的两个变量之间比较，从第0位比较到最后第n位，这样的比较共n轮，实现排序</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>data segment
+    score db 23,45,60,90,91,88,66,77
+          db 95,86,90,95,100,0,42,23
+          db 65,64,59,91,92,78,59,44
+    good  db 24 dup(0)
+    fail  db 24 dup(0)
+    sn       db 0
+    cn    db 0
+    dn      db 0
+    bn      db 0
+data ends
+code segment
+    assume cs:code, ds:data
+start:
+    mov ax, data
+    mov ds, ax
+
+outer:            ;外层循环
+    cmp cn, 3    ;与班级数比较
+    jae sort    ;若大于等于则跳转，即外层循环完开始排序
+    mov sn, 0
+
+inner:            ;内层循环
+    cmp sn, 8    ;与班级人数比较
+    jae trans2    ;大于等于则跳转至下一层外层循环
+    mov al, cn
+    mov cl, 8    ;班级号乘8获取班级成绩首地址
+    mul cl
+    mov bx, ax    ;将班级首地址存入bx
+    mov al, sn    ;sn为班级第几号学生
+    mov ah, 0
+    mov si, ax    ;班级第几个学生存入si
+    cmp score[bx][si], 90
+    jb  less    ;小于则跳转,大于等于则继续，处理大于等于90分数
+    mov al, dn    ;dn是good数组的下标
+    mov ah, 0
+    mov di, ax    ;good数组下标
+    mov al, score[bx][si]
+    mov good[di], al
+    inc dn
+    jmp trans1    ;转入下一次内层循环
+
+less:    ;处理小于90分数
+    cmp score[bx][si], 60    ;与60比较
+    jae trans1    ;大于等于则跳转，进行下一层内层循环
+    mov al, bn    ;bn是fail数组的下标
+    mov ah, 0
+    mov di, ax
+    mov al, score[bx][si]    
+    mov fail[di], al    ;将不及格分数存入fail数组
+    inc bn
+
+trans1:            ;内层循环跳转过渡
+    inc sn
+    jmp inner
+trans2:            ;外层循环跳转过度
+    inc cn
+    jmp outer
+
+sort:
+    ;排列优秀成绩
+    ;dn为下标数，即外层循环执行次数
+    ;将外层循环执行次数转存到cx中
+    ;实际上这里的循环是loop(cx)，当cx=0，退出
+    mov cl, dn
+    mov ch, 0
+    dec cx
+loop1:    
+    ;cx入栈
+    push cx
+    ;初始化内层循环，从第一个开始比较
+    mov bx, 0
+loop2:
+    mov al, good[bx]
+    cmp al, good[bx+1]
+    jge next1;jump greater or equal 大于等于跳转
+    xchg al, good[bx+1];两个地址交换值
+    mov good[bx], al
+next1:
+    add bx, 1
+    loop loop2
+    pop cx
+    loop loop1
+
+    ;排列不及格成绩
+    mov cl, bn
+    mov ch, 0
+    dec cx
+loop3:
+    push cx
+    mov bx, 0
+loop4:
+    mov al, fail[bx]
+    cmp al, fail[bx+1]
+    jge next2
+    xchg al, fail[bx+1]
+    mov fail[bx], al
+next2:
+    add bx, 1
+    loop loop4
+    pop cx
+    loop loop3
+
+exit:
+    mov ah, 4ch
+    int 21h
+
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br></div></div><h2 id="子程序设计">子程序设计</h2> <p>伪指令：</p> <ul><li><code>proc</code></li> <li><code>endp</code></li> <li><code>near</code></li> <li><code>far</code></li></ul> <p>子程序调用：</p> <ul><li><code>call</code></li> <li><code>ret</code></li></ul> <p>子程序传递参数的三种方式：寄存器，内存单元，堆栈</p> <p>设计一个程序，实现<code>inputn</code>输入姓名，<code>inputs</code>输入成绩， <code>sort</code>按成绩排序，<code>print</code>打印排序名单四个功能，使用<code>proc</code>的方式实现</p> <ul><li>利用10号功能实现字符串输入，实现输入姓名和成绩的录入</li> <li>利用9号功能实现打印功能</li></ul> <h3 id="简易成绩管理系统">简易成绩管理系统</h3> <h4 id="数据段定义和主程序">数据段定义和主程序</h4> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>data segment 
+    nameA db 5 dup(13,?,13 dup('$'))
+    scoreAsc db 5 dup(4 dup('$'))
+    rank dw 0,1,2,3,4
+    scoreN dw 5 dup(0)
+    n db 0      ;n代表学号
+    sn dw 5     ;sn代表学生数量
+    info1 db 0dh,0ah,'name:$'
+    info2 db 0dh,0ah,'score:$'
+    nl db 15
+    sl db 4
+    x db 3 dup(?)
+data ends
+
+stack segment stack
+    dw 512 dup(0)
+stack ends
+code segment
+    assume cs:code,ds:data
+start:
+    mov ax,data
+    mov ds,ax
+    ;初始化录入次数
+    mov cx,sn
+loopm:
+    lea dx,info1;打印输入姓名提示信息
+    mov ah,9
+    int 21h 
+    call inName
+    lea dx,info2;打印输入成绩提示信息
+    int 21h
+    call inScore
+    inc n;记录学号
+    loop loopm
+    call sort
+    call dis
+    mov ah,4ch
+    int 21h
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br></div></div><h4 id="输入子程序">输入子程序</h4> <h5 id="输入姓名">输入姓名</h5> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>inName proc ;输入名字
+    push ax
+    push bx
+    push cx
+    push dx
+    mov al,n
+    mov cl,nl
+    mul cl
+    mov dx,offset nameA
+    add dx,ax
+    mov ah,10
+    int 21h
+    mov bx,dx
+    mov byte ptr [bx],0dh
+    inc bx 
+    mov byte ptr [bx],0ah
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+inName endp
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h5 id="输入成绩">输入成绩</h5> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>inScore proc ;输入成绩
+    push ax
+    push bx
+    push cx
+    push dx
+    push bp
+    push si
+    push di
+    mov al,n
+    mov cl,sl
+    mul cl
+    mov bp,offset scoreAsc
+    add bp,ax
+let0:
+    mov ah,1
+    int 21h
+    cmp al,0dh
+    je let1
+    mov ds:[bp][si],al
+    sub al,30h
+    mov x[si],al
+    inc si
+    jmp let0
+let1:
+    mov bx,0
+    mov di,0
+    cmp si,1
+    je let2
+    cmp si,2
+    je let3
+    mov al,x[di]
+    mov cl,100
+    mul cl
+    add bx,ax
+    inc di
+let3:
+    mov al,x[di]
+    mov cl,10
+    mul cl
+    add bx,ax
+    inc di
+let2:
+    add bl,x[di]
+    mov al,n
+    mov cl,2
+    mul cl
+    mov si,ax
+    mov scoreN[si],bx
+    pop di
+    pop si
+    pop bp
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+inScore endp
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br></div></div><h4 id="排序子程序">排序子程序</h4> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>sort proc ;排序
+    push ax
+    push bx
+    push cx
+    mov cx,sn
+    dec cx
+    loopS1:
+    push cx
+    mov bx,0
+    loopS2:
+    mov ax,scoreN[bx]
+    cmp ax,scoreN[bx+2]
+    jae cSort
+    xchg ax,scoreN[bx+2]
+    mov scoreN[bx],ax
+    mov ax,rank[bx]
+    xchg ax,rank[bx+2]
+    mov rank[bx],ax
+    cSort:
+    add bx,2
+    loop loopS2
+    pop cx
+    loop loopS1
+    pop cx
+    pop bx
+    pop ax
+    ret
+sort endp
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><h4 id="输出子程序">输出子程序</h4> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>dis proc    ;打印结果
+    push ax
+    push bx
+    push cx
+    push dx
+    push di
+    mov cx,sn
+    mov di,1
+    mov bx,0
+loopDis:
+    mov dx,di
+    add dl,30h    
+    mov ah,2
+    int 21h
+    mov ax,rank[bx]
+    mov dl, nl
+    mul dl
+    mov dx,offset nameA
+    add dx,ax
+    mov ah,9
+    int 21h
+    mov dl,0dh
+    mov ah,2
+    int 21h
+    mov dl,0ah
+    int 21h
+    mov ax,rank[bx]
+    mov dl,sl
+    mul dl
+    mov dx,offset scoreAsc
+    add dx,ax
+    mov ah,9
+    int 21h
+    mov dl,0dh
+    mov ah,2
+    int 21h
+    mov dl,0ah
+    int 21h
+    add bx,2
+    inc di
+    loop loopDis
+    pop di
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+dis endp
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br></div></div><h2 id="模块化程序设计">模块化程序设计</h2> <p>将子程序设计中的各个功能拆分为不同文件，在主程序中进行调用，实现与二相同的功能</p> <h3 id="递归阶乘">递归阶乘</h3> <p><code>ret n</code>：子程序返回，同时弹出堆栈中n个字节</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>;return n*fac(n-1);
+;使用变量ax储存乘法结果
+stack segment stack
+    dw 512 dup(?)
+stack ends
+code segment
+    assume cs:code,ss:stack
+start:
+    mov ax,5
+    push ax        ;ax入栈
+    call fac
+    mov ah,4ch
+    int 21h
+fac proc
+    mov bp,sp    ;保存栈顶指针
+    mov bx,[bp+2]    ;取出栈顶元素
+    cmp bx,1    ;如果是1的话就返回
+    jne next    ;小于等于则跳转
+    mov ax,1
+    jmp exit
+next:
+    dec bx        ;bx-1入栈，进入下一层递归
+    push bx
+    call fac
+    mov bp,sp
+    mov bx,[bp+2]
+    mul bl        ;ax=al*bl al=fac(n-1) bl=n
+exit:
+    ret 2        ;出栈，弹出两个字节
+fac endp
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><h3 id="分文件编写成绩管理">分文件编写成绩管理</h3> <p><code>public</code>：将此模块的过程定义为全局变量以供其他模块使用</p> <p><code>extrn</code>：引入外部程序</p> <p><code>include</code>：伪指令，调入宏</p> <h4 id="主程序">主程序</h4> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>extrn sort:near, inName:near, inScore:near, dis:near
+data segment common 'data'
+    nameA db 5 dup(13,?,13 dup('$'))
+    scoreAsc db 5 dup(4 dup('$'))
+    rank dw 0,1,2,3,4
+    scoreN dw 5 dup(0)
+    n db 0      ;n代表学号
+    sn dw 5     ;sn代表学生数量
+    info db 0dh,0ah,'name:$'
+    info1 db 0dh,0ah,'score:$'
+    nl db 15
+    sl db 4
+    x db 3 dup(?)
+data ends
+
+stack segment stack
+    dw 512 dup(0)
+stack ends
+
+code segment public 'code'
+    assume cs:code,ds:data
+start:
+    mov ax,data
+    mov ds,ax
+    mov cx,sn
+    loopm:
+    mov dx,offset info
+    mov ah,9
+    int 21h 
+    call inName
+    mov dx,offset info1
+    int 21h
+    call inScore
+    inc n
+    loop loopm
+    call sort
+    call dis
+    mov ah,4ch
+    int 21h
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br></div></div><h4 id="输入程序">输入程序</h4> <h5 id="输入姓名-2">输入姓名</h5> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>public inName
+data segment common 'data'
+    nameA db 5 dup(13,?,13 dup('$'))
+    scoreAsc db 5 dup(4 dup('$'))
+    rank dw 0,1,2,3,4
+    scoreN dw 5 dup(0)
+    n db 0      ;n代表学号
+    sn dw 5     ;sn代表学生数量
+    info db 0dh,0ah,'name:$'
+    info1 db 0dh,0ah,'score:$'
+    nl db 15
+    sl db 4
+    x db 3 dup(?)
+data ends
+
+code segment public 'code'
+    assume cs:code,ds:data
+inName proc ;输入名字
+    push ax
+    push bx
+    push cx
+    push dx
+    mov al,n
+    mov cl,nl
+    mul cl
+    mov dx,offset nameA
+    add dx,ax
+    mov ah,10
+    int 21h
+    mov bx,dx
+    mov byte ptr [bx],0dh
+    inc bx 
+    mov byte ptr [bx],0ah
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+inName endp
+code ends
+end
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br></div></div><h5 id="输入成绩-2">输入成绩</h5> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>public inScore
+data segment common 'data'
+    nameA db 5 dup(13,?,13 dup('$'))
+    scoreAsc db 5 dup(4 dup('$'))
+    rank dw 0,1,2,3,4
+    scoreN dw 5 dup(0)
+    n db 0      ;n代表学号
+    sn dw 5     ;sn代表学生数量
+    info db 0dh,0ah,'name:$'
+    info1 db 0dh,0ah,'score:$'
+    nl db 15
+    sl db 4
+    x db 3 dup(?)
+data ends
+
+code segment public 'code'
+    assume cs:code,ds:data
+inScore proc ;输入成绩
+    push ax
+    push bx
+    push cx
+    push dx
+    push bp
+    push si
+    push di
+    mov al,n
+    mov cl,sl
+    mul cl
+    mov bp,offset scoreAsc
+    add bp,ax
+let0:
+    mov ah,1
+    int 21h
+    cmp al,0dh
+    je let1
+    mov ds:[bp][si],al
+    sub al,30h
+    mov x[si],al
+    inc si
+    jmp let0
+let1:
+    mov bx,0
+    mov di,0
+    cmp si,1
+    je let2
+    cmp si,2
+    je let3
+    mov al,x[di]
+    mov cl,100
+    mul cl
+    add bx,ax
+    inc di
+let3:
+    mov al,x[di]
+    mov cl,10
+    mul cl
+    add bx,ax
+    inc di
+let2:
+    add bl,x[di]
+    mov al,n
+    mov cl,2
+    mul cl
+    mov si,ax
+    mov scoreN[si],bx
+    pop di
+    pop si
+    pop bp
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+inScore endp
+code ends
+end
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br></div></div><h4 id="排序程序">排序程序</h4> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>public sort
+data segment common 'data'
+    nameA db 5 dup(13,?,13 dup('$'))
+    scoreAsc db 5 dup(4 dup('$'))
+    rank dw 0,1,2,3,4
+    scoreN dw 5 dup(0)
+    n db 0      ;n代表学号
+    sn dw 5     ;sn代表学生数量
+    info db 0dh,0ah,'name:$'
+    info1 db 0dh,0ah,'score:$'
+    nl db 15
+    sl db 4
+    x db 3 dup(?)
+data ends
+
+code segment public 'code'
+    assume cs:code,ds:data
+sort proc ;排序
+    push ax
+    push bx
+    push cx
+    mov cx,sn
+    dec cx
+    loopS1:
+    push cx
+    mov bx,0
+    loopS2:
+    mov ax,scoreN[bx]
+    cmp ax,scoreN[bx+2]
+    jae cSort
+    xchg ax,scoreN[bx+2]
+    mov scoreN[bx],ax
+    mov ax,rank[bx]
+    xchg ax,rank[bx+2]
+    mov rank[bx],ax
+    cSort:
+    add bx,2
+    loop loopS2
+    pop cx
+    loop loopS1
+    pop cx
+    pop bx
+    pop ax
+    ret
+sort endp
+code ends
+end
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br></div></div><h4 id="打印程序">打印程序</h4> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>public dis
+data segment common 'data'
+    nameA db 5 dup(13,?,13 dup('$'))
+    scoreAsc db 5 dup(4 dup('$'))
+    rank dw 0,1,2,3,4
+    scoreN dw 5 dup(0)
+    n db 0      ;n代表学号
+    sn dw 5     ;sn代表学生数量
+    info db 0dh,0ah,'name:$'
+    info1 db 0dh,0ah,'score:$'
+    nl db 15
+    sl db 4
+    x db 3 dup(?)
+data end
+
+code segment public 'code'
+    assume cs:code,ds:data
+dis proc    ;打印结果
+    push ax
+    push bx
+    push cx
+    push dx
+    push di
+    mov cx,sn
+    mov di,1
+    mov bx,0
+loopDis:
+    mov dx,di
+    add dl,30h    
+    mov ah,2
+    int 21h
+    mov ax,rank[bx]
+    mov dl, nl
+    mul dl
+    mov dx,offset nameA
+    add dx,ax
+    mov ah,9
+    int 21h
+    mov dl,0dh
+    mov ah,2
+    int 21h
+    mov dl,0ah
+    int 21h
+    mov ax,rank[bx]
+    mov dl,sl
+    mul dl
+    mov dx,offset scoreAsc
+    add dx,ax
+    mov ah,9
+    int 21h
+    mov dl,0dh
+    mov ah,2
+    int 21h
+    mov dl,0ah
+    int 21h
+    add bx,2
+    inc di
+    loop loopDis
+    pop di
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+dis endp
+code ends
+end
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br></div></div><h3 id="宏调用">宏调用</h3> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>enter macro
+    mov dl, 0dh
+    mov ah, 2
+    int 21h
+    mov dl, 0ah
+    mov ah, 2
+    int 21h
+endm
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>在主程序中执行即可实现换行功能</p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>include enter
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>子程序和宏调用的区别：子程序实际上是跳转执行，而宏调用是将宏这段代码复写插入至<code>include</code>之后</li></ul> <h2 id="中断程序设计">中断程序设计</h2> <p><code>int9.asm</code></p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>code segment
+assume cs:code
+start:
+    mov ax,0
+    mov es,ax
+    push es:[0024h]
+    pop es:[0202h]
+    push es:[0026h]
+    pop es:[0204h]
+    mov ah,25h
+    mov al,9
+    push cs
+    pop ds
+    mov dx,offset int9
+    int 21h
+    mov ah,31h
+    mov al,0
+    mov dx,int9end-int9start+16
+    int 21h
+int9 proc near
+int9start:
+    push ax
+    push bx
+    push cx
+    push es
+    in al,60h
+    mov bx,0
+    mov es,bx
+    pushf
+    call dword ptr es:[0202h]
+    cmp al,1eh
+    jne int9ret
+    mov ax,0b800h
+    mov es,ax
+    mov bx,1
+    mov cx,2000
+discoloration:
+    inc byte ptr es:[bx]
+    add bx,2
+    loop discoloration
+int9ret:
+    pop es
+    pop cx
+    pop bx
+    pop ax
+    iret
+int9end:
+    nop
+int9 endp
+code ends
+end start    
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br></div></div><p><code>int7ch.asm</code></p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>data segment
+    msg db 0ah,0dh,&quot;2005 202012143 Zhou tong$&quot;
+data ends
+code segment
+assume cs:code,ds:data
+start:
+    mov ah,25h
+    mov al,7ch
+    push cs
+    pop ds
+    mov dx,offset int7c
+    int 21h
+    mov ah,31h
+    mov al,0
+    mov dx,int7cend-int7cstart+16
+    int 21h
+int7c proc near
+int7cstart:
+    push ax
+    push ds
+    push dx
+    mov ax,data
+    mov ds,ax
+    lea dx,msg
+    mov ah,9
+    int 21h
+    pop dx
+    pop ds
+    pop ax
+    iret
+int7cend:nop
+int7c endp
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><p><code>run7ch.asm</code></p> <div class="language-assembly line-numbers-mode"><pre class="language-text"><code>assume cs:code
+code segment
+start:
+    int 7ch
+    mov ah,4ch
+    int 21h
+code ends
+end start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">3/27/2023, 1:38:15 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/408/operating/assembly/branch.html" class="prev">
+        DEBUG - 顺序 - 寻址 - 分支
+      </a></span> <span class="next"><a href="/408/operating/compile/basic.html">
+        编译原理基础
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/song/aries.aac" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:44px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/img/error.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/img/error.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>白羊</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>northboat</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div><!----><div class="RibbonAnimation"></div><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:99;" data-v-248d85d6></canvas></div></div></div>
+    <script src="/assets/js/app.e32663db.js" defer></script><script src="/assets/js/5.11f11ab6.js" defer></script><script src="/assets/js/103.bb2d8a54.js" defer></script>
+  </body>
+</html>
