@@ -7,4 +7,3 @@ rd /s /q img
 rd /s /q song
 del -q 404.html
 del -q index.html
-pause
