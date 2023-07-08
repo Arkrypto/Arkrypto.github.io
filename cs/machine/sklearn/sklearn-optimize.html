@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Optimize &amp; Heterogeneous Data | Northboat Blog</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    <link rel="icon" href="/img/leaf.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="片刻寧靜">
+    
+    <link rel="preload" href="/assets/css/0.styles.9d0e5d79.css" as="style"><link rel="preload" href="/assets/js/app.bf64dfdc.js" as="script"><link rel="preload" href="/assets/js/5.2db811a7.js" as="script"><link rel="preload" href="/assets/js/51.c3dccd1e.js" as="script"><link rel="prefetch" href="/assets/js/10.c7b0bc6f.js"><link rel="prefetch" href="/assets/js/100.0c0ccebb.js"><link rel="prefetch" href="/assets/js/101.6c7ccbfd.js"><link rel="prefetch" href="/assets/js/102.2c9322da.js"><link rel="prefetch" href="/assets/js/103.50d93de0.js"><link rel="prefetch" href="/assets/js/104.953a01e6.js"><link rel="prefetch" href="/assets/js/105.6829a1d8.js"><link rel="prefetch" href="/assets/js/106.3df578e0.js"><link rel="prefetch" href="/assets/js/107.31ee4b7f.js"><link rel="prefetch" href="/assets/js/108.e5e437a8.js"><link rel="prefetch" href="/assets/js/109.9985446b.js"><link rel="prefetch" href="/assets/js/11.973dfef3.js"><link rel="prefetch" href="/assets/js/110.206134af.js"><link rel="prefetch" href="/assets/js/111.6e5c3984.js"><link rel="prefetch" href="/assets/js/112.84bf5074.js"><link rel="prefetch" href="/assets/js/113.89cfa545.js"><link rel="prefetch" href="/assets/js/114.6d7c5c70.js"><link rel="prefetch" href="/assets/js/115.70fb8008.js"><link rel="prefetch" href="/assets/js/116.4f935ae2.js"><link rel="prefetch" href="/assets/js/117.8a2d1d71.js"><link rel="prefetch" href="/assets/js/118.afdfd717.js"><link rel="prefetch" href="/assets/js/119.463824db.js"><link rel="prefetch" href="/assets/js/12.ac4fb312.js"><link rel="prefetch" href="/assets/js/120.cbb9dbdf.js"><link rel="prefetch" href="/assets/js/121.249b13c0.js"><link rel="prefetch" href="/assets/js/122.3da53fa3.js"><link rel="prefetch" href="/assets/js/123.0af9394c.js"><link rel="prefetch" href="/assets/js/124.16ac9a68.js"><link rel="prefetch" href="/assets/js/125.8bcb1060.js"><link rel="prefetch" href="/assets/js/126.4a225aed.js"><link rel="prefetch" href="/assets/js/127.9225702c.js"><link rel="prefetch" href="/assets/js/128.5bfe0b0e.js"><link rel="prefetch" href="/assets/js/129.e7de1429.js"><link rel="prefetch" href="/assets/js/13.b150a121.js"><link rel="prefetch" href="/assets/js/130.5064387d.js"><link rel="prefetch" href="/assets/js/131.2a764fe3.js"><link rel="prefetch" href="/assets/js/132.023551ea.js"><link rel="prefetch" href="/assets/js/133.791c3377.js"><link rel="prefetch" href="/assets/js/134.85da48f6.js"><link rel="prefetch" href="/assets/js/135.a9e98089.js"><link rel="prefetch" href="/assets/js/136.52980dd3.js"><link rel="prefetch" href="/assets/js/137.42fc13af.js"><link rel="prefetch" href="/assets/js/138.b7e4c266.js"><link rel="prefetch" href="/assets/js/139.2b8a9c22.js"><link rel="prefetch" href="/assets/js/14.9b197d02.js"><link rel="prefetch" href="/assets/js/140.4fbdac1d.js"><link rel="prefetch" href="/assets/js/141.8603b49f.js"><link rel="prefetch" href="/assets/js/142.c464125f.js"><link rel="prefetch" href="/assets/js/143.1c68897c.js"><link rel="prefetch" href="/assets/js/144.f0b4c432.js"><link rel="prefetch" href="/assets/js/145.73e8071a.js"><link rel="prefetch" href="/assets/js/146.c71f7ebd.js"><link rel="prefetch" href="/assets/js/147.188c5c0d.js"><link rel="prefetch" href="/assets/js/148.a956f5b8.js"><link rel="prefetch" href="/assets/js/149.ee8922b6.js"><link rel="prefetch" href="/assets/js/15.883f34da.js"><link rel="prefetch" href="/assets/js/150.bd61774f.js"><link rel="prefetch" href="/assets/js/151.b75037e7.js"><link rel="prefetch" href="/assets/js/152.19520ef6.js"><link rel="prefetch" href="/assets/js/153.d24d596a.js"><link rel="prefetch" href="/assets/js/154.abedd847.js"><link rel="prefetch" href="/assets/js/155.2db2ab8d.js"><link rel="prefetch" href="/assets/js/156.5302321d.js"><link rel="prefetch" href="/assets/js/157.9bb641b8.js"><link rel="prefetch" href="/assets/js/158.2575cc9d.js"><link rel="prefetch" href="/assets/js/159.21c7145d.js"><link rel="prefetch" href="/assets/js/16.db54f611.js"><link rel="prefetch" href="/assets/js/160.25c6e83c.js"><link rel="prefetch" href="/assets/js/161.00a7c6ab.js"><link rel="prefetch" href="/assets/js/162.a26618f0.js"><link rel="prefetch" href="/assets/js/163.c1808e22.js"><link rel="prefetch" href="/assets/js/164.29023c69.js"><link rel="prefetch" href="/assets/js/165.cf6ab764.js"><link rel="prefetch" href="/assets/js/166.343662e2.js"><link rel="prefetch" href="/assets/js/167.0b10bf09.js"><link rel="prefetch" href="/assets/js/168.19f25123.js"><link rel="prefetch" href="/assets/js/169.8b83c31f.js"><link rel="prefetch" href="/assets/js/17.b9f71fe4.js"><link rel="prefetch" href="/assets/js/170.8b7234b9.js"><link rel="prefetch" href="/assets/js/171.8c785be8.js"><link rel="prefetch" href="/assets/js/18.71ec7c7b.js"><link rel="prefetch" href="/assets/js/19.c7e336fc.js"><link rel="prefetch" href="/assets/js/2.0718c9a5.js"><link rel="prefetch" href="/assets/js/20.164580fa.js"><link rel="prefetch" href="/assets/js/21.75a885f2.js"><link rel="prefetch" href="/assets/js/22.2594f0a9.js"><link rel="prefetch" href="/assets/js/23.f6eea9eb.js"><link rel="prefetch" href="/assets/js/24.696106f6.js"><link rel="prefetch" href="/assets/js/25.70d063c6.js"><link rel="prefetch" href="/assets/js/26.6d718c1b.js"><link rel="prefetch" href="/assets/js/27.07de40a3.js"><link rel="prefetch" href="/assets/js/28.345408b8.js"><link rel="prefetch" href="/assets/js/29.82eda953.js"><link rel="prefetch" href="/assets/js/3.bdfc7fb6.js"><link rel="prefetch" href="/assets/js/30.373bcdcc.js"><link rel="prefetch" href="/assets/js/31.06e9b912.js"><link rel="prefetch" href="/assets/js/32.20e0bbfb.js"><link rel="prefetch" href="/assets/js/33.eb163bfb.js"><link rel="prefetch" href="/assets/js/34.59e90c57.js"><link rel="prefetch" href="/assets/js/35.c0a9204a.js"><link rel="prefetch" href="/assets/js/36.fcc5c14e.js"><link rel="prefetch" href="/assets/js/37.70d18590.js"><link rel="prefetch" href="/assets/js/38.56341953.js"><link rel="prefetch" href="/assets/js/39.053ebe1f.js"><link rel="prefetch" href="/assets/js/4.b4770b14.js"><link rel="prefetch" href="/assets/js/40.21c1f11d.js"><link rel="prefetch" href="/assets/js/41.dd5150b4.js"><link rel="prefetch" href="/assets/js/42.0b22874f.js"><link rel="prefetch" href="/assets/js/43.d19693d0.js"><link rel="prefetch" href="/assets/js/44.d6056e71.js"><link rel="prefetch" href="/assets/js/45.0bbba698.js"><link rel="prefetch" href="/assets/js/46.cf1d644d.js"><link rel="prefetch" href="/assets/js/47.bd84cef9.js"><link rel="prefetch" href="/assets/js/48.27e45860.js"><link rel="prefetch" href="/assets/js/49.0c3c3c6b.js"><link rel="prefetch" href="/assets/js/50.6c0b3863.js"><link rel="prefetch" href="/assets/js/52.cff1decc.js"><link rel="prefetch" href="/assets/js/53.7e9aca97.js"><link rel="prefetch" href="/assets/js/54.23bce552.js"><link rel="prefetch" href="/assets/js/55.eb722c7b.js"><link rel="prefetch" href="/assets/js/56.6f017a97.js"><link rel="prefetch" href="/assets/js/57.b913de97.js"><link rel="prefetch" href="/assets/js/58.056e3148.js"><link rel="prefetch" href="/assets/js/59.7502abbe.js"><link rel="prefetch" href="/assets/js/6.e27035ff.js"><link rel="prefetch" href="/assets/js/60.a682e752.js"><link rel="prefetch" href="/assets/js/61.049cfc42.js"><link rel="prefetch" href="/assets/js/62.714bfee7.js"><link rel="prefetch" href="/assets/js/63.13eb552a.js"><link rel="prefetch" href="/assets/js/64.a4f54ba2.js"><link rel="prefetch" href="/assets/js/65.2026a14e.js"><link rel="prefetch" href="/assets/js/66.1a109ea2.js"><link rel="prefetch" href="/assets/js/67.2ccca5f0.js"><link rel="prefetch" href="/assets/js/68.6754dff7.js"><link rel="prefetch" href="/assets/js/69.49c9e2da.js"><link rel="prefetch" href="/assets/js/7.602a8613.js"><link rel="prefetch" href="/assets/js/70.3da45328.js"><link rel="prefetch" href="/assets/js/71.79d84eb6.js"><link rel="prefetch" href="/assets/js/72.87d457c6.js"><link rel="prefetch" href="/assets/js/73.bb63bd40.js"><link rel="prefetch" href="/assets/js/74.2208f3c0.js"><link rel="prefetch" href="/assets/js/75.dff16844.js"><link rel="prefetch" href="/assets/js/76.7dbb5920.js"><link rel="prefetch" href="/assets/js/77.d7a6cf23.js"><link rel="prefetch" href="/assets/js/78.8d5ff913.js"><link rel="prefetch" href="/assets/js/79.757457cd.js"><link rel="prefetch" href="/assets/js/8.7df25493.js"><link rel="prefetch" href="/assets/js/80.1195e547.js"><link rel="prefetch" href="/assets/js/81.0d8883ab.js"><link rel="prefetch" href="/assets/js/82.bb7aff5d.js"><link rel="prefetch" href="/assets/js/83.12f9175f.js"><link rel="prefetch" href="/assets/js/84.c7ba5b5f.js"><link rel="prefetch" href="/assets/js/85.8810d735.js"><link rel="prefetch" href="/assets/js/86.ead719ae.js"><link rel="prefetch" href="/assets/js/87.6caa9679.js"><link rel="prefetch" href="/assets/js/88.e8fbd9b1.js"><link rel="prefetch" href="/assets/js/89.4159b898.js"><link rel="prefetch" href="/assets/js/9.7ec41eaf.js"><link rel="prefetch" href="/assets/js/90.3370e996.js"><link rel="prefetch" href="/assets/js/91.45f97f38.js"><link rel="prefetch" href="/assets/js/92.552442d8.js"><link rel="prefetch" href="/assets/js/93.7ba6a687.js"><link rel="prefetch" href="/assets/js/94.c13ab364.js"><link rel="prefetch" href="/assets/js/95.42ccf412.js"><link rel="prefetch" href="/assets/js/96.019b8076.js"><link rel="prefetch" href="/assets/js/97.8e37c387.js"><link rel="prefetch" href="/assets/js/98.c98a18c8.js"><link rel="prefetch" href="/assets/js/99.2a4169f9.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9d0e5d79.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Northboat Blog" class="logo"> <span class="site-name can-hide">Northboat Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/arts/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Mathematics
+</a></li><li class="dropdown-item"><!----> <a href="/cs/coding/" class="nav-link">
+  Coding
+</a></li><li class="dropdown-item"><!----> <a href="/cs/security/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/machine/" class="nav-link router-link-active">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/arts/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Mathematics
+</a></li><li class="dropdown-item"><!----> <a href="/cs/coding/" class="nav-link">
+  Coding
+</a></li><li class="dropdown-item"><!----> <a href="/cs/security/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/machine/" class="nav-link router-link-active">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>人工智能导论</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Scikit-Learn</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/cs/machine/sklearn/sklearn-classifier.html" class="sidebar-link">Train Classifier &amp; Validation</a></li><li><a href="/cs/machine/sklearn/sklearn-optimize.html" aria-current="page" class="active sidebar-link">Optimize &amp; Heterogeneous Data</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cs/machine/sklearn/sklearn-optimize.html#optimization" class="sidebar-link">Optimization</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cs/machine/sklearn/sklearn-optimize.html#构建管道和准备数据" class="sidebar-link">构建管道和准备数据</a></li><li class="sidebar-sub-header"><a href="/cs/machine/sklearn/sklearn-optimize.html#gridsearchcv-调优" class="sidebar-link">GridSearchCV 调优</a></li><li class="sidebar-sub-header"><a href="/cs/machine/sklearn/sklearn-optimize.html#交叉验证调优后管道" class="sidebar-link">交叉验证调优后管道</a></li><li class="sidebar-sub-header"><a href="/cs/machine/sklearn/sklearn-optimize.html#调优训练-breast-cancer" class="sidebar-link">调优训练 breast_cancer</a></li><li class="sidebar-sub-header"><a href="/cs/machine/sklearn/sklearn-optimize.html#管道使用总结" class="sidebar-link">管道使用总结</a></li></ul></li><li class="sidebar-sub-header"><a href="/cs/machine/sklearn/sklearn-optimize.html#heterogeneous-data" class="sidebar-link">Heterogeneous Data</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cs/machine/sklearn/sklearn-optimize.html#先拟合再学习" class="sidebar-link">先拟合再学习</a></li><li class="sidebar-sub-header"><a href="/cs/machine/sklearn/sklearn-optimize.html#通过管道学习" class="sidebar-link">通过管道学习</a></li><li class="sidebar-sub-header"><a href="/cs/machine/sklearn/sklearn-optimize.html#优化管道参数" class="sidebar-link">优化管道参数</a></li><li class="sidebar-sub-header"><a href="/cs/machine/sklearn/sklearn-optimize.html#adult-openml-csv" class="sidebar-link">adult_openml.csv</a></li></ul></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>机器学习导论</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><blockquote><p>优化训练模式，并且处理非数字数据</p></blockquote> <h2 id="optimization">Optimization</h2> <blockquote><p>微调管道内部，超参数优化</p> <p>Hyper-parameters optimization</p></blockquote> <h3 id="构建管道和准备数据">构建管道和准备数据</h3> <p>构建管道</p> <div class="language-python line-numbers-mode"><pre class="language-text"><code>from sklearn.pipeline import make_pipeline
+from sklearn.linear_model import SGDClassifier
+from sklearn.preprocessing import MinMaxScaler
+
+pipe = make_pipeline(MinMaxScaler(), SGDClassifier(max_iter=1000))
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>查看管道参数</p> <div class="language-python line-numbers-mode"><pre class="language-text"><code>print(pipe.get_params())
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>准备数据</p> <div class="language-python line-numbers-mode"><pre class="language-text"><code>from sklearn.datasets import load_digits
+from sklearn.model_selection import train_test_split
+
+X, y = load_digits(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=12)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="gridsearchcv-调优">GridSearchCV 调优</h3> <p>使用<code>GridSearchCV</code>搜索当前训练集下的最优参数</p> <div class="language-python line-numbers-mode"><pre class="language-text"><code># 使用网格搜索找到当前训练集下最优参数
+from sklearn.model_selection import GridSearchCV
+import pandas as pd
+
+param = {'logisticregression__C': [0.1, 1.0, 10],
+         'logisticregression__penalty': ['l2', 'l1']}
+grid = GridSearchCV(pipe, param_grid=param, cv=3, n_jobs=1, return_train_score=True)
+grid.fit(X_train, y_train)
+print(grid.get_params())
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>这里要调优的参数为<code>C</code>和<code>penalty</code>，需要在<code>param</code>手动中写明</li> <li>注意这里的<code>grid</code>就是一个机器学习模型，和管道<code>pipe</code>，分类器<code>clf</code>相同</li> <li>只有当<code>grid</code>已经经过训练，并且调用了<code>score</code>函数后，其最优函数才会确定下来，否则不认为当前训练集已经结束</li></ul> <p>查看各参数对训练的影响以及结果</p> <div class="language-python line-numbers-mode"><pre class="language-text"><code>df_grid = pd.DataFrame(grid.cv_results_)
+print(df_grid)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-text"><code>   mean_fit_time  std_fit_time  mean_score_time  std_score_time param_logisticregression__C  ... split0_train_score split1_train_score  split2_train_score  mean_train_score  std_train_score
+0       0.126961      0.001999         0.006072        0.007825                         0.1  ...           0.949889           0.953229            0.949889          0.951002         0.001575
+1       0.247481      0.017783         0.000620        0.000040                         0.1  ...           0.891982           0.909800            0.904232          0.902004         0.007442
+2       0.425019      0.011945         0.000617        0.000032                         1.0  ...           0.989978           0.988864            0.984410          0.987751         0.002406
+3       1.135990      0.046367         0.000678        0.000057                         1.0  ...           0.982183           0.982183            0.979955          0.981440         0.001050
+4       1.080702      0.094789         0.000640        0.000035                          10  ...           0.998886           0.998886            0.998886          0.998886         0.000000
+5       5.193207      0.190867         0.000609        0.000019                          10  ...           1.000000           1.000000            1.000000          1.000000         0.000000
+
+[6 rows x 18 columns]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>查看当前训练集下最优的<code>C/penalty</code></p> <div class="language-python line-numbers-mode"><pre class="language-text"><code>print(grid.best_params_)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-text"><code>{'logisticregression__C': 1.0, 'logisticregression__penalty': 'l2'}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>对模型<code>grid</code>进行精准度测试</p> <div class="language-python line-numbers-mode"><pre class="language-text"><code>accuracy = grid.score(X_test, y_test)
+print('Accuracy score of the {} is {:.2f}'.format(grid.__class__.__name__, accuracy))
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-text"><code>Accuracy score of the GridSearchCV is 0.97
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="交叉验证调优后管道">交叉验证调优后管道</h3> <p>前面已经提到，这里的<code>grid</code>是同<code>clf/pipe</code>一样的机器学习模型，自然可以对原数据进行交叉验证</p> <div class="language-python line-numbers-mode"><pre class="language-text"><code>from sklearn.model_selection import cross_validate
+import matplotlib.pyplot as plt
+
+scores = cross_validate(grid, X, y, cv=3, n_jobs=1, return_train_score=True)
+df_scores = pd.DataFrame(scores)
+print(df_scores)
+df_scores[['train_score', 'test_score']].boxplot()
+plt.show()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-text"><code>    fit_time  score_time  test_score  train_score
+0  23.017125    0.000651    0.928214     0.985810
+1  25.200372    0.000676    0.946578     0.997496
+2  23.103306    0.000675    0.924875     0.993322
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><img src="/assets/img/Figure_16.f039ed24.png"> <h3 id="调优训练-breast-cancer">调优训练 breast_cancer</h3> <p>在乳腺癌数据集上对管道进行调优并训练测试</p> <ol><li>导入数据，分割数据</li> <li>构建管道，调优参数</li> <li>训练测试，交叉验证</li></ol> <div class="language-python line-numbers-mode"><pre class="language-text"><code>from sklearn.datasets import load_breast_cancer
+from sklearn.metrics import balanced_accuracy_score
+
+X, y = load_breast_cancer(return_X_y=True)
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=12, stratify=y)
+
+from sklearn.pipeline import make_pipeline
+from sklearn.linear_model import SGDClassifier
+from sklearn.preprocessing import StandardScaler
+
+pipe = make_pipeline(StandardScaler(), SGDClassifier(max_iter=1000))
+
+from sklearn.model_selection import GridSearchCV
+
+param = {'sgdclassifier__loss': ['hinge', 'log'],
+         'sgdclassifier__penalty': ['l2','l1']}
+grid = GridSearchCV(pipe, cv=3, n_jobs=1, param_grid=param, return_train_score=True)
+grid.fit(X_train, y_train)
+
+accuracy = grid.score(X_test, y_test)
+
+
+from sklearn.model_selection import cross_validate
+import pandas as pd
+import matplotlib.pyplot as plt
+
+scores = cross_validate(grid, X, y, scoring='balanced_accuracy',
+                        cv=3, return_train_score=True)
+df_scores = pd.DataFrame(scores)
+df_scores[['train_score', 'test_score']].boxplot()
+plt.show()
+
+print(grid.best_params_)
+print(df_scores)
+print(&quot;the accuracy is &quot;, accuracy)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-text"><code>{'sgdclassifier__loss': 'hinge', 'sgdclassifier__penalty': 'l1'}
+
+   fit_time  score_time  test_score  train_score
+0  0.031983    0.000585    0.962067     0.980303
+1  0.034171    0.000492    0.949343     0.987261
+2  0.032296    0.000593    0.963445     0.988076
+
+the accuracy is 0.9440559440559441
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><img src="/assets/img/Figure_17.be84cd0e.png"> <h3 id="管道使用总结">管道使用总结</h3> <p>使用<code>scikit-learn</code>十行以内训练并测试一个管道，包括数据预处理、参数调优、交叉验证</p> <div class="language-python line-numbers-mode"><pre class="language-text"><code>import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import make_pipeline
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import cross_validate
+from sklearn.datasets import load_digits
+import matplotlib.pyplot as plt
+
+X, y = load_digits(return_X_y = True)
+
+pipe = make_pipeline(MinMaxScaler(),
+                     LogisticRegression(solver='saga', multi_class='auto', random_state=42, max_iter=5000))
+param = {'logisticregression__C': [0.1, 1.0, 10],
+        'logisticregression__penalty': ['l2', 'l1']}
+grid = GridSearchCV(pipe, param_grid=param, cv=3, n_jobs=-1)
+scores = pd.DataFrame(cross_validate(grid, X, y, cv=3, n_jobs=-1, return_train_score=True))
+scores[['train_score', 'test_score']].boxplot()
+
+plt.show()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><img src="/assets/img/Figure_18.f039ed24.png"> <h2 id="heterogeneous-data">Heterogeneous Data</h2> <blockquote><p>Heterogeneous data</p> <p>处理除数字以外的数据</p></blockquote> <p>导入外部数据集</p> <p>注意<code>shell</code>的位置，这里找的是当前<code>shell</code>路径的相对路径</p> <ul><li>通过<code>os.getcwd()</code>获取当前路径（pwd）</li></ul> <div class="language-python line-numbers-mode"><pre class="language-text"><code>import pandas as pd
+import os
+
+print(os.getcwd())
+
+data = pd.read_csv(os.path.join('data','titanic_openml.csv'), na_values='?')
+print(data.head(7))
+print(data.tail(4))
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="先拟合再学习">先拟合再学习</h3> <p>从原始数据中提取出数据集</p> <ul><li>在该泰坦尼克模型中，自变量为年龄、性别、是否上船、恐惧等因素，因变量为是否存活</li></ul> <p>分割数据集为训练集和测试集，采用线性回归模型进行学习</p> <div class="language-python line-numbers-mode"><pre class="language-text"><code>y = data['survived']
+X = data.drop(columns='survived')
+
+print(y)
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=12)
+
+from sklearn.linear_model import LogisticRegression
+
+clf = LogisticRegression()
+clf.fit(X_train, y_train)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ul><li>必然报错，因为<code>fit</code>方法接收的数据集要求数据为数字型，而这里的很多数据如性别、是否上船并不是数字数据</li></ul> <p>使用管道处理非数字数据，同时使用管道标准化数字数据，这里实际上都是预处理数据的过程</p> <ul><li>处理非数字数据，即转化为数字数据同时处理缺失数据
+<ul><li><code>SimpleImputer(strategy='constant')</code></li> <li><code>OneHotEncoder()</code></li></ul></li> <li>标准化数字数据同时处理缺失数据
+<ul><li><code>SimpleImputer(strategy='mean')</code></li> <li><code>StandardScaler()</code></li></ul></li></ul> <p><code>OneHotEncoder</code>示例</p> <div class="language-python line-numbers-mode"><pre class="language-text"><code>from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import OneHotEncoder
+ohe = make_pipeline(SimpleImputer(strategy='constant'), OneHotEncoder())
+X_encoded = ohe.fit_transform(X_train[['sex', 'embarked']])
+X_encoded.toarray()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-text"><code>[[0. 1. 1. 0. 0. 0.]
+ [0. 1. 0. 0. 1. 0.]
+ [0. 1. 1. 0. 0. 0.]
+ ...
+ [0. 1. 0. 0. 1. 0.]
+ [1. 0. 0. 0. 1. 0.]
+ [0. 1. 1. 0. 0. 0.]]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>处理<code>titanic</code>数据</p> <p>1、提取非数字列和数字列</p> <div class="language-python line-numbers-mode"><pre class="language-text"><code>col_cat = ['sex', 'embarked']
+col_num = ['age', 'sibsp', 'parch', 'fare']
+
+X_train_cat = X_train[col_cat]
+X_test_cat = X_test[col_cat]
+X_train_num = X_train[col_num]
+X_test_num = X.test[col_num]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>2、构建管道预处理数据</p> <p>为什么要用管道而不是单独预处理，因为需要同时处理缺失数据</p> <ul><li>数字化非数字数据</li> <li>标准化数字数据</li> <li>处理缺失数据</li></ul> <div class="language-python line-numbers-mode"><pre class="language-text"><code>from sklearn.pipeline import make_pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import StandardScaler
+
+scaler_cat = make_pipeline(SimpleImputer(strategy='constant'), OneHotEncoder())
+scaler_num = make_pipeline(SimpleImputer(strategy='mean'), StandardScaler())
+
+X_train_cat_scaled = scaler_cat.fit_transform(X_train_cat)
+X_test_cat_scaled = scaler_cat.transform(X_test_cat)
+X_train_num_scaled = scaler_num.fit_transform(X_train_num)
+X_tes
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>3、合并预处理后的数字数据和非数字数据，采用矩阵横向合并的方法（即合并列为一张大表）</p> <div class="language-python line-numbers-mode"><pre class="language-text"><code>import numpy as np
+from scipy import sparse
+X_train_scaled = sparse.hstack((X_train_cat_scaled, 
+                sparse.csr_matrix(X_train_num_scaled)))
+X_test_scaled = sparse.hstack((X_test_cat_scaled, 
+                sparse.csr_matrix(X_test_num_scaled)))
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>4、现在已经有完整的数字标准化后的训练、测试数据，直接构建模型开始学习<code>(fit)</code>即可</p> <div class="language-python line-numbers-mode"><pre class="language-text"><code>from sklearn.linear_model import LogisticRegression
+
+clf = LogisticRegression()
+clf.fit(X_train_scaled, y_train)
+accuracy = clf.score(X_test_scaled, y_test)
+print(&quot;Accuracy score of the {} is {:.2f}&quot;.format(clf.__class__.__name__, accuracy))
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="通过管道学习">通过管道学习</h3> <p>上述过程可以概括为：</p> <ol><li>预处理数据
+<ul><li>提取数据的非数字列和数字列</li> <li>通过管道分别数字化、标准化处理非数字、数字数据，同时处理缺失数据</li> <li>合并处理后的数据</li></ul></li> <li>建立模型学习并测试</li></ol> <p>和之前的学习一样，上述过程可以揉合到一个管道中进行，即构建一个含有预处理功能和学习功能的管道</p> <p>这里有一个问题，就是对于数字数据和非数字数据，其预处理的方式并不同，所以管道的预处理功能应该针对特定列有不同的处理方法</p> <p>这里用到<code>sklearn.compose.make_column_transformer(transformer, col_name)</code>合并多个管道并使之作用于不同列</p> <ol><li>导入数据，独立分割
+<ul><li><code>data = pd.read_csv(os.path.join(), na_values='?')</code></li> <li><code>train_test_split</code></li></ul></li> <li>构建预处理管道
+<ul><li><code>make_pipeline(空值处理器, 预处理器)</code></li></ul></li> <li>合并预处理管道
+<ul><li><code>make_column_transformer((预处理管道, 列名)...)</code></li></ul></li> <li>构建总管道
+<ul><li><code>make_pipeline(预处理器, 分类器)</code></li></ul></li> <li>学习并测试
+<ul><li><code>fit()/score()</code></li></ul></li></ol> <div class="language-python line-numbers-mode"><pre class="language-text"><code>from sklearn import preprocessing
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+import os
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import make_pipeline
+import pandas as pd
+import numpy as np
+
+data = pd.read_csv(os.path.join('data','titanic_openml.csv'), na_values='?')
+y = data['survived']
+X = data.drop(columns='survived')
+
+# print(X)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=12)
+
+# print(y_train)
+
+col_cat = ['sex', 'embarked']
+col_num = ['age', 'sibsp', 'parch', 'fare']
+
+pre_cat = make_pipeline(SimpleImputer(strategy='constant'), OneHotEncoder(handle_unknown='ignore'))
+pre_num = make_pipeline(SimpleImputer(strategy='mean'), StandardScaler())
+
+from sklearn.compose import make_column_transformer
+
+preprocessor = make_column_transformer((pre_cat, col_cat), (pre_num, col_num))
+pipe = make_pipeline(preprocessor, LogisticRegression(solver='lbfgs'))
+pipe.fit(X_train, y_train)
+accuracy = pipe.score(X_test, y_test)
+print('Accuracy score of the {} is {:.2f}'.format(pipe.__class__.__name__, accuracy))
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><h3 id="优化管道参数">优化管道参数</h3> <p>在上述包含预处理功能和学习功能的管道的基础上，在正式测试之前使用网格搜索<code>GridSearchCV</code>对其参数进行调优</p> <div class="language-python line-numbers-mode"><pre class="language-text"><code>from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import cross_validate
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# 调优参数
+param = {'columntransformer__pipeline-2__simpleimputer__strategy': ['mean', 'median'],
+        'logisticregression__C': [0.1, 1.0, 10]}
+grid = GridSearchCV(pipe, param_grid=param, cv=5, n_jobs=1)
+
+grid.fit(X_train, y_train)
+print(grid.score(X_test, y_test))
+# 交叉验证得分
+scores = cross_validate(grid, X, y, scoring='balanced_accuracy', cv=5, n_jobs=-1, return_train_score=True)
+# 绘制箱型图
+df_scores = pd.DataFrame(scores)
+df_scores[['train_score', 'test_score']].boxplot()
+plt.show()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><img src="/assets/img/Figure_19.1a047c7d.png"> <h3 id="adult-openml-csv">adult_openml.csv</h3> <p>使用同样的方法处理<code>adult_openml</code>数据集</p> <h4 id="预处理再拟合">预处理再拟合</h4> <div class="language-python line-numbers-mode"><pre class="language-text"><code>import os
+import pandas as pd
+
+
+data = pd.read_csv(os.path.join('data', 'adult_openml.csv'), na_values='?')
+# print(data.head(7))
+
+y = data['class']
+X = data.drop(columns=['class', 'fnlwgt', 'capitalgain', 'capitalloss'])
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=12)
+# print(y_train)
+
+col_cat = ['workclass', 'education', 'marital-status', 'relationship', 'race', 'sex', 'native-country']
+col_num = ['age', 'education-num', 'hoursperweek']
+
+X_train_cat = X_train[col_cat]
+X_test_cat = X_test[col_cat]
+X_train_num = X_train[col_num]
+X_test_num = X_test[col_num]
+
+from sklearn.preprocessing import KBinsDiscretizer
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import make_pipeline
+
+
+cat_pipe = make_pipeline(SimpleImputer(strategy='constant'), OneHotEncoder())
+num_pipe = make_pipeline(SimpleImputer(strategy='mean'), StandardScaler())
+
+X_train_cat_scaled = cat_pipe.fit_transform(X_train_cat)
+X_test_cat_scaled = cat_pipe.transform(X_test_cat)
+X_train_num_scaled = num_pipe.fit_transform(X_train_num)
+X_test_num_scaled = num_pipe.transform(X_test_num)
+
+import numpy as np
+from scipy import sparse
+
+X_train_scaled = sparse.hstack((X_train_cat_scaled, 
+                sparse.csr_matrix(X_train_num_scaled)))
+X_test_scaled = sparse.hstack((X_test_cat_scaled, 
+                sparse.csr_matrix(X_test_num_scaled)))
+
+from sklearn.linear_model import LogisticRegression
+
+clf = LogisticRegression(max_iter=1000)
+clf.fit(X_train_scaled, y_train)
+accuracy = clf.score(X_test_scaled, y_test)
+print('accuracy of the {} is {:.2f}'.format(clf.__class__.__name__, accuracy))
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-text"><code>accuracy of the LogisticRegression is 0.83
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h4 id="优化管道处理">优化管道处理</h4> <div class="language-python line-numbers-mode"><pre class="language-text"><code>import os
+import pandas as pd
+
+data = pd.read_csv(os.path.join('data', 'adult_openml.csv'), na_values='?')
+# print(data.head(3))
+y = data['class']
+X = data.drop(columns=['class', 'fnlwgt', 'capitalgain', 'capitalloss'])
+# print(X)
+
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=12)
+# print(y_train)
+encoder = LabelEncoder()
+y_train = encoder.fit_transform(y_train)
+y_test = encoder.transform(y_test)
+
+from sklearn.pipeline import make_pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import make_column_transformer
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import GridSearchCV
+
+pre_cat = make_pipeline(SimpleImputer(strategy='constant'), OneHotEncoder(handle_unknown='ignore'))
+pre_num = make_pipeline(SimpleImputer(strategy='mean'), StandardScaler())
+
+col_cat = ['workclass', 'education', 'marital-status', 'relationship', 'race', 'sex', 'native-country']
+col_num = ['age', 'education-num', 'hoursperweek']
+
+preprocessor = make_column_transformer((pre_cat, col_cat), (pre_num, col_num))
+# preprocessor.fit(X_train, y_train)
+
+pipe = make_pipeline(preprocessor, LogisticRegression(solver='lbfgs', max_iter=5000))
+# pipe.fit(X_train, y_train)
+
+param = {'logisticregression__C': [0.1, 1.0, 10]}
+grid = GridSearchCV(pipe, param_grid=param, cv=5, n_jobs=1)
+grid.fit(X_train, y_train)
+accuracy = grid.score(X_test, y_test)
+print('accuracy of the {} is {:.2f}'.format(grid.__class__.__name__, accuracy))
+
+from sklearn.model_selection import cross_validate
+import matplotlib.pyplot as plt
+scores = pd.DataFrame(cross_validate(grid, X, y, scoring='balanced_accuracy', cv=3, n_jobs=-1, return_train_score=True))
+print(scores)
+scores[['train_score', 'test_score']].boxplot(whis=10)
+plt.show()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-text"><code>accuracy of the GridSearchCV is 0.83
+
+    fit_time  score_time  test_score  train_score
+0  11.303147    0.064652    0.719383     0.729532
+1  12.427096    0.067366    0.730889     0.723769
+2  12.042301    0.078128    0.723290     0.725647
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><img src="/assets/img/Figure_20.8d026384.png"></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/cs/machine/sklearn/sklearn-classifier.html" class="prev">
+        Train Classifier &amp; Validation
+      </a></span> <span class="next"><a href="/cs/machine/basics/ml-nndl-book.html">
+        神经网络与深度学习
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/song/aries.aac" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:44px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/img/error.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/img/error.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>白羊</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>northboat</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div><!----><div class="RibbonAnimation"></div><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:99;" data-v-248d85d6></canvas></div></div></div>
+    <script src="/assets/js/app.bf64dfdc.js" defer></script><script src="/assets/js/5.2db811a7.js" defer></script><script src="/assets/js/51.c3dccd1e.js" defer></script>
+  </body>
+</html>
