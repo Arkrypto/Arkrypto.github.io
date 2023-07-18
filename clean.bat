@@ -1,5 +1,5 @@
 rd /s /q 408
-rd /s /q arts
+rd /s /q lib
 rd /s /q assets
 rd /s /q cs
 rd /s /q dev
