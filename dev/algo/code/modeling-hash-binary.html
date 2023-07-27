@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>模拟 - 哈希算法 - 位运算 | Northboat Blog</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    <link rel="icon" href="/img/leaf.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="片刻寧靜">
+    
+    <link rel="preload" href="/assets/css/0.styles.9d0e5d79.css" as="style"><link rel="preload" href="/assets/js/app.9f2c598a.js" as="script"><link rel="preload" href="/assets/js/5.33df0df2.js" as="script"><link rel="preload" href="/assets/js/147.a3d5a775.js" as="script"><link rel="prefetch" href="/assets/js/10.e04d12c8.js"><link rel="prefetch" href="/assets/js/100.bd522ef1.js"><link rel="prefetch" href="/assets/js/101.5fd1c850.js"><link rel="prefetch" href="/assets/js/102.caecc56a.js"><link rel="prefetch" href="/assets/js/103.906c4514.js"><link rel="prefetch" href="/assets/js/104.e21ab783.js"><link rel="prefetch" href="/assets/js/105.fb938b48.js"><link rel="prefetch" href="/assets/js/106.2118a50f.js"><link rel="prefetch" href="/assets/js/107.d4340b56.js"><link rel="prefetch" href="/assets/js/108.1f10f958.js"><link rel="prefetch" href="/assets/js/109.adaa4d5f.js"><link rel="prefetch" href="/assets/js/11.2c1b5f46.js"><link rel="prefetch" href="/assets/js/110.d68aabc8.js"><link rel="prefetch" href="/assets/js/111.b7ab5d9c.js"><link rel="prefetch" href="/assets/js/112.e3feb308.js"><link rel="prefetch" href="/assets/js/113.d9fcd74b.js"><link rel="prefetch" href="/assets/js/114.e7ef2d5e.js"><link rel="prefetch" href="/assets/js/115.d45d2602.js"><link rel="prefetch" href="/assets/js/116.5f44ae7b.js"><link rel="prefetch" href="/assets/js/117.df3700dd.js"><link rel="prefetch" href="/assets/js/118.84d2dee6.js"><link rel="prefetch" href="/assets/js/119.4f27c0f5.js"><link rel="prefetch" href="/assets/js/12.e990eae3.js"><link rel="prefetch" href="/assets/js/120.f1169057.js"><link rel="prefetch" href="/assets/js/121.6a35dbb2.js"><link rel="prefetch" href="/assets/js/122.00fef3ae.js"><link rel="prefetch" href="/assets/js/123.2c4d6f84.js"><link rel="prefetch" href="/assets/js/124.3647615f.js"><link rel="prefetch" href="/assets/js/125.34f26dba.js"><link rel="prefetch" href="/assets/js/126.369118f4.js"><link rel="prefetch" href="/assets/js/127.1493df06.js"><link rel="prefetch" href="/assets/js/128.58136d44.js"><link rel="prefetch" href="/assets/js/129.2ff7f3b5.js"><link rel="prefetch" href="/assets/js/13.deb8e36e.js"><link rel="prefetch" href="/assets/js/130.92d2bc72.js"><link rel="prefetch" href="/assets/js/131.96c1647c.js"><link rel="prefetch" href="/assets/js/132.cdf78308.js"><link rel="prefetch" href="/assets/js/133.74bfe0b1.js"><link rel="prefetch" href="/assets/js/134.47596326.js"><link rel="prefetch" href="/assets/js/135.0b73dc6f.js"><link rel="prefetch" href="/assets/js/136.33c098ad.js"><link rel="prefetch" href="/assets/js/137.dfe3e1fc.js"><link rel="prefetch" href="/assets/js/138.039123a8.js"><link rel="prefetch" href="/assets/js/139.bae3cd5d.js"><link rel="prefetch" href="/assets/js/14.7644fed4.js"><link rel="prefetch" href="/assets/js/140.20f3e26d.js"><link rel="prefetch" href="/assets/js/141.3937bf62.js"><link rel="prefetch" href="/assets/js/142.c2f95854.js"><link rel="prefetch" href="/assets/js/143.ff703bbf.js"><link rel="prefetch" href="/assets/js/144.b6e08e94.js"><link rel="prefetch" href="/assets/js/145.d49cdf34.js"><link rel="prefetch" href="/assets/js/146.fafefe36.js"><link rel="prefetch" href="/assets/js/148.bbc1a8c6.js"><link rel="prefetch" href="/assets/js/149.b28ad972.js"><link rel="prefetch" href="/assets/js/15.cc647492.js"><link rel="prefetch" href="/assets/js/150.d990b8ea.js"><link rel="prefetch" href="/assets/js/151.39d200dc.js"><link rel="prefetch" href="/assets/js/152.f717a34b.js"><link rel="prefetch" href="/assets/js/153.7271d6ac.js"><link rel="prefetch" href="/assets/js/154.55140eb3.js"><link rel="prefetch" href="/assets/js/155.080bbbe8.js"><link rel="prefetch" href="/assets/js/156.45cbd987.js"><link rel="prefetch" href="/assets/js/157.3a28c890.js"><link rel="prefetch" href="/assets/js/158.4da9f6de.js"><link rel="prefetch" href="/assets/js/159.d68dda69.js"><link rel="prefetch" href="/assets/js/16.ceffd6ce.js"><link rel="prefetch" href="/assets/js/160.656f992c.js"><link rel="prefetch" href="/assets/js/161.349287cb.js"><link rel="prefetch" href="/assets/js/162.6f961fe6.js"><link rel="prefetch" href="/assets/js/163.952eb90f.js"><link rel="prefetch" href="/assets/js/164.bd755305.js"><link rel="prefetch" href="/assets/js/165.123d659a.js"><link rel="prefetch" href="/assets/js/166.b4b8bda2.js"><link rel="prefetch" href="/assets/js/167.a2fd02b6.js"><link rel="prefetch" href="/assets/js/168.aa7d1c9c.js"><link rel="prefetch" href="/assets/js/169.8c4c03d0.js"><link rel="prefetch" href="/assets/js/17.071eb240.js"><link rel="prefetch" href="/assets/js/170.77066423.js"><link rel="prefetch" href="/assets/js/171.e48af720.js"><link rel="prefetch" href="/assets/js/172.86379dc7.js"><link rel="prefetch" href="/assets/js/173.d78d18ca.js"><link rel="prefetch" href="/assets/js/174.75513f43.js"><link rel="prefetch" href="/assets/js/175.dfc9d1f5.js"><link rel="prefetch" href="/assets/js/18.4658bb73.js"><link rel="prefetch" href="/assets/js/19.6cd237f4.js"><link rel="prefetch" href="/assets/js/2.1b235cc4.js"><link rel="prefetch" href="/assets/js/20.41335a06.js"><link rel="prefetch" href="/assets/js/21.9e86052c.js"><link rel="prefetch" href="/assets/js/22.93de197d.js"><link rel="prefetch" href="/assets/js/23.b92423b0.js"><link rel="prefetch" href="/assets/js/24.8f0b5d5f.js"><link rel="prefetch" href="/assets/js/25.777111a0.js"><link rel="prefetch" href="/assets/js/26.d899d03c.js"><link rel="prefetch" href="/assets/js/27.24172fc2.js"><link rel="prefetch" href="/assets/js/28.a822be5d.js"><link rel="prefetch" href="/assets/js/29.924505c9.js"><link rel="prefetch" href="/assets/js/3.c244f908.js"><link rel="prefetch" href="/assets/js/30.8485d70e.js"><link rel="prefetch" href="/assets/js/31.9c149480.js"><link rel="prefetch" href="/assets/js/32.e2798d07.js"><link rel="prefetch" href="/assets/js/33.fdb667f9.js"><link rel="prefetch" href="/assets/js/34.87ff638c.js"><link rel="prefetch" href="/assets/js/35.320ba2ad.js"><link rel="prefetch" href="/assets/js/36.a475e654.js"><link rel="prefetch" href="/assets/js/37.4f65a1e7.js"><link rel="prefetch" href="/assets/js/38.66c858a9.js"><link rel="prefetch" href="/assets/js/39.2f5a508d.js"><link rel="prefetch" href="/assets/js/4.0331566a.js"><link rel="prefetch" href="/assets/js/40.befef15c.js"><link rel="prefetch" href="/assets/js/41.3c1062e3.js"><link rel="prefetch" href="/assets/js/42.7f130986.js"><link rel="prefetch" href="/assets/js/43.96cdc1ba.js"><link rel="prefetch" href="/assets/js/44.24264e9d.js"><link rel="prefetch" href="/assets/js/45.4470228b.js"><link rel="prefetch" href="/assets/js/46.5f377bd9.js"><link rel="prefetch" href="/assets/js/47.65d40a4c.js"><link rel="prefetch" href="/assets/js/48.4b37923f.js"><link rel="prefetch" href="/assets/js/49.92bd0020.js"><link rel="prefetch" href="/assets/js/50.4d024065.js"><link rel="prefetch" href="/assets/js/51.c30c5a49.js"><link rel="prefetch" href="/assets/js/52.42f84a6b.js"><link rel="prefetch" href="/assets/js/53.eba8660a.js"><link rel="prefetch" href="/assets/js/54.6b23b424.js"><link rel="prefetch" href="/assets/js/55.3301698a.js"><link rel="prefetch" href="/assets/js/56.1a46edc1.js"><link rel="prefetch" href="/assets/js/57.f935503d.js"><link rel="prefetch" href="/assets/js/58.6a98916f.js"><link rel="prefetch" href="/assets/js/59.4aaf71e5.js"><link rel="prefetch" href="/assets/js/6.c0fb2a16.js"><link rel="prefetch" href="/assets/js/60.545c43fe.js"><link rel="prefetch" href="/assets/js/61.b323c1cd.js"><link rel="prefetch" href="/assets/js/62.f87ac3c8.js"><link rel="prefetch" href="/assets/js/63.f1179d9c.js"><link rel="prefetch" href="/assets/js/64.876f2b55.js"><link rel="prefetch" href="/assets/js/65.acd24a6b.js"><link rel="prefetch" href="/assets/js/66.0cc7bd9f.js"><link rel="prefetch" href="/assets/js/67.623eb81f.js"><link rel="prefetch" href="/assets/js/68.9f115072.js"><link rel="prefetch" href="/assets/js/69.be8afce9.js"><link rel="prefetch" href="/assets/js/7.7192b96f.js"><link rel="prefetch" href="/assets/js/70.26654948.js"><link rel="prefetch" href="/assets/js/71.83750260.js"><link rel="prefetch" href="/assets/js/72.57fad87d.js"><link rel="prefetch" href="/assets/js/73.572cff64.js"><link rel="prefetch" href="/assets/js/74.183c5393.js"><link rel="prefetch" href="/assets/js/75.d53022ad.js"><link rel="prefetch" href="/assets/js/76.f2d3cbf4.js"><link rel="prefetch" href="/assets/js/77.70cfd8d6.js"><link rel="prefetch" href="/assets/js/78.3b959eb3.js"><link rel="prefetch" href="/assets/js/79.94c34214.js"><link rel="prefetch" href="/assets/js/8.811272f4.js"><link rel="prefetch" href="/assets/js/80.11edeeb8.js"><link rel="prefetch" href="/assets/js/81.1090da02.js"><link rel="prefetch" href="/assets/js/82.74c4751e.js"><link rel="prefetch" href="/assets/js/83.78161a69.js"><link rel="prefetch" href="/assets/js/84.3cfb3abb.js"><link rel="prefetch" href="/assets/js/85.6ea8bbef.js"><link rel="prefetch" href="/assets/js/86.0a6acf32.js"><link rel="prefetch" href="/assets/js/87.4661827c.js"><link rel="prefetch" href="/assets/js/88.76f6fbb1.js"><link rel="prefetch" href="/assets/js/89.70b27482.js"><link rel="prefetch" href="/assets/js/9.94e754e5.js"><link rel="prefetch" href="/assets/js/90.544a0d39.js"><link rel="prefetch" href="/assets/js/91.41ee6695.js"><link rel="prefetch" href="/assets/js/92.2b6966fe.js"><link rel="prefetch" href="/assets/js/93.01f7d733.js"><link rel="prefetch" href="/assets/js/94.3a8b92b4.js"><link rel="prefetch" href="/assets/js/95.93c2a599.js"><link rel="prefetch" href="/assets/js/96.701517e2.js"><link rel="prefetch" href="/assets/js/97.c9bc8189.js"><link rel="prefetch" href="/assets/js/98.3bb606e7.js"><link rel="prefetch" href="/assets/js/99.933afc6a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9d0e5d79.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Northboat Blog" class="logo"> <span class="site-name can-hide">Northboat Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/lib/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link router-link-active">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/prog/" class="nav-link">
+  Programming
+</a></li><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Math
+</a></li><li class="dropdown-item"><!----> <a href="/cs/is/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/ml/" class="nav-link">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/lib/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link router-link-active">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/prog/" class="nav-link">
+  Programming
+</a></li><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Math
+</a></li><li class="dropdown-item"><!----> <a href="/cs/is/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/ml/" class="nav-link">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法设计与分析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>算法实现</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/algo/code/modeling-hash-binary.html" aria-current="page" class="active sidebar-link">模拟 - 哈希算法 - 位运算</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#模拟" class="sidebar-link">模拟</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#杨辉三角" class="sidebar-link">杨辉三角</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#螺旋矩阵" class="sidebar-link">螺旋矩阵</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#字符串相加-乘" class="sidebar-link">字符串相加 &amp; 乘</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#两数相加" class="sidebar-link">两数相加</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#找出游戏的获胜者" class="sidebar-link">找出游戏的获胜者</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#二叉树的锯齿形层序遍历" class="sidebar-link">二叉树的锯齿形层序遍历</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#单调栈" class="sidebar-link">单调栈</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#摩尔投票法" class="sidebar-link">摩尔投票法</a></li></ul></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#哈希算法" class="sidebar-link">哈希算法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#哈希设计" class="sidebar-link">哈希设计</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#单词规律" class="sidebar-link">单词规律</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#根据字符出现频率排序" class="sidebar-link">根据字符出现频率排序</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#环形链表-ii" class="sidebar-link">环形链表 II</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#找到小镇的法官" class="sidebar-link">找到小镇的法官</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#可以到达所有点的最少点数目" class="sidebar-link">可以到达所有点的最少点数目</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#直线上最多的点数" class="sidebar-link">直线上最多的点数</a></li></ul></li><li class="sidebar-sub-header"><a href="/dev/algo/code/modeling-hash-binary.html#位运算" class="sidebar-link">位运算</a></li></ul></li><li><a href="/dev/algo/code/recursion-divide.html" class="sidebar-link">递归算法 - 分治算法</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>搜索算法 - 排序算法</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/dev/algo/code/dp-greedy.html" class="sidebar-link">动态规划 - 贪心算法</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>人工智能算法</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="模拟">模拟</h2> <h3 id="杨辉三角">杨辉三角</h3> <p>力扣 119：<a href="https://leetcode.cn/problems/pascals-triangle-ii/" target="_blank" rel="noopener noreferrer">杨辉三角 II<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>杨辉三角正常来说模拟更简单，但我选择用数学全排列解
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msubsup><mi>C</mi><mi>m</mi><mi>n</mi></msubsup><mo>=</mo><mfrac><mrow><mi>m</mi><mo>×</mo><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>×</mo><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mrow><mi>n</mi><mo stretchy="false">!</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+C_m^n = \frac{m\times(m-1)\times......\times(m-n+1)}{n!}
+</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.9614em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-2.453em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.113em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mclose">!</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">......</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></eqn></section>
+第 m 行实际上就是
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">[</mo><msubsup><mi>C</mi><mi>m</mi><mn>1</mn></msubsup><mo separator="true">,</mo><msubsup><mi>C</mi><mi>m</mi><mn>2</mn></msubsup><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msubsup><mi>C</mi><mi>m</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo separator="true">,</mo><msubsup><mi>C</mi><mi>m</mi><mi>m</mi></msubsup><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">
+[C_m^1, C_m^2,...,C_m^{m-1}, C_m^m]
+</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-2.453em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-2.453em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">...</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-2.453em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">m</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-2.453em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span></span></eqn></section>
+为了避免计算超出边界，利用上一次的计算结果迭代计算，其实还可以改进，因为前后半部分一模一样，时间复杂度可以降低到 O(n/2)</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    vector&lt;int&gt; getRow(int rowIndex) {
+        vector&lt;int&gt; res;
+        res.push_back(1);
+        for(int i = 0; i &lt; rowIndex; i++){
+            res.push_back((long)res[i]*(rowIndex-i)/(i+1));  
+        }
+        return res;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="螺旋矩阵">螺旋矩阵</h3> <p>力扣 54：<a href="https://leetcode.cn/problems/spiral-matrix/" target="_blank" rel="noopener noreferrer">螺旋矩阵<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>哈卵题目，麻烦死了，边界规定好</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    vector&lt;vector&lt;int&gt;&gt; generateMatrix(int n) {
+        vector&lt;vector&lt;int&gt;&gt; res(n, vector&lt;int&gt; (n));
+        int num = 1, tar = n*n;
+        //上下左右边界
+        int l = 0, t = 0, b = n-1, r = n-1;
+        while(num &lt;= tar){
+            for(int i = l; i &lt;= r; i++){
+                res[t][i] = num++;
+            }
+            t++;
+            for(int i = t; i &lt;= b; i++){
+                res[i][r] = num++;
+            }
+            r--;
+            for(int i = r; i &gt;= l; i--){
+                res[b][i] = num++;
+            }
+            b--;
+            for(int i = b; i &gt;= t; i--){
+                res[i][l] = num++;
+            }
+            l++;
+        }
+        return res;
+    }
+}; 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><h3 id="字符串相加-乘">字符串相加 &amp; 乘</h3> <p>力扣 415：<a href="https://leetcode.cn/problems/add-strings/?envType=study-plan&amp;id=shu-ju-jie-gou-ji-chu" target="_blank" rel="noopener noreferrer">字符串相加<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>力扣 43：<a href="https://leetcode.cn/problems/multiply-strings/?envType=study-plan&amp;id=shu-ju-jie-gou-ji-chu" target="_blank" rel="noopener noreferrer">字符串相乘<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>模拟加法、乘法，逐位计算，涉及到很多字符、字符串到数字的相互转换</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    string multiply(string num1, string num2) {
+        int m = num1.length(), n = num2.length();
+        if(m == 1 &amp;&amp; num1[0] == '0'){
+            return &quot;0&quot;;
+        }
+        if(n == 1 &amp;&amp; num2[0] == '0'){
+            return &quot;0&quot;;
+        }
+        string res;
+
+        for(int i = 1; i &lt;= m; i++){
+            string row;
+            int cur = num1[m-i]-'0';
+            int flag = 0;
+            //cout &lt;&lt; cur &lt;&lt; endl;
+            for(int j = 1; j &lt;= n; j++){
+                int fac = num2[n-j]-'0';
+                int ans = cur * fac + flag;
+                //cout &lt;&lt; ans &lt;&lt; endl;
+                if(ans &gt;= 10){
+                    flag = ans/10;
+                    ans = ans%10;  
+                } else {
+                    flag = 0;
+                }
+                //cout &lt;&lt; ans &lt;&lt; endl;
+                row = to_string(ans) + row;
+                //cout &lt;&lt; row &lt;&lt; endl;
+            }
+            if(flag){
+                row = to_string(flag) + row;
+            }
+            for(int k = 1; k &lt; i; k++){
+                //cout &lt;&lt; row &lt;&lt; endl;
+                row = row + &quot;0&quot;;
+            }
+            if(i == 1){
+                res = row;
+            } else {
+                res = addStrings(res, row);
+            }
+        }
+        return res;
+    }
+
+    string addStrings(string num1, string num2) {
+        int m = num1.size(), n = num2.size();
+        int index = 1, flag = 0;
+        int length = n&gt;m ? n:m;
+        string ans(length, ' ');
+        while(index &lt;= m &amp;&amp; index &lt;= n){
+            int cur = (num1[m-index]-'0') + (num2[n-index]-'0');
+            if(flag){
+                cur++;
+                flag = false;
+            }
+            if(cur &gt;= 10){
+                flag = true;
+                ans[length-index] = (cur-10)+'0';
+            } else {
+                ans[length-index] = cur+'0';
+            }
+            index++;
+        }
+        while(index &lt;= m){
+            int cur = num1[m-index]-'0';
+            if(flag){
+                cur++;
+                flag = false;
+            }
+            if(cur &gt;= 10){
+                flag = true;
+                ans[length-index] = (cur-10)+'0';
+            } else {
+                ans[length-index] = cur+'0';
+            }
+            index++;
+        }
+        while(index &lt;= n){
+            int cur = num2[n-index]-'0';
+            if(flag){
+                cur++;
+                flag = false;
+            }
+            if(cur &gt;= 10){
+                flag = true;
+                ans[length-index] = (cur-10)+'0';
+            } else {
+                ans[length-index] = cur+'0';
+            }
+            index++;
+        }
+        if(flag){
+            ans = &quot;1&quot; + ans;
+        }
+        return ans;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br></div></div><h3 id="两数相加">两数相加</h3> <p>力扣 2：<a href="https://leetcode.cn/problems/add-two-numbers/" target="_blank" rel="noopener noreferrer">两数相加<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>用链表模拟加法过程</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        int flag = 0;
+        ListNode *head = new ListNode(-1);
+        ListNode *p = head, *p1 = l1, *p2 = l2;
+        while(p1 &amp;&amp; p2){
+            int cur = p1-&gt;val + p2-&gt;val + flag;
+            if(cur &gt;= 10){
+                flag = 1;
+            } else {
+                flag = 0;
+            }
+            p-&gt;next = new ListNode(cur%10);
+            p = p-&gt;next;
+            p1 = p1-&gt;next;
+            p2 = p2-&gt;next;
+        }
+        while(p1){
+            int cur = p1-&gt;val + flag;
+            if(cur &gt;= 10){
+                flag = 1;
+            } else {
+                flag = 0;
+            }
+            p-&gt;next = new ListNode(cur%10);
+            p = p-&gt;next;
+            p1 = p1-&gt;next;
+        }
+        while(p2){
+            int cur = p2-&gt;val + flag;
+            if(cur &gt;= 10){
+                flag = 1;
+            } else {
+                flag = 0;
+            }
+            p-&gt;next = new ListNode(cur%10);
+            p = p-&gt;next;
+            p2 = p2-&gt;next;
+        }
+        if(flag){
+            p-&gt;next = new ListNode(1);
+        }
+        return head-&gt;next;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br></div></div><h3 id="找出游戏的获胜者">找出游戏的获胜者</h3> <p>力扣 1823：<a href="https://leetcode.cn/problems/find-the-winner-of-the-circular-game/" target="_blank" rel="noopener noreferrer">找出游戏的获胜者<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li>模拟游戏过程，count 记录全局遍历次数</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    int findTheWinner(int n, int k) {
+        vector&lt;int&gt; vec;
+        for(int i = 1; i &lt;= n; i++){
+            vec.push_back(i);
+        }
+        int count = 1;
+        while(vec.size() &gt; 1){
+            for(int i = 0; i &lt; vec.size(); count++){
+                if(count % k == 0){
+                    vec.erase(vec.begin()+i);
+                } else {
+                    i++;
+                }
+            }
+        }
+        return vec[0];
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h3 id="二叉树的锯齿形层序遍历">二叉树的锯齿形层序遍历</h3> <p>力扣 103：<a href="https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/" target="_blank" rel="noopener noreferrer">二叉树的锯齿形层序遍历<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li>模拟遍历过程</li> <li>记录行数奇偶，偶数正序，奇数 reverse()</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector&lt;vector&lt;int&gt;&gt; zigzagLevelOrder(TreeNode* root) {
+        vector&lt;vector&lt;int&gt;&gt; res;
+        if(!root){ return res; }
+        vector&lt;TreeNode*&gt; nodes;
+        nodes.push_back(root);
+        int count = 0;
+        while(!nodes.empty()){
+            int n = nodes.size();
+            cout &lt;&lt; nodes[0]-&gt;val &lt;&lt; &quot; &quot;;
+            vector&lt;int&gt; row;
+            for(int i = 0; i &lt; n; i++){
+                TreeNode* cur = nodes[i];
+                if(cur-&gt;left) { nodes.push_back(cur-&gt;left); }
+                if(cur-&gt;right) { nodes.push_back(cur-&gt;right); }
+                row.push_back(cur-&gt;val);
+            }
+            nodes.erase(nodes.begin(), nodes.begin()+n);
+            if(count % 2 == 0) { res.push_back(row); }
+            else { reverse(row.begin(), row.end()); res.push_back(row); }
+            count++;
+        }
+        return res;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div><h3 id="单调栈">单调栈</h3> <p><a href="https://leetcode.cn/problems/next-greater-element-i/" target="_blank" rel="noopener noreferrer">496. 下一个更大元素 I - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>从<code>num2</code>中找到第一个比<code>nums[i], 0&lt;=i&lt;=size</code>大的元素，记为<code>res[i]</code>，返回<code>res</code>数组</p> <p>从后往前遍历，记当前值为 val，去掉栈中小于 val 的元素，因为是从前向后看找<strong>第一个</strong>比 val 大的元素，比当前小的元素会被大元素挡住，根本看不到，试着模拟这一过程，<strong>就像站队，矮的在后面会被高的挡住</strong></p> <p>这样去掉小的元素后，栈顶元素即为比当前值大的第一个元素值，若栈空，说明没有元素比当前值大，记为 -1，用一个<code>map&lt;当前值, 大于当前值的第一个元素值</code>记录这一结果，按照 num1 的顺序构造 res 并返回</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    vector&lt;int&gt; nextGreaterElement(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) {
+        map&lt;int, int&gt; reco;
+        stack&lt;int&gt; stk;
+        int n = nums1.size(), m = nums2.size();
+        for(int i = 1; i &lt;= m; i++){
+            // 从后往前遍历
+            int cur = nums2[m-i];
+            while(!stk.empty() &amp;&amp; stk.top() &lt; cur){
+                stk.pop();
+            }
+            reco[cur] = stk.empty() ? -1:stk.top();
+            stk.push(cur);
+        }
+        vector&lt;int&gt; res;
+        for(int i = 0; i &lt; n; i++){
+            res.push_back(reco[nums1[i]]);
+        }
+        return res;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h3 id="摩尔投票法">摩尔投票法</h3> <p>力扣 169：<a href="https://leetcode.cn/problems/majority-element/" target="_blank" rel="noopener noreferrer">多数元素<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>找出数组中出现次数大于 n/2 的数</p> <ul><li>每遇到相同的数，count+1，每遇到不同的数，count-1</li> <li>当 count = 0，切换选举人为当前元素并重置票数为 1</li> <li>将数视作两类，即数量为 n/2 的数（计做 x）和其他数，x 因为超过 n/2 个，总会被切换为候选人，且其 count 会被其他数不断 -1，但最终一定会 &gt;= 1，即 card 最终会被保留为 x</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    int majorityElement(vector&lt;int&gt;&amp; nums) {
+        int count = 1, card = nums[0];
+        for(int i = 1; i &lt; nums.size(); i++){
+            if(count == 0){
+                card = nums[i];
+                count = 1;
+                continue;
+            }
+            if(card == nums[i]){
+                count++;
+            } else {
+                count--;
+            }
+        }
+        return card;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>229、多数元素 II</p> <p>找出数组中数量大于 n/3 的数</p> <h2 id="哈希算法">哈希算法</h2> <h3 id="哈希设计">哈希设计</h3> <p>力扣 705：<a href="https://leetcode.cn/problems/design-hashset/" target="_blank" rel="noopener noreferrer">设计哈希集合<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>设计哈希集合，即 set，与上同理，更简单，使用<code>vector&lt;int&gt; set[]</code>进行储存</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class MyHashSet {
+private:
+    const static int LEN = 1000;
+
+    vector&lt;int&gt; set[LEN];
+
+    int getIndex(int key){
+        return key%LEN;
+    }
+
+    int getPos(int key, int index){
+        for(int i = 0; i &lt; set[index].size(); i++){
+            if(set[index][i] == key){
+                return i;
+            }
+        }
+        return -1;
+    }
+public:
+    MyHashSet() {
+    }
+
+    void add(int key) {
+        int index = getIndex(key);
+        int pos = getPos(key, index);
+        if(pos == -1){
+            set[index].push_back(key);
+        } else {
+            set[index][pos] = key;
+        }
+    }
+
+    void remove(int key) {
+        int index = getIndex(key);
+        int pos = getPos(key, index);
+        if(pos &gt;= 0){
+            set[index].erase(set[index].begin()+pos);
+        }        
+    }
+
+    bool contains(int key) {
+        int index = getIndex(key);
+        int pos = getPos(key, index);
+        if(pos &gt;= 0){
+            return true;
+        }   
+        return false;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br></div></div><p>力扣 706：<a href="https://leetcode.cn/problems/design-hashmap/" target="_blank" rel="noopener noreferrer">设计哈希映射<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>设计哈希表，即 map，使用<code>vector&lt;pair&lt;int,int&gt;&gt; map[]</code>的结构，即二维数组进行储存，冲突解决使用简单的除余法，即通过<code>key%LEN</code>来确定数据所在的桶</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class MyHashMap {
+
+private:
+    const static int MAX_LEN = 1000;
+
+    vector&lt;pair&lt;int,int&gt;&gt; map[MAX_LEN];
+
+    int getIndex(int key){
+        return key%MAX_LEN;
+    }
+
+    int getPos(int key, int index){
+        for(int i = 0; i &lt; map[index].size(); i++){
+            if(map[index][i].first == key){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+public:
+    MyHashMap() {
+    }
+
+    void put(int key, int value) {
+        int index = getIndex(key);
+        int pos = getPos(key, index);
+        if(pos == -1){
+            map[index].push_back(make_pair(key, value));
+        } else {
+            map[index][pos].second = value;
+        }
+    }
+
+    int get(int key) {
+        int index = getIndex(key);
+        int pos = getPos(key, index);
+        if(pos == -1){
+            return -1;
+        }
+        return map[index][pos].second;
+    }
+
+    void remove(int key) {
+        int index = getIndex(key);
+        int pos = getPos(key, index);
+        if(pos &gt;= 0){
+            map[index].erase(map[index].begin()+pos);
+        }
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br></div></div><h3 id="单词规律">单词规律</h3> <p>力扣 290：<a href="https://leetcode.cn/problems/word-pattern/?envType=study-plan&amp;id=shu-ju-jie-gou-ji-chu" target="_blank" rel="noopener noreferrer">单词规律<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>使用 hashmap 双射实现一一对应，这里单词模式匹配必须是一个字母匹配一个字符串，二者一一对应，不能<code>[a, nmsl], [b, nmsl]</code></p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    bool wordPattern(string pattern, string s) {
+        map&lt;char, string&gt; chToStr;
+        map&lt;string, char&gt; strToCh;
+        int n = s.length();
+        int index = 0;
+        for(int i = 0; i &lt; n; i++){
+            int j = i+1;
+            char cur = pattern[index];
+            while(j &lt; n &amp;&amp; s[j] != ' '){
+                j++;
+            }
+            string temp = s.substr(i, j-i);
+            if(strToCh.count(temp) &amp;&amp; strToCh[temp] != cur){
+                return false;
+            }
+            if(chToStr.count(cur) &amp;&amp; chToStr[cur] != temp){
+                return false;
+            }
+            chToStr[cur] = temp;
+            strToCh[temp] = cur;
+            index++;
+            i = j;
+        }
+        if(index != pattern.length()){
+            return false;
+        }
+        return true;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><blockquote><p>字符串哈希</p></blockquote> <h3 id="根据字符出现频率排序">根据字符出现频率排序</h3> <p>力扣 451：<a href="https://leetcode.cn/problems/sort-characters-by-frequency/" target="_blank" rel="noopener noreferrer">根据字符出现频率排序<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li>排序 pair 数组，使用 lambda 表达式</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    string frequencySort(string s) {
+        map&lt;char, int&gt; m;
+        for(int i = 0; i &lt; s.size(); i++){
+            m[s[i]]++;
+        }
+        vector&lt;pair&lt;char,int&gt;&gt; v;
+        for(auto&amp; it: m){
+            v.push_back(pair&lt;char, int&gt; (it.first, it.second));
+        }
+        
+        // lambda 函数作为参数传入
+        sort(v.begin(), v.end(), [](pair&lt;char,int&gt; p1, pair&lt;char,int&gt; p2){
+            return p1.second &gt; p2.second;
+        });
+        
+        string res = &quot;&quot;;
+        for(int i = 0; i &lt; v.size(); i++){
+            for(int j = 0; j &lt; v[i].second; j++){
+                res += v[i].first;
+            }
+        }
+        return res;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><blockquote><p>链表哈希</p></blockquote> <h3 id="环形链表-ii">环形链表 II</h3> <p>力扣 142：<a href="https://leetcode.cn/problems/linked-list-cycle-ii/" target="_blank" rel="noopener noreferrer">环形链表 II<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>返回链表中产生环的首个节点</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+       set&lt;ListNode*&gt; s;
+       while(head){
+           if(s.count(head)){
+               return head;
+           }
+           s.insert(head);
+           head = head-&gt;next;
+       } 
+       return NULL;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><blockquote><p>图哈希</p></blockquote> <h3 id="找到小镇的法官">找到小镇的法官</h3> <p>力扣 997：<a href="https://leetcode.cn/problems/find-the-town-judge/" target="_blank" rel="noopener noreferrer">找到小镇的法官<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li>使用哈希集合、哈希表统计有向图信息</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    int findJudge(int n, vector&lt;vector&lt;int&gt;&gt;&amp; trust) {
+        set&lt;int&gt; s;
+        map&lt;int, int&gt; m;
+        for(int i = 0; i &lt; trust.size(); i++){
+            if(!s.count(trust[i][0])) { s.insert(trust[i][0]); }
+            m[trust[i][1]]++;
+        }
+        for(int i = 1; i &lt;= n; i++){
+            if(!s.count(i)){
+                if(m[i]==n-1){
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><h3 id="可以到达所有点的最少点数目">可以到达所有点的最少点数目</h3> <p>力扣 1557：<a href="https://leetcode.cn/problems/minimum-number-of-vertices-to-reach-all-nodes/" target="_blank" rel="noopener noreferrer">以到达所有点的最少点数目<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li>返回最小的点集，通过该点集可以遍历图中所有节点</li> <li>即找入度为 0 的节点的集合</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    vector&lt;int&gt; findSmallestSetOfVertices(int n, vector&lt;vector&lt;int&gt;&gt;&amp; edges) {
+        set&lt;int&gt; s;
+        for(auto&amp; edge: edges){
+            s.insert(edge[1]);
+        }
+        vector&lt;int&gt; res;
+        for(int i = 0; i &lt; n; i++){
+            if(!s.count(i)){
+                res.push_back(i);
+            }
+        }
+        return res;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h3 id="直线上最多的点数">直线上最多的点数</h3> <p><a href="https://leetcode.cn/problems/max-points-on-a-line/" target="_blank" rel="noopener noreferrer">直线上最多的点数<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="位运算">位运算</h2> <p><a href="https://leetcode.cn/problems/bitwise-and-of-numbers-range/" target="_blank" rel="noopener noreferrer">数字范围按位与<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/dev/algo/basics/backtracking-branchbound-lp-networkflow.html" class="prev">
+        回溯 - 分枝限界 - 线性规划与网络流
+      </a></span> <span class="next"><a href="/dev/algo/code/recursion-divide.html">
+        递归算法 - 分治算法
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/song/aries.aac" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:44px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/img/error.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/img/error.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>白羊</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>northboat</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div><!----><div class="RibbonAnimation"></div><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:99;" data-v-248d85d6></canvas></div></div></div>
+    <script src="/assets/js/app.9f2c598a.js" defer></script><script src="/assets/js/5.33df0df2.js" defer></script><script src="/assets/js/147.a3d5a775.js" defer></script>
+  </body>
+</html>
