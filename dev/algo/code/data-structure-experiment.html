@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>数据结构算法 | Northboat Blog</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    <link rel="icon" href="/img/leaf.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="片刻寧靜">
+    
+    <link rel="preload" href="/assets/css/0.styles.9d0e5d79.css" as="style"><link rel="preload" href="/assets/js/app.830f5b6e.js" as="script"><link rel="preload" href="/assets/js/5.7032fbc8.js" as="script"><link rel="preload" href="/assets/js/148.398aed17.js" as="script"><link rel="prefetch" href="/assets/js/10.036e53d7.js"><link rel="prefetch" href="/assets/js/100.76087af8.js"><link rel="prefetch" href="/assets/js/101.fe3ec1f3.js"><link rel="prefetch" href="/assets/js/102.767e9253.js"><link rel="prefetch" href="/assets/js/103.31da3d36.js"><link rel="prefetch" href="/assets/js/104.156b8258.js"><link rel="prefetch" href="/assets/js/105.263e02cf.js"><link rel="prefetch" href="/assets/js/106.851e7cf9.js"><link rel="prefetch" href="/assets/js/107.6e113532.js"><link rel="prefetch" href="/assets/js/108.b2b7b00d.js"><link rel="prefetch" href="/assets/js/109.568ca258.js"><link rel="prefetch" href="/assets/js/11.a530edee.js"><link rel="prefetch" href="/assets/js/110.0e71b740.js"><link rel="prefetch" href="/assets/js/111.af082324.js"><link rel="prefetch" href="/assets/js/112.c2810cbf.js"><link rel="prefetch" href="/assets/js/113.6d9cd29c.js"><link rel="prefetch" href="/assets/js/114.5e57c3d0.js"><link rel="prefetch" href="/assets/js/115.c7c7d119.js"><link rel="prefetch" href="/assets/js/116.137b07df.js"><link rel="prefetch" href="/assets/js/117.034d8850.js"><link rel="prefetch" href="/assets/js/118.a9b4190c.js"><link rel="prefetch" href="/assets/js/119.2f9e0d25.js"><link rel="prefetch" href="/assets/js/12.da932cee.js"><link rel="prefetch" href="/assets/js/120.414d2b0b.js"><link rel="prefetch" href="/assets/js/121.cdf9934c.js"><link rel="prefetch" href="/assets/js/122.97f6e25d.js"><link rel="prefetch" href="/assets/js/123.8a3dbc06.js"><link rel="prefetch" href="/assets/js/124.3647615f.js"><link rel="prefetch" href="/assets/js/125.c45bf667.js"><link rel="prefetch" href="/assets/js/126.46c7624b.js"><link rel="prefetch" href="/assets/js/127.1493df06.js"><link rel="prefetch" href="/assets/js/128.584b874d.js"><link rel="prefetch" href="/assets/js/129.360732c6.js"><link rel="prefetch" href="/assets/js/13.ae3008d2.js"><link rel="prefetch" href="/assets/js/130.02f568f2.js"><link rel="prefetch" href="/assets/js/131.96c1647c.js"><link rel="prefetch" href="/assets/js/132.2f776723.js"><link rel="prefetch" href="/assets/js/133.e74ee5b3.js"><link rel="prefetch" href="/assets/js/134.87507b09.js"><link rel="prefetch" href="/assets/js/135.105a5eff.js"><link rel="prefetch" href="/assets/js/136.b1d7cf85.js"><link rel="prefetch" href="/assets/js/137.bd7fc0e9.js"><link rel="prefetch" href="/assets/js/138.7b60a194.js"><link rel="prefetch" href="/assets/js/139.4859ccd3.js"><link rel="prefetch" href="/assets/js/14.8d2ed4dc.js"><link rel="prefetch" href="/assets/js/140.ddff7744.js"><link rel="prefetch" href="/assets/js/141.e7e637c4.js"><link rel="prefetch" href="/assets/js/142.3810539d.js"><link rel="prefetch" href="/assets/js/143.68d2a50c.js"><link rel="prefetch" href="/assets/js/144.4964bec5.js"><link rel="prefetch" href="/assets/js/145.608a22de.js"><link rel="prefetch" href="/assets/js/146.10d42178.js"><link rel="prefetch" href="/assets/js/147.94da1738.js"><link rel="prefetch" href="/assets/js/149.3dc3fa3c.js"><link rel="prefetch" href="/assets/js/15.1e3335b1.js"><link rel="prefetch" href="/assets/js/150.3563332f.js"><link rel="prefetch" href="/assets/js/151.e0ecce27.js"><link rel="prefetch" href="/assets/js/152.757fd025.js"><link rel="prefetch" href="/assets/js/153.004e9f0f.js"><link rel="prefetch" href="/assets/js/154.5a48bde9.js"><link rel="prefetch" href="/assets/js/155.a833cfc3.js"><link rel="prefetch" href="/assets/js/156.53eeeb1c.js"><link rel="prefetch" href="/assets/js/157.71f778dc.js"><link rel="prefetch" href="/assets/js/158.7ca76f37.js"><link rel="prefetch" href="/assets/js/159.42aea397.js"><link rel="prefetch" href="/assets/js/16.ee4b84ac.js"><link rel="prefetch" href="/assets/js/160.ff348a84.js"><link rel="prefetch" href="/assets/js/161.b7538baf.js"><link rel="prefetch" href="/assets/js/162.11469046.js"><link rel="prefetch" href="/assets/js/163.44e69a0c.js"><link rel="prefetch" href="/assets/js/164.d2bb5d3a.js"><link rel="prefetch" href="/assets/js/165.27560b96.js"><link rel="prefetch" href="/assets/js/166.117e8700.js"><link rel="prefetch" href="/assets/js/167.d4d66b58.js"><link rel="prefetch" href="/assets/js/168.ce858eaa.js"><link rel="prefetch" href="/assets/js/169.3ec5de06.js"><link rel="prefetch" href="/assets/js/17.43b536a8.js"><link rel="prefetch" href="/assets/js/170.92f5127e.js"><link rel="prefetch" href="/assets/js/171.606d40ef.js"><link rel="prefetch" href="/assets/js/172.625ce15f.js"><link rel="prefetch" href="/assets/js/173.5e6697d8.js"><link rel="prefetch" href="/assets/js/174.e51a5a6c.js"><link rel="prefetch" href="/assets/js/175.462dd123.js"><link rel="prefetch" href="/assets/js/176.71874b7b.js"><link rel="prefetch" href="/assets/js/177.34845a33.js"><link rel="prefetch" href="/assets/js/178.ead338bb.js"><link rel="prefetch" href="/assets/js/18.c9fe1875.js"><link rel="prefetch" href="/assets/js/19.30f6aab2.js"><link rel="prefetch" href="/assets/js/2.32996929.js"><link rel="prefetch" href="/assets/js/20.32aa0a7c.js"><link rel="prefetch" href="/assets/js/21.e1e2078c.js"><link rel="prefetch" href="/assets/js/22.03ec178c.js"><link rel="prefetch" href="/assets/js/23.0c6c7ab5.js"><link rel="prefetch" href="/assets/js/24.022b154f.js"><link rel="prefetch" href="/assets/js/25.e68e92ab.js"><link rel="prefetch" href="/assets/js/26.e9c66eb3.js"><link rel="prefetch" href="/assets/js/27.267c7302.js"><link rel="prefetch" href="/assets/js/28.397d3c16.js"><link rel="prefetch" href="/assets/js/29.14ac2ba2.js"><link rel="prefetch" href="/assets/js/3.861d632f.js"><link rel="prefetch" href="/assets/js/30.a22b9199.js"><link rel="prefetch" href="/assets/js/31.14ecc9e8.js"><link rel="prefetch" href="/assets/js/32.3872c91a.js"><link rel="prefetch" href="/assets/js/33.870dcec0.js"><link rel="prefetch" href="/assets/js/34.a92e2af5.js"><link rel="prefetch" href="/assets/js/35.f6db6921.js"><link rel="prefetch" href="/assets/js/36.9953e0f5.js"><link rel="prefetch" href="/assets/js/37.06b970f7.js"><link rel="prefetch" href="/assets/js/38.3aee502a.js"><link rel="prefetch" href="/assets/js/39.81b7c534.js"><link rel="prefetch" href="/assets/js/4.c017cd8d.js"><link rel="prefetch" href="/assets/js/40.c373993a.js"><link rel="prefetch" href="/assets/js/41.91ff6d3b.js"><link rel="prefetch" href="/assets/js/42.1b2374e7.js"><link rel="prefetch" href="/assets/js/43.979c2850.js"><link rel="prefetch" href="/assets/js/44.d741dfff.js"><link rel="prefetch" href="/assets/js/45.5d4adb7f.js"><link rel="prefetch" href="/assets/js/46.82e98b02.js"><link rel="prefetch" href="/assets/js/47.10ac1d20.js"><link rel="prefetch" href="/assets/js/48.e7d7b613.js"><link rel="prefetch" href="/assets/js/49.b92dc244.js"><link rel="prefetch" href="/assets/js/50.1760a6f6.js"><link rel="prefetch" href="/assets/js/51.91a69958.js"><link rel="prefetch" href="/assets/js/52.a3eec390.js"><link rel="prefetch" href="/assets/js/53.9c030876.js"><link rel="prefetch" href="/assets/js/54.cf970f3a.js"><link rel="prefetch" href="/assets/js/55.0358dd6d.js"><link rel="prefetch" href="/assets/js/56.6ae5be9f.js"><link rel="prefetch" href="/assets/js/57.6fb119dc.js"><link rel="prefetch" href="/assets/js/58.11722b17.js"><link rel="prefetch" href="/assets/js/59.5d5dfc23.js"><link rel="prefetch" href="/assets/js/6.48691825.js"><link rel="prefetch" href="/assets/js/60.c8a7da06.js"><link rel="prefetch" href="/assets/js/61.eb0d543a.js"><link rel="prefetch" href="/assets/js/62.09575762.js"><link rel="prefetch" href="/assets/js/63.63c5ca72.js"><link rel="prefetch" href="/assets/js/64.f520739b.js"><link rel="prefetch" href="/assets/js/65.1181c03a.js"><link rel="prefetch" href="/assets/js/66.211267c8.js"><link rel="prefetch" href="/assets/js/67.5937bdae.js"><link rel="prefetch" href="/assets/js/68.7e3428d9.js"><link rel="prefetch" href="/assets/js/69.4c490b51.js"><link rel="prefetch" href="/assets/js/7.fc51e813.js"><link rel="prefetch" href="/assets/js/70.735f4f48.js"><link rel="prefetch" href="/assets/js/71.95c939cf.js"><link rel="prefetch" href="/assets/js/72.29ecba3e.js"><link rel="prefetch" href="/assets/js/73.9cd18673.js"><link rel="prefetch" href="/assets/js/74.124dc13e.js"><link rel="prefetch" href="/assets/js/75.e9c146d4.js"><link rel="prefetch" href="/assets/js/76.37bad6a1.js"><link rel="prefetch" href="/assets/js/77.499f6399.js"><link rel="prefetch" href="/assets/js/78.dfccd425.js"><link rel="prefetch" href="/assets/js/79.cae909e5.js"><link rel="prefetch" href="/assets/js/8.ea14b932.js"><link rel="prefetch" href="/assets/js/80.67ad4eca.js"><link rel="prefetch" href="/assets/js/81.b1c05087.js"><link rel="prefetch" href="/assets/js/82.a93dce30.js"><link rel="prefetch" href="/assets/js/83.caf226b0.js"><link rel="prefetch" href="/assets/js/84.a644753c.js"><link rel="prefetch" href="/assets/js/85.2934a449.js"><link rel="prefetch" href="/assets/js/86.1b71127b.js"><link rel="prefetch" href="/assets/js/87.2f9e7f90.js"><link rel="prefetch" href="/assets/js/88.9d08ddcd.js"><link rel="prefetch" href="/assets/js/89.67b9f913.js"><link rel="prefetch" href="/assets/js/9.255d17a5.js"><link rel="prefetch" href="/assets/js/90.916a8ddc.js"><link rel="prefetch" href="/assets/js/91.ec7bc170.js"><link rel="prefetch" href="/assets/js/92.7afcb301.js"><link rel="prefetch" href="/assets/js/93.1aa3b843.js"><link rel="prefetch" href="/assets/js/94.0a2e8d28.js"><link rel="prefetch" href="/assets/js/95.036ad44f.js"><link rel="prefetch" href="/assets/js/96.6f0db31f.js"><link rel="prefetch" href="/assets/js/97.feb321e2.js"><link rel="prefetch" href="/assets/js/98.f489934b.js"><link rel="prefetch" href="/assets/js/99.883e3955.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9d0e5d79.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Northboat Blog" class="logo"> <span class="site-name can-hide">Northboat Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/lib/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link router-link-active">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/prog/" class="nav-link">
+  Programming
+</a></li><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Math
+</a></li><li class="dropdown-item"><!----> <a href="/cs/is/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/ml/" class="nav-link">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/lib/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link router-link-active">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/prog/" class="nav-link">
+  Programming
+</a></li><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Math
+</a></li><li class="dropdown-item"><!----> <a href="/cs/is/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/ml/" class="nav-link">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法设计与分析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>代码实现</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>力扣算法笔记</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>人工智能算法</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>数据结构算法</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/algo/code/data-structure-design.html" class="sidebar-link">数据结构实现</a></li><li><a href="/dev/algo/code/data-structure-experiment.html" aria-current="page" class="active sidebar-link">数据结构算法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#链表" class="sidebar-link">链表</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#头插法" class="sidebar-link">头插法</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#循环链表" class="sidebar-link">循环链表</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#顺序表模拟链表寻址" class="sidebar-link">顺序表模拟链表寻址</a></li></ul></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#栈" class="sidebar-link">栈</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#有效括号" class="sidebar-link">有效括号</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#移除无效括号" class="sidebar-link">移除无效括号</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#进制转换" class="sidebar-link">进制转换</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#计算器" class="sidebar-link">计算器</a></li></ul></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#队列" class="sidebar-link">队列</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#顺序表实现队列" class="sidebar-link">顺序表实现队列</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#栈模拟队列" class="sidebar-link">栈模拟队列</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#模拟阻塞队列" class="sidebar-link">模拟阻塞队列</a></li></ul></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#串和数组" class="sidebar-link">串和数组</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#kmp" class="sidebar-link">KMP</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#三元组实现稀疏矩阵转置" class="sidebar-link">三元组实现稀疏矩阵转置</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#三元组实现稀疏矩阵加法" class="sidebar-link">三元组实现稀疏矩阵加法</a></li></ul></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#树" class="sidebar-link">树</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#树的构造和遍历" class="sidebar-link">树的构造和遍历</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#层序遍历" class="sidebar-link">层序遍历</a></li></ul></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#图" class="sidebar-link">图</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#邻接表构造无向图并计算度" class="sidebar-link">邻接表构造无向图并计算度</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#dfs-bfs遍历并输出连通集" class="sidebar-link">DFS/BFS遍历并输出连通集</a></li></ul></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#查找" class="sidebar-link">查找</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#二叉排序树的构造和遍历" class="sidebar-link">二叉排序树的构造和遍历</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#二分查找" class="sidebar-link">二分查找</a></li></ul></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#排序" class="sidebar-link">排序</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#堆排序" class="sidebar-link">堆排序</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/data-structure-experiment.html#快速排序" class="sidebar-link">快速排序</a></li></ul></li></ul></li></ul></section></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="链表">链表</h2> <h3 id="头插法">头插法</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+using namespace std;
+
+struct Node{
+    int val;
+    Node* next;
+    Node(){val = -1; next = nullptr;};
+    Node(int v){val = v; next = nullptr;};
+};
+
+class List{
+    private:
+        Node* head;
+        int length;
+    public:
+        List(){head = new Node(); length = 0;};
+        void insert(int val);
+        int size();
+        void print();
+};
+
+void List::insert(int val){
+    Node* p = new Node(val);
+    p-&gt;next = head-&gt;next;
+    head-&gt;next = p;
+    length++;
+}
+
+int List::size(){
+    return length;
+}
+
+void buildList(List list){
+    int val;
+    cin &gt;&gt; val;
+    while(val != -1){
+        list.insert(val);
+        cin &gt;&gt; val;
+    }
+}
+
+void List::print(){
+    Node* p = head-&gt;next;
+    while(p != nullptr){
+
+        cout &lt;&lt; p-&gt;val &lt;&lt; &quot; &quot;;
+        p = p-&gt;next;
+    }
+}
+
+int main(){
+    List list;
+    buildList(list);
+    list.print();
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br></div></div><h3 id="循环链表">循环链表</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+using namespace std;
+
+struct Person {
+    int id;
+    char name[20];
+    int pwd;
+    Person* next;
+};
+
+class PersonList {
+private:
+    int length = 0;
+    Person* head = nullptr;
+    Person* tail = nullptr;
+public:
+    Person* getTail() {
+        return tail;
+    }
+
+    void init(Person* p) {
+        head = p;
+        tail = head;
+        head-&gt;next = tail;
+        length++;
+    }
+
+    void add(Person* q) {
+        tail-&gt;next = q;
+        tail = tail-&gt;next;
+        tail-&gt;next = head;
+        length++;
+    }
+
+    void print(int n, Person* tail) {
+        if (length == 0) {
+            return;
+        }
+
+        Person* prev = tail;
+        for (int i = 0; i &lt; n-1; i++) {
+            prev = prev-&gt;next;
+        }
+        Person* curr = prev-&gt;next;
+
+        if (length == 1) {
+            cout &lt;&lt; curr-&gt;id &lt;&lt; &quot;,&quot; &lt;&lt; curr-&gt;name &lt;&lt; &quot;,&quot; &lt;&lt; curr-&gt;pwd;
+        }
+        else {
+            cout &lt;&lt; curr-&gt;id &lt;&lt; &quot;,&quot; &lt;&lt; curr-&gt;name &lt;&lt; &quot;,&quot; &lt;&lt; curr-&gt;pwd &lt;&lt; endl;
+        }
+        prev-&gt;next = curr-&gt;next;
+        length--;
+        print(curr-&gt;pwd, prev);
+    }
+};
+
+int main()
+{
+    Person* p = new Person();
+    PersonList list;
+    int m;
+    char dh = ',';
+    cin &gt;&gt; m;// 人数
+
+    if (m == 0)
+        return 0;
+
+    cin &gt;&gt; p-&gt;id &gt;&gt; dh;
+    cin.getline(p-&gt;name, 10, dh);
+    cin &gt;&gt; p-&gt;pwd;
+    list.init(p);
+
+    for (int i = 0; i &lt; m-1; i++) {
+        p = new Person();
+        cin &gt;&gt; p-&gt;id &gt;&gt; dh;
+        cin.getline(p-&gt;name, 10, dh);
+        cin &gt;&gt; p-&gt;pwd;
+        list.add(p);
+    }
+    int n;
+    cin &gt;&gt; n;//报数
+    list.print(n, list.getTail());
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br></div></div><h3 id="顺序表模拟链表寻址">顺序表模拟链表寻址</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include&lt;iostream&gt;
+#include&lt;iomanip&gt;
+using namespace std;
+
+
+
+
+struct Node{
+    char data;
+    int next;
+
+    Node(){
+        next = -1;
+    }
+
+    Node(char d, int n){
+        data = d;
+        next = n;
+    }
+}; 
+
+class List{
+    private:
+        Node* list;
+        int* alpha;
+        int length;
+
+    public:
+        List(){
+            length = 0;
+            alpha = new int[26];
+            for(int i = 0; i &lt; 26; i++){
+                alpha[i] = 0;
+            }
+            list = new Node[100000];
+        }
+
+        void add(int address, char data, int next) {
+            Node node(data, next);
+            list[address] = node;
+        }
+
+        void calculate(int address){
+            Node node = list[address];
+            char data = node.data;
+            int next = node.next;
+            alpha[data-'A']++;
+            length++;
+            if(next == -1){
+                return;
+            }    
+            calculate(next);
+        }
+
+        int size(){
+            return length;
+        }
+
+        int* getAlpha(){
+            return alpha;
+        }
+
+        Node get(int index){
+            return list[index];
+        }
+
+};
+
+
+
+void printRes(List list){
+    int size = list.size();
+    int* alpha = list.getAlpha();
+    for(int i = 0; i &lt; 26; i++){
+        if(alpha[i] != 0){
+            cout &lt;&lt; (char)(65+i) &lt;&lt; &quot; &quot; &lt;&lt; setiosflags(ios::fixed) &lt;&lt; setprecision(2) &lt;&lt; alpha[i]*100.0/size &lt;&lt; &quot;%&quot; &lt;&lt; endl;
+        }
+    }
+}
+
+int main(){
+    List list;
+    int rootAddress, n;    //初始地址、数据个数 
+    cin &gt;&gt; rootAddress &gt;&gt; n;
+    int address, next;
+    char data;
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; address &gt;&gt; data &gt;&gt; next;
+        list.add(address, data, next);
+    }
+    list.calculate(rootAddress);
+    printRes(list);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br></div></div><h2 id="栈">栈</h2> <h3 id="有效括号">有效括号</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct Node {
+    char val;
+    Node* next;
+    Node(char val) { this-&gt;val = val; }
+};
+
+class Stack {
+public:
+    int length = 0;
+    Node* top;
+    Node* bottom;
+    Stack() {
+        top = nullptr;
+        bottom = nullptr;
+    }
+
+    void push(char val) {
+        Node* n = new Node(val);
+        if (top == nullptr) {
+            top = n;
+            bottom = n;
+        }
+        else {
+            top-&gt;next = n;
+            top = top-&gt;next;
+        }
+        length++;
+    }
+
+    char pop() {
+        if (length == 0) {
+            return ' ';
+        }
+        char res = top-&gt;val;
+        Node* p = bottom;
+        for (int i = 1; i &lt; length - 1; i++) {
+            p = p-&gt;next;
+        }
+        p-&gt;next = top-&gt;next;
+        top = p;
+        length--;
+        return res;
+    }
+
+    bool isEmpty() {
+        if (length == 0) {
+            return true;
+        }
+        return false;
+    }
+};
+
+bool check(Stack stack, string str) {
+    for (int i = 0; i &lt; str.length(); i++) {
+        char c = str.at(i);
+        if (c == '(' || c == '[' || c == '{') {
+            stack.push(c);
+        }
+        else {
+            if (stack.isEmpty()) return false;
+            char s = stack.pop();
+            if (c == ')' &amp;&amp; s != '(') {
+                return false;
+            }
+            else if (c == ']' &amp;&amp; s != '[') {
+                return false;
+            }
+            else if (c == '}' &amp;&amp; s != '{') {
+                return false;
+            }
+        }
+    }
+    return stack.isEmpty();
+}
+
+int main() {
+    Stack stack;
+    string str;
+    cin &gt;&gt; str;
+    if (check(stack, str)) {
+        cout &lt;&lt; &quot;True&quot;;
+    }
+    else {
+        cout &lt;&lt; &quot;False&quot;;
+    }
+
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br></div></div><h3 id="移除无效括号">移除无效括号</h3> <p>力扣 1249：<a href="https://leetcode.cn/problems/minimum-remove-to-make-valid-parentheses/" target="_blank" rel="noopener noreferrer">移除无效的括号<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li><p>不仅要删除多余的 ')'，还要删除多余的 '('</p></li> <li><p>遍历一次字符串，用一个栈通过不断弹出压入 '('，将字符串中多余的 ')' 移除，这一步和有效括号一样</p> <p>同时用另一个栈记录各个 '(' 的下标，<strong>因为取出时是从后往前取，所以删除 '(' 时不会影响前面的下标</strong></p></li> <li><p>遍历之后，若栈中有多余 '('，不断弹出第二个栈的下标，erase() 删除之，获得结果</p></li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    string minRemoveToMakeValid(string s) {
+        stack&lt;char&gt; stc;
+        stack&lt;int&gt; sti;
+        for(int i = 0; i &lt; s.length();){
+            if(s[i] == '('){
+                stc.push(s[i]);
+                sti.push(i);
+                i++;
+            } else if(s[i] == ')'){
+                if(stc.empty()){
+                    s.erase(i, 1);
+                } else {
+                    stc.pop();
+                    sti.pop();
+                    i++;
+                }
+            } else {
+                i++;
+            }
+        }
+        while(!sti.empty()){
+            s.erase(s.begin()+sti.top());
+            sti.pop();
+        }
+        return s;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><h3 id="进制转换">进制转换</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct Node {
+    char val;
+    Node* next;
+    Node(char val) { this-&gt;val = val; next = NULL;}
+};
+
+class Stack {
+public:
+    int length;
+    Node* top;
+    Node* base;
+    Stack() {
+        length = 0;
+        top = NULL;
+        base = NULL;
+    }
+
+    void push(char val) {
+        Node* n = new Node(val);
+        if (length == 0) {
+            top = n;
+            base = n;
+        }
+        else {
+            top-&gt;next = n;
+            top = n;
+        }
+        length++;
+    }
+
+    char pop() {
+        if (length == 0) {
+            return ' ';
+        }
+        char res = top-&gt;val;
+        Node* p = base;
+        for (int i = 1; i &lt; length - 1; i++) {
+            p = p-&gt;next;
+        }
+        p-&gt;next = top-&gt;next;
+        top = p;
+        length--;
+        return res;
+    }
+
+    bool isEmpty() {
+        if (length == 0) {
+            return true;
+        }
+        return false;
+    }
+
+};
+
+void calculate(Stack&amp; stack, int num, int s){
+    while(num != 0){
+        int n = num%s;
+
+        if(n &gt;= 10){
+            stack.push(n+'57');
+        }else{
+            stack.push(n+'0');
+        }
+        num /= s;
+    }
+}
+
+int main(){
+    int num, s;
+    cin &gt;&gt; num &gt;&gt; s;
+    Stack stack;
+    calculate(stack, num, s);
+
+
+    while(!stack.isEmpty()){
+        cout &lt;&lt; stack.pop();
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br></div></div><h3 id="计算器">计算器</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;cmath&gt;
+using namespace std;
+#include &lt;stack&gt;
+
+bool isDigit(char c){
+    if(c&gt;='0' &amp;&amp; c &lt;='9'){
+        return true;
+    }
+    return false;
+}
+
+bool prior(char x, char y){
+    if(x=='+' || x=='-')    x = 1;
+    else if(x=='*' || x=='/')    x = 2;
+    else if(x=='^')        x = 3;
+    else if(x=='(')        x = 4;
+
+    if(y=='+' || y=='-')    y = 1;
+    else if(y=='/' || y=='*')    y = 2;
+    else if(y=='^')        y = 3;
+    else if(y=='(')        y = 4;
+
+    return x&gt;y;
+}
+
+int cal(int a, char opr, int b){
+    if(opr == '*')    return a*b;
+    else if(opr == '+')    return a+b;
+    else if(opr == '-')    return a-b;
+    else if(opr == '/')    return a/b;
+    else    return pow(a, b);
+}
+
+int caculate(stack&lt;char&gt; opr, stack&lt;int&gt; nums, string str){
+    int n = str.length();
+    for(int i = 0; i &lt; n; i++){
+        char c = str.at(i);
+        if(isDigit(c)){
+            int num = c-'0';
+            while(i+1 &lt; n &amp;&amp; isDigit(str.at(i+1))){
+                 num = num*10 + (str.at(++i)-'0');
+            }
+            nums.push(num); 
+        }else if(c == ')'){
+            while(opr.top() != '('){
+                int n2 = nums.top();    nums.pop();
+                int n1 = nums.top();    nums.pop();
+                char o = opr.top();        opr.pop();
+                int ans = cal(n1, o, n2);
+                nums.push(ans);
+            }
+            opr.pop();
+        }else{
+            if(opr.empty() || prior(c, opr.top()) || c == '(' || opr.top() == '('){
+                opr.push(c);
+            }else{
+                while(1){
+                    int n2 = nums.top();    nums.pop();
+                    int n1 = nums.top();    nums.pop();
+                    char o = opr.top();        opr.pop();
+                    int ans = cal(n1, o, n2);
+                    nums.push(ans);
+                    if(opr.empty() || opr.top() == '(' || prior(c, opr.top())){
+                        break;
+                    }
+                }    
+                opr.push(c);
+            }
+        }        
+    }
+    while(!opr.empty()){
+        int n2 = nums.top();    nums.pop();
+        int n1 = nums.top();    nums.pop();
+        char o = opr.top();        opr.pop();
+        int ans = cal(n1, o, n2);
+        nums.push(ans);
+    }
+
+    if(!nums.empty())
+        return nums.top();
+    return -1;
+}
+
+int main(){
+    stack&lt;char&gt; opr;
+    stack&lt;int&gt; nums;
+    string str;
+    cin &gt;&gt; str;
+    cout &lt;&lt; caculate(opr, nums, str) &lt;&lt; endl;
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br></div></div><h2 id="队列">队列</h2> <h3 id="顺序表实现队列">顺序表实现队列</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Queue{
+    private:
+        int* queue;
+        int front;
+        int length;
+        int capacity;
+
+    public:
+        Queue(){
+            front = 0;
+            length = 0;
+            capacity = 12;
+            queue = new int[capacity];
+        }
+
+        void offer(int val){
+            if(length &gt;= capacity*0.75){
+                capacity *= 2;
+                int* newQueue = new int[capacity];
+                int count = 0;
+                for(int i = front; i &lt; length; i++){
+                    newQueue[count++] = queue[i];
+                }
+                length = length - front;
+                front = 0;
+                queue = newQueue;
+            }
+            queue[length++] = val;
+        }
+
+        int poll(){
+            if(front == length){
+                front = 0;
+                length = 0;
+                capacity = 12;
+                queue = new int[capacity];                
+                return -1;
+            }
+            int res = queue[front++];
+            queue[front-1] = 0;
+            return res;
+        }
+
+        bool isEmpty(){
+            if(length-front == 0 || length == 0){
+                return true;
+            }
+            return false;
+        }
+
+        int size(){
+            return length-front;
+        }
+};
+
+void test(Queue queue){
+    for(int i = 0; i &lt; 21; i++){
+        queue.offer(i);
+    }
+    cout &lt;&lt; queue.size() &lt;&lt; endl;
+    for(int i = 0; i &lt; 4; i++){
+        cout &lt;&lt; queue.poll() &lt;&lt; &quot; &quot;;
+    }
+    cout &lt;&lt; endl &lt;&lt; queue.size() &lt;&lt; endl;
+    for(int i = 0; i &lt; 21; i++){
+        cout &lt;&lt; queue.poll() &lt;&lt; &quot; &quot;;
+    }
+    cout &lt;&lt; endl &lt;&lt; queue.size();
+}
+
+int main(){
+    Queue queue;
+    test(queue);
+    int n, command, val;
+    cin &gt;&gt; n;    
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; command;
+        if(command == 0){
+            if(queue.isEmpty()){
+                cout &lt;&lt; &quot;invalid&quot; &lt;&lt; endl;
+            }else{
+                cout &lt;&lt; queue.poll() &lt;&lt; endl;
+            }
+        }else if(command == 1){
+            cin &gt;&gt; val;
+            queue.offer(val);
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br></div></div><h3 id="栈模拟队列">栈模拟队列</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include&lt;iostream&gt;
+using namespace std;
+#include&lt;stack&gt;
+
+class Queue{
+    private:
+        int capacity;
+        stack&lt;int&gt; s1, s2;
+
+    public:
+        Queue(int capacity){
+            this-&gt;capacity = capacity;
+        }
+
+        bool offer(int val){
+            if(s1.size() &lt; capacity){
+                s1.push(val);
+                return true;
+            }else{
+                if(s2.empty()){
+                    while(!s1.empty()){
+                        s2.push(s1.top());
+                        s1.pop();
+                    }
+                    s1.push(val);
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        int poll(){
+            if(s2.empty()){
+                while(!s1.empty()){
+                    s2.push(s1.top());
+                    s1.pop();
+                }
+            }
+            if(!s2.empty()){
+                int res = s2.top();
+                s2.pop();
+                return res;
+            }
+            return -1;
+        }
+};
+
+void test(Queue queue){
+    for(int i = 0; i &lt; 9; i++){
+        if(!queue.offer(i)){
+            cout &lt;&lt; &quot;ERROR:Full&quot; &lt;&lt; endl;
+        }
+    }
+    for(int i = 0; i &lt; 9; i++){
+        int res = queue.poll();
+        if(res != -1)
+            cout &lt;&lt; res &lt;&lt; endl;
+        else
+            cout &lt;&lt; &quot;ERROR:Empty&quot; &lt;&lt; endl;
+    }
+}
+
+int main(){
+    int m, n;
+    cin &gt;&gt; m &gt;&gt; n;
+    int capacity = m&gt;n?n:m; 
+    Queue queue(capacity);
+    //test(queue);
+    char command;
+    int val;
+    while(1){
+        cin &gt;&gt; command;
+        if(command == 'A'){
+            cin &gt;&gt; val;
+            if(!queue.offer(val))
+                cout &lt;&lt; &quot;ERROR:Full&quot; &lt;&lt; endl;
+        }else if(command == 'D'){
+            int res = queue.poll();
+            if(res != -1)
+                cout &lt;&lt; res &lt;&lt; endl;
+            else
+                cout &lt;&lt; &quot;ERROR:Empty&quot; &lt;&lt; endl;
+        }else if(command == 'T'){
+            break;
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br></div></div><h3 id="模拟阻塞队列">模拟阻塞队列</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+using namespace std;
+#include &lt;queue&gt;
+
+void deal(int n, int* c, queue&lt;int&gt; a, queue&lt;int&gt; b){
+    for(int i = 0; i &lt; n; i++){
+        if(c[i] % 2 == 1){
+            a.push(c[i]);
+        }else{
+            b.push(c[i]);
+        }
+    }
+
+    while(!a.empty() &amp;&amp; !b.empty()){
+        cout &lt;&lt; a.front() &lt;&lt; &quot; &quot;;
+        a.pop();
+        if(!a.empty()){
+            cout &lt;&lt; a.front() &lt;&lt; &quot; &quot;;
+            a.pop();
+        }    
+        cout &lt;&lt; b.front() &lt;&lt; &quot; &quot;;
+        b.pop();
+    }
+
+    while(!a.empty()){
+        if(a.size() == 1){
+            cout &lt;&lt; a.front();
+        }else{
+            cout &lt;&lt; a.front() &lt;&lt; &quot; &quot;;
+        }    
+        a.pop();
+    }
+
+    while(!b.empty()){
+        if(b.size() == 1){
+            cout &lt;&lt; b.front();
+        }else{
+            cout &lt;&lt; b.front() &lt;&lt; &quot; &quot;;
+        }
+        b.pop();
+    }
+}
+
+int main(){
+    queue&lt;int&gt; a, b;
+    int n;
+    cin &gt;&gt; n;
+    int c[n];
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; c[i];
+    }
+    deal(n, c, a, b);
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br></div></div><h2 id="串和数组">串和数组</h2> <h3 id="kmp">KMP</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+#include &lt;string.h&gt;
+#include &lt;algorithm&gt; 
+using namespace std;
+
+
+int main(){
+
+    char str[1000];
+    char dist[1000];
+    cin &gt;&gt; str &gt;&gt; dist;
+
+    //cout &lt;&lt; str &lt;&lt; &quot; &quot; &lt;&lt; dist &lt;&lt; endl;
+    int count = 0, m = strlen(str), n = strlen(dist);
+    int pos[m];
+
+
+    int next[n];
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; next[i];
+    }
+
+
+
+    //cout &lt;&lt; m &lt;&lt; &quot; &quot; &lt;&lt; n &lt;&lt; endl;
+    int i = 0, j = 0;
+    while(i &lt; m &amp;&amp; j &lt; n){
+        if(j == -1 || tolower(str[i])==tolower(dist[j])){
+            i++;
+            j++;
+        } else {
+            j = next[j];
+        }
+        if(j == n){
+            pos[count++] = i-j+1;
+            i = i-1-next[j-1];
+            j = 0;
+        }        
+    }
+
+
+    cout &lt;&lt; count &lt;&lt; endl;
+    for(i = 0; i &lt; count; i++){
+        cout &lt;&lt; pos[i] &lt;&lt; endl;
+    }
+
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br></div></div><h3 id="三元组实现稀疏矩阵转置">三元组实现稀疏矩阵转置</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+using namespace std;
+
+
+struct matrix{
+    int r;
+    int l;
+    int val;
+};
+
+int main(){
+
+
+    int m, n, t;
+    cin &gt;&gt; m &gt;&gt; n &gt;&gt; t;
+
+    matrix a[t];
+    matrix b[t];
+
+    int i;
+    for(i = 0; i &lt; t; i++){
+        cin &gt;&gt; a[i].r &gt;&gt; a[i].l &gt;&gt; a[i].val;
+    }
+
+    int count = 0;
+    int pos = 0;
+    while(count &lt; t){
+        for(i = 0; i &lt; t; i++){
+            if(a[i].l == count){
+                b[pos].r = a[i].l;
+                b[pos].l = a[i].r;
+                b[pos].val = a[i].val;
+                pos++;
+            }
+        }
+        count++;
+    }
+
+    for(i = 0; i &lt; t; i++){
+        cout &lt;&lt; b[i].r &lt;&lt; &quot; &quot; &lt;&lt; b[i].l &lt;&lt; &quot; &quot; &lt;&lt; b[i].val &lt;&lt; endl;
+    }
+
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br></div></div><h3 id="三元组实现稀疏矩阵加法">三元组实现稀疏矩阵加法</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+using namespace std;
+
+struct matrix{
+    int r;
+    int v;
+    int val;
+};
+
+
+int main(){
+
+    int m, n, t1, t2;
+    cin &gt;&gt; m &gt;&gt; n &gt;&gt; t1 &gt;&gt; t2;
+
+    matrix a[t1];
+    matrix b[t2];
+
+    int i;
+    for(i = 0; i &lt; t1; i++){
+        cin &gt;&gt; a[i].r &gt;&gt; a[i].v &gt;&gt; a[i].val;
+    }
+
+    for(i = 0; i &lt; t2; i++){
+        cin &gt;&gt; b[i].r &gt;&gt; b[i].v &gt;&gt; b[i].val;
+    }
+
+    matrix res[t1+t2];
+    int count = 0;
+
+    int r;
+    for(r = 0; r &lt; m; r++){
+        int v;
+        for(v = 0; v &lt; n; v++){
+            int val = 0;
+            for(i = 0; i &lt; (t1&gt;t2?t1:t2); i++){
+                if(i &lt; t1 &amp;&amp; a[i].r == r &amp;&amp; a[i].v == v){
+                    val += a[i].val;
+                }
+                if(i &lt; t2 &amp;&amp; b[i].r == r &amp;&amp; b[i].v == v){
+                    val += b[i].val;
+                }
+            }
+            if(val != 0){
+                res[count].r = r;
+                res[count].v = v;
+                res[count].val = val;
+                count++;
+            }
+        }
+    }
+
+    cout &lt;&lt; m &lt;&lt; &quot; &quot; &lt;&lt; n &lt;&lt; &quot; &quot; &lt;&lt; count &lt;&lt; endl;
+    for(i = 0; i &lt; count; i++){
+        cout &lt;&lt; res[i].r &lt;&lt; &quot; &quot; &lt;&lt; res[i].v &lt;&lt; &quot; &quot; &lt;&lt; res[i].val &lt;&lt; endl;
+    }
+
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br></div></div><h2 id="树">树</h2> <h3 id="树的构造和遍历">树的构造和遍历</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;stdio.h&gt;
+#include &lt;malloc.h&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+
+struct node{
+    char val;
+    node* l;
+    node* r;
+};
+
+node* node_new(){
+    node* n = new node();
+    n-&gt;l = NULL;
+    n-&gt;r = NULL;
+    return n;
+}
+
+void tree_del(node* root){
+    if(root-&gt;l != NULL){
+        tree_del(root-&gt;l);
+    }
+    if(root-&gt;r != NULL){
+        tree_del(root-&gt;r);
+    }
+    free(root);
+}
+
+
+//前序遍历 
+void preorder_traversal(node* root){
+    if(root-&gt;val == '#'){
+        return;
+    }
+    cout &lt;&lt; root-&gt;val;
+    preorder_traversal(root-&gt;l);
+    preorder_traversal(root-&gt;r);
+}
+
+//中序遍历 
+void inorder_traversal(node* root){
+    if(root-&gt;val == '#'){
+        return;
+    }
+    inorder_traversal(root-&gt;l);
+    cout &lt;&lt; root-&gt;val;
+    inorder_traversal(root-&gt;r);
+}
+
+//后序遍历 
+void postorder_traversal(node* root){
+    if(root-&gt;val == '#'){
+        return;
+    }
+    postorder_traversal(root-&gt;l);
+    postorder_traversal(root-&gt;r);
+    cout &lt;&lt; root-&gt;val;
+}
+
+
+void traversal(node* root){
+    if(root-&gt;val == '#'){
+        return;
+    }
+    preorder_traversal(root);
+    cout &lt;&lt; endl;
+    inorder_traversal(root);
+    cout &lt;&lt; endl;
+    postorder_traversal(root);
+    cout &lt;&lt; endl;
+}
+
+
+
+//用于记录字符数组下标位置 
+static int pos = 0;
+//中序构造 
+void node_add(node* root, char* vals){
+    //cout &lt;&lt; vals[pos] &lt;&lt; endl;
+    root-&gt;val = vals[pos];
+    if(vals[pos++] == '#'){
+        //cout &lt;&lt; &quot;hahaha&quot; &lt;&lt; endl; 
+        return;
+    }
+    root-&gt;l = node_new(); 
+    node_add(root-&gt;l, vals);
+    root-&gt;r = node_new();
+    node_add(root-&gt;r, vals);    
+}
+
+void tree_build(node* root, char* vals){
+    node_add(root, vals);
+    pos = 0;
+}
+
+
+//求叶子个数 
+int leaf(node* root){
+    if(root-&gt;val == '#'){
+        return 0;
+    }
+
+    if(root-&gt;l-&gt;val == '#' &amp;&amp; root-&gt;r-&gt;val == '#'){
+        return 1;
+    }
+
+    int n1 = 0, n2 = 0;
+    n1 = leaf(root-&gt;l);
+    n2 = leaf(root-&gt;r);
+
+    return n1+n2;
+}
+
+int main(){
+    char vals[1000];
+    cin &gt;&gt; vals;
+    node* root = node_new();
+    tree_build(root, vals);
+    int leaves = leaf(root);
+    traversal(root);
+    cout &lt;&lt; leaves;
+}
+
+
+//ABD##EG###C#F##
+//FCA##DB###EHM###G##
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br></div></div><h3 id="层序遍历">层序遍历</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;stdio.h&gt;
+#include &lt;malloc.h&gt;
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+
+struct node{
+    char val;
+    node* l;
+    node* r;
+};
+
+
+node* node_new(){
+    node* n = (node*)malloc(sizeof(node));
+    n-&gt;l = NULL;
+    n-&gt;r = NULL;
+    return n;
+}
+
+
+void tree_del(node* root){
+    if(root-&gt;l != NULL){
+        tree_del(root-&gt;l);
+    }
+    if(root-&gt;r != NULL){
+        tree_del(root-&gt;r);
+    }
+    free(root);
+}
+
+
+//用于记录字符数组下标位置 
+static int pos = 0;
+//中序构造 
+void node_add(node* root, char* vals){
+    //cout &lt;&lt; vals[pos] &lt;&lt; endl;
+    root-&gt;val = vals[pos];
+    if(vals[pos++] == '@'){
+        //cout &lt;&lt; &quot;hahaha&quot; &lt;&lt; endl; 
+        return;
+    }
+    root-&gt;l = node_new(); 
+    node_add(root-&gt;l, vals);
+    root-&gt;r = node_new();
+    node_add(root-&gt;r, vals);    
+}
+
+void tree_build(node* root, char* vals){
+    node_add(root, vals);
+    pos = 0;
+}
+
+
+void lever_traversal(node* root){
+    queue&lt;node*&gt; q;
+    q.push(root);
+    while(!q.empty()){
+        node* cur = q.front();
+        q.pop();
+        if(cur-&gt;val == '@'){
+            continue;
+        }
+        cout &lt;&lt; cur-&gt;val;
+        if(cur-&gt;l){
+            q.push(cur-&gt;l);
+        }
+        if(cur-&gt;r){
+            q.push(cur-&gt;r);
+        }
+    }
+    cout &lt;&lt; endl;
+}
+
+
+int main(){
+    int n;
+    cin &gt;&gt; n;
+    char vals[1000];
+    for(int i = 0; i &lt; n; i++){
+        node* root = node_new();
+        cin &gt;&gt; vals;
+        tree_build(root, vals);
+        lever_traversal(root);
+    }
+
+}
+
+
+//ABD##EG###C#F##
+//FCA##DB###EHM###G##
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br></div></div><h2 id="图">图</h2> <h3 id="邻接表构造无向图并计算度">邻接表构造无向图并计算度</h3> <blockquote><p>自己写的</p></blockquote> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+using namespace std;
+#define MAX 100
+
+struct node{
+    char val;
+    int size;
+    node** bro;
+};
+
+node* node_build(char v){
+    node* n = new node();
+    n-&gt;val = v;
+    n-&gt;size = 0;
+    n-&gt;bro = new node*[MAX]; 
+    return n;
+}
+
+void node_del(node* v){
+    /*for(int i = 0; i &lt; v-&gt;size; i++){
+        delete(v-&gt;bro[i]);
+    }*/
+    delete(v);
+}
+
+void node_add(node* n, node* v){
+    n-&gt;bro[n-&gt;size++] = v;
+    v-&gt;bro[v-&gt;size++] = n;
+} 
+
+node** map_build(int m, int n){
+    char* tops = new char[m];
+    cin &gt;&gt; tops;
+    node** nodes = new node*[m];
+    for(int i = 0; i &lt; m; i++){
+        nodes[i] = node_build(tops[i]);
+    }
+    delete(tops);
+    char* connect = new char[2];
+    for(int j = 0; j &lt; n; j++){
+        cin &gt;&gt; connect;
+        node* v1 = NULL;
+        node* v2 = NULL;
+        for(int t = 0; t &lt; m; t++){
+            if(nodes[t]-&gt;val == connect[0]){
+                v1 = nodes[t];
+            }
+            if(nodes[t]-&gt;val == connect[1]){
+                v2 = nodes[t];
+            }
+        }
+        node_add(v1, v2);
+    }
+
+    return nodes;
+}
+
+
+
+int main(){
+    //输入顶点个数，边个数 
+    int m, n;
+    cin &gt;&gt; m &gt;&gt; n;
+    node** map = map_build(m, n);
+
+    for(int i = 0; i &lt; m; i++){
+        if(i != m-1)    { cout &lt;&lt; map[i]-&gt;size &lt;&lt; &quot; &quot;; }
+        else            { cout &lt;&lt; map[i]-&gt;size; }        
+        delete map[i];
+    }
+    delete(map);
+
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br></div></div><blockquote><p>网上借鉴的</p></blockquote> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include&lt;iostream&gt;
+using namespace std;
+
+
+typedef struct ENode{ //表结点 
+    char data;
+    struct ENode* next; 
+} ENode;
+
+
+typedef struct VNode{  //头结点 
+    char data;
+    ENode* fistedges;
+} VNode, vertex[20];
+
+
+typedef struct{
+    vertex v;
+    int numNode,numedges;
+} Graph;
+
+
+int find(Graph G, char c) { //找到对应弧 
+    for(int i = 0; i &lt; G.numNode; i++)
+    {
+        if(G.v[i].data == c)
+            return i;
+     } 
+    return -1;
+}
+
+
+void Create(Graph G) {
+    cin &gt;&gt; G.numNode &gt;&gt; G.numedges;
+
+    for(int i = 0; i &lt; G.numNode; i++) {    //保存顶点 
+        char a;
+        cin &gt;&gt; a;
+        G.v[i].data = a; 
+        G.v[i].fistedges = NULL;
+    }
+
+    for(int i = 0; i &lt; G.numedges; i++) {    //保存边 
+        char a, b;
+        cin &gt;&gt; a &gt;&gt; b;
+        int p = find(G, a);
+        int q = find(G, b);
+        ENode* pre = new ENode();
+
+         //将b接在表头a的后面    
+        pre = G.v[p].fistedges;
+        if(pre == NULL){
+            ENode* qre = new ENode();
+            qre-&gt;data = b;
+            qre-&gt;next = NULL;
+            G.v[p].fistedges = qre; 
+        } else {
+            while(pre-&gt;next != NULL) {
+                pre = pre-&gt;next;
+            }
+            ENode* qre = new ENode();
+            qre-&gt;data = b;
+            qre-&gt;next = NULL;
+            pre-&gt;next = qre;            
+        }
+        //将a接到表头b的后面
+        pre = G.v[q].fistedges;
+        if(pre == NULL) {
+            ENode* qre = new ENode();
+            qre-&gt;data = a;
+            qre-&gt;next = NULL;
+            G.v[q].fistedges = qre; 
+        } else {
+            while(pre-&gt;next != NULL) {
+                pre = pre-&gt;next;
+            }
+            ENode* qre = new ENode();
+            qre-&gt;data = a;
+            qre-&gt;next = NULL;
+            pre-&gt;next = qre;            
+        }
+    }
+    //输出各个顶点的度
+    for(int i = 0; i &lt; G.numNode; i++) {
+        int s = 0;
+        for(ENode* p = G.v[i].fistedges; p != NULL; p = p-&gt;next) {
+            s++;
+        }
+        if(i == 0)
+            cout &lt;&lt; s;
+        else
+            cout &lt;&lt; &quot; &quot; &lt;&lt; s;
+     }
+}
+
+
+
+int main() {
+    Graph G;
+    Create(G);
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br></div></div><h3 id="dfs-bfs遍历并输出连通集">DFS/BFS遍历并输出连通集</h3> <p>复习一手快排，将边从小到大排序</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+using namespace std;
+#define MAX 100
+#include &lt;queue&gt;
+
+struct Node{
+    int val;
+    int size;
+    bool visited;
+    Node** bro;
+};
+
+Node* node_build(int v){
+    Node* n = new Node();
+    n-&gt;val = v;
+    n-&gt;size = 0;
+    n-&gt;visited = false;
+    n-&gt;bro = new Node*[MAX]; 
+    return n;
+}
+
+void node_del(Node* v){
+    /*for(int i = 0; i &lt; v-&gt;size; i++){
+        delete(v-&gt;bro[i]);
+    }*/
+    delete(v);
+}
+
+void node_add(Node* n, Node* v){
+    n-&gt;bro[n-&gt;size++] = v;
+    v-&gt;bro[v-&gt;size++] = n;
+} 
+
+void node_clean(Node* n){
+    n-&gt;visited = false;
+}
+
+
+typedef struct{
+    int size;
+    Node** tops;
+} Map;
+
+Map* map_new(){
+    Map* map = new Map();
+    map-&gt;size = 0;
+    map-&gt;tops = NULL;
+    return map;
+}
+
+Map* map_build(int m, int n){
+    //初始化map 
+    Map* map = map_new();
+    map-&gt;size = m;
+    map-&gt;tops = new Node*[m];
+
+    //直接将下标值赋给顶点值 
+    for(int i = 0; i &lt; m; i++){
+        map-&gt;tops[i] = node_build(i);
+    }
+
+    //连结顶点 
+    int n1, n2;
+    for(int j = 0; j &lt; n; j++){
+        cin &gt;&gt; n1 &gt;&gt; n2;
+        node_add(map-&gt;tops[n1], map-&gt;tops[n2]);
+    }
+
+    return map;
+}
+
+void map_clean(Map* m){
+    for(int i = 0; i &lt; m-&gt;size; i++){
+        m-&gt;tops[i]-&gt;visited = false;
+    }
+}
+
+void node_dfs(Node* n){
+    if(n-&gt;visited){
+        return;
+    }
+    cout &lt;&lt; n-&gt;val &lt;&lt; &quot; &quot;;
+    n-&gt;visited = true;
+    for(int i = 0; i &lt; n-&gt;size; i++){
+        node_dfs(n-&gt;bro[i]);
+    }
+}
+
+void map_dfs(Map* m){
+    for(int i = 0; i &lt; m-&gt;size; i++){
+        if(!m-&gt;tops[i]-&gt;visited){
+            cout &lt;&lt; &quot;{ &quot;;
+            node_dfs(m-&gt;tops[i]);
+            cout &lt;&lt; &quot;}&quot; &lt;&lt; endl;
+        }
+    }
+    map_clean(m); 
+}
+
+
+void node_bfs(Node* n){
+    if(n-&gt;visited){
+        return;
+    }
+    queue&lt;Node*&gt; q;
+    q.push(n);
+    n-&gt;visited = true;
+    while(!q.empty()){
+        Node* cur = q.front();
+        q.pop();
+        cout &lt;&lt; cur-&gt;val &lt;&lt; &quot; &quot;;
+        for(int i = 0; i &lt; cur-&gt;size; i++){
+            if(!cur-&gt;bro[i]-&gt;visited){
+                q.push(cur-&gt;bro[i]);
+                cur-&gt;bro[i]-&gt;visited = true;
+            }
+        }
+    }
+}
+
+void map_bfs(Map* m){
+    for(int i = 0; i &lt; m-&gt;size; i++){
+        if(!m-&gt;tops[i]-&gt;visited){
+            cout &lt;&lt; &quot;{ &quot;;
+            node_bfs(m-&gt;tops[i]);
+            cout &lt;&lt; &quot;}&quot; &lt;&lt; endl;
+        }
+    }
+    map_clean(m);
+}
+
+void node_swap(Node* n, int i, int j){
+    Node* temp = n-&gt;bro[i];
+    n-&gt;bro[i] = n-&gt;bro[j];
+    n-&gt;bro[j] = temp;
+}
+
+//快速排序
+void node_sort(Node* n, int left, int right){
+    if(left &gt;= right){
+        return;
+    }
+    node_swap(n, (left+right)/2, right);
+    int pivot = n-&gt;bro[right]-&gt;val;
+    int pos = left;
+    for(int i = left; i &lt; right; i++){
+        if(n-&gt;bro[i]-&gt;val &lt;= pivot){
+            node_swap(n, i, pos);
+            pos++;
+        }
+    }
+    node_swap(n, pos, right);
+    node_sort(n, left, pos-1);
+    node_sort(n, pos+1, right);
+}
+
+void map_sort(Map* m){
+    for(int i = 0; i &lt; m-&gt;size; i++){
+        if(!m-&gt;tops[i]-&gt;visited){
+            node_sort(m-&gt;tops[i], 0, m-&gt;tops[i]-&gt;size-1);
+        }
+    }
+}
+
+
+int main(){
+    int m, n;
+    cin &gt;&gt; m &gt;&gt; n;
+    Map* map = map_build(m, n);
+    map_sort(map);
+    map_dfs(map);
+    map_bfs(map); 
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br></div></div><h2 id="查找">查找</h2> <h3 id="二叉排序树的构造和遍历">二叉排序树的构造和遍历</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+using namespace std;
+
+
+struct tree_node{
+    int val;
+    tree_node* left;
+    tree_node* right;
+}; 
+
+tree_node* new_node(int val){
+    tree_node* node = new tree_node();
+    node-&gt;val = val;
+    node-&gt;left = NULL;
+    node-&gt;right = NULL;
+    return node;
+}
+
+tree_node* create_binary_search_tree(int* vals, int length){
+    tree_node* root = new_node(vals[0]);
+    for(int i = 1; i &lt; length; i++){
+
+        tree_node* p = root;
+        int val = vals[i];
+        while(p){
+            if(val &lt;= p-&gt;val){
+                if(!p-&gt;left){
+                    p-&gt;left = new_node(val);
+                    //cout &lt;&lt; val &lt;&lt; endl;
+                    break;
+                } else{
+                    p = p-&gt;left;
+                }
+            } else{
+                if(!p-&gt;right){
+                    //cout &lt;&lt; val &lt;&lt; endl;
+                    p-&gt;right = new_node(val);
+                    break;
+                }else{
+                    p = p-&gt;right;
+                }
+
+            }
+        }
+    }
+    return root;
+}
+
+void pre_travel(tree_node* root){
+    if(!root){
+        return;
+    }
+    if(root){
+        cout &lt;&lt; root-&gt;val &lt;&lt; &quot; &quot;;
+    }
+    pre_travel(root-&gt;left);
+    pre_travel(root-&gt;right);
+}
+
+
+int main(){
+
+    int* nums = new int[1000];
+    int i;
+    for(i = 0; i &lt; 1000; i++){
+        int num;
+        cin &gt;&gt; num;
+        if(num == 0){
+            break;
+        }
+        nums[i] = num;
+    }
+
+    tree_node* root = create_binary_search_tree(nums, i);
+    pre_travel(root);
+
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br></div></div><h3 id="二分查找">二分查找</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+using namespace std;
+
+void swap(int* nums, int i, int j){
+    int temp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = temp;
+}
+
+void quickSort(int* nums, int left, int right){
+    if(left&gt;=right){
+        return;
+    }
+    swap(nums, right, (left+right)/2);
+    int pivot = nums[right];
+    int position = left;
+    for(int i = left; i &lt; right; i++){
+        if(nums[i] &lt;= pivot){
+            swap(nums, i, position);
+            position++;
+        }
+    }
+    swap(nums, position, right);
+    quickSort(nums, left, position-1);
+    quickSort(nums, position+1, right);
+}
+
+
+
+void insertSort(int* nums, int n){
+    for(int i = 1; i &lt; n; i++){
+        //记录要插入的元素cur 
+        int cur = nums[i], j;
+        for(j = i-1; j &gt;= 0; j--){
+            //当第j位元素小于当前元素，退出，将cur插入第j位 
+            if(nums[j] &gt; cur){
+                nums[j+1] = nums[j];
+            } else {    //当第j位元素大于等于当前元素，将第j位元素右移一位 
+            break;
+            }
+        }
+        nums[j+1] = cur;
+    }
+}
+
+void binaryInsertSort(int* nums, int n){
+    for(int i = 1; i &lt; n; i++){
+        int left = 0, right = i-1, cur = nums[i];
+        //找出插入点left 
+        while(right &gt;= left){
+            int mid = (left+right)/2;
+            if(nums[mid] &gt; cur){
+                right = mid-1;
+            } else {
+                left = mid+1;
+            }
+        }
+        //将插入点右侧到要插入元素之间元素全部右移一位
+        //必须要从右往左移动，从左往右移动会把元素逐一覆盖 
+        for(int j = i; j &gt; left; j--){
+            nums[j] = nums[j-1];
+        }
+        //插入 
+        nums[left] = cur;
+    }
+} 
+
+int binarySearch(int* nums, int left, int right, int target){
+    while(left &lt;= right){
+        int mid = (left+right)/2;
+        if(nums[mid] == target){
+            return mid+1;
+        } else if(nums[mid] &gt; target){
+            right = mid-1;
+        } else {
+            left = mid + 1; 
+        }
+    }
+    return 0;
+} 
+
+
+int main(){
+
+    int n;
+    cin &gt;&gt; n;
+    int nums[n];
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; nums[i];
+    }
+    binaryInsertSort(nums, n);
+
+    int m;
+    cin &gt;&gt; m;
+    int targets[m];
+    for(int i = 0; i &lt; m; i++){
+        cin &gt;&gt; targets[i];
+    }
+
+    //打印排列好的数组 
+    for(int i = 0; i &lt; n; i++){
+        if(i != n-1)
+            cout &lt;&lt; nums[i] &lt;&lt; &quot; &quot;;
+        else
+            cout &lt;&lt; nums[i] &lt;&lt; endl;
+    }
+    //打印搜索结果 
+    for(int i = 0; i &lt; m; i++){
+        if(i != m-1)
+            cout &lt;&lt; binarySearch(nums, 0, n-1, targets[i]) &lt;&lt; &quot; &quot;;
+        else
+            cout &lt;&lt; binarySearch(nums, 0, n-1, targets[i]) &lt;&lt; endl;
+    }
+
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br></div></div><h2 id="排序">排序</h2> <h3 id="堆排序">堆排序</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+using namespace std;
+
+
+void print(int* nums, int length){
+    for(int i = 0; i &lt; length; i++){
+        if(i != length-1)
+            cout &lt;&lt; nums[i] &lt;&lt; &quot; &quot;;
+        else   
+            cout &lt;&lt; nums[i];
+    }
+}
+
+void println(int* nums, int length){
+    print(nums, length);
+    cout &lt;&lt; endl;
+}
+
+void swap(int* nums, int i, int j){
+    int temp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = temp;
+}
+
+
+//调整大顶堆
+void heapAdjust(int* nums, int parent, int length){
+    int child = parent*2+1;
+    while(child &lt;= length){
+
+        if(child+1 &lt;= length &amp;&amp; nums[child] &lt; nums[child+1]){
+            child++;
+        }
+
+        if(nums[parent] &gt; nums[child]){
+            break;
+        }
+        swap(nums, parent, child);
+        parent = child;
+        child = parent*2+1;
+    }
+}
+
+
+void heapSort(int* nums, int length){
+    int n = length - 1;
+    //构造大顶堆，一定要从后往前构造
+    //这样在树中为从下层向上层构造，逐步将大根上移，防止漏移
+    for (int i = n / 2; i &gt;= 0; i--) {
+        heapAdjust(nums, i, n);
+    }
+
+    //将最大元素移到最后，再对前i-1个元素进行调整，构造新的小顶堆
+    for(int i = n; i &gt; 0; i--){
+        println(nums, length);
+        swap(nums, 0, i);
+        heapAdjust(nums, 0, i-1);
+    }
+    print(nums, length);
+}
+
+int main(){
+    int length;
+    cin &gt;&gt; length;
+    int* nums = new int[length];
+    for(int i = 0; i &lt; length; i++){
+        cin &gt;&gt; nums[i];
+    }
+    heapSort(nums, length);
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br></div></div><h3 id="快速排序">快速排序</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+using namespace std;
+
+
+void swap(int* nums, int i, int j){
+    int temp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = temp;
+}
+
+void quickSort(int* nums, int left, int right){
+    if(left &gt;= right){
+        return;
+    }
+    int mid = (left+right)/2;
+    int cur = nums[mid];
+    int pos = left;
+    swap(nums, mid, right);
+    for(int i = left; i &lt; right; i++){
+        if(nums[i] &lt;= cur){
+            swap(nums, pos, i);
+            pos++;
+        }
+    }
+    swap(nums, pos, right);
+    quickSort(nums, left, pos-1);
+    quickSort(nums, pos+1, right);
+}
+
+int main(){
+
+    int length;
+    int* nums;
+    cin &gt;&gt; length;
+    nums = new int[length];
+    for(int i = 0; i &lt; length; i++){
+        cin &gt;&gt; nums[i];
+    }
+
+    quickSort(nums, 0, length-1);
+    for(int i = 0; i &lt; length; i++){
+        cout &lt;&lt; nums[i] &lt;&lt; &quot; &quot;;
+    }
+
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/dev/algo/code/data-structure-design.html" class="prev">
+        数据结构实现
+      </a></span> <!----></p></div> </main></div><div class="global-ui"><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/song/aries.aac" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:44px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/img/error.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/img/error.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>白羊</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>northboat</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div><!----><div class="RibbonAnimation"></div><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:99;" data-v-248d85d6></canvas></div></div></div>
+    <script src="/assets/js/app.830f5b6e.js" defer></script><script src="/assets/js/5.7032fbc8.js" defer></script><script src="/assets/js/148.398aed17.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>极小极大搜索的井字棋 | Northboat Blog</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    <link rel="icon" href="/img/leaf.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="片刻寧靜">
+    
+    <link rel="preload" href="/assets/css/0.styles.9d0e5d79.css" as="style"><link rel="preload" href="/assets/js/app.830f5b6e.js" as="script"><link rel="preload" href="/assets/js/5.7032fbc8.js" as="script"><link rel="preload" href="/assets/js/146.10d42178.js" as="script"><link rel="prefetch" href="/assets/js/10.036e53d7.js"><link rel="prefetch" href="/assets/js/100.76087af8.js"><link rel="prefetch" href="/assets/js/101.fe3ec1f3.js"><link rel="prefetch" href="/assets/js/102.767e9253.js"><link rel="prefetch" href="/assets/js/103.31da3d36.js"><link rel="prefetch" href="/assets/js/104.156b8258.js"><link rel="prefetch" href="/assets/js/105.263e02cf.js"><link rel="prefetch" href="/assets/js/106.851e7cf9.js"><link rel="prefetch" href="/assets/js/107.6e113532.js"><link rel="prefetch" href="/assets/js/108.b2b7b00d.js"><link rel="prefetch" href="/assets/js/109.568ca258.js"><link rel="prefetch" href="/assets/js/11.a530edee.js"><link rel="prefetch" href="/assets/js/110.0e71b740.js"><link rel="prefetch" href="/assets/js/111.af082324.js"><link rel="prefetch" href="/assets/js/112.c2810cbf.js"><link rel="prefetch" href="/assets/js/113.6d9cd29c.js"><link rel="prefetch" href="/assets/js/114.5e57c3d0.js"><link rel="prefetch" href="/assets/js/115.c7c7d119.js"><link rel="prefetch" href="/assets/js/116.137b07df.js"><link rel="prefetch" href="/assets/js/117.034d8850.js"><link rel="prefetch" href="/assets/js/118.a9b4190c.js"><link rel="prefetch" href="/assets/js/119.2f9e0d25.js"><link rel="prefetch" href="/assets/js/12.da932cee.js"><link rel="prefetch" href="/assets/js/120.414d2b0b.js"><link rel="prefetch" href="/assets/js/121.cdf9934c.js"><link rel="prefetch" href="/assets/js/122.97f6e25d.js"><link rel="prefetch" href="/assets/js/123.8a3dbc06.js"><link rel="prefetch" href="/assets/js/124.3647615f.js"><link rel="prefetch" href="/assets/js/125.c45bf667.js"><link rel="prefetch" href="/assets/js/126.46c7624b.js"><link rel="prefetch" href="/assets/js/127.1493df06.js"><link rel="prefetch" href="/assets/js/128.584b874d.js"><link rel="prefetch" href="/assets/js/129.360732c6.js"><link rel="prefetch" href="/assets/js/13.ae3008d2.js"><link rel="prefetch" href="/assets/js/130.02f568f2.js"><link rel="prefetch" href="/assets/js/131.96c1647c.js"><link rel="prefetch" href="/assets/js/132.2f776723.js"><link rel="prefetch" href="/assets/js/133.e74ee5b3.js"><link rel="prefetch" href="/assets/js/134.87507b09.js"><link rel="prefetch" href="/assets/js/135.105a5eff.js"><link rel="prefetch" href="/assets/js/136.b1d7cf85.js"><link rel="prefetch" href="/assets/js/137.bd7fc0e9.js"><link rel="prefetch" href="/assets/js/138.7b60a194.js"><link rel="prefetch" href="/assets/js/139.4859ccd3.js"><link rel="prefetch" href="/assets/js/14.8d2ed4dc.js"><link rel="prefetch" href="/assets/js/140.ddff7744.js"><link rel="prefetch" href="/assets/js/141.e7e637c4.js"><link rel="prefetch" href="/assets/js/142.3810539d.js"><link rel="prefetch" href="/assets/js/143.68d2a50c.js"><link rel="prefetch" href="/assets/js/144.4964bec5.js"><link rel="prefetch" href="/assets/js/145.608a22de.js"><link rel="prefetch" href="/assets/js/147.94da1738.js"><link rel="prefetch" href="/assets/js/148.398aed17.js"><link rel="prefetch" href="/assets/js/149.3dc3fa3c.js"><link rel="prefetch" href="/assets/js/15.1e3335b1.js"><link rel="prefetch" href="/assets/js/150.3563332f.js"><link rel="prefetch" href="/assets/js/151.e0ecce27.js"><link rel="prefetch" href="/assets/js/152.757fd025.js"><link rel="prefetch" href="/assets/js/153.004e9f0f.js"><link rel="prefetch" href="/assets/js/154.5a48bde9.js"><link rel="prefetch" href="/assets/js/155.a833cfc3.js"><link rel="prefetch" href="/assets/js/156.53eeeb1c.js"><link rel="prefetch" href="/assets/js/157.71f778dc.js"><link rel="prefetch" href="/assets/js/158.7ca76f37.js"><link rel="prefetch" href="/assets/js/159.42aea397.js"><link rel="prefetch" href="/assets/js/16.ee4b84ac.js"><link rel="prefetch" href="/assets/js/160.ff348a84.js"><link rel="prefetch" href="/assets/js/161.b7538baf.js"><link rel="prefetch" href="/assets/js/162.11469046.js"><link rel="prefetch" href="/assets/js/163.44e69a0c.js"><link rel="prefetch" href="/assets/js/164.d2bb5d3a.js"><link rel="prefetch" href="/assets/js/165.27560b96.js"><link rel="prefetch" href="/assets/js/166.117e8700.js"><link rel="prefetch" href="/assets/js/167.d4d66b58.js"><link rel="prefetch" href="/assets/js/168.ce858eaa.js"><link rel="prefetch" href="/assets/js/169.3ec5de06.js"><link rel="prefetch" href="/assets/js/17.43b536a8.js"><link rel="prefetch" href="/assets/js/170.92f5127e.js"><link rel="prefetch" href="/assets/js/171.606d40ef.js"><link rel="prefetch" href="/assets/js/172.625ce15f.js"><link rel="prefetch" href="/assets/js/173.5e6697d8.js"><link rel="prefetch" href="/assets/js/174.e51a5a6c.js"><link rel="prefetch" href="/assets/js/175.462dd123.js"><link rel="prefetch" href="/assets/js/176.71874b7b.js"><link rel="prefetch" href="/assets/js/177.34845a33.js"><link rel="prefetch" href="/assets/js/178.ead338bb.js"><link rel="prefetch" href="/assets/js/18.c9fe1875.js"><link rel="prefetch" href="/assets/js/19.30f6aab2.js"><link rel="prefetch" href="/assets/js/2.32996929.js"><link rel="prefetch" href="/assets/js/20.32aa0a7c.js"><link rel="prefetch" href="/assets/js/21.e1e2078c.js"><link rel="prefetch" href="/assets/js/22.03ec178c.js"><link rel="prefetch" href="/assets/js/23.0c6c7ab5.js"><link rel="prefetch" href="/assets/js/24.022b154f.js"><link rel="prefetch" href="/assets/js/25.e68e92ab.js"><link rel="prefetch" href="/assets/js/26.e9c66eb3.js"><link rel="prefetch" href="/assets/js/27.267c7302.js"><link rel="prefetch" href="/assets/js/28.397d3c16.js"><link rel="prefetch" href="/assets/js/29.14ac2ba2.js"><link rel="prefetch" href="/assets/js/3.861d632f.js"><link rel="prefetch" href="/assets/js/30.a22b9199.js"><link rel="prefetch" href="/assets/js/31.14ecc9e8.js"><link rel="prefetch" href="/assets/js/32.3872c91a.js"><link rel="prefetch" href="/assets/js/33.870dcec0.js"><link rel="prefetch" href="/assets/js/34.a92e2af5.js"><link rel="prefetch" href="/assets/js/35.f6db6921.js"><link rel="prefetch" href="/assets/js/36.9953e0f5.js"><link rel="prefetch" href="/assets/js/37.06b970f7.js"><link rel="prefetch" href="/assets/js/38.3aee502a.js"><link rel="prefetch" href="/assets/js/39.81b7c534.js"><link rel="prefetch" href="/assets/js/4.c017cd8d.js"><link rel="prefetch" href="/assets/js/40.c373993a.js"><link rel="prefetch" href="/assets/js/41.91ff6d3b.js"><link rel="prefetch" href="/assets/js/42.1b2374e7.js"><link rel="prefetch" href="/assets/js/43.979c2850.js"><link rel="prefetch" href="/assets/js/44.d741dfff.js"><link rel="prefetch" href="/assets/js/45.5d4adb7f.js"><link rel="prefetch" href="/assets/js/46.82e98b02.js"><link rel="prefetch" href="/assets/js/47.10ac1d20.js"><link rel="prefetch" href="/assets/js/48.e7d7b613.js"><link rel="prefetch" href="/assets/js/49.b92dc244.js"><link rel="prefetch" href="/assets/js/50.1760a6f6.js"><link rel="prefetch" href="/assets/js/51.91a69958.js"><link rel="prefetch" href="/assets/js/52.a3eec390.js"><link rel="prefetch" href="/assets/js/53.9c030876.js"><link rel="prefetch" href="/assets/js/54.cf970f3a.js"><link rel="prefetch" href="/assets/js/55.0358dd6d.js"><link rel="prefetch" href="/assets/js/56.6ae5be9f.js"><link rel="prefetch" href="/assets/js/57.6fb119dc.js"><link rel="prefetch" href="/assets/js/58.11722b17.js"><link rel="prefetch" href="/assets/js/59.5d5dfc23.js"><link rel="prefetch" href="/assets/js/6.48691825.js"><link rel="prefetch" href="/assets/js/60.c8a7da06.js"><link rel="prefetch" href="/assets/js/61.eb0d543a.js"><link rel="prefetch" href="/assets/js/62.09575762.js"><link rel="prefetch" href="/assets/js/63.63c5ca72.js"><link rel="prefetch" href="/assets/js/64.f520739b.js"><link rel="prefetch" href="/assets/js/65.1181c03a.js"><link rel="prefetch" href="/assets/js/66.211267c8.js"><link rel="prefetch" href="/assets/js/67.5937bdae.js"><link rel="prefetch" href="/assets/js/68.7e3428d9.js"><link rel="prefetch" href="/assets/js/69.4c490b51.js"><link rel="prefetch" href="/assets/js/7.fc51e813.js"><link rel="prefetch" href="/assets/js/70.735f4f48.js"><link rel="prefetch" href="/assets/js/71.95c939cf.js"><link rel="prefetch" href="/assets/js/72.29ecba3e.js"><link rel="prefetch" href="/assets/js/73.9cd18673.js"><link rel="prefetch" href="/assets/js/74.124dc13e.js"><link rel="prefetch" href="/assets/js/75.e9c146d4.js"><link rel="prefetch" href="/assets/js/76.37bad6a1.js"><link rel="prefetch" href="/assets/js/77.499f6399.js"><link rel="prefetch" href="/assets/js/78.dfccd425.js"><link rel="prefetch" href="/assets/js/79.cae909e5.js"><link rel="prefetch" href="/assets/js/8.ea14b932.js"><link rel="prefetch" href="/assets/js/80.67ad4eca.js"><link rel="prefetch" href="/assets/js/81.b1c05087.js"><link rel="prefetch" href="/assets/js/82.a93dce30.js"><link rel="prefetch" href="/assets/js/83.caf226b0.js"><link rel="prefetch" href="/assets/js/84.a644753c.js"><link rel="prefetch" href="/assets/js/85.2934a449.js"><link rel="prefetch" href="/assets/js/86.1b71127b.js"><link rel="prefetch" href="/assets/js/87.2f9e7f90.js"><link rel="prefetch" href="/assets/js/88.9d08ddcd.js"><link rel="prefetch" href="/assets/js/89.67b9f913.js"><link rel="prefetch" href="/assets/js/9.255d17a5.js"><link rel="prefetch" href="/assets/js/90.916a8ddc.js"><link rel="prefetch" href="/assets/js/91.ec7bc170.js"><link rel="prefetch" href="/assets/js/92.7afcb301.js"><link rel="prefetch" href="/assets/js/93.1aa3b843.js"><link rel="prefetch" href="/assets/js/94.0a2e8d28.js"><link rel="prefetch" href="/assets/js/95.036ad44f.js"><link rel="prefetch" href="/assets/js/96.6f0db31f.js"><link rel="prefetch" href="/assets/js/97.feb321e2.js"><link rel="prefetch" href="/assets/js/98.f489934b.js"><link rel="prefetch" href="/assets/js/99.883e3955.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9d0e5d79.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Northboat Blog" class="logo"> <span class="site-name can-hide">Northboat Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/lib/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link router-link-active">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/prog/" class="nav-link">
+  Programming
+</a></li><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Math
+</a></li><li class="dropdown-item"><!----> <a href="/cs/is/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/ml/" class="nav-link">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/lib/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link router-link-active">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/prog/" class="nav-link">
+  Programming
+</a></li><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Math
+</a></li><li class="dropdown-item"><!----> <a href="/cs/is/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/ml/" class="nav-link">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法设计与分析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>代码实现</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>力扣算法笔记</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>人工智能算法</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/algo/code/ai-grid-world.html" class="sidebar-link">网格世界的值迭代和 Q-Learning</a></li><li><a href="/dev/algo/code/ai-tic-tac-toe.html" aria-current="page" class="active sidebar-link">极小极大搜索的井字棋</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/ai-tic-tac-toe.html#核心实现" class="sidebar-link">核心实现</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/ai-tic-tac-toe.html#极小极大搜索" class="sidebar-link">极小极大搜索</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/ai-tic-tac-toe.html#评估方法" class="sidebar-link">评估方法</a></li></ul></li><li class="sidebar-sub-header"><a href="/dev/algo/code/ai-tic-tac-toe.html#功能实现" class="sidebar-link">功能实现</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/ai-tic-tac-toe.html#选手落子" class="sidebar-link">选手落子</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/ai-tic-tac-toe.html#输入函数" class="sidebar-link">输入函数</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/ai-tic-tac-toe.html#判断功能" class="sidebar-link">判断功能</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/ai-tic-tac-toe.html#初始化" class="sidebar-link">初始化</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/ai-tic-tac-toe.html#打印棋盘" class="sidebar-link">打印棋盘</a></li></ul></li><li class="sidebar-sub-header"><a href="/dev/algo/code/ai-tic-tac-toe.html#完整代码" class="sidebar-link">完整代码</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>数据结构算法</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><blockquote><p>Tic-Tac-Toe</p> <ul><li>MinimaxSearch算法</li> <li>C语言实现</li></ul> <p>最深只有9层：has been solved</p> <p>不得不说这是一个无聊的游戏：先落子者随便下不会输，后落子者占据中心后随便下不会输</p></blockquote> <h2 id="核心实现">核心实现</h2> <h3 id="极小极大搜索">极小极大搜索</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>//极小极大搜索
+int minimaxSearch(int depth){	//传入当前深度
+	int value = 0;
+	//初始化value，man最差情况为min 
+	if (player == MAN) value = INT_MIN;
+	//初始化ai value，最差情况为max 
+	if (player == AI) value = INT_MAX;
+	//如果游戏结束或深度耗尽，直接返回估值
+	if (isEnd() != 0 || depth == MAXDEPTH){
+		return evaluate();
+	}
+
+	for (int i = 0; i &lt; ROW; i++){
+		for (int j = 0; j &lt; COL; j++){
+			//遍历可以落子的点
+			//planing过程，假设落子，扩展下一层搜索 
+			if (board[i][j] == 0){
+				//若当前为man落子
+				if (player == MAN){
+					//落子当前空位，判定空位已被占 
+					board[i][j] = MAN;
+					//切换选手 
+					player = AI;
+					//递归调用
+					int nextValue = minimaxSearch(depth + 1);
+					//切回当前选手 
+					player = MAN;
+					//此时落子手为人，为max节点，要求下一值大于当前值继续行动 
+					if (value &lt; nextValue){
+						value = nextValue;
+						if (depth == curDepth){
+							bestPos.x = i;
+							bestPos.y = j;
+						}
+					}
+				}else if (player == AI){	//若当前为ai落子
+					board[i][j] = AI;
+					//切换选手 
+					player = MAN;
+					int nextValue = minimaxSearch(depth + 1);
+					player = AI;
+					//此时落子手为ai，为min节点，要求下一值小于当前值继续行动 
+					if (value &gt; nextValue){
+						value = nextValue;
+						if (depth == curDepth){
+							bestPos.x = i;
+							bestPos.y = j;
+						}
+					}
+				}
+				//重置ij状态，寻找下一空位 
+				board[i][j] = 0;
+			}
+		}
+	}
+	//返回本层值，人赢为极大值，ai赢为极小值 
+	return value;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br></div></div><h3 id="评估方法">评估方法</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>//评估方法
+int evaluate(){
+	//isEnd判断是谁赢了，1则人，0则平，-1则ai 
+	//MAN=1, AI=-1
+	int value = isEnd();
+	//若人赢了，返回最大值 
+	if (value == MAN) return INT_MAX;
+	//若AI赢了返回最小值 
+	if (value == AI) return INT_MIN;
+	//否则返回0，即和棋 
+	return value;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h2 id="功能实现">功能实现</h2> <h3 id="选手落子">选手落子</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>//ai落子 
+void ai_play(){
+	minimaxSearch(curDepth);
+	board[bestPos.x][bestPos.y] = AI;
+	curDepth++;
+	player = MAN;
+}
+
+//玩家落子
+void man_play(int x, int y){
+	board[x][y] = MAN;
+	curDepth++;
+	player = AI;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h3 id="输入函数">输入函数</h3> <p>一个回合，人先落子，ai跟着落子</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>//输入坐标
+bool drop(){
+	while(true){
+		char c = _getch();
+		if (!gameover){
+			if (c &gt;= '1' &amp;&amp; c &lt;= '9'){
+				int posNum = c - '1';
+				if(isFilled(posNum)){
+					cout &lt;&lt; &quot;该点已经落子, 请重新选择\n\n&quot;;
+					continue;
+				}
+				int x = posNum / 3;
+				int y = posNum % 3;
+				man_play(x, y);
+				if (isEnd() == 0 &amp;&amp; curDepth &lt;= 8){
+					ai_play();
+					//cout &lt;&lt; curDepth &lt;&lt; endl;
+                      //当ai落子后深度达到9说明游戏已结束，但有可能未分胜负
+					if (isEnd() != 0 || curDepth == MAXDEPTH){
+						//cout &lt;&lt; &quot;hahaha&quot;;
+						gameover = true;
+					}
+				}else{
+					//cout &lt;&lt; &quot;hahaha&quot;;
+					gameover = true;
+				}
+				return false;
+			}
+		}else{
+			if (c == 'r' || c == 'R'){
+				init();
+				return false;
+			}
+			return true;
+		}
+		if (c == 'q' || c == 'Q'){
+			return true;
+		}
+		cout &lt;&lt; &quot;\n输入不合规范, 请重新输入, 若想退出程序请输入Q\n&quot;;
+	}
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br></div></div><h3 id="判断功能">判断功能</h3> <h4 id="判断是否落子">判断是否落子</h4> <div class="language-c line-numbers-mode"><pre class="language-text"><code>//判断该点是否落子
+bool isFilled(int pos){
+	int x = pos / 3;
+	int y = pos % 3;
+	if(board[x][y] != 0){
+		return true;
+	}
+	return false;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h4 id="判断游戏是否结束">判断游戏是否结束</h4> <div class="language-c line-numbers-mode"><pre class="language-text"><code>//判断是否结束，即有没有三个连着的同方落子，并返回count/3
+//ai填充的是-1，man填充的是1，若以ai结束（ai胜利），将返回-1；若以man结束，则返回1
+//若游戏未结束，返回0
+int isEnd(){
+	int i, j;
+	int count;
+	for (i = 0; i &lt; ROW; i++){   //检查横着的每行是否有三个连着 
+		count = 0;
+		for (j = 0; j &lt; COL; j++)
+			count += board[i][j];
+		if (count == 3 || count == -3)
+			return count / 3;
+	}
+	for (j = 0; j &lt; COL; j++){   //检查竖着的每列是否有三个连着 
+		count = 0;
+		for (i = 0; i &lt; ROW; i++){
+			count += board[i][j];
+		}
+		if (count == 3 || count == -3){
+			return count / 3;
+		}	
+	}
+	
+	//检查两个对角线是否三个连着 
+	count = board[0][0] + board[1][1] + board[2][2];
+	if (count == 3 || count == -3){
+		return count / 3;
+	}
+		
+	count = board[0][2] + board[1][1] + board[2][0];
+	if (count == 3 || count == -3){
+		return count / 3;
+	}	
+	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div><h4 id="判断获胜信息">判断获胜信息</h4> <p>并打印显示</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>//判断获胜信息 
+void win(){
+	if (gameover){
+		if (isEnd() == MAN){
+			cout &lt;&lt; &quot;游戏结束, 玩家胜利!\n\n&quot;;
+		}else if (isEnd() == AI){
+			cout &lt;&lt; &quot;游戏结束, 电脑胜利捏\n\n&quot;;
+		}else{
+			cout &lt;&lt; &quot;游戏结束, 平局\n\n&quot;;
+		}
+		cout &lt;&lt; &quot;按R键重开, 按任意键退出游戏\n\n游戏结果\n&quot;;
+	}
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="初始化">初始化</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>//玩家编号
+#define MAN 1
+#define AI -1
+
+//搜索深度
+#define MAXDEPTH 9
+
+//棋盘行列
+#define ROW 3
+#define COL 3
+
+//棋盘
+int board[3][3] = {{0,0,0}, {0,0,0}, {0,0,0}};
+//默认玩家先手
+int player;
+//当前最佳落子位置 
+Pos bestPos;
+//当前搜索深度
+int curDepth;
+//游戏是否结束
+bool gameover;
+
+//初始化游戏：棋盘、先行玩家、搜索深度(0)、游戏是否结束(false)
+void init(){
+	cout &lt;&lt; &quot;准备初始化棋盘，在任意过程中按 Q/q 可退出程序\n使用数字 1-9 选择落子方位，按从左往右从上往下的顺序递增\n如左上角为 1，中间为 5，右下角为 9\n&quot;;
+	for (int i = 0; i &lt; COL; i++){
+		for (int j = 0; j &lt; ROW; j++){
+			board[i][j] = 0;
+		}
+	}
+	//谁先走并设置搜索深度
+	if(ai_first()){
+         //若ai先手，深度+1
+		curDepth = 1;
+	}else{
+		curDepth = 0;
+	}
+	//切换玩家落子
+	player = MAN;
+	//游戏未结束
+	gameover = false;
+	
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br></div></div><div class="language-c line-numbers-mode"><pre class="language-text"><code>bool ai_first(){	
+	cout &lt;&lt; &quot;\nAI先行? y/n\n\n&quot;;
+	while(true){
+		char c = _getch();
+		if(c == 'y' || c=='Y'){
+			ai_play();
+			cout &lt;&lt; &quot;\n棋局开始，请落子\n&quot;;
+			return true;
+		}
+		if(c == 'n' || c == 'N'){
+			cout &lt;&lt; &quot;\n棋局开始，请落子\n&quot;;
+			return false;
+		}
+		cout &lt;&lt; &quot;未能识别的字符\n&quot;;
+	}
+	
+} 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h3 id="打印棋盘">打印棋盘</h3> <div class="language-c line-numbers-mode"><pre class="language-text"><code>//打印棋盘，玩家为 O，ai为X
+void printBoard(){
+	int i, j;
+	for (i = 0; i &lt; ROW; i++){
+		cout &lt;&lt; &quot;-------------\n&quot;;
+		for (j = 0; j &lt; COL; j++){
+			if (board[i][j] == AI){
+				cout &lt;&lt; &quot;| X &quot;;
+			}else if (board[i][j] == MAN){
+				cout &lt;&lt; &quot;| O &quot;;
+			}else{
+				cout &lt;&lt; &quot;|   &quot;;
+			}
+		}
+		cout &lt;&lt; &quot;|\n&quot;;
+	}
+	cout &lt;&lt; &quot;-------------\n&quot;;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><h2 id="完整代码">完整代码</h2> <p><a href="https://github.com/northboat/Algo" target="_blank" rel="noopener noreferrer">northboat/Algo: 算法代码实现 (github.com)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/dev/algo/code/ai-grid-world.html" class="prev">
+        网格世界的值迭代和 Q-Learning
+      </a></span> <span class="next"><a href="/dev/algo/code/data-structure-design.html">
+        数据结构实现
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/song/aries.aac" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:44px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/img/error.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/img/error.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>白羊</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>northboat</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div><!----><div class="RibbonAnimation"></div><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:99;" data-v-248d85d6></canvas></div></div></div>
+    <script src="/assets/js/app.830f5b6e.js" defer></script><script src="/assets/js/5.7032fbc8.js" defer></script><script src="/assets/js/146.10d42178.js" defer></script>
+  </body>
+</html>

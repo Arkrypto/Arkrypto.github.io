@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Docker 进阶 | Northboat Blog</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    <link rel="icon" href="/img/leaf.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="片刻寧靜">
+    
+    <link rel="preload" href="/assets/css/0.styles.9d0e5d79.css" as="style"><link rel="preload" href="/assets/js/app.830f5b6e.js" as="script"><link rel="preload" href="/assets/js/5.7032fbc8.js" as="script"><link rel="preload" href="/assets/js/167.d4d66b58.js" as="script"><link rel="prefetch" href="/assets/js/10.036e53d7.js"><link rel="prefetch" href="/assets/js/100.76087af8.js"><link rel="prefetch" href="/assets/js/101.fe3ec1f3.js"><link rel="prefetch" href="/assets/js/102.767e9253.js"><link rel="prefetch" href="/assets/js/103.31da3d36.js"><link rel="prefetch" href="/assets/js/104.156b8258.js"><link rel="prefetch" href="/assets/js/105.263e02cf.js"><link rel="prefetch" href="/assets/js/106.851e7cf9.js"><link rel="prefetch" href="/assets/js/107.6e113532.js"><link rel="prefetch" href="/assets/js/108.b2b7b00d.js"><link rel="prefetch" href="/assets/js/109.568ca258.js"><link rel="prefetch" href="/assets/js/11.a530edee.js"><link rel="prefetch" href="/assets/js/110.0e71b740.js"><link rel="prefetch" href="/assets/js/111.af082324.js"><link rel="prefetch" href="/assets/js/112.c2810cbf.js"><link rel="prefetch" href="/assets/js/113.6d9cd29c.js"><link rel="prefetch" href="/assets/js/114.5e57c3d0.js"><link rel="prefetch" href="/assets/js/115.c7c7d119.js"><link rel="prefetch" href="/assets/js/116.137b07df.js"><link rel="prefetch" href="/assets/js/117.034d8850.js"><link rel="prefetch" href="/assets/js/118.a9b4190c.js"><link rel="prefetch" href="/assets/js/119.2f9e0d25.js"><link rel="prefetch" href="/assets/js/12.da932cee.js"><link rel="prefetch" href="/assets/js/120.414d2b0b.js"><link rel="prefetch" href="/assets/js/121.cdf9934c.js"><link rel="prefetch" href="/assets/js/122.97f6e25d.js"><link rel="prefetch" href="/assets/js/123.8a3dbc06.js"><link rel="prefetch" href="/assets/js/124.3647615f.js"><link rel="prefetch" href="/assets/js/125.c45bf667.js"><link rel="prefetch" href="/assets/js/126.46c7624b.js"><link rel="prefetch" href="/assets/js/127.1493df06.js"><link rel="prefetch" href="/assets/js/128.584b874d.js"><link rel="prefetch" href="/assets/js/129.360732c6.js"><link rel="prefetch" href="/assets/js/13.ae3008d2.js"><link rel="prefetch" href="/assets/js/130.02f568f2.js"><link rel="prefetch" href="/assets/js/131.96c1647c.js"><link rel="prefetch" href="/assets/js/132.2f776723.js"><link rel="prefetch" href="/assets/js/133.e74ee5b3.js"><link rel="prefetch" href="/assets/js/134.87507b09.js"><link rel="prefetch" href="/assets/js/135.105a5eff.js"><link rel="prefetch" href="/assets/js/136.b1d7cf85.js"><link rel="prefetch" href="/assets/js/137.bd7fc0e9.js"><link rel="prefetch" href="/assets/js/138.7b60a194.js"><link rel="prefetch" href="/assets/js/139.4859ccd3.js"><link rel="prefetch" href="/assets/js/14.8d2ed4dc.js"><link rel="prefetch" href="/assets/js/140.ddff7744.js"><link rel="prefetch" href="/assets/js/141.e7e637c4.js"><link rel="prefetch" href="/assets/js/142.3810539d.js"><link rel="prefetch" href="/assets/js/143.68d2a50c.js"><link rel="prefetch" href="/assets/js/144.4964bec5.js"><link rel="prefetch" href="/assets/js/145.608a22de.js"><link rel="prefetch" href="/assets/js/146.10d42178.js"><link rel="prefetch" href="/assets/js/147.94da1738.js"><link rel="prefetch" href="/assets/js/148.398aed17.js"><link rel="prefetch" href="/assets/js/149.3dc3fa3c.js"><link rel="prefetch" href="/assets/js/15.1e3335b1.js"><link rel="prefetch" href="/assets/js/150.3563332f.js"><link rel="prefetch" href="/assets/js/151.e0ecce27.js"><link rel="prefetch" href="/assets/js/152.757fd025.js"><link rel="prefetch" href="/assets/js/153.004e9f0f.js"><link rel="prefetch" href="/assets/js/154.5a48bde9.js"><link rel="prefetch" href="/assets/js/155.a833cfc3.js"><link rel="prefetch" href="/assets/js/156.53eeeb1c.js"><link rel="prefetch" href="/assets/js/157.71f778dc.js"><link rel="prefetch" href="/assets/js/158.7ca76f37.js"><link rel="prefetch" href="/assets/js/159.42aea397.js"><link rel="prefetch" href="/assets/js/16.ee4b84ac.js"><link rel="prefetch" href="/assets/js/160.ff348a84.js"><link rel="prefetch" href="/assets/js/161.b7538baf.js"><link rel="prefetch" href="/assets/js/162.11469046.js"><link rel="prefetch" href="/assets/js/163.44e69a0c.js"><link rel="prefetch" href="/assets/js/164.d2bb5d3a.js"><link rel="prefetch" href="/assets/js/165.27560b96.js"><link rel="prefetch" href="/assets/js/166.117e8700.js"><link rel="prefetch" href="/assets/js/168.ce858eaa.js"><link rel="prefetch" href="/assets/js/169.3ec5de06.js"><link rel="prefetch" href="/assets/js/17.43b536a8.js"><link rel="prefetch" href="/assets/js/170.92f5127e.js"><link rel="prefetch" href="/assets/js/171.606d40ef.js"><link rel="prefetch" href="/assets/js/172.625ce15f.js"><link rel="prefetch" href="/assets/js/173.5e6697d8.js"><link rel="prefetch" href="/assets/js/174.e51a5a6c.js"><link rel="prefetch" href="/assets/js/175.462dd123.js"><link rel="prefetch" href="/assets/js/176.71874b7b.js"><link rel="prefetch" href="/assets/js/177.34845a33.js"><link rel="prefetch" href="/assets/js/178.ead338bb.js"><link rel="prefetch" href="/assets/js/18.c9fe1875.js"><link rel="prefetch" href="/assets/js/19.30f6aab2.js"><link rel="prefetch" href="/assets/js/2.32996929.js"><link rel="prefetch" href="/assets/js/20.32aa0a7c.js"><link rel="prefetch" href="/assets/js/21.e1e2078c.js"><link rel="prefetch" href="/assets/js/22.03ec178c.js"><link rel="prefetch" href="/assets/js/23.0c6c7ab5.js"><link rel="prefetch" href="/assets/js/24.022b154f.js"><link rel="prefetch" href="/assets/js/25.e68e92ab.js"><link rel="prefetch" href="/assets/js/26.e9c66eb3.js"><link rel="prefetch" href="/assets/js/27.267c7302.js"><link rel="prefetch" href="/assets/js/28.397d3c16.js"><link rel="prefetch" href="/assets/js/29.14ac2ba2.js"><link rel="prefetch" href="/assets/js/3.861d632f.js"><link rel="prefetch" href="/assets/js/30.a22b9199.js"><link rel="prefetch" href="/assets/js/31.14ecc9e8.js"><link rel="prefetch" href="/assets/js/32.3872c91a.js"><link rel="prefetch" href="/assets/js/33.870dcec0.js"><link rel="prefetch" href="/assets/js/34.a92e2af5.js"><link rel="prefetch" href="/assets/js/35.f6db6921.js"><link rel="prefetch" href="/assets/js/36.9953e0f5.js"><link rel="prefetch" href="/assets/js/37.06b970f7.js"><link rel="prefetch" href="/assets/js/38.3aee502a.js"><link rel="prefetch" href="/assets/js/39.81b7c534.js"><link rel="prefetch" href="/assets/js/4.c017cd8d.js"><link rel="prefetch" href="/assets/js/40.c373993a.js"><link rel="prefetch" href="/assets/js/41.91ff6d3b.js"><link rel="prefetch" href="/assets/js/42.1b2374e7.js"><link rel="prefetch" href="/assets/js/43.979c2850.js"><link rel="prefetch" href="/assets/js/44.d741dfff.js"><link rel="prefetch" href="/assets/js/45.5d4adb7f.js"><link rel="prefetch" href="/assets/js/46.82e98b02.js"><link rel="prefetch" href="/assets/js/47.10ac1d20.js"><link rel="prefetch" href="/assets/js/48.e7d7b613.js"><link rel="prefetch" href="/assets/js/49.b92dc244.js"><link rel="prefetch" href="/assets/js/50.1760a6f6.js"><link rel="prefetch" href="/assets/js/51.91a69958.js"><link rel="prefetch" href="/assets/js/52.a3eec390.js"><link rel="prefetch" href="/assets/js/53.9c030876.js"><link rel="prefetch" href="/assets/js/54.cf970f3a.js"><link rel="prefetch" href="/assets/js/55.0358dd6d.js"><link rel="prefetch" href="/assets/js/56.6ae5be9f.js"><link rel="prefetch" href="/assets/js/57.6fb119dc.js"><link rel="prefetch" href="/assets/js/58.11722b17.js"><link rel="prefetch" href="/assets/js/59.5d5dfc23.js"><link rel="prefetch" href="/assets/js/6.48691825.js"><link rel="prefetch" href="/assets/js/60.c8a7da06.js"><link rel="prefetch" href="/assets/js/61.eb0d543a.js"><link rel="prefetch" href="/assets/js/62.09575762.js"><link rel="prefetch" href="/assets/js/63.63c5ca72.js"><link rel="prefetch" href="/assets/js/64.f520739b.js"><link rel="prefetch" href="/assets/js/65.1181c03a.js"><link rel="prefetch" href="/assets/js/66.211267c8.js"><link rel="prefetch" href="/assets/js/67.5937bdae.js"><link rel="prefetch" href="/assets/js/68.7e3428d9.js"><link rel="prefetch" href="/assets/js/69.4c490b51.js"><link rel="prefetch" href="/assets/js/7.fc51e813.js"><link rel="prefetch" href="/assets/js/70.735f4f48.js"><link rel="prefetch" href="/assets/js/71.95c939cf.js"><link rel="prefetch" href="/assets/js/72.29ecba3e.js"><link rel="prefetch" href="/assets/js/73.9cd18673.js"><link rel="prefetch" href="/assets/js/74.124dc13e.js"><link rel="prefetch" href="/assets/js/75.e9c146d4.js"><link rel="prefetch" href="/assets/js/76.37bad6a1.js"><link rel="prefetch" href="/assets/js/77.499f6399.js"><link rel="prefetch" href="/assets/js/78.dfccd425.js"><link rel="prefetch" href="/assets/js/79.cae909e5.js"><link rel="prefetch" href="/assets/js/8.ea14b932.js"><link rel="prefetch" href="/assets/js/80.67ad4eca.js"><link rel="prefetch" href="/assets/js/81.b1c05087.js"><link rel="prefetch" href="/assets/js/82.a93dce30.js"><link rel="prefetch" href="/assets/js/83.caf226b0.js"><link rel="prefetch" href="/assets/js/84.a644753c.js"><link rel="prefetch" href="/assets/js/85.2934a449.js"><link rel="prefetch" href="/assets/js/86.1b71127b.js"><link rel="prefetch" href="/assets/js/87.2f9e7f90.js"><link rel="prefetch" href="/assets/js/88.9d08ddcd.js"><link rel="prefetch" href="/assets/js/89.67b9f913.js"><link rel="prefetch" href="/assets/js/9.255d17a5.js"><link rel="prefetch" href="/assets/js/90.916a8ddc.js"><link rel="prefetch" href="/assets/js/91.ec7bc170.js"><link rel="prefetch" href="/assets/js/92.7afcb301.js"><link rel="prefetch" href="/assets/js/93.1aa3b843.js"><link rel="prefetch" href="/assets/js/94.0a2e8d28.js"><link rel="prefetch" href="/assets/js/95.036ad44f.js"><link rel="prefetch" href="/assets/js/96.6f0db31f.js"><link rel="prefetch" href="/assets/js/97.feb321e2.js"><link rel="prefetch" href="/assets/js/98.f489934b.js"><link rel="prefetch" href="/assets/js/99.883e3955.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9d0e5d79.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Northboat Blog" class="logo"> <span class="site-name can-hide">Northboat Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/lib/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link router-link-active">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/prog/" class="nav-link">
+  Programming
+</a></li><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Math
+</a></li><li class="dropdown-item"><!----> <a href="/cs/is/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/ml/" class="nav-link">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/lib/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link router-link-active">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/prog/" class="nav-link">
+  Programming
+</a></li><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Math
+</a></li><li class="dropdown-item"><!----> <a href="/cs/is/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/ml/" class="nav-link">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Linux</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工具</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>中间件</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>Docker</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/ops/mid/middleware-docker-basic.html" class="sidebar-link">Docker 基础</a></li><li><a href="/dev/ops/mid/middleware-docker-high.html" aria-current="page" class="active sidebar-link">Docker 进阶</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/ops/mid/middleware-docker-high.html#进阶命令" class="sidebar-link">进阶命令</a></li><li class="sidebar-sub-header"><a href="/dev/ops/mid/middleware-docker-high.html#docker" class="sidebar-link">Docker+</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/ops/mid/middleware-docker-high.html#mysql" class="sidebar-link">MySQL</a></li><li class="sidebar-sub-header"><a href="/dev/ops/mid/middleware-docker-high.html#tomcat-部署-war-包" class="sidebar-link">Tomcat 部署 war 包</a></li><li class="sidebar-sub-header"><a href="/dev/ops/mid/middleware-docker-high.html#projectordocker" class="sidebar-link">ProjectorDocker</a></li></ul></li><li class="sidebar-sub-header"><a href="/dev/ops/mid/middleware-docker-high.html#docker-api-开发" class="sidebar-link">Docker API 开发</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/ops/mid/middleware-docker-high.html#dockerrunner" class="sidebar-link">DockerRunner</a></li><li class="sidebar-sub-header"><a href="/dev/ops/mid/middleware-docker-high.html#判题测试" class="sidebar-link">判题测试</a></li><li class="sidebar-sub-header"><a href="/dev/ops/mid/middleware-docker-high.html#测试用例" class="sidebar-link">测试用例</a></li></ul></li></ul></li></ul></section></li><li><a href="/dev/ops/mid/middleware-nginx.html" class="sidebar-link">Nginx</a></li><li><a href="/dev/ops/mid/middleware-mysql.html" class="sidebar-link">MySQL</a></li><li><a href="/dev/ops/mid/middleware-redis.html" class="sidebar-link">Redis</a></li><li><a href="/dev/ops/mid/middleware-rabbitmq.html" class="sidebar-link">RabbitMQ</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="进阶命令">进阶命令</h2> <p>挂载数据卷</p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>docker run -v /myDataVolume:/containerVolume 镜像名称
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>拷贝指定文件到指定目录</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker cp 容器名:/containerVolume/  /myDataVolume/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-text"><code>docker cp /myVolume/  容器名:/containerVolume/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>监听容器状态</p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>docker stats --no-stream --format &quot;{}&quot; 容器名
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>--no-stream：不持续输出，即打印当前状态</li> <li>--format：自定义输出格式（json）</li></ul> <p>重连容器</p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>exec -it 容器名 /bin/bash
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>将Web项目挂在tomcat容器内</p> <ul><li>启动 tomcat 容器，将 war 包复制进容器 /usr/local/tomcat/webapps/ 目录即可</li> <li>容器会自动解压war包，然后通过 ip:8080/NEUQHelper 即可访问项目</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>docker cp /java/NEUQHelper.war de9dc1076633:/usr/local/tomcat/webapps/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="docker">Docker+</h2> <h3 id="mysql">MySQL</h3> <p>1、拉取镜像</p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>docker pull mysql:5.7
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>也可指定其他版本</li></ul> <p>2、生成容器</p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>docker run -it --name My-mysql -p 13306:3306 -e MYSQL_ROOT_PASSWORD=123456 84164b03fa2e（镜像id）
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li><p>--name 自定义设置容器名称</p></li> <li><p>-p 后为映射端口 从linux上的 13306 映射为容器中的 3306端口</p></li> <li><p>-e 后设置 mysql 登录密码</p></li></ul> <p>3、连接容器</p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>docker exec -it 064c6bea326d /bin/bash
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>4、登录</p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>mysql -h localhost -u root -p
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>输入密码，登录成功</li></ul> <h3 id="tomcat-部署-war-包">Tomcat 部署 war 包</h3> <p>1、拉取镜像</p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>docker pull tomcat
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>2、生成容器</p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>docker run -it -d --name mycat -p 8080:8080 tomcat
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li><p>--name 自定义设置容器名称</p></li> <li><p>-d 后台启动</p></li> <li><p>-p 设置端口（8080）</p></li></ul> <p>3、本地访问tomcat</p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>localhost:8080
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>4、Issue</p> <p>通常情况下，8080端口访问的首页找不到，即显示404，原因是tomcat容器中默认ROOT目录在<code>webapps.dist</code>文件夹中，而<code>webapps</code>目录为空，但配置文件又约定在 <code>webapps/ROOT/</code>中去找首页<code>index.html</code>，于是报错</p> <ul><li>其实他这样是为了方便给你放自己的网页</li></ul> <p>解决办法：</p> <p>进入tomcat容器</p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>docker exec -it mycat /bin/bash
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>将<code>webapps.dist</code>目录名修改为<code>webapps</code></p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>mv webapps webapps1
+mv webapps.dist webapps
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>ctrl+p+q退出容器，重新访问8080端口</p> <h3 id="projectordocker">ProjectorDocker</h3> <p>1、拉取镜像</p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>docker pull projectorimages/projector-idea-c
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>2、运行容器</p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>docker run --rm -p 8887:8887 -it projectorimages/projector-idea-c
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>我尝试挂载一个目录，目录下放了jdk1.8以及一个项目文件，不幸的是，配置jdk1.8后，idea报错无法修改配置，在数据卷中创建项目同样不成功，报错“read only”，即使我设置了读写权限</li></ul> <p>3、通过ip:8887访问idea</p> <p>4、将容器内数据拷贝</p> <div class="language-bash line-numbers-mode"><pre class="language-text"><code>docker cp 容器名:目录 宿主机目录
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="docker-api-开发">Docker API 开发</h2> <p><a href="https://docs.docker.com/engine/api/" target="_blank" rel="noopener noreferrer">DockerClient API Docs<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <blockquote><p>调用<code>DockerClient API</code>，用Java代码远程创建并使用容器</p></blockquote> <h3 id="dockerrunner">DockerRunner</h3> <p>导包并设置内置属性</p> <div class="language-java line-numbers-mode"><pre class="language-text"><code>package com.docker;
+
+import com.spotify.docker.client.*;
+import com.spotify.docker.client.messages.*;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
+
+public class DockerRunner implements Runner {
+
+    private final String DOCKER_CONTAINER_WORK_DIR = &quot;/usr/codeRun&quot;;
+    private final String getMemory = &quot;sh -c docker stats --no-stream --format \&quot;memory:{{.MemUsage}}\&quot;&quot;;;
+    private Map&lt;Integer, String&gt; imageMap = new HashMap&lt;&gt;();
+    private DockerClient docker;
+    private String id;
+    //private List&lt;Image&gt; Images = new ArrayList&lt;&gt;();
+    private ContainerConfig containerConfig;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>初始化 docker 容器</p> <div class="language-java line-numbers-mode"><pre class="language-text"><code>//初始化
+public long init(int type) {
+
+    long startTime = System.currentTimeMillis();
+    System.out.println(&quot;开始初始化docker&quot;);
+
+    imageMap.put(25695, &quot;hello-world:latest&quot;);
+    imageMap.put(10730, &quot;gcc:7.3&quot;);
+    imageMap.put(20800, &quot;openjdk:8&quot;);
+    imageMap.put(21100, &quot;openjdk:11&quot;);
+    imageMap.put(30114, &quot;golang:1.14&quot;);
+
+    System.out.println(&quot;开始初始化&quot;);
+    try{
+        //初始化docker代理
+        docker = DefaultDockerClient.builder()
+                .uri(URI.create(&quot;https://39.106.160.174:2375&quot;))
+                .dockerCertificates(new DockerCertificates(Paths.get(&quot;src/main/resources/certs&quot;)))
+                .build();
+        System.out.println(&quot;docker_client初始化成功&quot;);
+
+         //记录已有镜像信息
+         /*
+         System.out.println(&quot;开始记录docker_client_images&quot;);
+         Images = docker.listImages();
+         Iterator&lt;Image&gt; i = Images.listIterator();
+         while(i.hasNext()){
+             System.out.println(i.next());
+         }
+         System.out.println(&quot;images记录完毕&quot;);
+         */
+
+         //开始创建容器
+        System.out.println(&quot;开始创建docker容器&quot;);
+        containerConfig = ContainerConfig.builder()
+                 //让容器持续开启
+                .openStdin(true)
+                 //添加卷
+                .addVolume(DOCKER_CONTAINER_WORK_DIR)
+                 //设置docker工作卷
+                .workingDir(DOCKER_CONTAINER_WORK_DIR)
+                .image(imageMap.get(type))
+                .build();
+        ContainerCreation creation = docker.createContainer(containerConfig);
+
+        // 记录容器id，用于之后连接
+        id = creation.id();
+
+        // 打印容器信息
+        final ContainerInfo info = docker.inspectContainer(id);
+        System.out.println(info.toString());
+
+
+        System.out.println(&quot;容器创建完毕&quot;);
+    }catch (Exception e) {
+        e.printStackTrace();
+    }finally {
+        long endTime = System.currentTimeMillis();
+        return endTime - startTime;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br></div></div><p>停止并销毁容器</p> <div class="language-java line-numbers-mode"><pre class="language-text"><code>//停止容器：记录停止时间
+public long kill(){
+	long startTime = System.currentTimeMillis();
+	try{
+        //停止容器
+        docker.stopContainer(id, 0);
+        System.out.println(&quot;停止容器成功&quot;);
+        //移除容器
+        docker.removeContainer(id);
+        System.out.println(&quot;已移除容器&quot;);
+        //关闭docker代理
+        docker.close();
+        System.out.println(&quot;docker代理已关闭&quot;);
+    }catch(Exception e) {
+        e.printStackTrace();
+    }finally{
+        System.out.println(&quot;本次判题结束，正在返回结果...&quot;);
+        long endTime = System.currentTimeMillis();
+        return endTime - startTime;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>覃辉学长的 test 方法</p> <div class="language-java line-numbers-mode"><pre class="language-text"><code>//测试运行
+public HashMap&lt;String, Object&gt; test(int imageType){
+    init(imageType);
+    HashMap&lt;String, Object&gt; res = new HashMap&lt;String, Object&gt;();
+    try{
+        //启动container
+        docker.startContainer(id);
+
+
+        //开始在容器内部执行命令执行
+        System.out.println(&quot;正在执行命令...&quot;);
+
+        //将文件拷贝至容器内部
+        docker.copyToContainer(new java.io.File(&quot;src/main/resources/myCode&quot;).toPath(), id, &quot;/usr/codeRun/&quot;);
+
+
+        //开始执行
+        final String[] command1 = {&quot;javac&quot;, &quot;Solution.java&quot;};
+        ExecCreation execCreation1 = docker.execCreate(
+                id, command1, DockerClient.ExecCreateParam.attachStdout(),
+                DockerClient.ExecCreateParam.attachStderr());
+
+        final String[] command2 = {&quot;java&quot;, &quot;Solution&quot;};
+        ExecCreation execCreation2 = docker.execCreate(
+                id, command2, DockerClient.ExecCreateParam.attachStdout(),
+                DockerClient.ExecCreateParam.attachStderr());
+
+        //获取命令的运行结果
+        final LogStream output1 = docker.execStart(execCreation1.id());
+        final String execOutput1 = output1.readFully();
+        final LogStream output2 = docker.execStart(execCreation2.id());
+        final String execOutput2 = output2.readFully();
+
+        //获取运行状态
+        final ExecState state1 = docker.execInspect(execCreation1.id());
+        final ExecState state2 = docker.execInspect(execCreation2.id());
+
+        //等待运行完成
+        System.out.println(&quot;正在运行...&quot;);
+        while(state1.running()){};
+        while(state2.running()){};
+
+        String ans = execOutput2.substring(0, execOutput2.indexOf('_'));
+        String time = execOutput2.substring(ans.length()+1);
+
+        //将运行结果存于res（map）中返回
+        res.put(&quot;第一条命令的运行结果&quot;, execOutput1);
+        res.put(&quot;第一条命令的返回值&quot;, state1.exitCode());
+        res.put(&quot;第二条命令的运行结果&quot;, ans);
+        res.put(&quot;第二条命令的返回值&quot;, state2.exitCode());
+        res.put(&quot;程序运行时间&quot;, time);
+
+        System.out.println(&quot;执行结束&quot;);
+
+    }catch(Exception e) {
+        e.printStackTrace();
+    }finally {
+        kill();
+    }
+    return res;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br></div></div><p>我的 run 方法</p> <div class="language-java line-numbers-mode"><pre class="language-text"><code>//去除了时间的单位ms（为了累计计算总时间）
+public HashMap&lt;String, Object&gt; run(String[][] commandLine, int imageType, long timeLimit, long memoryLimit){
+    HashMap&lt;String, Object&gt; res = new HashMap&lt;&gt;();
+    res.put(&quot;创建容器时间&quot;, init(imageType) + &quot;ms&quot;);
+    try{
+        //连接container
+        System.out.println(&quot;连接容器&quot;);
+        docker.startContainer(id);
+
+        //将本地文件夹共享至容器内部
+        docker.copyToContainer(new java.io.File
+                (&quot;src/main/resources/myCode&quot;).toPath(), id, &quot;/usr/codeRun/&quot;);
+
+
+        //开始在容器内部执行命令执行
+        //编译java文件
+        //commandLine[0]是编译命令，commandLine[1]是执行命令
+        System.out.println(&quot;开始编译...&quot;);
+        final ExecCreation execCompile = docker.execCreate(
+                id, commandLine[0], DockerClient.ExecCreateParam.attachStdout(),
+                DockerClient.ExecCreateParam.attachStderr());
+        ExecState compileState = docker.execInspect(execCompile.id());
+        //执行编译命令
+        docker.execStart(execCompile.id());
+        while(compileState.running()){};
+        System.out.println(&quot;编译成功&quot;);
+
+
+
+        //编译完成，执行class文件
+        final ExecCreation execCreation = docker.execCreate(
+                id, commandLine[1], DockerClient.ExecCreateParam.attachStdout(),
+                DockerClient.ExecCreateParam.attachStderr());
+
+         //获取命令的运行结果
+        LogStream output = docker.execStart(execCreation.id());
+        String execOutput = output.readFully();
+
+
+
+        //获取运行状态
+        ExecState state = docker.execInspect(execCreation.id());
+
+
+        //等待运行完成
+        System.out.println(&quot;正在运行程序..&quot;);
+
+        while(state.running()){};
+        System.out.println(&quot;运行结束&quot;);
+
+
+        //获取运行结果
+        //String ans = execOutput;
+        String ans = execOutput.substring(0, execOutput.indexOf('_'));
+
+
+        //获取运行时间
+        //String time = execOutput;
+        String time = execOutput.substring(ans.length()+1);
+
+
+        // Inspect container
+        /*
+        final ContainerInfo info = docker.inspectContainer(id);
+        String getMemory = &quot;bash\t-c\tdocker\tstats\t--no-stream&quot;;
+        ExecState state1 =  docker.execInspect(&quot;getMemory&quot;);
+        String memory = state1.toString();
+
+        //获得容器内存占用
+        ContainerStats containerstats = docker.stats(id);
+        MemoryStats memorystats = containerstats.memoryStats();
+        long memory = memorystats.usage()/1024;
+        */
+        //获得内存使用
+        /*
+        TopResults set = docker.topContainer(id);
+        set.processes();
+        long memory = docker.stats(id).memoryStats().usage()/1024;
+        */
+
+        //在容器外，即服务器主机上执行shell命令 docker stats --no-stream --format &quot;memory:{{.MemUsage}}&quot; + 容器id，获取容器内存占用
+        Process pro = Runtime.getRuntime().exec(getMemory + id);
+        BufferedReader buf = new BufferedReader(new InputStreamReader(pro.getInputStream()));
+        StringBuffer mem = new StringBuffer();
+        String str;
+        while ((str = buf.readLine()) != null) {
+            mem.append(str);
+        }
+        String memory = &quot;0MiB&quot;;
+        if(mem.length()!=0){
+            memory = mem.substring(mem.indexOf(&quot;:&quot;), mem.indexOf(&quot;/&quot;));
+        }
+
+
+
+        res.put(&quot;运行结果&quot;, ans);
+        res.put(&quot;运行时间&quot;, time + &quot;ms&quot;);
+        res.put(&quot;内存使用&quot;, memory);
+
+
+        //记录是否超时
+        if(Integer.parseInt(time) &gt; timeLimit) {
+            res.put(&quot;超时&quot;, true);
+        } else{
+            res.put(&quot;超时&quot;, false);
+        }
+
+        if(Integer.parseInt(memory.substring(0, memory.indexOf(&quot;M&quot;))) &gt; memoryLimit){
+            res.put(&quot;超出内存限制&quot;, true);
+        }else{
+            res.put(&quot;超出内存限制&quot;, false);
+        }
+
+
+    }catch(Exception e) {
+        e.printStackTrace();
+    }finally {
+        res.put(&quot;停止容器时间&quot;, kill() + &quot;ms&quot;);
+    }
+    return res;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br></div></div><h3 id="判题测试">判题测试</h3> <div class="language-java line-numbers-mode"><pre class="language-text"><code>package com.docker;
+
+import java.util.HashMap;
+
+// 10730 gcc:7.3 |  20800 openjdk:8 | 21100 openjdk:11 | 30114 golang:1.14
+
+public class RunnerTest {
+    public static void main(String[] args) {
+
+        DockerRunner docker = new DockerRunner();
+        String[][] command1 = {{&quot;javac&quot;, &quot;HelloWorld.java&quot;}, {&quot;java&quot;, &quot;HelloWorld&quot;}};
+        String[][] command2 = {{&quot;gcc&quot;, &quot;main.c&quot;, &quot;-o&quot;, &quot;main&quot;, &quot;main&quot;}};
+        String[][] command3 = {{&quot;javac&quot;, &quot;-d&quot;, &quot;.&quot;, &quot;Solution.java&quot;}, {&quot;java&quot;, &quot;test/Solution&quot;}};
+
+        HashMap&lt;String, Object&gt; res = docker.run(command3,20800, 2, 50);
+
+        System.out.println();
+        for(String str: res.keySet()){
+            if(str == &quot;运行结果&quot;){
+                System.out.println(&quot;\n运行结果：&quot; + res.get(str));
+            }else{
+                System.out.print(str + &quot;:&quot; + res.get(str) + &quot;    &quot;);
+            }
+        }
+        System.out.println(&quot;\nfinished!&quot;);
+
+    }
+}
+
+
+//测试创建、运行、停止时间
+/*
+        long initTime = Integer.parseInt(res.get(&quot;创建容器时间&quot;).toString());
+        long stopTime = Integer.parseInt(res.get(&quot;停止容器时间&quot;).toString());
+        long runningTime = Integer.parseInt(res.get(&quot;运行时间&quot;).toString());
+
+        for (int i = 0; i &lt; 499; i++) {
+            HashMap&lt;String, Object&gt; temp = docker.run(command1, 20800, 0, 252);
+            initTime += Integer.parseInt(temp.get(&quot;创建容器时间&quot;).toString());
+            stopTime += Integer.parseInt(temp.get(&quot;停止容器时间&quot;).toString());
+            runningTime += Integer.parseInt(temp.get(&quot;运行时间&quot;).toString());
+            System.out.println(i+2);
+        }
+        System.out.println(&quot;总创建容器时间：&quot; + initTime + &quot;   总运行时间：&quot; + runningTime + &quot;    总停止容器时间：&quot; + stopTime);
+        System.out.println();
+*/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br></div></div><h3 id="测试用例">测试用例</h3> <p>1、HelloDocker</p> <p><code>HelloDocker.java ——&gt; comandLine1</code></p> <div class="language-java line-numbers-mode"><pre class="language-text"><code>import java.io.BufferedReader;
+
+import java.io.InputStreamReader;
+
+
+public class HelloWorld{
+	public static void main(String[] args){
+
+		long startTime = System.currentTimeMillis();
+
+		int j = 1;
+		for(int i = 1; i &lt; 12000; i++){
+			j *= i;
+		}
+		System.out.println(&quot;Hello Docker!&quot;);		
+
+		long endTime = System.currentTimeMillis();
+		long time = endTime - startTime;
+		System.out.print(&quot;_&quot; + time);
+	}
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>结果</p> <div class="language-shell line-numbers-mode"><pre class="language-text"><code>开始初始化docker
+开始初始化
+01:15:21.302 [main] DEBUG com.spotify.docker.client.DockerCertificates - Generated private key from spec using the 'RSA' algorithm
+01:15:22.596 [main] DEBUG com.spotify.docker.client.DockerConfigReader - Using configfile: C:\Users\NorthBoat\.docker\config.json
+docker_client初始化成功
+开始创建docker容器
+容器创建完毕
+连接容器
+01:15:25.805 [main] INFO com.spotify.docker.client.DefaultDockerClient - Starting container with Id: 4a2bebba027acbebc81faf7451afb481dceeeecfdf8dfe1f2fb0d6af8f86bdc1
+开始编译...
+编译成功
+正在运行程序..
+运行结束
+停止容器成功
+已移除容器
+docker代理已关闭
+本次判题结束，正在返回结果...
+
+超时:false    超出内存限制:false    创建容器时间:5174ms    内存使用:0MiB    运行时间:1ms    停止容器时间:704ms    
+运行结果：
+Hello Docker!
+
+
+finished!
+
+Process finished with exit code 0
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><p>2�m&gt;o�e���E���:K�I+�N	^x<eq><span title="ParseError: KaTeX parse error: Unexpected character: &amp;#x27;&amp;#x27; at position 7: ��xE��̲�_Ə���h�i&gt;�j�…" class="katex-error" style="color:#cc0000;">��xE���_Ə���h�i&gt;�j����w��nt��.ບ�XY�dh� � 9q������־���`E|���-�f9��`����4a����I�ȵ�b'���08�K36W''���!t4�O)v</span></eq>��bXs�&gt;l���VP��%�̧�9]lu�]O��42���,��i���TK+�q��q�(�t3K1�s;�Q�@J���� ?)P8#4߇zͥ���[��{]F�=F5��ǲ�TdV�@�ܘc�i��+�]RO��<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mtext>���</mtext><mi>G</mi><mtext>𵽻</mtext><mo stretchy="false">]</mo><mtext>�</mtext><mi>h</mi><mtext>��</mtext><mi>O</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">z���G𵽻]�h��Os</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord">���</span><span class="mord mathnormal">G</span><span class="mord">𵽻</span><span class="mclose">]</span><span class="mord">�</span><span class="mord mathnormal">h</span><span class="mord">��</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal">s</span></span></span></span></eq>�\Ȳ��dpJƀ��A�tc-���Zkg�0�$�p_�^�zż��r�]6�;����,��0�epd1
+�F�.y��x�N��ͤ��:�yv���,0�&lt;ls�v�J�꣞ ����u[5��ŔW7�:��+��$}F9dV�In�+���95�x�Q�}��<eq><span title="ParseError: KaTeX parse error: Expected &amp;#x27;EOF&amp;#x27;, got &amp;#x27;&amp;&amp;#x27; at position 10: 3�R�-m�5)&amp;̲�3�e!��T���|…" class="katex-error" style="color:#cc0000;">3�R�-m�5)&amp;�3�e!��T���|�#8�')ʴ]��}\��J��&gt;{���&gt;Cmm�lj�pH� ����|���D�����#&lt;������}v��l����&lt;H���.��%]�����\`u�qt�F%�:7`��K�Q����\�[###��V���Bm=�:�h��&gt;F�Α,d��&gt;�����N:橸���0�hCN��]aV7vv</span></eq>�;N{1�<eq><span title="ParseError: KaTeX parse error: Unexpected character: &amp;#x27;&amp;#x27; at position 9: ���4�c��̲�e�YV+�1��A+�" class="katex-error" style="color:#cc0000;">���4�c���e�YV+�1��A+�</span></eq>U��Yƫ��H�E|�@��ē��1$��O+�'d������v���D8򥌾�P�?օCT�*W9&lt;g��|wIuv�%��h��i%H�L��Q�U�CH���PH��A�O�5���I�W7
+��2��&gt;��=J���'�b����,�5�	�k�%���<code>�ڧ#O 3r��e{�Z^�oBC&quot;I�0F�h����b�q�;���8���F7	�yehG�X&lt;�Į��p8 u�5���-�26^;������0;2ɌdW-�!� B���sC����&amp;Wl�E!�</code>��t57orZ��&lt;_ȩl�ur2���ܛ@\�w|�<code>t&gt;K�.�Kk�&lt;&gt;c�-ړq��K�A���䒠�v5^|j�?ռE�D�_� �</code>��pI,Ai�&lt;LvD�,��ǉ�Ƌ�F<code>�8��M+��ws����vKa��&amp;F��O�1�P�����вw!���-��Λc��w@�����	�ՓLɅ��������'� w⑬Ib&quot;�!'����R1R�H�N9#w��U'f�3���{�hmD����ɸ��@Z+�PA2��.	����8�R�cA,B_���T��.���;�3V�b�d��4M�*�l���B� ��:�励�I��E�E��s1��HNA��p��NMT�]���A&amp;�*��ܬ��㗔�'�y �6_�U_�T�;t:���s��u�����f�\y���P�$�g</code>FqҮh��6���|�m�[,67�w��3�)��L�S�8������2���X�����g�UEPIx�����I��~�FnH���`����T����rq�8#�N��|˹M��_t�2�������f1�_�[%��f�	@�X� s$��IȈ��f ��&lt;�\�ok�F��d�..�@bCd�\�����w��rM��A�A|�wo;������y�V ��0����N:&amp;�m�W%�u�Wx�R̤��)�'�09�B�\�n�-
+��g�y $#������ |������1 ��s�UG�TT�&quot;X�K+�p28�-r��b⹟+!�	c��LQ�x�[�Q�la��%I �@H�f���	OG��b��iVER�X���
+��n��S]v�����&quot;'���΍c�CL
+);� �����4F��[&lt;��$���8�]�G?&lt;�1��(�	�n1M7mK�nIw9It,ʳ��]��Ak-��(��VHط��
+��
+ONޏ
+�zM��L�ooz�<eq><span title="ParseError: KaTeX parse error: Unexpected character: &amp;#x27;&amp;#x27; at position 7: �Q[���̲��1B��0щv" class="katex-error" style="color:#cc0000;">�Q[�����1B��0щv</span></eq>��p��6�E��</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/dev/ops/mid/middleware-docker-basic.html" class="prev">
+        Docker 基础
+      </a></span> <span class="next"><a href="/dev/ops/mid/middleware-nginx.html">
+        Nginx
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/song/aries.aac" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:44px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/img/error.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/img/error.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>白羊</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>northboat</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div><!----><div class="RibbonAnimation"></div><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:99;" data-v-248d85d6></canvas></div></div></div>
+    <script src="/assets/js/app.830f5b6e.js" defer></script><script src="/assets/js/5.7032fbc8.js" defer></script><script src="/assets/js/167.d4d66b58.js" defer></script>
+  </body>
+</html>

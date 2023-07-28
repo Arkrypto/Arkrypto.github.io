@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>宽度优先搜索- 分支限界法 | Northboat Blog</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    <link rel="icon" href="/img/leaf.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="片刻寧靜">
+    
+    <link rel="preload" href="/assets/css/0.styles.9d0e5d79.css" as="style"><link rel="preload" href="/assets/js/app.830f5b6e.js" as="script"><link rel="preload" href="/assets/js/5.7032fbc8.js" as="script"><link rel="preload" href="/assets/js/149.3dc3fa3c.js" as="script"><link rel="prefetch" href="/assets/js/10.036e53d7.js"><link rel="prefetch" href="/assets/js/100.76087af8.js"><link rel="prefetch" href="/assets/js/101.fe3ec1f3.js"><link rel="prefetch" href="/assets/js/102.767e9253.js"><link rel="prefetch" href="/assets/js/103.31da3d36.js"><link rel="prefetch" href="/assets/js/104.156b8258.js"><link rel="prefetch" href="/assets/js/105.263e02cf.js"><link rel="prefetch" href="/assets/js/106.851e7cf9.js"><link rel="prefetch" href="/assets/js/107.6e113532.js"><link rel="prefetch" href="/assets/js/108.b2b7b00d.js"><link rel="prefetch" href="/assets/js/109.568ca258.js"><link rel="prefetch" href="/assets/js/11.a530edee.js"><link rel="prefetch" href="/assets/js/110.0e71b740.js"><link rel="prefetch" href="/assets/js/111.af082324.js"><link rel="prefetch" href="/assets/js/112.c2810cbf.js"><link rel="prefetch" href="/assets/js/113.6d9cd29c.js"><link rel="prefetch" href="/assets/js/114.5e57c3d0.js"><link rel="prefetch" href="/assets/js/115.c7c7d119.js"><link rel="prefetch" href="/assets/js/116.137b07df.js"><link rel="prefetch" href="/assets/js/117.034d8850.js"><link rel="prefetch" href="/assets/js/118.a9b4190c.js"><link rel="prefetch" href="/assets/js/119.2f9e0d25.js"><link rel="prefetch" href="/assets/js/12.da932cee.js"><link rel="prefetch" href="/assets/js/120.414d2b0b.js"><link rel="prefetch" href="/assets/js/121.cdf9934c.js"><link rel="prefetch" href="/assets/js/122.97f6e25d.js"><link rel="prefetch" href="/assets/js/123.8a3dbc06.js"><link rel="prefetch" href="/assets/js/124.3647615f.js"><link rel="prefetch" href="/assets/js/125.c45bf667.js"><link rel="prefetch" href="/assets/js/126.46c7624b.js"><link rel="prefetch" href="/assets/js/127.1493df06.js"><link rel="prefetch" href="/assets/js/128.584b874d.js"><link rel="prefetch" href="/assets/js/129.360732c6.js"><link rel="prefetch" href="/assets/js/13.ae3008d2.js"><link rel="prefetch" href="/assets/js/130.02f568f2.js"><link rel="prefetch" href="/assets/js/131.96c1647c.js"><link rel="prefetch" href="/assets/js/132.2f776723.js"><link rel="prefetch" href="/assets/js/133.e74ee5b3.js"><link rel="prefetch" href="/assets/js/134.87507b09.js"><link rel="prefetch" href="/assets/js/135.105a5eff.js"><link rel="prefetch" href="/assets/js/136.b1d7cf85.js"><link rel="prefetch" href="/assets/js/137.bd7fc0e9.js"><link rel="prefetch" href="/assets/js/138.7b60a194.js"><link rel="prefetch" href="/assets/js/139.4859ccd3.js"><link rel="prefetch" href="/assets/js/14.8d2ed4dc.js"><link rel="prefetch" href="/assets/js/140.ddff7744.js"><link rel="prefetch" href="/assets/js/141.e7e637c4.js"><link rel="prefetch" href="/assets/js/142.3810539d.js"><link rel="prefetch" href="/assets/js/143.68d2a50c.js"><link rel="prefetch" href="/assets/js/144.4964bec5.js"><link rel="prefetch" href="/assets/js/145.608a22de.js"><link rel="prefetch" href="/assets/js/146.10d42178.js"><link rel="prefetch" href="/assets/js/147.94da1738.js"><link rel="prefetch" href="/assets/js/148.398aed17.js"><link rel="prefetch" href="/assets/js/15.1e3335b1.js"><link rel="prefetch" href="/assets/js/150.3563332f.js"><link rel="prefetch" href="/assets/js/151.e0ecce27.js"><link rel="prefetch" href="/assets/js/152.757fd025.js"><link rel="prefetch" href="/assets/js/153.004e9f0f.js"><link rel="prefetch" href="/assets/js/154.5a48bde9.js"><link rel="prefetch" href="/assets/js/155.a833cfc3.js"><link rel="prefetch" href="/assets/js/156.53eeeb1c.js"><link rel="prefetch" href="/assets/js/157.71f778dc.js"><link rel="prefetch" href="/assets/js/158.7ca76f37.js"><link rel="prefetch" href="/assets/js/159.42aea397.js"><link rel="prefetch" href="/assets/js/16.ee4b84ac.js"><link rel="prefetch" href="/assets/js/160.ff348a84.js"><link rel="prefetch" href="/assets/js/161.b7538baf.js"><link rel="prefetch" href="/assets/js/162.11469046.js"><link rel="prefetch" href="/assets/js/163.44e69a0c.js"><link rel="prefetch" href="/assets/js/164.d2bb5d3a.js"><link rel="prefetch" href="/assets/js/165.27560b96.js"><link rel="prefetch" href="/assets/js/166.117e8700.js"><link rel="prefetch" href="/assets/js/167.d4d66b58.js"><link rel="prefetch" href="/assets/js/168.ce858eaa.js"><link rel="prefetch" href="/assets/js/169.3ec5de06.js"><link rel="prefetch" href="/assets/js/17.43b536a8.js"><link rel="prefetch" href="/assets/js/170.92f5127e.js"><link rel="prefetch" href="/assets/js/171.606d40ef.js"><link rel="prefetch" href="/assets/js/172.625ce15f.js"><link rel="prefetch" href="/assets/js/173.5e6697d8.js"><link rel="prefetch" href="/assets/js/174.e51a5a6c.js"><link rel="prefetch" href="/assets/js/175.462dd123.js"><link rel="prefetch" href="/assets/js/176.71874b7b.js"><link rel="prefetch" href="/assets/js/177.34845a33.js"><link rel="prefetch" href="/assets/js/178.ead338bb.js"><link rel="prefetch" href="/assets/js/18.c9fe1875.js"><link rel="prefetch" href="/assets/js/19.30f6aab2.js"><link rel="prefetch" href="/assets/js/2.32996929.js"><link rel="prefetch" href="/assets/js/20.32aa0a7c.js"><link rel="prefetch" href="/assets/js/21.e1e2078c.js"><link rel="prefetch" href="/assets/js/22.03ec178c.js"><link rel="prefetch" href="/assets/js/23.0c6c7ab5.js"><link rel="prefetch" href="/assets/js/24.022b154f.js"><link rel="prefetch" href="/assets/js/25.e68e92ab.js"><link rel="prefetch" href="/assets/js/26.e9c66eb3.js"><link rel="prefetch" href="/assets/js/27.267c7302.js"><link rel="prefetch" href="/assets/js/28.397d3c16.js"><link rel="prefetch" href="/assets/js/29.14ac2ba2.js"><link rel="prefetch" href="/assets/js/3.861d632f.js"><link rel="prefetch" href="/assets/js/30.a22b9199.js"><link rel="prefetch" href="/assets/js/31.14ecc9e8.js"><link rel="prefetch" href="/assets/js/32.3872c91a.js"><link rel="prefetch" href="/assets/js/33.870dcec0.js"><link rel="prefetch" href="/assets/js/34.a92e2af5.js"><link rel="prefetch" href="/assets/js/35.f6db6921.js"><link rel="prefetch" href="/assets/js/36.9953e0f5.js"><link rel="prefetch" href="/assets/js/37.06b970f7.js"><link rel="prefetch" href="/assets/js/38.3aee502a.js"><link rel="prefetch" href="/assets/js/39.81b7c534.js"><link rel="prefetch" href="/assets/js/4.c017cd8d.js"><link rel="prefetch" href="/assets/js/40.c373993a.js"><link rel="prefetch" href="/assets/js/41.91ff6d3b.js"><link rel="prefetch" href="/assets/js/42.1b2374e7.js"><link rel="prefetch" href="/assets/js/43.979c2850.js"><link rel="prefetch" href="/assets/js/44.d741dfff.js"><link rel="prefetch" href="/assets/js/45.5d4adb7f.js"><link rel="prefetch" href="/assets/js/46.82e98b02.js"><link rel="prefetch" href="/assets/js/47.10ac1d20.js"><link rel="prefetch" href="/assets/js/48.e7d7b613.js"><link rel="prefetch" href="/assets/js/49.b92dc244.js"><link rel="prefetch" href="/assets/js/50.1760a6f6.js"><link rel="prefetch" href="/assets/js/51.91a69958.js"><link rel="prefetch" href="/assets/js/52.a3eec390.js"><link rel="prefetch" href="/assets/js/53.9c030876.js"><link rel="prefetch" href="/assets/js/54.cf970f3a.js"><link rel="prefetch" href="/assets/js/55.0358dd6d.js"><link rel="prefetch" href="/assets/js/56.6ae5be9f.js"><link rel="prefetch" href="/assets/js/57.6fb119dc.js"><link rel="prefetch" href="/assets/js/58.11722b17.js"><link rel="prefetch" href="/assets/js/59.5d5dfc23.js"><link rel="prefetch" href="/assets/js/6.48691825.js"><link rel="prefetch" href="/assets/js/60.c8a7da06.js"><link rel="prefetch" href="/assets/js/61.eb0d543a.js"><link rel="prefetch" href="/assets/js/62.09575762.js"><link rel="prefetch" href="/assets/js/63.63c5ca72.js"><link rel="prefetch" href="/assets/js/64.f520739b.js"><link rel="prefetch" href="/assets/js/65.1181c03a.js"><link rel="prefetch" href="/assets/js/66.211267c8.js"><link rel="prefetch" href="/assets/js/67.5937bdae.js"><link rel="prefetch" href="/assets/js/68.7e3428d9.js"><link rel="prefetch" href="/assets/js/69.4c490b51.js"><link rel="prefetch" href="/assets/js/7.fc51e813.js"><link rel="prefetch" href="/assets/js/70.735f4f48.js"><link rel="prefetch" href="/assets/js/71.95c939cf.js"><link rel="prefetch" href="/assets/js/72.29ecba3e.js"><link rel="prefetch" href="/assets/js/73.9cd18673.js"><link rel="prefetch" href="/assets/js/74.124dc13e.js"><link rel="prefetch" href="/assets/js/75.e9c146d4.js"><link rel="prefetch" href="/assets/js/76.37bad6a1.js"><link rel="prefetch" href="/assets/js/77.499f6399.js"><link rel="prefetch" href="/assets/js/78.dfccd425.js"><link rel="prefetch" href="/assets/js/79.cae909e5.js"><link rel="prefetch" href="/assets/js/8.ea14b932.js"><link rel="prefetch" href="/assets/js/80.67ad4eca.js"><link rel="prefetch" href="/assets/js/81.b1c05087.js"><link rel="prefetch" href="/assets/js/82.a93dce30.js"><link rel="prefetch" href="/assets/js/83.caf226b0.js"><link rel="prefetch" href="/assets/js/84.a644753c.js"><link rel="prefetch" href="/assets/js/85.2934a449.js"><link rel="prefetch" href="/assets/js/86.1b71127b.js"><link rel="prefetch" href="/assets/js/87.2f9e7f90.js"><link rel="prefetch" href="/assets/js/88.9d08ddcd.js"><link rel="prefetch" href="/assets/js/89.67b9f913.js"><link rel="prefetch" href="/assets/js/9.255d17a5.js"><link rel="prefetch" href="/assets/js/90.916a8ddc.js"><link rel="prefetch" href="/assets/js/91.ec7bc170.js"><link rel="prefetch" href="/assets/js/92.7afcb301.js"><link rel="prefetch" href="/assets/js/93.1aa3b843.js"><link rel="prefetch" href="/assets/js/94.0a2e8d28.js"><link rel="prefetch" href="/assets/js/95.036ad44f.js"><link rel="prefetch" href="/assets/js/96.6f0db31f.js"><link rel="prefetch" href="/assets/js/97.feb321e2.js"><link rel="prefetch" href="/assets/js/98.f489934b.js"><link rel="prefetch" href="/assets/js/99.883e3955.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9d0e5d79.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Northboat Blog" class="logo"> <span class="site-name can-hide">Northboat Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/lib/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link router-link-active">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/prog/" class="nav-link">
+  Programming
+</a></li><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Math
+</a></li><li class="dropdown-item"><!----> <a href="/cs/is/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/ml/" class="nav-link">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/lib/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link router-link-active">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/prog/" class="nav-link">
+  Programming
+</a></li><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Math
+</a></li><li class="dropdown-item"><!----> <a href="/cs/is/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/ml/" class="nav-link">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法设计与分析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>代码实现</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>力扣算法笔记</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/algo/code/leetcode-modeling-hash-binary.html" class="sidebar-link">模拟 - 哈希算法 - 位运算</a></li><li><a href="/dev/algo/code/leetcode-recursion-divide.html" class="sidebar-link">递归算法 - 分治算法</a></li><li><a href="/dev/algo/code/leetcode-sort.html" class="sidebar-link">排序算法</a></li><li><a href="/dev/algo/code/leetcode-bfs-branching-boundary.html" aria-current="page" class="active sidebar-link">宽度优先搜索- 分支限界法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-bfs-branching-boundary.html#宽度优先搜索" class="sidebar-link">宽度优先搜索</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-bfs-branching-boundary.html#二叉树的层序遍历" class="sidebar-link">二叉树的层序遍历</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-bfs-branching-boundary.html#路径总和" class="sidebar-link">路径总和</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-bfs-branching-boundary.html#奇偶树" class="sidebar-link">奇偶树</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-bfs-branching-boundary.html#二叉树的右视图" class="sidebar-link">二叉树的右视图</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-bfs-branching-boundary.html#二进制矩阵中的最短路径" class="sidebar-link">二进制矩阵中的最短路径</a></li></ul></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-bfs-branching-boundary.html#dijkstra-算法" class="sidebar-link">Dijkstra 算法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-bfs-branching-boundary.html#网络延迟时间" class="sidebar-link">网络延迟时间</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-bfs-branching-boundary.html#最小体力消耗路径" class="sidebar-link">最小体力消耗路径</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-bfs-branching-boundary.html#概率最大的路径" class="sidebar-link">概率最大的路径</a></li></ul></li></ul></li><li><a href="/dev/algo/code/leetcode-dfs-backtracking.html" class="sidebar-link">深度优先搜索 - 回溯法</a></li><li><a href="/dev/algo/code/leetcode-dp-greedy.html" class="sidebar-link">动态规划 - 贪心算法</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>人工智能算法</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>数据结构算法</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="宽度优先搜索">宽度优先搜索</h2> <p>Breadth First Search</p> <h3 id="二叉树的层序遍历">二叉树的层序遍历</h3> <p>力扣 102：<a href="https://leetcode.cn/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener noreferrer">二叉树的层序遍历<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <blockquote><p>借助队列这一数据结构辅助实现</p></blockquote> <div class="language-java line-numbers-mode"><pre class="language-text"><code>/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) {
+        List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();
+        if(root==null){
+            return list;
+        }
+        Queue&lt;TreeNode&gt; q = new LinkedList&lt;&gt;();
+        q.offer(root);
+        while(!q.isEmpty()){
+            List&lt;Integer&gt; row = new ArrayList&lt;&gt;();
+            //记录该层节点个数
+            int n = q.size();
+            for(int i = 0; i &lt; n; i++){
+                //依次出列
+                TreeNode p = q.poll();
+                row.add(p.val);
+                //依次入列，左——&gt;右
+                if(p.left!=null){
+                    q.offer(p.left);
+                }
+                if(p.right!=null){
+                    q.offer(p.right);
+                }
+            }
+            list.add(row);
+        }
+        return list;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br></div></div><h3 id="路径总和">路径总和</h3> <p>力扣 112：<a href="https://leetcode.cn/problems/path-sum/" target="_blank" rel="noopener noreferrer">路径总和<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-java line-numbers-mode"><pre class="language-text"><code>/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+
+    private boolean flag = false;
+
+    public void bfs(TreeNode root, int targetSum){
+        if(root == null){
+            return;
+        }
+        Queue&lt;TreeNode&gt; nodeQue = new LinkedList&lt;&gt;();
+        Queue&lt;Integer&gt; valQue = new LinkedList&lt;&gt;();
+        nodeQue.offer(root);
+        valQue.offer(root.val);
+        while(nodeQue.size() != 0){
+            TreeNode cur = nodeQue.poll();
+            int temp = valQue.poll();
+            if(cur.left == null &amp;&amp; cur.right == null){
+                if(temp == targetSum){
+                    flag = true;
+                    break;
+                }
+                continue;
+            }
+            if(cur.left != null){
+                nodeQue.offer(cur.left);
+                valQue.offer(temp + cur.left.val);
+            }
+            if(cur.right != null){
+                nodeQue.offer(cur.right);
+                valQue.offer(temp + cur.right.val);
+            }
+        }
+    }
+
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        bfs(root, targetSum);
+        return flag;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br></div></div><h3 id="奇偶树">奇偶树</h3> <p>力扣 1609：<a href="https://leetcode.cn/problems/even-odd-tree/" target="_blank" rel="noopener noreferrer">奇偶树<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-java line-numbers-mode"><pre class="language-text"><code>/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isEvenOddTree(TreeNode root) {
+        Deque&lt;TreeNode&gt; q = new ArrayDeque&lt;&gt;();
+        q.add(root);
+        int level = 0;
+        while(!q.isEmpty()){
+            int n = q.size();
+            if(level % 2 == 0){
+                int temp = Integer.MIN_VALUE;
+                for(int i = 0; i &lt; n; i++){
+                    TreeNode cur = q.poll();
+                    int val = cur.val;
+                    if(val%2 == 0 || val &lt;= temp){
+                        return false;
+                    }
+                    if(cur.left != null){
+                        q.offer(cur.left);
+                    }
+                    if(cur.right != null){
+                        q.offer(cur.right);
+                    }
+                    temp = val;
+                }
+            } else {
+                int temp = Integer.MAX_VALUE;
+                for(int i = 0; i &lt; n; i++){
+                    TreeNode cur = q.poll();
+                    int val = cur.val;
+                    if(val%2 == 1 || val &gt;= temp){
+                        return false;
+                    }
+                    if(cur.left != null){
+                        q.offer(cur.left);
+                    }
+                    if(cur.right != null){
+                        q.offer(cur.right);
+                    }
+                    temp = val;
+                }
+            }
+            level++;
+        }
+        return true;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br></div></div><h3 id="二叉树的右视图">二叉树的右视图</h3> <p>力扣 199：<a href="https://leetcode.cn/problems/binary-tree-right-side-view/" target="_blank" rel="noopener noreferrer">二叉树的右视图<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+
+    vector&lt;int&gt; res;
+
+    vector&lt;int&gt; rightSideView(TreeNode* root) {
+        bfs(root);
+        return res;
+    }
+
+    void bfs(TreeNode* node){
+        if(!node){
+            return;
+        }
+        deque&lt;TreeNode*&gt; queue;
+        queue.push_back(node);
+        while(!queue.empty()){
+            res.push_back(queue.back()-&gt;val);
+            int n = queue.size();
+            for(int i = 0; i &lt; n; i++){
+                TreeNode* cur = queue.front();
+                if(cur-&gt;left) { queue.push_back(cur-&gt;left); }
+                if(cur-&gt;right) { queue.push_back(cur-&gt;right); }
+                queue.pop_front();
+            }
+        }        
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br></div></div><p>和这道题解题方式很像，<a href="https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/?envType=study-plan&amp;id=suan-fa-ji-chu&amp;plan=algorithms&amp;plan_progress=4g9kt0m" target="_blank" rel="noopener noreferrer">117. 填充每个节点的下一个右侧节点指针 II - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>都是层序遍历，特殊处理每层的最后一个节点</p> <h3 id="二进制矩阵中的最短路径">二进制矩阵中的最短路径</h3> <p>力扣 1091：<a href="https://leetcode.cn/problems/shortest-path-in-binary-matrix/description/" target="_blank" rel="noopener noreferrer">二进制矩阵中的最短路径 - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li>层层推进寻找解</li> <li>若用 dfs 很有可能漏掉最优解，因为在遍历到次解时标记了优解被访问</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    int shortestPathBinaryMatrix(vector&lt;vector&lt;int&gt;&gt;&amp; grid) {
+        if(grid[0][0] == 1){
+            return -1;
+        }
+        int m = grid.size();
+        if(m == 1){
+            return 1;
+        }
+        deque&lt;pair&lt;int,int&gt;&gt; queue;
+        queue.push_back(make_pair(0, 0));
+        grid[0][0] = 1;
+        int res = 1;
+        while(!queue.empty()){
+            int n = queue.size();
+            for(int k = 0; k &lt; n; k++){
+                pair&lt;int,int&gt; cur = queue.front();
+                queue.pop_front();
+                int i = cur.first, j = cur.second;
+                for(int l = i-1; l &lt;= i+1; l++){
+                    for(int r = j-1; r &lt;= j+1; r++){
+                        if(l &lt; 0 || l &gt;= m || r &lt; 0 || r &gt;= m){
+                            continue;
+                        }
+                        if(l == m-1 &amp;&amp; r == m-1 &amp;&amp; !grid[l][r]){
+                            return res+1;
+                        }
+                        if(!grid[l][r]){
+                            queue.push_back(make_pair(l, r));
+                            grid[l][r] = 1;
+                        }
+                    }
+                }
+            }
+            res++;
+        }
+        return -1;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br></div></div><h2 id="dijkstra-算法">Dijkstra 算法</h2> <p>BFS 算法的扩展，在广度优先搜索的基础上，加上了一个访问表和距离表</p> <ul><li>访问表：标记节点是否被访问，节点不会被重复访问，每个被访问的节点都认为其距离初始点的最短距离已经被确认</li> <li>距离表：记录当前状态下，每个节点到初始点的距离，无法到达则为 INT_MAX</li></ul> <p>每一次处理，外层遍历先将当前所有节点中距离初始点最近的节点找出，并将这个距离视作其离初始点的最近距离，标记为已访问<code>visited[cur] = true, dist[cur] = distance(start, cur)</code></p> <p>内层遍历所有当前节点 cur 能访问到的节点 i（或所有暂未访问过的节点），更新他们距离初始点的最短距离<code>dist[i] = min(dist[i], dist[cur] + distance(cur, i))</code></p> <p>直到每个节点均被访问，那么所有节点距离初始点的最短长度均被确定，退出算法，得到完整的<code>dist[]</code>数组，即为结果</p> <h3 id="网络延迟时间">网络延迟时间</h3> <p><a href="https://leetcode.cn/problems/network-delay-time/" target="_blank" rel="noopener noreferrer">743. 网络延迟时间 - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>求图中距离起点<strong>加权路径</strong>最长的距离</p> <ul><li>这里为了使脑子想的舒服，<code>graph[i][j]</code>即为节点 i 到节点 j 的距离，而节点编号是从 1 开始的，<code>graph[0]</code>和<code>visited[0]</code>都被浪费</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    int networkDelayTime(vector&lt;vector&lt;int&gt;&gt;&amp; times, int n, int k) {
+        int m = n+1;
+        vector&lt;int&gt; dist(m, INT_MAX/2);
+        // 构造图
+        vector&lt;vector&lt;int&gt;&gt; graph(m, vector&lt;int&gt;(m, INT_MAX/2));
+        for(auto&amp; edge: times){
+            int cur = edge[0], next = edge[1], length = edge[2];
+            graph[cur][next] = length;
+        }
+
+        // 记录节点是否访问
+        vector&lt;int&gt; visited(m, 0);
+        // 初始化第一个访问节点
+        dist[k] = 0;
+        // 开始遍历
+        for(int i = 1; i &lt;= n; i++){
+            int cur = -1;
+            for(int j = 1; j &lt;= n; j++){
+                // 忽略已访问节点，对于未访问节点进行比较，找到当前为访问中离初始点最近的点
+                if(!visited[j] &amp;&amp; (cur == -1 || dist[j] &lt; dist[cur])){
+                    cur = j;
+                }
+            }
+            // 找到离初始点最近的一个节点，以此为基础向外扩展，确定各点离初始点的最近距离
+            visited[cur] = true;
+            for(int j = 1; j &lt;= n; j++){
+                if(graph[cur][j] == INT_MAX/2){
+                    continue;
+                }
+                dist[j] = min(dist[j], dist[cur] + graph[cur][j]);
+            }
+
+        }
+        int res = *max_element(dist.begin()+1, dist.end());
+        return res == INT_MAX/2 ? -1 : res;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br></div></div><h3 id="最小体力消耗路径">最小体力消耗路径</h3> <p><a href="https://leetcode.cn/problems/path-with-minimum-effort/description/" target="_blank" rel="noopener noreferrer">1631. 最小体力消耗路径 - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>图中，起点到终点的路径中，记录每个相邻点的距离差（每个点均可以上下左右相邻移动），路径中最大的距离差记为该路径的消耗，找到从起点到终点消耗最小的一条路径并且返回其消耗值大小</p> <p>很朴素的解法：严格遵守 Dijkstra 算法</p> <ul><li>维护一个数组<code>dist[m*n]</code>，记录每个节点的最小的消耗值，初始化所有值为<code>INT_MAX/2, dist[0] = 0</code></li> <li>每一轮找到<strong>消耗值最小且未被访问的节点</strong>，记为当前节点，标记为已访问，进行扩展</li> <li>向四方扩展，扩展规则如下
+<ul><li>首先取扩展节点的消耗值和相邻差的较小值，记为扩展结点值</li> <li>再取当前节点值和扩展结点值的较大值，赋予扩展结点</li></ul></li> <li>直到终点被访问，退出循环，返回<code>dist.back()</code></li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+private:
+    static constexpr int dirs[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+public:
+    int minimumEffortPath(vector&lt;vector&lt;int&gt;&gt;&amp; heights) {
+        int m = heights.size(), n = heights[0].size();   
+        int lim = INT_MAX / 2;
+        vector&lt;int&gt; visited(m*n, false);
+        vector&lt;int&gt; dist(m*n, lim);
+        dist[0] = 0;
+        while(!visited[m*n-1]){
+            int x = -1, y = -1;
+            int shortest = lim;
+            for(int i = 0; i &lt; m*n; i++){
+                if(visited[i]){
+                    continue;
+                }
+                if(dist[i] &lt; shortest){
+                    x = i/n; y = i%n;
+                    shortest = dist[i];
+                }
+            }
+            if(x == -1 || y == -1){
+                break;
+            }
+            visited[x*n+y] = true;
+            for(int i = 0; i &lt; 4; i++){
+                int nx = x + dirs[i][0];
+                int ny = y + dirs[i][1];
+                if(nx &gt;= 0 &amp;&amp; nx &lt; m &amp;&amp; ny &gt;= 0 &amp;&amp; ny &lt; n &amp;&amp; !visited[nx*n+ny]){
+                    dist[nx*n+ny] = max(dist[x*n+y],
+                                    min(dist[nx*n+ny], abs(heights[nx][ny]-heights[x][y])));
+                }
+            }
+        }
+        return dist.back();
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br></div></div><p>但是这样朴素的 Dijkstra 并不得到认可，因为遍历寻找最小值太慢了，所以要用到优先队列，但是很几把蠢</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+private:
+    static constexpr int dirs[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+public:
+    int minimumEffortPath(vector&lt;vector&lt;int&gt;&gt;&amp; heights) {
+        int m = heights.size(), n = heights[0].size();   
+        int lim = INT_MAX / 2;
+        vector&lt;int&gt; visited(m*n, false);
+        vector&lt;int&gt; dist(m*n, lim);
+
+        auto cmp = [](const vector&lt;int&gt;&amp; a, const vector&lt;int&gt;&amp; b){
+            return a[2] &gt; b[2];
+        };
+        priority_queue&lt;vector&lt;int&gt;, vector&lt;vector&lt;int&gt;&gt;, decltype(cmp)&gt; queue(cmp);
+        queue.push({0,0,0});
+        
+        dist[0] = 0;
+        while(!queue.empty()){
+            vector&lt;int&gt; cur = queue.top();
+            queue.pop();
+            int x = cur[0], y = cur[1];
+            if(x == -1 || y == -1){ break; }
+            visited[x*n+y] = true;
+            for(int i = 0; i &lt; 4; i++){
+                int nx = x + dirs[i][0];
+                int ny = y + dirs[i][1];
+                if(nx &gt;= 0 &amp;&amp; nx &lt; m &amp;&amp; ny &gt;= 0 &amp;&amp; ny &lt; n &amp;&amp; !visited[nx*n+ny]
+                   &amp;&amp; max(dist[x*n+y], abs(heights[nx][ny]-heights[x][y])) &lt; dist[nx*n+ny]){
+                    dist[nx*n+ny] = max(dist[x*n+y], abs(heights[nx][ny]-heights[x][y]));
+                    queue.push({nx, ny, dist[nx*n+ny]});
+                }
+            }
+        }
+        return dist[m*n-1];
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div><h3 id="概率最大的路径">概率最大的路径</h3> <p><a href="https://leetcode.cn/problems/path-with-maximum-probability/" target="_blank" rel="noopener noreferrer">1514. 概率最大的路径 - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>普通每轮枚举找到最大权重路径，向下扩展，11/18 超时</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    // 判断终点是否可达，BFS
+    bool reachable(vector&lt;vector&lt;int&gt;&gt;&amp; edges, int start, int end){
+        int n = edges.size();
+        vector&lt;int&gt; visited(n, false);
+        deque&lt;int&gt; queue;
+        queue.push_back(start);
+        while(!queue.empty()){
+            int cur = queue.front();
+            queue.pop_front();
+            if(cur == end){
+                return true;
+            }
+            for(int i = 0; i &lt; n; i++){
+                if(visited[i]){
+                    continue;
+                }
+                if(edges[i][0] == cur || edges[i][1] == cur){
+                    visited[i] = true;
+                    int next = edges[i][0] == cur ? edges[i][1] : edges[i][0];
+                    queue.push_back(next);
+                }
+            }
+        }
+        return false;
+    }
+
+    double maxProbability(int n, vector&lt;vector&lt;int&gt;&gt;&amp; edges, vector&lt;double&gt;&amp; succProb, int start, int end) {
+        if(!reachable(edges, start, end)){
+            return 0;
+        }
+        int m = edges.size();
+        vector&lt;double&gt; dist(n, 0);
+        vector&lt;int&gt; visited(n, false);
+        dist[start] = 1;
+        while(!visited[end]){
+            int cur = -1;
+            double max = 0;
+            // 枚举选取当前最大节点，进行后续扩展
+            for(int i = 0; i &lt; n; i++){
+                if(visited[i]){
+                    continue;
+                }
+                if(dist[i] &gt; max){
+                    max = dist[i];
+                    cur = i;
+                }
+            }
+            visited[cur] = true;
+            for(int i = 0; i &lt; m; i++){
+                if(edges[i][0] == cur || edges[i][1] == cur){
+                    int next = edges[i][0] == cur ? edges[i][1] : edges[i][0];
+                    dist[next] = dist[next] &gt; dist[cur]*succProb[i] ? dist[next] : dist[cur]*succProb[i];
+                }
+            }
+        }
+        return dist[end];
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br></div></div><p>用优先队列优化了枚举当前扩展的节点的过程，还是过不了 11/18</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    double maxProbability(int n, vector&lt;vector&lt;int&gt;&gt;&amp; edges, vector&lt;double&gt;&amp; succProb, int start, int end) {
+        int m = edges.size();
+
+        vector&lt;vector&lt;double&gt;&gt; graph(n, vector&lt;double&gt;(n, 0));
+        for(int i = 0; i &lt; m; i++){
+            int x = edges[i][0], y = edges[i][1];
+            graph[x][y] = succProb[i];
+            graph[y][x] = succProb[i];
+        }
+
+        static vector&lt;double&gt; dist;
+        dist = vector&lt;double&gt;(n, 0);
+        dist[start] = 1;
+        
+        vector&lt;int&gt; visited(n, 0);
+
+        auto cmp = [](const int&amp; a, const int&amp; b){
+            return dist[a] &lt; dist[b];
+        };
+        priority_queue&lt;int, vector&lt;int&gt;, decltype(cmp)&gt; queue(cmp);
+        queue.push(start);
+
+        while(!visited[end] &amp;&amp; !queue.empty()){
+            int cur = queue.top();
+            queue.pop();
+            if(visited[cur]){
+                continue;
+            }
+            visited[cur] = true;
+            vector&lt;double&gt; wights = graph[cur];
+            for(int i = 0; i &lt; n; i++){
+                if(wights[i] == 0 || visited[i]){
+                    continue;
+                }
+                int next = i;
+                dist[next] = max(dist[next], dist[cur]*wights[i]);
+                queue.push(next);
+            }
+        }
+        return dist[end];
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/dev/algo/code/leetcode-sort.html" class="prev">
+        排序算法
+      </a></span> <span class="next"><a href="/dev/algo/code/leetcode-dfs-backtracking.html">
+        深度优先搜索 - 回溯法
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/song/aries.aac" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:44px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/img/error.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/img/error.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>白羊</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>northboat</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div><!----><div class="RibbonAnimation"></div><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:99;" data-v-248d85d6></canvas></div></div></div>
+    <script src="/assets/js/app.830f5b6e.js" defer></script><script src="/assets/js/5.7032fbc8.js" defer></script><script src="/assets/js/149.3dc3fa3c.js" defer></script>
+  </body>
+</html>

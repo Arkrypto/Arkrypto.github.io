@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>C++ STL | Northboat Blog</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    <link rel="icon" href="/img/leaf.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="片刻寧靜">
+    
+    <link rel="preload" href="/assets/css/0.styles.9d0e5d79.css" as="style"><link rel="preload" href="/assets/js/app.830f5b6e.js" as="script"><link rel="preload" href="/assets/js/5.7032fbc8.js" as="script"><link rel="preload" href="/assets/js/137.bd7fc0e9.js" as="script"><link rel="prefetch" href="/assets/js/10.036e53d7.js"><link rel="prefetch" href="/assets/js/100.76087af8.js"><link rel="prefetch" href="/assets/js/101.fe3ec1f3.js"><link rel="prefetch" href="/assets/js/102.767e9253.js"><link rel="prefetch" href="/assets/js/103.31da3d36.js"><link rel="prefetch" href="/assets/js/104.156b8258.js"><link rel="prefetch" href="/assets/js/105.263e02cf.js"><link rel="prefetch" href="/assets/js/106.851e7cf9.js"><link rel="prefetch" href="/assets/js/107.6e113532.js"><link rel="prefetch" href="/assets/js/108.b2b7b00d.js"><link rel="prefetch" href="/assets/js/109.568ca258.js"><link rel="prefetch" href="/assets/js/11.a530edee.js"><link rel="prefetch" href="/assets/js/110.0e71b740.js"><link rel="prefetch" href="/assets/js/111.af082324.js"><link rel="prefetch" href="/assets/js/112.c2810cbf.js"><link rel="prefetch" href="/assets/js/113.6d9cd29c.js"><link rel="prefetch" href="/assets/js/114.5e57c3d0.js"><link rel="prefetch" href="/assets/js/115.c7c7d119.js"><link rel="prefetch" href="/assets/js/116.137b07df.js"><link rel="prefetch" href="/assets/js/117.034d8850.js"><link rel="prefetch" href="/assets/js/118.a9b4190c.js"><link rel="prefetch" href="/assets/js/119.2f9e0d25.js"><link rel="prefetch" href="/assets/js/12.da932cee.js"><link rel="prefetch" href="/assets/js/120.414d2b0b.js"><link rel="prefetch" href="/assets/js/121.cdf9934c.js"><link rel="prefetch" href="/assets/js/122.97f6e25d.js"><link rel="prefetch" href="/assets/js/123.8a3dbc06.js"><link rel="prefetch" href="/assets/js/124.3647615f.js"><link rel="prefetch" href="/assets/js/125.c45bf667.js"><link rel="prefetch" href="/assets/js/126.46c7624b.js"><link rel="prefetch" href="/assets/js/127.1493df06.js"><link rel="prefetch" href="/assets/js/128.584b874d.js"><link rel="prefetch" href="/assets/js/129.360732c6.js"><link rel="prefetch" href="/assets/js/13.ae3008d2.js"><link rel="prefetch" href="/assets/js/130.02f568f2.js"><link rel="prefetch" href="/assets/js/131.96c1647c.js"><link rel="prefetch" href="/assets/js/132.2f776723.js"><link rel="prefetch" href="/assets/js/133.e74ee5b3.js"><link rel="prefetch" href="/assets/js/134.87507b09.js"><link rel="prefetch" href="/assets/js/135.105a5eff.js"><link rel="prefetch" href="/assets/js/136.b1d7cf85.js"><link rel="prefetch" href="/assets/js/138.7b60a194.js"><link rel="prefetch" href="/assets/js/139.4859ccd3.js"><link rel="prefetch" href="/assets/js/14.8d2ed4dc.js"><link rel="prefetch" href="/assets/js/140.ddff7744.js"><link rel="prefetch" href="/assets/js/141.e7e637c4.js"><link rel="prefetch" href="/assets/js/142.3810539d.js"><link rel="prefetch" href="/assets/js/143.68d2a50c.js"><link rel="prefetch" href="/assets/js/144.4964bec5.js"><link rel="prefetch" href="/assets/js/145.608a22de.js"><link rel="prefetch" href="/assets/js/146.10d42178.js"><link rel="prefetch" href="/assets/js/147.94da1738.js"><link rel="prefetch" href="/assets/js/148.398aed17.js"><link rel="prefetch" href="/assets/js/149.3dc3fa3c.js"><link rel="prefetch" href="/assets/js/15.1e3335b1.js"><link rel="prefetch" href="/assets/js/150.3563332f.js"><link rel="prefetch" href="/assets/js/151.e0ecce27.js"><link rel="prefetch" href="/assets/js/152.757fd025.js"><link rel="prefetch" href="/assets/js/153.004e9f0f.js"><link rel="prefetch" href="/assets/js/154.5a48bde9.js"><link rel="prefetch" href="/assets/js/155.a833cfc3.js"><link rel="prefetch" href="/assets/js/156.53eeeb1c.js"><link rel="prefetch" href="/assets/js/157.71f778dc.js"><link rel="prefetch" href="/assets/js/158.7ca76f37.js"><link rel="prefetch" href="/assets/js/159.42aea397.js"><link rel="prefetch" href="/assets/js/16.ee4b84ac.js"><link rel="prefetch" href="/assets/js/160.ff348a84.js"><link rel="prefetch" href="/assets/js/161.b7538baf.js"><link rel="prefetch" href="/assets/js/162.11469046.js"><link rel="prefetch" href="/assets/js/163.44e69a0c.js"><link rel="prefetch" href="/assets/js/164.d2bb5d3a.js"><link rel="prefetch" href="/assets/js/165.27560b96.js"><link rel="prefetch" href="/assets/js/166.117e8700.js"><link rel="prefetch" href="/assets/js/167.d4d66b58.js"><link rel="prefetch" href="/assets/js/168.ce858eaa.js"><link rel="prefetch" href="/assets/js/169.3ec5de06.js"><link rel="prefetch" href="/assets/js/17.43b536a8.js"><link rel="prefetch" href="/assets/js/170.92f5127e.js"><link rel="prefetch" href="/assets/js/171.606d40ef.js"><link rel="prefetch" href="/assets/js/172.625ce15f.js"><link rel="prefetch" href="/assets/js/173.5e6697d8.js"><link rel="prefetch" href="/assets/js/174.e51a5a6c.js"><link rel="prefetch" href="/assets/js/175.462dd123.js"><link rel="prefetch" href="/assets/js/176.71874b7b.js"><link rel="prefetch" href="/assets/js/177.34845a33.js"><link rel="prefetch" href="/assets/js/178.ead338bb.js"><link rel="prefetch" href="/assets/js/18.c9fe1875.js"><link rel="prefetch" href="/assets/js/19.30f6aab2.js"><link rel="prefetch" href="/assets/js/2.32996929.js"><link rel="prefetch" href="/assets/js/20.32aa0a7c.js"><link rel="prefetch" href="/assets/js/21.e1e2078c.js"><link rel="prefetch" href="/assets/js/22.03ec178c.js"><link rel="prefetch" href="/assets/js/23.0c6c7ab5.js"><link rel="prefetch" href="/assets/js/24.022b154f.js"><link rel="prefetch" href="/assets/js/25.e68e92ab.js"><link rel="prefetch" href="/assets/js/26.e9c66eb3.js"><link rel="prefetch" href="/assets/js/27.267c7302.js"><link rel="prefetch" href="/assets/js/28.397d3c16.js"><link rel="prefetch" href="/assets/js/29.14ac2ba2.js"><link rel="prefetch" href="/assets/js/3.861d632f.js"><link rel="prefetch" href="/assets/js/30.a22b9199.js"><link rel="prefetch" href="/assets/js/31.14ecc9e8.js"><link rel="prefetch" href="/assets/js/32.3872c91a.js"><link rel="prefetch" href="/assets/js/33.870dcec0.js"><link rel="prefetch" href="/assets/js/34.a92e2af5.js"><link rel="prefetch" href="/assets/js/35.f6db6921.js"><link rel="prefetch" href="/assets/js/36.9953e0f5.js"><link rel="prefetch" href="/assets/js/37.06b970f7.js"><link rel="prefetch" href="/assets/js/38.3aee502a.js"><link rel="prefetch" href="/assets/js/39.81b7c534.js"><link rel="prefetch" href="/assets/js/4.c017cd8d.js"><link rel="prefetch" href="/assets/js/40.c373993a.js"><link rel="prefetch" href="/assets/js/41.91ff6d3b.js"><link rel="prefetch" href="/assets/js/42.1b2374e7.js"><link rel="prefetch" href="/assets/js/43.979c2850.js"><link rel="prefetch" href="/assets/js/44.d741dfff.js"><link rel="prefetch" href="/assets/js/45.5d4adb7f.js"><link rel="prefetch" href="/assets/js/46.82e98b02.js"><link rel="prefetch" href="/assets/js/47.10ac1d20.js"><link rel="prefetch" href="/assets/js/48.e7d7b613.js"><link rel="prefetch" href="/assets/js/49.b92dc244.js"><link rel="prefetch" href="/assets/js/50.1760a6f6.js"><link rel="prefetch" href="/assets/js/51.91a69958.js"><link rel="prefetch" href="/assets/js/52.a3eec390.js"><link rel="prefetch" href="/assets/js/53.9c030876.js"><link rel="prefetch" href="/assets/js/54.cf970f3a.js"><link rel="prefetch" href="/assets/js/55.0358dd6d.js"><link rel="prefetch" href="/assets/js/56.6ae5be9f.js"><link rel="prefetch" href="/assets/js/57.6fb119dc.js"><link rel="prefetch" href="/assets/js/58.11722b17.js"><link rel="prefetch" href="/assets/js/59.5d5dfc23.js"><link rel="prefetch" href="/assets/js/6.48691825.js"><link rel="prefetch" href="/assets/js/60.c8a7da06.js"><link rel="prefetch" href="/assets/js/61.eb0d543a.js"><link rel="prefetch" href="/assets/js/62.09575762.js"><link rel="prefetch" href="/assets/js/63.63c5ca72.js"><link rel="prefetch" href="/assets/js/64.f520739b.js"><link rel="prefetch" href="/assets/js/65.1181c03a.js"><link rel="prefetch" href="/assets/js/66.211267c8.js"><link rel="prefetch" href="/assets/js/67.5937bdae.js"><link rel="prefetch" href="/assets/js/68.7e3428d9.js"><link rel="prefetch" href="/assets/js/69.4c490b51.js"><link rel="prefetch" href="/assets/js/7.fc51e813.js"><link rel="prefetch" href="/assets/js/70.735f4f48.js"><link rel="prefetch" href="/assets/js/71.95c939cf.js"><link rel="prefetch" href="/assets/js/72.29ecba3e.js"><link rel="prefetch" href="/assets/js/73.9cd18673.js"><link rel="prefetch" href="/assets/js/74.124dc13e.js"><link rel="prefetch" href="/assets/js/75.e9c146d4.js"><link rel="prefetch" href="/assets/js/76.37bad6a1.js"><link rel="prefetch" href="/assets/js/77.499f6399.js"><link rel="prefetch" href="/assets/js/78.dfccd425.js"><link rel="prefetch" href="/assets/js/79.cae909e5.js"><link rel="prefetch" href="/assets/js/8.ea14b932.js"><link rel="prefetch" href="/assets/js/80.67ad4eca.js"><link rel="prefetch" href="/assets/js/81.b1c05087.js"><link rel="prefetch" href="/assets/js/82.a93dce30.js"><link rel="prefetch" href="/assets/js/83.caf226b0.js"><link rel="prefetch" href="/assets/js/84.a644753c.js"><link rel="prefetch" href="/assets/js/85.2934a449.js"><link rel="prefetch" href="/assets/js/86.1b71127b.js"><link rel="prefetch" href="/assets/js/87.2f9e7f90.js"><link rel="prefetch" href="/assets/js/88.9d08ddcd.js"><link rel="prefetch" href="/assets/js/89.67b9f913.js"><link rel="prefetch" href="/assets/js/9.255d17a5.js"><link rel="prefetch" href="/assets/js/90.916a8ddc.js"><link rel="prefetch" href="/assets/js/91.ec7bc170.js"><link rel="prefetch" href="/assets/js/92.7afcb301.js"><link rel="prefetch" href="/assets/js/93.1aa3b843.js"><link rel="prefetch" href="/assets/js/94.0a2e8d28.js"><link rel="prefetch" href="/assets/js/95.036ad44f.js"><link rel="prefetch" href="/assets/js/96.6f0db31f.js"><link rel="prefetch" href="/assets/js/97.feb321e2.js"><link rel="prefetch" href="/assets/js/98.f489934b.js"><link rel="prefetch" href="/assets/js/99.883e3955.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9d0e5d79.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Northboat Blog" class="logo"> <span class="site-name can-hide">Northboat Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/lib/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/prog/" class="nav-link router-link-active">
+  Programming
+</a></li><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Math
+</a></li><li class="dropdown-item"><!----> <a href="/cs/is/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/ml/" class="nav-link">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/lib/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/prog/" class="nav-link router-link-active">
+  Programming
+</a></li><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Math
+</a></li><li class="dropdown-item"><!----> <a href="/cs/is/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/ml/" class="nav-link">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>C/C++</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/cs/prog/c/c-stl.html" aria-current="page" class="active sidebar-link">C++ STL</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#stl-接口" class="sidebar-link">STL 接口</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#map" class="sidebar-link">map</a></li><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#set" class="sidebar-link">set</a></li><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#vector" class="sidebar-link">vector</a></li><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#stack" class="sidebar-link">stack</a></li><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#deque" class="sidebar-link">deque</a></li><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#pair" class="sidebar-link">pair</a></li><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#priority-queue" class="sidebar-link">priority_queue</a></li></ul></li><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#一些栗子" class="sidebar-link">一些栗子</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#vector-和数组" class="sidebar-link">vector 和数组</a></li><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#c-位运算" class="sidebar-link">C++ 位运算</a></li></ul></li><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#其他库" class="sidebar-link">其他库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#algorithm" class="sidebar-link">algorithm</a></li><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#string" class="sidebar-link">string</a></li><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#cstdlib" class="sidebar-link">cstdlib</a></li></ul></li><li class="sidebar-sub-header"><a href="/cs/prog/c/c-stl.html#lambda-表达式" class="sidebar-link">Lambda 表达式</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Python3</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据科学库</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>PHP</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="stl-接口">STL 接口</h2> <blockquote><p>数组和指针这种东西真是太繁琐复杂了，个人愚见，在C++里就尽量使用STL，并且可以用模板的非类型形参来解决这种灵活处理不固定行列数矩阵的函数，Effective C++里面应该有介绍，并且有对这种模板的优化</p></blockquote> <h3 id="map">map</h3> <p>通过 m[i] = j 插入键值对</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>map&lt;int, int&gt; _map;
+_map[9] = 10;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>通过 if(m.count(i)) 判断键 i 是否存，因为只有 1/0</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>if(_map.count(9)){
+    cout &lt;&lt; &quot;9 exist, the value is&quot; &lt;&lt; _map[9] &lt;&lt; endl;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>遍历：使用元素指针遍历</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>map&lt;int, int&gt;::iterator iter;
+for(iter = _map.begin(); iter != _map.end(); iter++) {
+    cout &lt;&lt; iter-&gt;first &lt;&lt; &quot; : &quot; &lt;&lt; iter-&gt;second &lt;&lt; endl;
+}
+
+for(auto it: _map){
+    cout &lt;&lt; it.first &lt;&lt; &quot; : &quot; &lt;&lt; it.second &lt;&lt; endl;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>map 重载 operator() 函数以实现自定义类/结构体的插入</p> <p>当键为 ListNode* 时，必须要重载 operator() 函数，以明确如何判定 ListNode* 的独特性</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
+};
+
+class Solution {
+public:
+
+    bool operator()(const ListNode* s1, const ListNode* s2 ) const{
+        return s1-&gt;val != s2-&gt;val;
+    }
+
+    ListNode *detectCycle(ListNode *head) {
+       map&lt;ListNode*, int&gt; m;
+       int index = 0;
+       while(head){
+           if(m.count(head)){
+               return head;
+           }
+           m[head] = index++;
+           head = head-&gt;next;
+       } 
+       return NULL;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><h3 id="set">set</h3> <p>通过 insert() 函数插入值</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>set &lt;int&gt; _set;
+set.insert(7)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>通过 count() 判断是否存在</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>if(_set.count(4)){
+    cout &lt;&lt; &quot;dead&quot; &lt;&lt; endl;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="vector">vector</h3> <p>push_back() 向后插入</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>vector&lt;int&gt; vec;
+vec.push_back(1);
+vec.push_back(4);
+vec.push_back(7);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>erase() 删除元素</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>// 删除下标为 1 的元素
+vec.erase(vec.begin()+1);
+
+// 删除下标从 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>back() 返回末尾元素</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>// 合并区间
+// sort() 排序的是每个 vector 的首地址元素，也就是 vec[0]
+class Solution {
+public:
+    vector&lt;vector&lt;int&gt;&gt; merge(vector&lt;vector&lt;int&gt;&gt;&amp; intervals) {
+        vector&lt;vector&lt;int&gt;&gt; res;
+        sort(intervals.begin(), intervals.end());
+        for(int i = 0; i &lt; intervals.size(); i++){
+            vector&lt;int&gt; cur = intervals[i];
+            if(res.empty() || cur[0] &gt; res.back()[1]){
+                res.push_back(cur);
+            }
+            if(cur[1] &gt; res.back()[1]){
+                res.back()[1] = cur[1];
+            }
+        }
+        return res;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>初始化固定大小 vector，填充值</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>vector&lt;int&gt; vec(n);
+
+// 创建长度为 n，值全为 1 的数组
+vector&lt;int&gt; vec(n,1);
+
+vector&lt;vector&lt;int&gt;&gt; matrix(n, vector&lt;int&gt; (n));
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>拷贝 vector</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>vector&lt;int&gt; pre;
+
+// 创建时拷贝
+vector&lt;int&gt; first(pre);
+
+// 创建后复制
+vector&lt;int&gt; second;
+second.assign(pre.begin(), pre.end());
+
+// 复制时删除原数组 pre
+vector&lt;int&gt; third;
+third.swap(pre);
+
+// 在指定下标处插入原有数组的一段
+vector&lt;int&gt; four;
+four.insert(four.begin(), pre.begin(), pre.end());
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>清理 vector</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>vector&lt;int&gt; vec;
+
+// 清空但不回收内存（全置零）
+vec.clear();
+// 清空且回收内存
+vector&lt;int&gt;().swap(vec);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="stack">stack</h3> <ul><li>top()：返回一个栈顶元素的引用，类型为 T&amp;。如果栈为空，返回值未定义</li> <li>push(const T&amp; obj)：可以将对象副本压入栈顶。这是通过调用底层容器的 push_back() 函数完成的</li> <li>push(T&amp;&amp; obj)：以移动对象的方式将对象压入栈顶。这是通过调用底层容器的有右值引用参数的 push_back() 函数完成的</li> <li>pop()：弹出栈顶元素，<strong>无返回</strong></li> <li>size()：返回栈中元素的个数</li> <li>empty()：在栈中没有元素的情况下返回 true</li></ul> <h3 id="deque">deque</h3> <blockquote><p>在处理首部元素时效率远大于 vector</p></blockquote> <ul><li>push_back(elem)：在容器尾部添加一个数据</li> <li>push_front(elem)：在容器头部插入一个数据</li> <li>pop_back()：删除容器最后一个数据</li> <li>pop_front()：删除容器第一个数据</li> <li>front()：返回第一个元素</li> <li>back()：返回末尾元素</li></ul> <h3 id="pair">pair</h3> <blockquote><p>配合 map 或 vector 使用</p></blockquote> <p>创建 pair</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>pair&lt;int,int&gt; p (1,1);
+
+pair p = make_pair('h', 9);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>vector+pair 实现 map</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>vector&lt;pair&lt;int,int&gt;&gt; map;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>map 插入键值对</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>map.insert(pair&lt;int,int&gt;(1,2));
+
+map.insert(make_pair(1,2));
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="priority-queue">priority_queue</h3> <p>自定义 lambda 表达式，作为模板传入 priority_queue 的构造式</p> <ul><li>这里是按数组第三位元素从小到大排序</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>auto cmp = [](const vector&lt;int&gt;&amp; a, const vector&lt;int&gt;&amp; b){
+    return a[2] &gt; b[2];
+};
+priority_queue&lt;vector&lt;int&gt;, vector&lt;vector&lt;int&gt;&gt;, decltype(cmp)&gt; queue(cmp);
+queue.push({0,0,0});
+queue.emplace({1,1,1});
+queue.top();
+queue.pop();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h2 id="一些栗子">一些栗子</h2> <h3 id="vector-和数组">vector 和数组</h3> <p>使用<code>vector&lt;int&gt;</code>标记代替 bool 数组进行标记，使用<code>bool row[m], col[n]</code>在寻址时会报错，说你没初始化，在 c 中，bool 值就是用 int 值实现，所以二者之间可以相互赋值</p> <ul><li>以下是使用 stl 库避免繁琐的指针数组的一个成功案例：将二维矩阵中为 0 元素的所在行、列元素均置零</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    void setZeroes(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) {
+        int m = matrix.size();
+        int n = matrix[0].size();
+        vector&lt;int&gt; row(m), col(n);
+        for(int i = 0; i &lt; m; i++){
+            for(int j = 0; j &lt; n; j++){
+                if(matrix[i][j] == 0){
+                    row[i] = true;
+                    col[j] = true;
+                }
+            }
+        }
+        for(int i = 0; i &lt; m; i++){
+            for(int j = 0; j &lt; n; j++){
+                if(row[i] || col[j]){
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>当然，在知道数组范围的时候，使用数组也是可以的，这里注意数组的初始化语句</p> <ul><li>此为判断九宫格数独游戏是否有解的函数</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    bool isValidSudoku(vector&lt;vector&lt;char&gt;&gt;&amp; board) {
+        // 数组定义和初始化
+        int row[9][9] = {{0}}, col[9][9] = {{0}};
+        int block[3][3][9] = {{{0}}};
+        // ---------分割一下-------- //
+        for(int i = 0; i &lt; 9; i++){
+            for(int j = 0; j &lt; 9; j++){
+                char c = board[i][j];
+                int k = c-'1';
+                if(c != '.'){
+                    if(row[i][k] || col[k][j] || block[i/3][j/3][k]){
+                        return false;
+                    }
+                    row[i][k] = true; 
+                    col[k][j] = true;
+                    block[i/3][j/3][k] = true;
+                }
+            }
+        }
+        return true;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><h3 id="c-位运算">C++ 位运算</h3> <p>出现一次的数字，使用异或操作，数字只会出现一次或两次</p> <ul><li>0 ^ a = a</li> <li>a ^ a = a</li> <li>a ^ a ^ b = b</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    int singleNumber(vector&lt;int&gt;&amp; nums) {
+        int res = 0;
+        for(int i = 0; i &lt; nums.size(); i++){
+            res ^= nums[i];
+        }
+        return res;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h2 id="其他库">其他库</h2> <h3 id="algorithm">algorithm</h3> <p>max()/min()，最大值、最小值函数</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>res = max(prices[i]-pre, res);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>sort()，排序函数，排序一段连续的地址</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>// vec 为 vector
+sort(vec.begin(), vec.end());
+// arr 为数组
+sort(arr, arr+10);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>sort()，排序函数 sort 搭配 lambda 表达式</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>// 排序结构体
+bool cmp(Student lhs, Student rhs){
+    return lhs.grade &lt; rhs.grade 
+           || (lhs.grade == rhs.grade &amp;&amp; lhs.name &lt; rhs.name)
+}
+
+// 将函数 cmp 作为参数传入，制定 sort 规则
+sort(begin(vec), end(vec), cmp);
+
+// 按迭代器的第二个元素从小到大排序
+// 使用 lambda 函数作为第三个参数
+sort(intervals.begin(), intervals.end(), [](const auto&amp; u, const auto&amp; v){
+    return u[1]&lt;v[1];
+});
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>sort() 排序字符串，将把字符串原地按字典序排序，返回值为空</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>string str = &quot;dcba&quot;;
+sort(str.begin(), str.end());
+// str == &quot;abcd&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>max_element()，返回迭代器的最大值，返回的是指向连续地址中最大值的指针，需要使用 * 号取值</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>vector&lt;int&gt; vec;
+vec.push_back(1);
+vec.push_back(4);
+vec.push_back(7);
+int max = *max_element(vec);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>reverse()，翻转字符串</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>string str = &quot;nmsl&quot;;
+reverse(str); // str == &quot;lsmn&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>find()，寻找迭代器元素下标</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>vector&lt;int&gt; nums = {1,2,3,4,5};
+cout &lt;&lt; find(nums.begin(), nums.end(), 3) - nums.begin();
+// 输出 2，表示值 3 所在下标为 2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="string">string</h3> <p>遍历 string</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>// 也可以用 length()，一样的
+for(int i = 0; i &lt; str.size(); i++){
+    cout &lt;&lt; str[i] &lt;&lt; endl;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>string 初始化</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>// 长度为 n，用空格填充
+string str(n, ' ');
+
+// 直接赋值
+string str1 = &quot;nmsl&quot;;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>字符串拼接以及整型转换</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>string s1 = &quot;hahaha &quot;;
+string s2 = &quot;nmsl&quot;;
+
+string s3 = s1+s2; // s3 = &quot;hahaha nmsl&quot;
+
+// 整型转换字符
+int i = 9;
+// 整型到字符减去字符 '0'
+char c = i+'0' // c=='9'
+// 字符到整型加上字符 '0'
+int j = c-'0'; // j == 9
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>to_string()，将数字（整型和浮点）转化为字符串</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>int i = 55;
+string str = to_string(i); // str == &quot;55&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>substr()，截取字符串，第一个参数为起始下标，第二个参数为截取字符串的长度（包含尾部）</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>string s = &quot;AAAAAAAAAAAAA&quot;;
+int n = s.length();
+for(int i = 0; i &lt;= n-10; i++){
+    string cur = s.substr(i, 10);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>erase()，删除元素</p> <ul><li><p>第一个参数为起始下标，第二个参数为删除长度</p></li> <li><p>或传入一个迭代器，删除单个元素</p></li> <li><p>注意删除元素后，该元素之后的元素下标均会 -1，在实际操作时要注意不要 i++</p></li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    string minRemoveToMakeValid(string s) {
+        stack&lt;char&gt; stc;
+        stack&lt;int&gt; sti;
+        for(int i = 0; i &lt; s.length();){
+            if(s[i] == '('){
+                stc.push(s[i]);
+                sti.push(i);
+                i++;
+            } else if(s[i] == ')'){
+                if(stc.empty()){
+                    s.erase(i, 1);
+                } else {
+                    stc.pop();
+                    sti.pop();
+                    i++;
+                }
+            } else {
+                i++;
+            }
+        }
+        while(!sti.empty()){
+            s.erase(s.begin()+sti.top());
+            sti.pop();
+        }
+        return s;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><p>将字符串根据特定字符分割成一个字符串数组</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>list&lt;string&gt; strs;
+
+void split(string data, char c) {
+    string str;
+    for(auto&amp; ch: data){
+        if(ch == c){
+            strs.push_back(str);
+            str.clear();
+        } else {
+            str.push_back(ch);
+        }
+    }
+    if(!str.empty()){
+        strs.push_back(str);
+        str.clear();
+    }
+    return build();
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><h3 id="cstdlib">cstdlib</h3> <p>rand() 函数生成随机数：rand() 会返回一随机数值，范围在 0 至 RAND_MAX 间，RAND_MAX定义在 stdlib.h，其值为 2147483647</p> <ul><li>通过 rand() % n 的方式产生<code>(0, n]</code>的随机数</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+
+int main()
+{
+    for (int i = 0; i &lt; 10; i++)
+    {
+        cout &lt;&lt; rand()%100&lt;&lt; &quot; &quot;;
+    }
+    return 0;
+}
+//83 86 77 15 93 35 86 92 49 21   在100中产生随机数， 但是因为没有随机种子所以，下一次运行也是这个数，因此就要引出srand
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h2 id="lambda-表达式">Lambda 表达式</h2> <p>在之前 sort 函数中小用了一下，其实这里和 java 的 lambda 函数是差不多的，以<code>[]</code>作为匿名函数的开头，接<code>()</code>传参，<code>{}</code>书写函数内容及返回值</p> <p>如力扣 451：<a href="https://leetcode.cn/problems/sort-characters-by-frequency/" target="_blank" rel="noopener noreferrer">根据字符出现频率排序<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>用 hash 统计字符数量，再用 sort 从大到小排序<code>pair&lt;char,int&gt;</code></p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    string frequencySort(string s) {
+        map&lt;char, int&gt; m;
+        for(int i = 0; i &lt; s.size(); i++){
+            m[s[i]]++;
+        }
+        vector&lt;pair&lt;char,int&gt;&gt; v;
+        for(auto&amp; it: m){
+            v.push_back(pair&lt;char, int&gt; (it.first, it.second));
+        }
+        
+        // lambda 函数作为参数传入
+        sort(v.begin(), v.end(), [](pair&lt;char,int&gt; p1, pair&lt;char,int&gt; p2){
+            return p1.second &gt; p2.second;
+        });
+        
+        string res = &quot;&quot;;
+        for(int i = 0; i &lt; v.size(); i++){
+            for(int j = 0; j &lt; v[i].second; j++){
+                res += v[i].first;
+            }
+        }
+        return res;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><p>又如力扣 973：<a href="https://leetcode.cn/problems/k-closest-points-to-origin/" target="_blank" rel="noopener noreferrer">最接近原点的 K 个点<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>用 sort 函数排序<code>vector&lt;int&gt;</code>数组，排序点到原点距离大小</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    vector&lt;vector&lt;int&gt;&gt; kClosest(vector&lt;vector&lt;int&gt;&gt;&amp; points, int k) {
+        sort(points.begin(), points.end(), [](vector&lt;int&gt; u, vector&lt;int&gt; v){
+            return u[0]*u[0]+u[1]*u[1] &lt; v[0]*v[0]+v[1]*v[1];
+        });
+        vector&lt;vector&lt;int&gt;&gt; res;
+        for(int i = 0; i &lt; k; i++){
+            res.push_back(points[i]);
+        }
+        return res;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/cs/prog/py/python-basic.html">
+        环境搭建和常用语法
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/song/aries.aac" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:44px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/img/error.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/img/error.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>白羊</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>northboat</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div><!----><div class="RibbonAnimation"></div><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:99;" data-v-248d85d6></canvas></div></div></div>
+    <script src="/assets/js/app.830f5b6e.js" defer></script><script src="/assets/js/5.7032fbc8.js" defer></script><script src="/assets/js/137.bd7fc0e9.js" defer></script>
+  </body>
+</html>

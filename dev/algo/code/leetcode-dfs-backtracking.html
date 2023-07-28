@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>深度优先搜索 - 回溯法 | Northboat Blog</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    <link rel="icon" href="/img/leaf.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="片刻寧靜">
+    
+    <link rel="preload" href="/assets/css/0.styles.9d0e5d79.css" as="style"><link rel="preload" href="/assets/js/app.830f5b6e.js" as="script"><link rel="preload" href="/assets/js/5.7032fbc8.js" as="script"><link rel="preload" href="/assets/js/95.036ad44f.js" as="script"><link rel="prefetch" href="/assets/js/10.036e53d7.js"><link rel="prefetch" href="/assets/js/100.76087af8.js"><link rel="prefetch" href="/assets/js/101.fe3ec1f3.js"><link rel="prefetch" href="/assets/js/102.767e9253.js"><link rel="prefetch" href="/assets/js/103.31da3d36.js"><link rel="prefetch" href="/assets/js/104.156b8258.js"><link rel="prefetch" href="/assets/js/105.263e02cf.js"><link rel="prefetch" href="/assets/js/106.851e7cf9.js"><link rel="prefetch" href="/assets/js/107.6e113532.js"><link rel="prefetch" href="/assets/js/108.b2b7b00d.js"><link rel="prefetch" href="/assets/js/109.568ca258.js"><link rel="prefetch" href="/assets/js/11.a530edee.js"><link rel="prefetch" href="/assets/js/110.0e71b740.js"><link rel="prefetch" href="/assets/js/111.af082324.js"><link rel="prefetch" href="/assets/js/112.c2810cbf.js"><link rel="prefetch" href="/assets/js/113.6d9cd29c.js"><link rel="prefetch" href="/assets/js/114.5e57c3d0.js"><link rel="prefetch" href="/assets/js/115.c7c7d119.js"><link rel="prefetch" href="/assets/js/116.137b07df.js"><link rel="prefetch" href="/assets/js/117.034d8850.js"><link rel="prefetch" href="/assets/js/118.a9b4190c.js"><link rel="prefetch" href="/assets/js/119.2f9e0d25.js"><link rel="prefetch" href="/assets/js/12.da932cee.js"><link rel="prefetch" href="/assets/js/120.414d2b0b.js"><link rel="prefetch" href="/assets/js/121.cdf9934c.js"><link rel="prefetch" href="/assets/js/122.97f6e25d.js"><link rel="prefetch" href="/assets/js/123.8a3dbc06.js"><link rel="prefetch" href="/assets/js/124.3647615f.js"><link rel="prefetch" href="/assets/js/125.c45bf667.js"><link rel="prefetch" href="/assets/js/126.46c7624b.js"><link rel="prefetch" href="/assets/js/127.1493df06.js"><link rel="prefetch" href="/assets/js/128.584b874d.js"><link rel="prefetch" href="/assets/js/129.360732c6.js"><link rel="prefetch" href="/assets/js/13.ae3008d2.js"><link rel="prefetch" href="/assets/js/130.02f568f2.js"><link rel="prefetch" href="/assets/js/131.96c1647c.js"><link rel="prefetch" href="/assets/js/132.2f776723.js"><link rel="prefetch" href="/assets/js/133.e74ee5b3.js"><link rel="prefetch" href="/assets/js/134.87507b09.js"><link rel="prefetch" href="/assets/js/135.105a5eff.js"><link rel="prefetch" href="/assets/js/136.b1d7cf85.js"><link rel="prefetch" href="/assets/js/137.bd7fc0e9.js"><link rel="prefetch" href="/assets/js/138.7b60a194.js"><link rel="prefetch" href="/assets/js/139.4859ccd3.js"><link rel="prefetch" href="/assets/js/14.8d2ed4dc.js"><link rel="prefetch" href="/assets/js/140.ddff7744.js"><link rel="prefetch" href="/assets/js/141.e7e637c4.js"><link rel="prefetch" href="/assets/js/142.3810539d.js"><link rel="prefetch" href="/assets/js/143.68d2a50c.js"><link rel="prefetch" href="/assets/js/144.4964bec5.js"><link rel="prefetch" href="/assets/js/145.608a22de.js"><link rel="prefetch" href="/assets/js/146.10d42178.js"><link rel="prefetch" href="/assets/js/147.94da1738.js"><link rel="prefetch" href="/assets/js/148.398aed17.js"><link rel="prefetch" href="/assets/js/149.3dc3fa3c.js"><link rel="prefetch" href="/assets/js/15.1e3335b1.js"><link rel="prefetch" href="/assets/js/150.3563332f.js"><link rel="prefetch" href="/assets/js/151.e0ecce27.js"><link rel="prefetch" href="/assets/js/152.757fd025.js"><link rel="prefetch" href="/assets/js/153.004e9f0f.js"><link rel="prefetch" href="/assets/js/154.5a48bde9.js"><link rel="prefetch" href="/assets/js/155.a833cfc3.js"><link rel="prefetch" href="/assets/js/156.53eeeb1c.js"><link rel="prefetch" href="/assets/js/157.71f778dc.js"><link rel="prefetch" href="/assets/js/158.7ca76f37.js"><link rel="prefetch" href="/assets/js/159.42aea397.js"><link rel="prefetch" href="/assets/js/16.ee4b84ac.js"><link rel="prefetch" href="/assets/js/160.ff348a84.js"><link rel="prefetch" href="/assets/js/161.b7538baf.js"><link rel="prefetch" href="/assets/js/162.11469046.js"><link rel="prefetch" href="/assets/js/163.44e69a0c.js"><link rel="prefetch" href="/assets/js/164.d2bb5d3a.js"><link rel="prefetch" href="/assets/js/165.27560b96.js"><link rel="prefetch" href="/assets/js/166.117e8700.js"><link rel="prefetch" href="/assets/js/167.d4d66b58.js"><link rel="prefetch" href="/assets/js/168.ce858eaa.js"><link rel="prefetch" href="/assets/js/169.3ec5de06.js"><link rel="prefetch" href="/assets/js/17.43b536a8.js"><link rel="prefetch" href="/assets/js/170.92f5127e.js"><link rel="prefetch" href="/assets/js/171.606d40ef.js"><link rel="prefetch" href="/assets/js/172.625ce15f.js"><link rel="prefetch" href="/assets/js/173.5e6697d8.js"><link rel="prefetch" href="/assets/js/174.e51a5a6c.js"><link rel="prefetch" href="/assets/js/175.462dd123.js"><link rel="prefetch" href="/assets/js/176.71874b7b.js"><link rel="prefetch" href="/assets/js/177.34845a33.js"><link rel="prefetch" href="/assets/js/178.ead338bb.js"><link rel="prefetch" href="/assets/js/18.c9fe1875.js"><link rel="prefetch" href="/assets/js/19.30f6aab2.js"><link rel="prefetch" href="/assets/js/2.32996929.js"><link rel="prefetch" href="/assets/js/20.32aa0a7c.js"><link rel="prefetch" href="/assets/js/21.e1e2078c.js"><link rel="prefetch" href="/assets/js/22.03ec178c.js"><link rel="prefetch" href="/assets/js/23.0c6c7ab5.js"><link rel="prefetch" href="/assets/js/24.022b154f.js"><link rel="prefetch" href="/assets/js/25.e68e92ab.js"><link rel="prefetch" href="/assets/js/26.e9c66eb3.js"><link rel="prefetch" href="/assets/js/27.267c7302.js"><link rel="prefetch" href="/assets/js/28.397d3c16.js"><link rel="prefetch" href="/assets/js/29.14ac2ba2.js"><link rel="prefetch" href="/assets/js/3.861d632f.js"><link rel="prefetch" href="/assets/js/30.a22b9199.js"><link rel="prefetch" href="/assets/js/31.14ecc9e8.js"><link rel="prefetch" href="/assets/js/32.3872c91a.js"><link rel="prefetch" href="/assets/js/33.870dcec0.js"><link rel="prefetch" href="/assets/js/34.a92e2af5.js"><link rel="prefetch" href="/assets/js/35.f6db6921.js"><link rel="prefetch" href="/assets/js/36.9953e0f5.js"><link rel="prefetch" href="/assets/js/37.06b970f7.js"><link rel="prefetch" href="/assets/js/38.3aee502a.js"><link rel="prefetch" href="/assets/js/39.81b7c534.js"><link rel="prefetch" href="/assets/js/4.c017cd8d.js"><link rel="prefetch" href="/assets/js/40.c373993a.js"><link rel="prefetch" href="/assets/js/41.91ff6d3b.js"><link rel="prefetch" href="/assets/js/42.1b2374e7.js"><link rel="prefetch" href="/assets/js/43.979c2850.js"><link rel="prefetch" href="/assets/js/44.d741dfff.js"><link rel="prefetch" href="/assets/js/45.5d4adb7f.js"><link rel="prefetch" href="/assets/js/46.82e98b02.js"><link rel="prefetch" href="/assets/js/47.10ac1d20.js"><link rel="prefetch" href="/assets/js/48.e7d7b613.js"><link rel="prefetch" href="/assets/js/49.b92dc244.js"><link rel="prefetch" href="/assets/js/50.1760a6f6.js"><link rel="prefetch" href="/assets/js/51.91a69958.js"><link rel="prefetch" href="/assets/js/52.a3eec390.js"><link rel="prefetch" href="/assets/js/53.9c030876.js"><link rel="prefetch" href="/assets/js/54.cf970f3a.js"><link rel="prefetch" href="/assets/js/55.0358dd6d.js"><link rel="prefetch" href="/assets/js/56.6ae5be9f.js"><link rel="prefetch" href="/assets/js/57.6fb119dc.js"><link rel="prefetch" href="/assets/js/58.11722b17.js"><link rel="prefetch" href="/assets/js/59.5d5dfc23.js"><link rel="prefetch" href="/assets/js/6.48691825.js"><link rel="prefetch" href="/assets/js/60.c8a7da06.js"><link rel="prefetch" href="/assets/js/61.eb0d543a.js"><link rel="prefetch" href="/assets/js/62.09575762.js"><link rel="prefetch" href="/assets/js/63.63c5ca72.js"><link rel="prefetch" href="/assets/js/64.f520739b.js"><link rel="prefetch" href="/assets/js/65.1181c03a.js"><link rel="prefetch" href="/assets/js/66.211267c8.js"><link rel="prefetch" href="/assets/js/67.5937bdae.js"><link rel="prefetch" href="/assets/js/68.7e3428d9.js"><link rel="prefetch" href="/assets/js/69.4c490b51.js"><link rel="prefetch" href="/assets/js/7.fc51e813.js"><link rel="prefetch" href="/assets/js/70.735f4f48.js"><link rel="prefetch" href="/assets/js/71.95c939cf.js"><link rel="prefetch" href="/assets/js/72.29ecba3e.js"><link rel="prefetch" href="/assets/js/73.9cd18673.js"><link rel="prefetch" href="/assets/js/74.124dc13e.js"><link rel="prefetch" href="/assets/js/75.e9c146d4.js"><link rel="prefetch" href="/assets/js/76.37bad6a1.js"><link rel="prefetch" href="/assets/js/77.499f6399.js"><link rel="prefetch" href="/assets/js/78.dfccd425.js"><link rel="prefetch" href="/assets/js/79.cae909e5.js"><link rel="prefetch" href="/assets/js/8.ea14b932.js"><link rel="prefetch" href="/assets/js/80.67ad4eca.js"><link rel="prefetch" href="/assets/js/81.b1c05087.js"><link rel="prefetch" href="/assets/js/82.a93dce30.js"><link rel="prefetch" href="/assets/js/83.caf226b0.js"><link rel="prefetch" href="/assets/js/84.a644753c.js"><link rel="prefetch" href="/assets/js/85.2934a449.js"><link rel="prefetch" href="/assets/js/86.1b71127b.js"><link rel="prefetch" href="/assets/js/87.2f9e7f90.js"><link rel="prefetch" href="/assets/js/88.9d08ddcd.js"><link rel="prefetch" href="/assets/js/89.67b9f913.js"><link rel="prefetch" href="/assets/js/9.255d17a5.js"><link rel="prefetch" href="/assets/js/90.916a8ddc.js"><link rel="prefetch" href="/assets/js/91.ec7bc170.js"><link rel="prefetch" href="/assets/js/92.7afcb301.js"><link rel="prefetch" href="/assets/js/93.1aa3b843.js"><link rel="prefetch" href="/assets/js/94.0a2e8d28.js"><link rel="prefetch" href="/assets/js/96.6f0db31f.js"><link rel="prefetch" href="/assets/js/97.feb321e2.js"><link rel="prefetch" href="/assets/js/98.f489934b.js"><link rel="prefetch" href="/assets/js/99.883e3955.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9d0e5d79.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Northboat Blog" class="logo"> <span class="site-name can-hide">Northboat Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/lib/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link router-link-active">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/prog/" class="nav-link">
+  Programming
+</a></li><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Math
+</a></li><li class="dropdown-item"><!----> <a href="/cs/is/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/ml/" class="nav-link">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Home Page" class="dropdown-title"><span class="title">Home Page</span> <span class="arrow down"></span></button> <button type="button" aria-label="Home Page" class="mobile-dropdown-title"><span class="title">Home Page</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/" class="nav-link">
+  Home
+</a></li><li class="dropdown-item"><!----> <a href="https://github.com/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github Profile
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/lib/" class="nav-link">
+  Liberal
+</a></li><li class="dropdown-item"><!----> <a href="https://t.me/northboat" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Contact Me
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="2084 Full Stack" class="dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow down"></span></button> <button type="button" aria-label="2084 Full Stack" class="mobile-dropdown-title"><span class="title">2084 Full Stack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dev/algo/" class="nav-link router-link-active">
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/dev/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/dev/ops/" class="nav-link">
+  Operations
+</a></li><li class="dropdown-item"><!----> <a href="/dev/fe/" class="nav-link">
+  Front End
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="NEUQ CS" class="dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow down"></span></button> <button type="button" aria-label="NEUQ CS" class="mobile-dropdown-title"><span class="title">NEUQ CS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/408/ds/" class="nav-link">
+  Data Structure
+</a></li><li class="dropdown-item"><!----> <a href="/408/cn/" class="nav-link">
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/408/os/" class="nav-link">
+  Operating System
+</a></li><li class="dropdown-item"><!----> <a href="/408/co/" class="nav-link">
+  Organization
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CS and ML" class="dropdown-title"><span class="title">CS and ML</span> <span class="arrow down"></span></button> <button type="button" aria-label="CS and ML" class="mobile-dropdown-title"><span class="title">CS and ML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/prog/" class="nav-link">
+  Programming
+</a></li><li class="dropdown-item"><!----> <a href="/cs/math/" class="nav-link">
+  Math
+</a></li><li class="dropdown-item"><!----> <a href="/cs/is/" class="nav-link">
+  Cyberspace Security
+</a></li><li class="dropdown-item"><!----> <a href="/cs/ml/" class="nav-link">
+  Machine Learning
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法设计与分析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>代码实现</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>力扣算法笔记</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/algo/code/leetcode-modeling-hash-binary.html" class="sidebar-link">模拟 - 哈希算法 - 位运算</a></li><li><a href="/dev/algo/code/leetcode-recursion-divide.html" class="sidebar-link">递归算法 - 分治算法</a></li><li><a href="/dev/algo/code/leetcode-sort.html" class="sidebar-link">排序算法</a></li><li><a href="/dev/algo/code/leetcode-bfs-branching-boundary.html" class="sidebar-link">宽度优先搜索- 分支限界法</a></li><li><a href="/dev/algo/code/leetcode-dfs-backtracking.html" aria-current="page" class="active sidebar-link">深度优先搜索 - 回溯法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#深度优先搜索" class="sidebar-link">深度优先搜索</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#递增顺序搜索树" class="sidebar-link">递增顺序搜索树</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#二叉搜索树的范围和" class="sidebar-link">二叉搜索树的范围和</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#二叉树的中序遍历" class="sidebar-link">二叉树的中序遍历</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#二叉树的最近祖先" class="sidebar-link">二叉树的最近祖先</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#路径总和" class="sidebar-link">路径总和</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#连接词" class="sidebar-link">连接词</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#猫和老鼠" class="sidebar-link">猫和老鼠</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#最长递增子序列的个数" class="sidebar-link">最长递增子序列的个数</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#累加数" class="sidebar-link">累加数</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#路径总和-ii" class="sidebar-link">路径总和 II</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#钥匙和房间" class="sidebar-link">钥匙和房间</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#岛屿数量" class="sidebar-link">岛屿数量</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#被围绕的区域" class="sidebar-link">被围绕的区域</a></li></ul></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#回溯问题" class="sidebar-link">回溯问题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#所有可能的路径" class="sidebar-link">所有可能的路径</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#子集" class="sidebar-link">子集</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#全排列" class="sidebar-link">全排列</a></li><li class="sidebar-sub-header"><a href="/dev/algo/code/leetcode-dfs-backtracking.html#组合总和" class="sidebar-link">组合总和</a></li></ul></li></ul></li><li><a href="/dev/algo/code/leetcode-dp-greedy.html" class="sidebar-link">动态规划 - 贪心算法</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>人工智能算法</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>数据结构算法</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="深度优先搜索">深度优先搜索</h2> <blockquote><p>Deep First Search</p> <p>深度优先搜索一定是递归捏</p></blockquote> <h3 id="递增顺序搜索树">递增顺序搜索树</h3> <p>力扣 897：<a href="https://leetcode.cn/problems/increasing-order-search-tree/" target="_blank" rel="noopener noreferrer">递增顺序搜索树<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+
+private:
+    TreeNode* pre = new TreeNode();
+    TreeNode* head = new TreeNode();
+public:
+    void inorder(TreeNode* node)
+    {
+        //当当前指针不为空
+        if(node == nullptr)
+        {
+            return;
+        }
+        inorder(node-&gt;left);
+        //令pre的右指针指向当前节点
+        pre-&gt;right = node;
+        //令当前节点的左指针为空
+        node-&gt;left = nullptr;
+        //令pre为当前指针，即下一步的前驱
+        pre = node;
+        inorder(node-&gt;right);
+    }
+
+    //寻找最左节点：即新生成链表的表头
+    void findHead(TreeNode* root)
+    {
+        TreeNode* p = root;
+        while(p-&gt;left != nullptr)
+        {
+            p = p-&gt;left;
+        }
+        head = p;
+    }
+
+    TreeNode* increasingBST(TreeNode* root)
+    {
+        findHead(root);
+        inorder(root);
+        return head;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br></div></div><h3 id="二叉搜索树的范围和">二叉搜索树的范围和</h3> <p>力扣 938：<a href="https://leetcode.cn/problems/range-sum-of-bst/" target="_blank" rel="noopener noreferrer">二叉搜索树的范围和<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+private:
+    int res = 0;
+
+public:
+    void inorder(TreeNode* root, int low, int high)
+    {
+        if(root == nullptr)
+        {
+            return;
+        }
+        inorder(root-&gt;left, low, high);
+        if(root-&gt;val &gt;= low &amp;&amp; root-&gt;val &lt;= high)
+        {
+            res += root-&gt;val;
+        }
+        inorder(root-&gt;right, low, high);
+    }
+
+
+    int rangeSumBST(TreeNode* root, int low, int high) 
+    {
+        inorder(root, low, high);
+        return res;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div><h3 id="二叉树的中序遍历">二叉树的中序遍历</h3> <p>力扣 94：<a href="https://leetcode.cn/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener noreferrer">二叉树的中序遍历<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-java line-numbers-mode"><pre class="language-text"><code> /**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+
+    private List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+
+    public List&lt;Integer&gt; inorderTraversal(TreeNode root) {
+        if(root!=null &amp;&amp; root.left!=null)
+            inorderTraversal(root.left);
+        if(root!=null)
+            list.add(root.val);
+        if(root!=null &amp;&amp; root.right!=null)
+            inorderTraversal(root.right);
+        return list;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><h3 id="二叉树的最近祖先">二叉树的最近祖先</h3> <p>力扣 236：<a href="https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/" target="_blank" rel="noopener noreferrer">二叉树的最近公共祖先<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <blockquote><p>递归，深度优先搜索</p> <p>明确 root “是 q 和 p 公共祖先” 的条件：(l&amp;&amp;r) || ((root==p||root==q)&amp;&amp;(l||r)</p> <p>l：指左子树为 p 或 q 的祖先；r：指右子树为 p 或 q 的祖先</p></blockquote> <div class="language-java line-numbers-mode"><pre class="language-text"><code>/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+
+    private TreeNode res;
+
+    public boolean dfs(TreeNode root, TreeNode p, TreeNode q){
+        if(root==null){
+            return false;
+        }
+        boolean l = dfs(root.left, p, q);
+        boolean r = dfs(root.right, p, q);
+        if((l&amp;&amp;r) || ((root==p||root==q)&amp;&amp;(l||r))){
+            res = root;
+        }
+        if(l || r || root==p || root==q){
+            return true;
+        }
+        return false;
+    }
+
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        dfs(root, p, q);
+        return res;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><h3 id="路径总和">路径总和</h3> <p>力扣 112：<a href="https://leetcode.cn/problems/path-sum/" target="_blank" rel="noopener noreferrer">路径总和<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-java line-numbers-mode"><pre class="language-text"><code>/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+
+    private boolean flag = false;
+
+    public void dfs(TreeNode root, int targetSum){
+        if(root == null){
+            return;
+        }
+        if(root.left == null &amp;&amp; root.right == null &amp;&amp; root.val == targetSum){
+            flag = true;
+        }
+        int newTarget = targetSum - root.val;
+        dfs(root.left, newTarget);
+        dfs(root.right, newTarget);
+    }
+
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        dfs(root, targetSum);
+        return flag;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br></div></div><h3 id="连接词">连接词</h3> <p>力扣 472：<a href="https://leetcode.cn/problems/concatenated-words/" target="_blank" rel="noopener noreferrer">连接词<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-java line-numbers-mode"><pre class="language-text"><code>public class Solution {
+    static class Trie{
+        public Trie[] children;
+        public boolean isEnd;
+
+        public Trie(){
+            children = new Trie[26];
+            isEnd = false;
+        }
+    }
+    //字典树
+    private Trie trie = new Trie();
+    //将单词插入字典树
+    public void insert(String word){
+        Trie p = trie;
+        int n = word.length();
+        for(int i = 0; i &lt; n; i++){
+            char c = word.charAt(i);
+            int index = c-'a';
+            if(p.children[index] == null){
+                p.children[index] = new Trie();
+            }
+            p = p.children[index];
+        }
+        p.isEnd = true;
+    }
+
+    public boolean dfs(String word, int start){
+        //当已经搜索到最后一位，说明该词被连接而成
+        if(word.length() == start){
+            return true;
+        }
+        Trie p = trie;
+        for(int i = start; i &lt; word.length(); i++){
+            char c = word.charAt(i);
+            int index = c-'a';
+            if(p.children[index] == null){
+                return false;
+            }
+            p = p.children[index];
+            if(p.isEnd){
+                //深度优先搜索
+                if(dfs(word, i+1)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public List&lt;String&gt; findAllConcatenatedWordsInADict(String[] words){
+        List&lt;String&gt; res = new ArrayList&lt;&gt;();
+        Arrays.sort(words, (a, b)-&gt; {
+            return a.length()-b.length();
+        });
+        for(String word: words){
+            if(word.length() == 0){
+                continue;
+            }
+            if(dfs(word, 0)){
+                res.add(word);
+            } else {
+                insert(word);
+            }
+        }
+        return res;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br></div></div><h3 id="猫和老鼠">猫和老鼠</h3> <p>力扣 913：<a href="https://leetcode.cn/problems/cat-and-mouse/" target="_blank" rel="noopener noreferrer">猫和老鼠<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <blockquote><p>在一场信息公开的游戏中，总有一方有一种方法使之不会输</p></blockquote> <div class="language-java line-numbers-mode"><pre class="language-text"><code>package com.solution;
+
+import java.util.Arrays;
+
+public class MouseCatGame {
+
+    private static final int catWin = 2;
+    private static final int draw = 0;
+    private static final int mouseWin = 1;
+
+    private int n;
+    private int[][][] dp;
+    private int[][] graph;
+
+    public int mouseCatGame(int[][] graph){
+        n = graph.length;
+        dp = new int[n][n][2*n];
+        for(int[][] i: dp){
+            for(int[] j: i){
+                Arrays.fill(j, -1);
+            }
+        }
+        this.graph = graph;
+        return getRes(1, 2, 0);
+    }
+
+    public int getRes(int mouse, int cat, int steps){
+        if(steps &gt;= 2*n){
+            return draw;
+        }
+        if(dp[mouse][cat][steps] &lt; 0){
+            if(mouse == 0){
+                dp[mouse][cat][steps] = mouseWin;
+            } else if(mouse == cat){
+                dp[mouse][cat][steps] = catWin;
+            } else{
+                getNextRes(mouse, cat, steps);
+            }
+        }
+        return dp[mouse][cat][steps];
+    }
+
+    public void getNextRes(int mouse, int cat, int steps){
+        int curMove = steps%2 == 0 ? mouse:cat;
+        int defaultRes = curMove==mouse ? catWin:mouseWin;
+        int res = defaultRes;
+        for(int nextStep: graph[curMove]){
+            if(curMove == cat &amp;&amp; nextStep == 0){
+                continue;
+            }
+            int mouseNextStep = curMove==mouse ? nextStep:mouse;
+            int catNextStep = curMove==cat ? nextStep:cat;
+            int nextRes = getRes(mouseNextStep, catNextStep, steps+1);
+            if(nextRes != defaultRes){
+                res = nextRes;
+                if(res != draw){
+                    break;
+                }
+            }
+        }
+        dp[mouse][cat][steps] = res;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br></div></div><h3 id="最长递增子序列的个数">最长递增子序列的个数</h3> <p>力扣 673：<a href="https://leetcode.cn/problems/number-of-longest-increasing-subsequence/" target="_blank" rel="noopener noreferrer">最长递增子序列的个数<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <blockquote><p><code>dp[i]</code>记录当前位置能构成的最长递增子序列的长度</p> <p>对<code>dp[i]==maxLength</code>的位置进行深度优先搜索，找到能构成其最长递增子序列的道路总数，返回条件为<code>dp[j]==1 &amp;&amp; nums[j]&lt;pre</code>，其中<code>pre</code>为上一层的数大小</p></blockquote> <div class="language-java line-numbers-mode"><pre class="language-text"><code>class Solution {
+    private int[] dp;
+    private int res;
+
+    public int buildDp(int[] nums){
+        res = 0;
+        int n = nums.length;
+        dp = new int[n];
+        dp[0] = 1;
+        int maxLength = 1;
+        for(int i = 1; i &lt; n; i++){
+            int d = 0, j;
+            for(j = i-1; j &gt;= 0; j--){
+                if(nums[j] &lt; nums[i] &amp;&amp; dp[j] &gt; d){
+                    d = dp[j];
+                }
+            }
+            dp[i] = d+1;
+            maxLength = Math.max(maxLength, dp[i]);
+        }
+        return maxLength;
+    }
+
+    public void dfs(int index, int pre, int[] nums){
+        if(dp[index] == 1){
+            if(nums[index] &lt; pre){
+                res++;
+            }
+            return;
+        }
+        for(int i = 0; i &lt; index; i++){
+            if(dp[i] == dp[index]-1 &amp;&amp; nums[i] &lt; nums[index]){
+                dfs(i, nums[index], nums);
+            }
+        }
+    }
+
+    public int findNumberOfLIS(int[] nums){
+        int n = nums.length;
+        int maxLength = buildDp(nums);
+        if(maxLength == 1){
+            return n;
+        }
+        for(int i = 1; i &lt; n; i++){
+            if(dp[i] == maxLength){
+                dfs(i, maxLength, nums);
+            }
+        }
+        return res;
+    }
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br></div></div><h3 id="累加数">累加数</h3> <p>力扣 306：<a href="https://leetcode.cn/problems/additive-number/" target="_blank" rel="noopener noreferrer">累加数<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <blockquote><p>外两层循环枚举第一、第二结束点控制变量（<code>第一结束点+1==第二起始点</code>）</p> <p>内一层循环枚举第三结束点（<code>第二结束点+1==第三起始点</code>）</p> <p>若<code>pre+cur==next</code>，向后搜索下一组数，直到<code>index==n-1</code>，即第三结束点为串末尾，返回<code>true</code></p> <p>若<code>pre+cur&lt;next</code>，跳出本次循环，因为在第三结束点向后移动的过程中，<code>next</code>越来越大</p> <p>若<code>pre+cur&gt;next</code>，向后循环遍历第三结束点，增大<code>next</code></p></blockquote> <div class="language-java line-numbers-mode"><pre class="language-text"><code>package com.solution;
+
+public class IsAdditiveNumber {
+    public boolean isAdditiveNumber(String nums){
+        int n = nums.length();
+        char[] charNums = nums.toCharArray();
+        for(int i = 0; i &lt; n-1; i++){
+            if(charNums[0] == '0' &amp;&amp; i &gt; 0){ return false; }
+            long pre = Long.parseLong(nums.substring(0, i+1));
+            for(int j = i+1; j &lt; n-1; j++){
+                if(charNums[i+1] == '0' &amp;&amp; j &gt; i+1){
+                    continue;
+                }
+                long cur = Long.parseLong(nums.substring(i+1, j+1));
+                if(dfs(nums, pre, cur, n, j)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean dfs(String nums, long pre, long cur, int length, int index) {
+        //退出条件
+        if (index == length-1) {
+            return true;
+        }
+        for (int i = index + 1; i &lt; length; i++) {
+            if (nums.charAt(index + 1) == '0' &amp;&amp; i &gt; index + 1) { return false; }
+            long next = Long.parseLong(nums.substring(index + 1, i + 1));
+            System.out.println(pre + &quot;+&quot; + cur + &quot; &quot; + next + &quot;  &quot; + i);
+            if (next &gt; pre + cur) { return false; }
+            if (next == pre + cur) { return dfs(nums, cur, next, length, i); }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        IsAdditiveNumber ian = new IsAdditiveNumber();
+        System.out.println(ian.isAdditiveNumber(&quot;112358&quot;));
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br></div></div><h3 id="路径总和-ii">路径总和 II</h3> <p>力扣 113：<a href="https://leetcode.cn/problems/path-sum-ii/" target="_blank" rel="noopener noreferrer">路径总和 II<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li>深度搜索，递归过程</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+
+    vector&lt;vector&lt;int&gt;&gt; res;
+
+    vector&lt;vector&lt;int&gt;&gt; pathSum(TreeNode* root, int targetSum) {
+        if(!root){
+            return res;
+        }
+        vector&lt;int&gt; vec;
+        dfs(root, targetSum, vec);
+        return res;
+    }
+
+    void dfs(TreeNode* node, int targetSum, vector&lt;int&gt;&amp; fact){
+        if(!node-&gt;left &amp;&amp; !node-&gt;right){
+            if(node-&gt;val == targetSum){
+                fact.push_back(node-&gt;val);
+                res.push_back(fact);
+            }
+            fact.clear();
+        }
+        fact.push_back(node-&gt;val);
+        if(node-&gt;left){
+            vector&lt;int&gt; left(fact);
+            dfs(node-&gt;left, targetSum-node-&gt;val, left);
+        }
+        if(node-&gt;right){
+            vector&lt;int&gt; right(fact);
+            dfs(node-&gt;right, targetSum-node-&gt;val, right);
+        }
+        fact.clear();
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br></div></div><h3 id="钥匙和房间">钥匙和房间</h3> <p>力扣 841：<a href="https://leetcode.cn/problems/keys-and-rooms/" target="_blank" rel="noopener noreferrer">钥匙和房间<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li>遍历房间中的钥匙，用 flags[i] 表示第 i 个房间是否被访问过</li> <li>再次访问到直接跳过，未访问到则访问并遍历该房间中的钥匙</li> <li>如果 flags 中存在 false，则说明未遍历完</li> <li>因为整个图只有一个入口，即 rooms[0]，如果从磁入口深度遍历不完，则说明该图无法通过 rooms[0] 到达所有节点</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>Solution {
+public:
+
+    bool canVisitAllRooms(vector&lt;vector&lt;int&gt;&gt;&amp; rooms) {
+        vector&lt;int&gt; flags(rooms.size(), 0);
+        dfs(rooms, flags, 0);
+        for(auto&amp; flag: flags){
+            if(!flag){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void dfs(vector&lt;vector&lt;int&gt;&gt;&amp; rooms, vector&lt;int&gt;&amp; flags, int index){
+        if(flags[index]){
+            return;
+        }
+        vector&lt;int&gt; keys = rooms[index];
+        flags[index] = 1;
+        for(auto&amp; key: keys){
+            dfs(rooms, flags, key);
+        }     
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><h3 id="岛屿数量">岛屿数量</h3> <p><a href="https://leetcode.cn/problems/number-of-islands/?envType=study-plan&amp;id=suan-fa-ji-chu&amp;plan=algorithms&amp;plan_progress=4g9kt0m" target="_blank" rel="noopener noreferrer">200. 岛屿数量 - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li>找到为 '1' 的节点，深度搜索附近为 '1' 的节点</li> <li>被访问过的 '1' 节点需要被标记为 '2'，和海洋('0')、未被访问的岛屿('1')做区分</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+
+    int numIslands(vector&lt;vector&lt;char&gt;&gt;&amp; grid) {
+        int m = grid.size();
+        int n = grid[0].size();
+        int res = 0;
+        for(int i = 0; i &lt; m; i++){
+            for(int j = 0; j &lt; n; j++){
+                if(grid[i][j] == '1'){
+                    res++;
+                    dfs(grid, i, j);
+                }
+            }
+        }
+        return res;
+    }
+
+    void dfs(vector&lt;vector&lt;char&gt;&gt;&amp; grid, int x, int y){
+        if(x &lt; 0 || x &gt;= grid.size() || y &lt; 0 || y &gt;= grid[0].size()){
+            return;
+        }
+        if(grid[x][y] != '1'){
+            return;
+        }
+        grid[x][y] = '2';
+        dfs(grid, x-1, y);
+        dfs(grid, x+1, y);
+        dfs(grid, x, y-1);
+        dfs(grid, x, y+1);
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><p>和 <a href="https://leetcode.cn/problems/number-of-provinces/?envType=study-plan&amp;id=suan-fa-ji-chu&amp;plan=algorithms&amp;plan_progress=4g9kt0m" target="_blank" rel="noopener noreferrer">547. 省份数量 - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 思路差不太多，主要考虑如何标记已访问节点和遍历的边界</p> <h3 id="被围绕的区域">被围绕的区域</h3> <p>首先判断是否被包围，若被包围，一次性修改所有相连的 'O'，否则不做修改</p> <p>要注意边界上的 'O' 要求始终返回不被包围的信息，于是不被标记为<strong>已访问</strong>，以免直接跳过返回 true</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+    void solve(vector&lt;vector&lt;char&gt;&gt;&amp; board) {
+        int m = board.size(), n = board[0].size();
+        vector&lt;vector&lt;int&gt;&gt; visited(m, vector&lt;int&gt;(n));
+        for(int i = 0; i &lt; m; i++){
+            for(int j = 0; j &lt; n; j++){
+                if(board[i][j] == 'O' &amp;&amp; !visited[i][j]){
+                    if(encircled(board, i, j, visited)){
+                        cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; endl;
+                        tag(board, i, j);
+                    }
+                }
+            }
+        }
+    }
+
+    void tag(vector&lt;vector&lt;char&gt;&gt;&amp; board, int i, int j){
+        if(i &lt; 0 || i &gt;= board.size() || j &lt; 0 || j &gt;= board[0].size()-1){
+            return;
+        }
+        if(board[i][j] == 'X'){
+            return;
+        }
+        board[i][j] = 'X';
+        tag(board, i-1, j);
+        tag(board, i+1, j);
+        tag(board, i, j-1);
+        tag(board, i, j+1);
+    }
+
+    bool encircled(vector&lt;vector&lt;char&gt;&gt;&amp; board, int i, int j, vector&lt;vector&lt;int&gt;&gt;&amp; visited){
+        if(board[i][j] == 'X' || visited[i][j]){
+            return true;
+        }  
+        if(i == 0 || i == board.size()-1 || j == 0 || j == board[0].size()-1){
+            return false;
+        }
+        visited[i][j] = true;
+        bool left = encircled(board, i, j-1, visited);
+        bool right = encircled(board, i, j+1, visited);
+        bool up = encircled(board, i-1, j, visited);
+        bool down = encircled(board, i+1, j, visited);
+        return left &amp;&amp; right &amp;&amp; up &amp;&amp; down;
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br></div></div><h2 id="回溯问题">回溯问题</h2> <blockquote><p>在 dfs 的基础上，增加回退和剪枝的功能，本质上还是一个 dfs</p></blockquote> <h3 id="所有可能的路径">所有可能的路径</h3> <p><a href="https://leetcode.cn/problems/all-paths-from-source-to-target/description/" target="_blank" rel="noopener noreferrer">797. 所有可能的路径 - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li>给你一个有 <code>n</code> 个节点的 <strong>有向无环图（DAG）</strong>，请你找出所有从节点 <code>0</code> 到节点 <code>n-1</code> 的路径并输出</li></ul> <p>利用栈弹出使用过的节点，而非不断构造新的空间压入</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+
+    vector&lt;int&gt; stk;
+    vector&lt;vector&lt;int&gt;&gt; res;
+
+    vector&lt;vector&lt;int&gt;&gt; allPathsSourceTarget(vector&lt;vector&lt;int&gt;&gt;&amp; graph) {
+        stk.push_back(0);
+        dfs(graph, 0, graph.size()-1);
+        return res;
+    }
+
+    void dfs(vector&lt;vector&lt;int&gt;&gt;&amp; graph, int cur, int target){
+        if(cur == target){
+            res.push_back(stk);
+            return;
+        }
+        for(auto&amp; next: graph[cur]){
+            stk.push_back(next);
+            dfs(graph, next, target);
+            stk.pop_back();
+        }
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><h3 id="子集">子集</h3> <p><a href="https://leetcode.cn/problems/subsets/submissions/" target="_blank" rel="noopener noreferrer">78. 子集 - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li>数组元素互不相同，无需剪枝</li> <li>从上往下（树的深度）枚举所有情况</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+
+    vector&lt;vector&lt;int&gt;&gt; res;
+
+    vector&lt;vector&lt;int&gt;&gt; subsets(vector&lt;int&gt;&amp; nums) {
+        vector&lt;int&gt; path;
+        backtrack(nums, path, 0);
+        return res;
+    }
+
+    void backtrack(vector&lt;int&gt;&amp; nums, vector&lt;int&gt;&amp; path, int start){
+        res.push_back(path);
+        for(int i = start; i &lt; nums.size(); i++){
+            path.push_back(nums[i]);
+            backtrack(nums, path, i+1);
+            path.pop_back();
+        }
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p><a href="https://leetcode.cn/problems/subsets-ii/submissions/" target="_blank" rel="noopener noreferrer">90. 子集 II - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>数组中有重复元素，需要剪枝</p> <ul><li>先排序，使重复元素相邻</li> <li>再在遍历时，跳过重复元素（因为在同一层已经选中了该元素，再选，其子树均重复记录）</li></ul> <h3 id="全排列">全排列</h3> <p><a href="https://leetcode.cn/problems/permutations/description/" target="_blank" rel="noopener noreferrer">46. 全排列 - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li>不断从头到尾进行遍历，暴搜</li> <li>用数组动态标记访问过的元素</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+
+    vector&lt;int&gt; visited;
+    vector&lt;vector&lt;int&gt;&gt; res;    
+
+    vector&lt;vector&lt;int&gt;&gt; permute(vector&lt;int&gt;&amp; nums) {
+        visited = vector&lt;int&gt;(nums.size(), 0);
+        vector&lt;int&gt; stk;
+        backtrack(nums, stk);
+        return res;
+    }
+
+    void backtrack(vector&lt;int&gt;&amp; nums, vector&lt;int&gt;&amp; stk){
+        int n = nums.size();
+        if(stk.size() == n){
+            res.push_back(stk);
+            return;
+        }
+        for(int i = 0; i &lt; n; i++){
+            if(visited[i]){
+                continue;
+            }
+            stk.push_back(nums[i]);
+            visited[i] = true;
+            backtrack(nums, stk);
+            stk.pop_back();
+            visited[i] = false;
+        }
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><p>进阶版本：<a href="https://leetcode.cn/problems/permutations-ii/description/" target="_blank" rel="noopener noreferrer">47. 全排列 II - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>需要考虑去重（剪枝）问题，关键在于</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>sort(nums.begin(), nums.end());
+
+if(i &gt; 0 &amp;&amp; nums[i] == nums[i-1] &amp;&amp; !visited[i-1]){
+	continue;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="组合总和">组合总和</h3> <p><a href="https://leetcode.cn/problems/combination-sum/description/" target="_blank" rel="noopener noreferrer">39. Combination Sum - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>在数组中找到所有和为 target 的不重复的组合</p> <img src="/assets/img/combine_sum.232ff45d.png"> <p>关键在于：同一层不能遍历相同的元素，如果能够遍历将出现很多重复组合，如<code>[1,2,4], [1,4,2], [4,1,2]</code>，这个问题将退化为上一题全排列</p> <div class="language-c line-numbers-mode"><pre class="language-text"><code>class Solution {
+public:
+
+    vector&lt;vector&lt;int&gt;&gt; res;
+
+    vector&lt;vector&lt;int&gt;&gt; combinationSum(vector&lt;int&gt;&amp; candidates, int target) {
+        int n = candidates.size();
+        vector&lt;int&gt; stk;
+        backtrack(candidates, target, stk, 0);
+        return res;
+    }
+
+    void backtrack(vector&lt;int&gt;&amp; candidates, int target, vector&lt;int&gt;&amp; stk, int start){
+        if(target &lt;= 0){
+            if(target == 0) { res.push_back(stk); }
+            return;
+        }
+        for(int i = start; i &lt; candidates.size(); i++){
+            int cur = candidates[i];
+            stk.push_back(cur);
+            backtrack(candidates, target-cur, stk, i);
+            stk.pop_back();
+        }
+    }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><p>进阶版：<a href="https://leetcode.cn/problems/combination-sum-ii/" target="_blank" rel="noopener noreferrer">40. 组合总和 II - 力扣（Leetcode）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ul><li>每个数字每个组合只能出现一次，需要去重</li> <li>同样每层不能重复选取同一元素</li></ul> <p>回溯函数</p> <ul><li>排序数组，相邻的相同元素，若前者未被访问，则直接跳过
+<ul><li>因为是从左往右便利的，若后者当前访问，前者未访问，这一过程在上一轮肯定发生过，于是跳过</li> <li>这一过程是指：两个相同元素占用树相同的两层</li></ul></li> <li>用<code>visited</code>数组标记被访问过的元素，进入下一轮之前取消标记</li></ul> <div class="language-c line-numbers-mode"><pre class="language-text"><code>void backtrack(vector&lt;int&gt;&amp; candidates, int target, vector&lt;int&gt;&amp; stk, int start){
+	if(target &lt;= 0){
+		if(target == 0) { res.push_back(stk); }
+		return;
+    }
+    for(int i = start; i &lt; candidates.size(); i++){
+        if(visited[i]){
+            continue;
+        }
+        if(i &gt; 0 &amp;&amp; candidates[i] == candidates[i-1] &amp;&amp; !visited[i-1]){
+            continue;
+        }
+        int cur = candidates[i];
+        stk.push_back(cur);
+        visited[i] = true;
+        backtrack(candidates, target-cur, stk, i+1);
+        stk.pop_back();
+        visited[i] = false;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/dev/algo/code/leetcode-bfs-branching-boundary.html" class="prev">
+        宽度优先搜索- 分支限界法
+      </a></span> <span class="next"><a href="/dev/algo/code/leetcode-dp-greedy.html">
+        动态规划 - 贪心算法
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/song/aries.aac" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:44px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/img/error.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/img/error.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>白羊</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>northboat</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div><!----><div class="RibbonAnimation"></div><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:99;" data-v-248d85d6></canvas></div></div></div>
+    <script src="/assets/js/app.830f5b6e.js" defer></script><script src="/assets/js/5.7032fbc8.js" defer></script><script src="/assets/js/95.036ad44f.js" defer></script>
+  </body>
+</html>
