@@ -1,10 +1,10 @@
-function caesar_encode(){
-	text = document.getElementById("caesar").value;
+function encode(){
+	text = document.getElementById("crypto").value;
 	alert(text);
 }
 
-function caesar_decode(){
-	text = document.getElementById("caesar").value;
+function decode(){
+	text = document.getElementById("crypto").value;
 	alert(text);
 }
 
