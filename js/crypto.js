@@ -1,4 +1,4 @@
-function encode(){
+function encrypt(){
 	text = document.getElementById("crypto").value;
 	var code = document.getElementById('code');
 	var id = code.selectedIndex;
@@ -24,7 +24,7 @@ function encode(){
 	}
 }
 
-function decode(){
+function decrypt(){
 	// 获取密文
 	text = document.getElementById("crypto").value;
 	// 密码类型
