@@ -103,7 +103,7 @@ function chat_gpt() {
 	
     const inputText = document.getElementById("chat").value;
 
-    const apiKey = "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";
+    const apiKey = "";
     const model = "gpt-3.5-turbo";
 
     const requestData = {
