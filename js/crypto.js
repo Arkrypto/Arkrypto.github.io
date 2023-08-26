@@ -97,3 +97,34 @@ function en_to_zh_translate(){
 function zh_to_en_translate(){
 	translate(2);
 }
+
+// ChatGPT 接口
+function chat_gpt() {
+	
+    const inputText = document.getElementById("chat").value;
+
+    const apiKey = "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";
+    const model = "gpt-3.5-turbo";
+
+    const requestData = {
+        messages: [{ role: "system", content: "You are a user" }, { role: "user", content: inputText }]
+    };
+
+    $.ajax({
+        type: "POST",
+        url: `https://api.openai.com/v1/chat/completions/${model}`,
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${apiKey}`
+        },
+        data: JSON.stringify(requestData),
+        success: function(response) {
+            const responseText = response.choices[0].message.content;
+            document.getElementById("feedback").innerText = responseText;
+        },
+        error: function(error) {
+            console.error("Error:", error);
+			document.getElementById("feedback").innerText = "Error";
+        }
+    });
+}
