@@ -23,12 +23,21 @@ function getDiff(dist) {
 }
 
 function init(){
+	
 	setInterval(function(){countdown(d)}, 1000)
+
 }
 
 function countdown(date){
-	let diff = getDiff(d)
-	document.getElementById("countdown").innerHTML = diff;		
+	let loc = window.location.pathname;
+	//alert(loc)
+	//console.log(loc)
+	
+	if(loc == "/docs/i/es/"){
+		let diff = getDiff(d)
+		document.getElementById("countdown").innerHTML = diff;	
+	}
+		
 }
 
 

@@ -42,3 +42,8 @@ function en_to_zh_translate(){
 function zh_to_en_translate(){
 	translate(2);
 }
+
+function clear_input(){
+	//console.log("清除");
+	document.getElementById("trans").value = "";
+}
