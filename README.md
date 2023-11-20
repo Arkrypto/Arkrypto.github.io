@@ -1,3 +1,3 @@
 # canoer95.github.io
 
-一个Blog
+一个博客
