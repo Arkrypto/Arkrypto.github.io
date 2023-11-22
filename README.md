@@ -1,3 +1,3 @@
-# northboat.github.io
+# canoe95.github.io
 
-[一份博客](https://northboat.github.io)
+一个博客
