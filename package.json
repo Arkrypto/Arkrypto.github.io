@@ -1,0 +1,25 @@
+{
+  "name": "canoe's yard",
+  "version": "1.0.0",
+  "author": "canoe",
+  "scripts": {
+    "dev": "vuepress dev . --open --host \"localhost\"",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && vuepress build ."
+  },
+  "devDependencies": {
+    "@vuepress-reco/vuepress-plugin-bulletin-popover": "^1.6.16",
+    "vuepress": "1.9.7",
+    "vuepress-plugin-cat": "^1.0.3",
+    "vuepress-plugin-code-copy": "^1.0.6",
+    "vuepress-plugin-cursor-effects": "^1.1.6",
+    "vuepress-plugin-ribbon-animation": "^1.1.3",
+    "vuepress-plugin-sakura": "^1.2.1",
+    "vuepress-theme-reco": "1.6.17"
+  },
+  "description": "blog",
+  "dependencies": {
+    "@vuepress-reco/vuepress-plugin-bgm-player": "^1.1.4",
+    "katex": "^0.16.9",
+    "markdown-it-texmath": "^1.0.0"
+  }
+}
