@@ -144,19 +144,18 @@ module.exports = {
 		],*/
 		[ '@vuepress-reco/vuepress-plugin-bulletin-popover', {
 			width: '240px', // 默认 260px
-			title: '公告栏',
+			title: '真是美美又丽丽',
 			body: [{
-				type: 'title',
-				content: 'Can I Have This?',
-				style: 'text-aligin: center;'
-			},{
 				type: 'image',
-				src: '/img/star.png'
+				src: '/img/hu318.png'
 			}],
 			footer: [{
-				type: 'button',
-				text: 'Link',
-				link: '/Pages'
+				type: 'title',
+				content: "\"我每天都看妞，就是为了心情愉悦\"",
+				style: 'text-aligin: center;'
+				//type: 'button',
+				//text: 'Link',
+				//link: '/Pages'
 			}]
 		}]
     ]

@@ -1,8 +1,8 @@
 ---
 home: true
 heroText: null
-tagline: 自强不息 知行合一
-heroImage: /img/kali.jpg
+tagline: 命運敲定了 要這麼發生
+heroImage: /img/titan.jpg
 heroImageStyle: {
   maxWidth: '550px',
   width: '100%',
