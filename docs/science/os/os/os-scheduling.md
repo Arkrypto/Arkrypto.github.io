@@ -1,5 +1,5 @@
 ---
-title: 调度
+title: 处理机调度
 date: 2022-10-21 
 tags:
   - OperatingSystem

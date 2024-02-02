@@ -1,5 +1,5 @@
 ---
-title: 同步
+title: 同步与互斥
 date: 2022-10-24
 tags:
   - OperatingSystem
