@@ -144,7 +144,7 @@ module.exports = {
 		],*/
 		[ '@vuepress-reco/vuepress-plugin-bulletin-popover', {
 			width: '240px', // 默认 260px
-			title: '真是美美又丽丽哪',
+			title: '真是美美又丽丽呐',
 			body: [{
 				type: 'image',
 				src: '/img/hu318.png'
