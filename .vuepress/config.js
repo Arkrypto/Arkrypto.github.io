@@ -150,9 +150,9 @@ module.exports = {
 				src: '/img/hu318.png'
 			}],
 			footer: [{
-				//type: 'title',
-				//content: "\"<strong>她在丛中笑</strong>\"",
-				//style: 'text-aligin: center;'
+				type: 'title',
+				content: "它在丛中笑",
+				style: 'text-aligin: center;'
 				//type: 'button',
 				//text: '乐',
 				//link: '/Pages'
