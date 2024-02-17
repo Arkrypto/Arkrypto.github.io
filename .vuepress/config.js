@@ -76,12 +76,12 @@ module.exports = {
 		[ '@vuepress-reco/vuepress-plugin-bgm-player', {	//npm i @vuepress-reco/vuepress-plugin-bgm-player -D
 			"audios": [{
 				name: '白羊',
-				artist: 'northboat',
+				artist: 'canoe7',
 				url: '/song/baiyang.aac',
 				cover: '/img/error.jpg'
 			},{
 				name: '水手',
-				artist: 'tm',
+				artist: 'momo',
 				url: '/song/shuishou.m4a',
 				cover: '/img/error.jpg'
 			}],
@@ -144,17 +144,17 @@ module.exports = {
 		],*/
 		[ '@vuepress-reco/vuepress-plugin-bulletin-popover', {
 			width: '240px', // 默认 260px
-			title: '真是美美又丽丽呐',
+			title: '待到山花烂漫时',
 			body: [{
 				type: 'image',
 				src: '/img/hu318.png'
 			}],
 			footer: [{
-				type: 'title',
-				content: "\"我每天都看妞，就是为了心情愉悦\"",
-				style: 'text-aligin: center;'
+				//type: 'title',
+				//content: "\"<strong>她在丛中笑</strong>\"",
+				//style: 'text-aligin: center;'
 				//type: 'button',
-				//text: 'Link',
+				//text: '乐',
 				//link: '/Pages'
 			}]
 		}]

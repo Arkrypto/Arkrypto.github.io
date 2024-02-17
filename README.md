@@ -1,7 +1,7 @@
 ---
 home: true
 heroText: null
-tagline: 命運敲定了 要這麼發生
+tagline: 生命沉闷亦玩过游戏
 heroImage: /img/titan.jpg
 heroImageStyle: {
   maxWidth: '550px',
