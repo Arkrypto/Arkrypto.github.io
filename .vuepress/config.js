@@ -76,7 +76,7 @@ module.exports = {
 		[ '@vuepress-reco/vuepress-plugin-bgm-player', {	//npm i @vuepress-reco/vuepress-plugin-bgm-player -D
 			"audios": [{
 				name: '白羊',
-				artist: 'canoe7',
+				artist: 'canoe',
 				url: '/song/baiyang.aac',
 				cover: '/img/error.jpg'
 			},{
@@ -135,14 +135,12 @@ module.exports = {
 		}],
 		[ "vuepress-plugin-cat", ],
 	    [ "vuepress-plugin-code-copy", true ],
-		/*[ vuepress-plugin-cursor-effects,
-			'cursor-effects', {
-				size: 2, // 粒子大小
-				shape: 'star', // 粒子形状（可选 'star' 和 'circle'）
-				zIndex: 999999999,
-			},
-		],*/
-		[ '@vuepress-reco/vuepress-plugin-bulletin-popover', {
+		[ "cursor-effects", { // vuepress-plugin-cursor-effects
+			size: 2, // 粒子大小
+			shape: 'circle', // 粒子形状（可选 'star' 和 'circle'）
+			zIndex: 999999999,
+		}],
+		/*[ '@vuepress-reco/vuepress-plugin-bulletin-popover', {
 			width: '240px', // 默认 260px
 			title: '待到山花烂漫时',
 			body: [{
@@ -151,12 +149,12 @@ module.exports = {
 			}],
 			footer: [{
 				type: 'title',
-				content: "它在丛中笑",
+				content: "她在丛中笑",
 				style: 'text-aligin: center;'
 				//type: 'button',
 				//text: '乐',
 				//link: '/Pages'
 			}]
-		}]
+		}]*/
     ]
 }  
