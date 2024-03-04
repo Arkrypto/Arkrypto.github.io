@@ -20,7 +20,7 @@ map<int, int> _map;
 _map[9] = 10;
 ```
 
-通过 if(m.count(i)) 判断键 i 是否存，因为只有 1/0
+通过 if(m.count(i)) 判断键 i 是否存在，结果只有 1/0
 
 ```c
 if(_map.count(9)){
@@ -28,7 +28,7 @@ if(_map.count(9)){
 }
 ```
 
-遍历：使用元素指针遍历
+遍历：使用元素指针遍历，使用 auto 类型
 
 ```c
 map<int, int>::iterator iter;
@@ -38,6 +38,10 @@ for(iter = _map.begin(); iter != _map.end(); iter++) {
 
 for(auto it: _map){
     cout << it.first << " : " << it.second << endl;
+}
+
+for(auto it = _map.begin(); it != _map.end(); it++){
+    cout << it->second;
 }
 ```
 
@@ -177,8 +181,6 @@ vec.clear();
 // 清空且回收内存
 vector<int>().swap(vec);
 ```
-
-
 
 ### stack
 
@@ -329,7 +331,7 @@ public:
 };
 ```
 
-## 其他库
+## 工具库
 
 ### algorithm
 
@@ -401,6 +403,15 @@ cout << find(nums.begin(), nums.end(), 3) - nums.begin();
 ```
 
 ### string
+
+通过 algorithm.sort() 排序字符串
+
+```c
+#include<algorithm>
+
+string key = str;
+sort(key.begin(), key.end());
+```
 
 遍历 string
 

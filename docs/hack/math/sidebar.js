@@ -41,16 +41,6 @@ module.exports = [
 			'./probability/probability-estimate-assume',
 		]
 	},
-	
-
-	
-	{
-		title: '离散数学',
-		collapsable: true,
-		children: [
-			'./discrete/discrete-set-theory',
-		]
-	},
 
 
 ]
