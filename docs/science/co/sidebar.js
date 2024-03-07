@@ -2,16 +2,16 @@
 module.exports = [
 
 	{
-		title: '计算机组成原理',
+		title: '计算机组成原理 - 启航',
 		collapsable: true,
 		children: [
-			'./co/co-outline',
-			'./co/co-bus',
-			'./co/co-memory',
-			'./co/co-io',
-			'./co/co-num',	
-			'./co/co-instruction',
-			'./co/co-cpu',
+			'./hang/co-outline',
+			'./hang/co-bus',
+			'./hang/co-memory',
+			'./hang/co-io',
+			'./hang/co-num',	
+			'./hang/co-instruction',
+			'./hang/co-cpu',
 		]
 	},
 

@@ -2,29 +2,29 @@
 module.exports = [
 	
 	{
-		title: '操作系统',
+		title: '操作系统 - 启航',
 		collapsable: true,
 		children: [
-			'./os/os-outline',
+			'./hang/os-outline',
 			{
 			    title: 'CPU 管理',
 			    collapsable: true,
 			    children: [
-			    	'./os/os-thread',
-					'./os/os-scheduling',
-					'./os/os-synchronized',
-					'./os/os-deadlock',
+			    	'./hang/os-thread',
+					'./hang/os-scheduling',
+					'./hang/os-synchronized',
+					'./hang/os-deadlock',
 			    ]
 			},
 			{
 			    title: '存储管理',
 			    collapsable: true,
 			    children: [
-			    	'./os/os-memory',
-					'./os/os-virtual',
+			    	'./hang/os-memory',
+					'./hang/os-virtual',
 			    ]
 			},
-			'./os/os-file',			
+			'./hang/os-file',			
 		]
 	},
 

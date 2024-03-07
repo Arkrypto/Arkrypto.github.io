@@ -14,7 +14,16 @@ module.exports = [
 			'./calculus/advance-infinite-series',
 		]
 	},
-
+	
+	{
+		title: 'Linear Algebra Done Right',
+		collapsable: true,
+		children: [
+			'./ladr/linear-algebra-done-right-vector',
+			'./ladr/linear-algebra-done-right-feature',	
+		]
+	},
+	
 	{
 		title: '线性代数',
 		collapsable: true,
@@ -28,6 +37,7 @@ module.exports = [
 			
 		]
 	},
+
 
 	{
 		title: '概率论与数理统计',

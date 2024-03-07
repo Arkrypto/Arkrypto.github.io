@@ -23,16 +23,16 @@ module.exports = [
 	},
 	
 	{
-		title: "AI 算法",
+		title: "CS188 笔记",
 		collapsable: true,
 		children: [
-			'./ai/ai-grid-world',
-			'./ai/ai-tic-tac-toe',
+			'./cs188/ai-grid-world',
+			'./cs188/ai-tic-tac-toe',
 		]
 	},
 
 	{
-		title: "数据结构实现与算法",
+		title: "数据结构算法",
 		collapsable: true,
 		children: [
 			'./ds/data-structure-design',

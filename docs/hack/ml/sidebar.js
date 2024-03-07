@@ -4,7 +4,6 @@ module.exports = [
 		title: 'Python3',
 		collapsable: true,
 		children: [
-		    './py/python-basic',
 		    {
 				title: "Python Hundred",
 		        collapsable: true,
@@ -14,18 +13,8 @@ module.exports = [
 			    	'./py/python-third',		
 				]
 		    },
+		    './py/python-basic',
 		    './py/python-dev',
-		]
-	},
-
-	{
-		title: '数据科学库',
-		collapsable: true,
-		children: [
-			'./lib/pylib-numpy',
-			'./lib/pylib-pandas',
-			'./lib/pylib-scipy',
-			'./lib/pylib-matplotlib',
 		]
 	},
 
@@ -33,19 +22,10 @@ module.exports = [
 		title: '人工智能导论',
 		collapsable: true,
 		children: [
-			'./ai/cs188-search-csp-game',
-			'./ai/cs188-mdp-rl',
-			'./ai/cs188-probabilistic-reasoning',
-			'./ai/cs188-hmm-ml',
-		]
-	},
-	
-	{
-		title: 'Scikit Learn',
-		collapsable: true,
-		children: [
-			'./skl/sklearn-classifier',
-			'./skl/sklearn-optimize',
+			'./cs188/cs188-search-csp-game',
+			'./cs188/cs188-mdp-rl',
+			'./cs188/cs188-probabilistic-reasoning',
+			'./cs188/cs188-hmm-ml',
 		]
 	},
 	
@@ -57,4 +37,38 @@ module.exports = [
 			'./ml/ml-experiment',
 		]
 	},
+	
+	{
+		title: '机器学习库',
+		collapsable: true,
+		children: [
+			{
+				title: '数据科学库',
+				collapsable: true,
+				children: [
+					'./lib/pylib-numpy',
+					'./lib/pylib-pandas',
+					'./lib/pylib-scipy',
+					'./lib/pylib-matplotlib',
+				]
+			},
+			{
+				title: 'SKLearn',
+				collapsable: true,
+				children: [
+					'./lib/sklearn-classifier',
+					'./lib/sklearn-optimize',
+				]
+			},
+			{
+				title: 'PyTorch',
+				collapsable: true,
+				children: [
+					'./lib/pytorch-basic',
+				]
+			},
+		]
+	},
+	
+
 ]

@@ -2,29 +2,43 @@
 module.exports = [
 
 	{
-		title: '计算机网络',
+		title: '计算机网络 - 启航',
 		collapsable: true,
 		children: [
-			'./cn/computer-network-outline-physical',
+			'./hang/computer-network-outline',
+			'./hang/computer-network-physical-layer',
+			'./hang/computer-network-datalink',
+			'./hang/computer-network-network-layer',
+			'./hang/computer-network-transport',
+			'./hang/computer-network-application',
+		]
+	},
+
+	{
+		title: '计算机网络 - 王道',
+		collapsable: true,
+		children: [
+			'./wang/computer-network-outline-physical',
 			{
 				title: '数据链路层',
 				collapsable: true,
 				children: [
-					'./cn/computer-network-data-link',
-					'./cn/computer-network-lan-wan',
+					'./wang/computer-network-data-link',
+					'./wang/computer-network-lan-wan',
 				]
 			},
 			{
 				title: '网络层',
 				collapsable: true,
 				children: [
-					'./cn/computer-network-routing',
-					'./cn/computer-network-ipv4',
+					'./wang/computer-network-routing',
+					'./wang/computer-network-ipv4',
 				]
 			},
-			'./cn/computer-network-transport-application',
+			'./wang/computer-network-transport-application',
 		]
 	},
+	
 	
 
 	
