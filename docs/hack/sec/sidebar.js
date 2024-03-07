@@ -44,7 +44,15 @@ module.exports = [
 		]
 	},
 	
-		
+	{
+		title: '网安基础综合',
+		collapsable: true,
+		children: [
+			'./9151/9151-c',
+			'./9151/9151-discrete',
+			'./9151/9151-os',
+		]
+	},	
 	
 
 ]
