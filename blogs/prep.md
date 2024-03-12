@@ -16,7 +16,8 @@ date: 2024-3-6
 $$
 dp[i]=
 \begin{cases}
-1&i=0/1\\\\
+1&i=0\\\\
+2&i=1\\\\
 dp[i-1]+dp[i-2]&i\geq2
 \end{cases}
 $$
@@ -42,6 +43,31 @@ public:
 
 > 阅读论文《Attention Is All You Need》或者《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》，做好论文阅读笔记并尽可能代码复现、解读代码逻辑
 
+注意力机制（Attention Mechanism）是机器学习中的一种**数据处理方法**
+
+- 严格来说，注意力机制更像是一种方法论。没有严格的数学定义，而是根据具体任务目标，**对关注的方向和加权模型进行调整**
+- 简单的理解就是，在神经网络的隐藏层，增加注意力机制的加权，使不符合注意力模型的内容弱化或者遗忘
+
+《Attention Is All You Need》中对注意力的抽象定义
+$$
+Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_k}})V
+$$
+`An attention function can be described as mapping a query and a set of key-value pairs to an output, where the query, keys, values, and output are all vectors. The output is computed as a weighted sum of the values, where the weight assigned to each value is computed by a compatibility function of the query with the corresponding key.`
+
+注意力是将一个查询（Q）和键值对（K,V）映射到输出的方法，Q、K、V 均为向量，输出通过对 V 进行加权求和得到，权重就是 Q、K 的相似度
+
+- 其中`softmax`是激活函数
+
+注意力机制的应用
+
+1. 机器视觉中的应用（精细分类、图像分割、图像焦点）：例如，识别鸟类的品种问题。对于鸟品种的精细分类，对结果影响最大的可能是鸟类的头部，通过注意力机制将头部的特征强化，而忽略其他部分（羽毛、爪子），以实现区分鸟类的具体品种
+
+2. 机器翻译中的应用（LSTM+注意力模型）：LSTM（Long Short Term Memory）是RNN（循环神经网络）的一种应用。可以简单理解为，每一个神经元都具有输入门、输出门、遗忘门
+
+   其中输入门、输出门将 LSTM 神经元首尾连接，而遗忘门将无意义内容弱化或遗忘。注意力机制就应用在 LSTM 的遗忘门，使得机器阅读更加贴近于人类阅读的习惯，也使得翻译结果具有上下文联系
+
+搜一下softmax，然后注意力的定义解释完整，d是什么，这个矩阵乘法的意义是什么
+
 ## 大模型概述
 
 > 说一下当前较为流行的大模型，国内外各三种，且说出他们主要针对的领域（通用 or 专有，专有的话针对哪个垂直领域）
@@ -58,13 +84,13 @@ public:
 - **Google的BERT（Bidirectional Encoder Representations from Transformers）**：作为一种预训练的语言表示模型，BERT在自然语言处理领域表现出色，广泛用于文本分类、语义理解、命名实体识别等任务
 - **Facebook的RoBERTa**：RoBERTa是对BERT进行了改进的模型，通过更大规模的数据集和更长的预训练时间来提高性能，同样应用于自然语言处理领域的各种任务
 
-这些大模型可以在各种领域发挥作用，包括但不限于通用自然语言处理、计算机视觉、推荐系统等。有些模型可能更适用于特定领域，如ERNIE在中文语境下的表现更好，而GPT系列在文本生成任务上有独特优势
+这些大模型可以在各种领域发挥作用，包括但不限于通用自然语言处理、计算机视觉、推荐系统等。有些模型对特定领域更加适用，如 ERNIE 在中文语境下的表现更好，而 GPT 系列在文本生成任务上独领风骚
 
 > 请说一下大模型训练、微调的手段有哪些
 
 大型模型的训练和微调通常涉及到以下几种主要手段
 
-- **预训练（Pre-training）**：在大规模数据集上进行的初始训练，目的是使模型学习到丰富的语言表示。预训练通常采用无监督或半监督的方式，在文本数据上进行预测任务，如语言建模（预测下一个词）、掩码语言建模（预测掩码词）、预测下一个句子等
+- 预训练（Pre-training）：在大规模数据集上进行的初始训练，目的是使模型学习到丰富的语言表示。预训练通常采用无监督或半监督的方式，在文本数据上进行预测任务，如语言建模（预测下一个词）、掩码语言建模（预测掩码词）、预测下一个句子等
 - **微调（Fine-tuning）**：将预训练好的模型在特定任务的有标签数据集上进行进一步的训练，以使其适应该任务的特定要求。微调可以是在整个模型上进行，也可以只在模型的一部分层次上进行
 - **自适应学习率（Adaptive Learning Rate）**：由于大型模型参数数量庞大，学习率的设置尤为重要。自适应学习率算法可以根据参数的梯度情况动态调整学习率，以保证训练的稳定性和收敛性
 - **正则化（Regularization）**：用于减少模型的过拟合风险。常见的正则化技术包括L1正则化和L2正则化，它们通过对模型参数进行惩罚来限制参数的大小
@@ -73,16 +99,16 @@ public:
 - **数据增强（Data Augmentation）**：在微调阶段，通过对训练数据进行变换、旋转、剪裁等操作，可以增加数据的多样性，提高模型的泛化能力
 - **迁移学习（Transfer Learning）**：利用预训练好的模型在特定领域进行微调，可以加速模型的收敛并提高模型的性能，尤其是在数据量有限的情况下
 
-这些手段可以单独或组合使用，根据具体任务和数据情况来选择合适的训练和微调策略
+这些手段可以单独或组合使用，并且根据具体任务和数据情况来选择合适的训练和微调策略
 
 > 如果有优化和部署经验，请进一步解说其中的技术点
 
-在本地笔记本电脑不同操作系统上（Windows11 / Manjaro / ArchLinux）部署过清华的开源语言大模型 ChatGLM-6B 并分别以 32G CPU 和 8G GPU 成功运行
+在本地不同笔记本电脑上（Windows11 / Manjaro / ArchLinux）部署过清华的开源语言大模型 ChatGLM-6B 并分别以 32G/16G CPU 和 6G GPU 成功运行
 
-- Github：[THUDM/ChatGLM-6B: ChatGLM-6B: An Open Bilingual Dialogue Language Model | 开源双语对话语言模型 (github.com)](https://github.com/THUDM/ChatGLM-6B)
+- Github：[THUDM/ChatGLM-6B: 开源双语对话语言模型](https://github.com/THUDM/ChatGLM-6B)
 - Hugging Face：[THUDM/chatglm-6b · Hugging Face](https://huggingface.co/THUDM/chatglm-6b)
 
-采用 Web 可视化操作微调过相关参数，但对于其中优化细节并不十分了解，以下为搜索得到
+采用 Web 可视化操作微调过相关参数，但对于其中优化细节及相关技术点并不十分了解，以下为搜索得到
 
 - **模型压缩和量化（Model Compression and Quantization）**：针对大型模型的参数数量庞大和计算需求高的问题，可以采用模型压缩和量化技术来减少模型的大小和计算量。例如，剪枝（Pruning）可以去除模型中冗余的连接和参数，量化（Quantization）可以将模型参数从浮点数转换为较低位数的整数，从而减少存储和计算量
 - **硬件加速器的使用（Hardware Acceleration）**：利用专门的硬件加速器（如GPU、TPU等）来加速大型模型的推理和训练过程。这些硬件加速器通常能够提供比通用处理器更高的计算性能和能效比，从而加速模型的运行
@@ -93,7 +119,7 @@ public:
 - **模型并行和数据并行（Model Parallelism and Data Parallelism）**：将模型参数或训练数据分布到多个设备或计算节点上，并行地进行模型计算和训练，以提高训练速度和计算效率
 - **模型部署的优化（Deployment Optimization）**：将训练好的模型部署到生产环境中时，需要考虑到模型的性能、延迟、吞吐量等方面的要求，并对模型进行相应的优化，以满足实际应用的需求
 
-这些技术点通常会结合使用，以优化和部署大型模型，从而在保持模型性能的同时，提高模型的效率和可用性
+这些技术点通常会结合使用，以优化和部署大型模型，在保持模型性能的同时，提高模型的效率和可用性
 
 > 请说一下目前大模型急待解决的缺陷在哪里
 

@@ -77,7 +77,7 @@ module.exports = {
 			"audios": [{
 				name: '白羊',
 				artist: 'canoe',
-				url: '/song/baiyang.aac',
+				url: '/song/baiyang.mp3',
 				cover: '/img/error.jpg'
 			},{
 				name: '水手',

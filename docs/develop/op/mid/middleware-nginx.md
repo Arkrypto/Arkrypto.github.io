@@ -42,11 +42,9 @@ IPHash：
 
 ## 基本使用
 
-### 搭建
+### 安装
 
-安装
-
-上传安装包
+上传安装包，解压检查
 
 ~~~bash
 tar -axvf nginx-1.20.2.tar.gz
@@ -54,14 +52,30 @@ tar -axvf nginx-1.20.2.tar.gz
 cd nginx-1.20.2.tar.gz
 
 ./configure
+~~~
 
+apt-get 下载 zlib
+
+```sh
+sudo apt-get install zlib1g-dev
+```
+
+apt-get 下载 pcre
+
+```sh
+sudo apt-get install libpcre3-dev
+```
+
+编译安装
+
+```sh
 make && make install
 
 whereis nginx
 /usr/local/nginx
 
 cd /usr/local/nginx
-~~~
+```
 
 启动命令
 

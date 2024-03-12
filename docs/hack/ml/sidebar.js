@@ -53,7 +53,7 @@ module.exports = [
 				]
 			},
 			{
-				title: 'SKLearn',
+				title: 'Scikit-Learn',
 				collapsable: true,
 				children: [
 					'./lib/sklearn-classifier',
