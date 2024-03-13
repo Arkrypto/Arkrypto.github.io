@@ -2,19 +2,19 @@
 module.exports = {
 	
 
-	'/docs/develop/algo/': require('../docs/develop/algo/sidebar'),
-	'/docs/develop/fe/': require('../docs/develop/fe/sidebar'),
-	'/docs/develop/java/': require('../docs/develop/java/sidebar'),
-	'/docs/develop/op/': require('../docs/develop/op/sidebar'),
+	'/docs/devops/algo/': require('../docs/devops/algo/sidebar'),
+	'/docs/devops/fe/': require('../docs/devops/fe/sidebar'),
+	'/docs/devops/java/': require('../docs/devops/java/sidebar'),
+	'/docs/devops/ops/': require('../docs/devops/ops/sidebar'),
 			
 	
-	'/docs/hack/math/': require('../docs/hack/math/sidebar'),
-	'/docs/hack/lib/': require('../docs/hack/lib/sidebar'),
-	'/docs/hack/sec/': require('../docs/hack/sec/sidebar'),
-	'/docs/hack/ml/': require('../docs/hack/ml/sidebar'),
+	'/docs/canoe/math/': require('../docs/canoe/math/sidebar'),
+	'/docs/canoe/lib/': require('../docs/canoe/lib/sidebar'),
+	'/docs/canoe/sec/': require('../docs/canoe/sec/sidebar'),
+	'/docs/canoe/ml/': require('../docs/canoe/ml/sidebar'),
 	
-	'/docs/science/ds/': require('../docs/science/ds/sidebar'),
-	'/docs/science/cn/': require('../docs/science/cn/sidebar'),
-	'/docs/science/os/': require('../docs/science/os/sidebar'),
-	'/docs/science/co/': require('../docs/science/co/sidebar'),
+	'/docs/cs/ds/': require('../docs/cs/ds/sidebar'),
+	'/docs/cs/cn/': require('../docs/cs/cn/sidebar'),
+	'/docs/cs/os/': require('../docs/cs/os/sidebar'),
+	'/docs/cs/co/': require('../docs/cs/co/sidebar'),
 }	

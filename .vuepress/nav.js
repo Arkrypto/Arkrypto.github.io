@@ -15,33 +15,33 @@ module.exports = [
 	
 	
 	{
-       	text: '2084 Dev',
+       	text: '2084 DevOps',
 		items: [
-			{text: 'Algorithm', link: '/docs/develop/algo/'},
-			{text: 'Java', link: '/docs/develop/java/'},
-			{text: 'Operations', link: '/docs/develop/op/'},
-			{text: 'Front End', link: '/docs/develop/fe/'},
+			{text: 'Algorithm', link: '/docs/devops/algo/'},
+			{text: 'Java', link: '/docs/devops/java/'},
+			{text: 'Operations', link: '/docs/devops/ops/'},
+			{text: 'Front End', link: '/docs/devops/fe/'},
         ]
     },	
 
 	{
 		text: 'NEUQ CS',
 		items: [
-			{text: 'Data Structure', link: '/docs/science/ds/'},
-			{text: 'Network', link: '/docs/science/cn/'},
-			{text: 'Operating System', link: '/docs/science/os/'}, 
-			{text: 'Organization', link: '/docs/science/co/'},
+			{text: 'Data Structure', link: '/docs/cs/ds/'},
+			{text: 'Network', link: '/docs/cs/cn/'},
+			{text: 'Operating System', link: '/docs/cs/os/'}, 
+			{text: 'Organization', link: '/docs/cs/co/'},
 		]
     },
 	
 
     {
-		text: 'BYD Labor', 
+		text: 'A Free Man', 
 		items: [
-			{text: 'Cyber Security', link: '/docs/hack/sec/'},			
-			{text: 'Library', link: '/docs/hack/lib/'},
-			{text: 'Machine Learning', link: '/docs/hack/ml/'},
-			{text: 'Mathematics', link: '/docs/hack/math/'},			
+			{text: 'Cyber Security', link: '/docs/canoe/sec/'},			
+			{text: 'Library', link: '/docs/canoe/lib/'},
+			{text: 'Machine Learning', link: '/docs/canoe/ml/'},
+			{text: 'Mathematics', link: '/docs/canoe/math/'},			
 		]
     },
 
