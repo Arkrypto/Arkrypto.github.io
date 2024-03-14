@@ -1,7 +1,7 @@
 ---
 home: true
 heroText: null
-tagline: 生命沉闷亦玩过游戏
+tagline: 这趟旅程若算开心
 heroImage: /img/titan.jpg
 heroImageStyle: {
   maxWidth: '550px',

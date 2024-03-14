@@ -13,28 +13,6 @@ module.exports = [
 	
     },
 	
-	
-	{
-       	text: '2084 DevOps',
-		items: [
-			{text: 'Algorithm', link: '/docs/devops/algo/'},
-			{text: 'Java', link: '/docs/devops/java/'},
-			{text: 'Operations', link: '/docs/devops/ops/'},
-			{text: 'Front End', link: '/docs/devops/fe/'},
-        ]
-    },	
-
-	{
-		text: 'NEUQ CS',
-		items: [
-			{text: 'Data Structure', link: '/docs/cs/ds/'},
-			{text: 'Network', link: '/docs/cs/cn/'},
-			{text: 'Operating System', link: '/docs/cs/os/'}, 
-			{text: 'Organization', link: '/docs/cs/co/'},
-		]
-    },
-	
-
     {
 		text: 'A Free Man', 
 		items: [
@@ -44,8 +22,25 @@ module.exports = [
 			{text: 'Mathematics', link: '/docs/canoe/math/'},			
 		]
     },
-
 	
+	{
+		text: 'NEUQ CS',
+		items: [
+			{text: 'Data Structure', link: '/docs/cs/ds/'},
+			{text: 'Network', link: '/docs/cs/cn/'},
+			{text: 'Operating System', link: '/docs/cs/os/'}, 
+			{text: 'Organization', link: '/docs/cs/co/'},
+		]
+    },
 
+	{
+       	text: '2084 DevOps',
+		items: [
+			{text: 'Algorithm', link: '/docs/devops/algo/'},
+			{text: 'Java', link: '/docs/devops/java/'},
+			{text: 'Operations', link: '/docs/devops/ops/'},
+			{text: 'Front End', link: '/docs/devops/fe/'},
+        ]
+    },	
 
 ]
