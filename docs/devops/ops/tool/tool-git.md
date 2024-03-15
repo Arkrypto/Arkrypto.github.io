@@ -2,7 +2,7 @@
 title: Git
 date: 2021-4-28
 categories:
-  - WebDevOp
+  - WebDevOps
 tags:
   - Tool
 ---

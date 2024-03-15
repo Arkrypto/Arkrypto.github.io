@@ -2,7 +2,7 @@
 title: RabbitMQ
 date: 2021-5-8
 categories:
-  - WebDevOp
+  - WebDevOps
 tags:
   - Middleware
 ---

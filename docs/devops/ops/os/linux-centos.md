@@ -1,6 +1,8 @@
 ---
-title: Linux 服务器部署
+title: Linux Server Deploy
 date: 2021-5-4
+categories:
+  - WebDevOps
 ---
 
 > 第一台服务器：CentOS7.6，基于Red Hat Linux，狗阿里坑我钱财

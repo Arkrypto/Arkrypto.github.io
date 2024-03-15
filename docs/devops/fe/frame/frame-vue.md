@@ -2,7 +2,7 @@
 title: Vue
 date: 2022-1-17
 categories:
-  - WebDevOp
+  - WebDevOps
 tags:
   - FrontEnd
 ---

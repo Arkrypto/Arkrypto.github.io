@@ -1,6 +1,8 @@
 ---
-title: Linux 本地开发
+title: Linux Local Dev
 date: 2022-4-12
+categories:
+  - WebDevOps
 ---
 
 ## 本地安装

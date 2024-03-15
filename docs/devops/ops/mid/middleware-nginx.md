@@ -2,7 +2,7 @@
 title: Nginx
 date: 2022-5-1
 categories:
-  - WebDevOp
+  - WebDevOps
 ---
 
 > *Nginx* (engine x) 是一个高性能的[HTTP](https://baike.baidu.com/item/HTTP)和[反向代理](https://baike.baidu.com/item/反向代理/7793488)web服务器，同时也提供了IMAP/POP3/SMTP服务。Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点（俄文：Рамблер）开发的
