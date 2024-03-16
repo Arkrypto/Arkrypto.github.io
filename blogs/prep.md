@@ -98,7 +98,7 @@ Transformer 模型由编码器和解码器组成，其中
 
 它们共同用于各种序列到序列（sequence-to-sequence）的任务
 
-<img src="./assets/v2-a56175f019880d96a485a1477b8f3385_1200x500.png">
+<img src="./assets/687474703a2f2f696d6775722e636f6d2f316b72463252362e706e67.png">
 
 #### 编码器
 
@@ -125,9 +125,17 @@ Transformer 模型由编码器和解码器组成，其中
 
 解码器使用编码器转的表示来生成目标序列，捕捉到序列中不同位置之间的依赖关系，从而在各种序列到序列的任务中取得了良好的性能
 
-### WMT 2014 英德翻译任务
+### 代码复现
 
 数据集（句子对）来自于：`European Parliament Proceedings Parallel Corpus`
+
+[A PyTorch implementation of the Transformer model in "Attention is All You Need"](https://github.com/jadore801120/attention-is-all-you-need-pytorch)
+
+```sh
+conda create attention
+conda activate attention
+conda install --yes --file requirements.txt
+```
 
 在训练过程中，研究人员使用了标准的最大似然估计法，并采用了Adam优化器。模型使用了标准的交叉熵损失函数，以最小化实际输出序列与目标序列之间的差
 
