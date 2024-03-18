@@ -158,15 +158,16 @@ class InputEmbeddings(nn.Module):
         return self.embedding(x) * math.sqrt(self.d_model)
 ```
 
-句子位置向量的构建
+句子位置向量的构建：对于偶数位用 sin，对于奇数位用 cos
 
-对于偶数位，有
 $$
-PE(pos,2i) = \sin\frac{pos}{10000^{\frac{2i}{d_model}}}
-$$
-对于奇数位，有
-$$
-PE(pos,2i) = \cos\frac{pos}{10000^{\frac{2i}{d_model}}}
+PE(pos,i) = 
+\left\{
+\begin{matrix}
+\sin\frac{pos}{10000^{\frac{i}{d_{model}}}}&i为偶数\\\\
+\cos\frac{pos}{10000^{\frac{i}{d_{model}}}}&i为奇数
+\end{matrix}
+\right.
 $$
 代码实现
 
