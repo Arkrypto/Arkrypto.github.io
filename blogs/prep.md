@@ -125,31 +125,176 @@ Transformer 模型由编码器和解码器组成，其中
 
 解码器使用编码器转的表示来生成目标序列，捕捉到序列中不同位置之间的依赖关系，从而在各种序列到序列的任务中取得了良好的性能
 
-### 代码复现
+### 编码器复现
 
-数据集（句子对）来自于：`European Parliament Proceedings Parallel Corpus`
+[Coding a Transformer from scratch on PyTorch, with full explanation, training and inference. (youtube.com)](https://www.youtube.com/watch?v=ISNdQcPhsts)
 
-[A PyTorch implementation of the Transformer model in "Attention is All You Need"](https://github.com/jadore801120/attention-is-all-you-need-pytorch)
+<img src="./assets/687474703a2f2f696d6775722e636f6d2f316b72463252362e706e67.png">
 
-```sh
-conda create attention
-conda activate attention
-conda install --yes --file requirements.txt
+输入嵌入层 - 位置编码 - 多头自注意力层 - 层归一化 - 前馈神经网络
+
+其中
+
+- 输入层、位置编码以及归一层做的都是数据处理工作
+- 多头注意力层实现所谓注意力机制
+- 前馈神经网络处理多头注意力层的输出
+
+#### 输入嵌入与位置编码
+
+获取句子输入处理为向量
+
+```python
+# 输入器
+class InputEmbeddings(nn.Module):
+
+    def __init__(self, d_model: int, vocab_size: int):
+        super().__init__()
+        self.d_model = d_model
+        self.vocab_size = vocab_size
+        self.embedding = nn.embedding(vocab_size, d_model)
+
+    # 提供字典类型的层
+    def forward(self, x):
+        return self.embedding(x) * math.sqrt(self.d_model)
 ```
 
-在训练过程中，研究人员使用了标准的最大似然估计法，并采用了Adam优化器。模型使用了标准的交叉熵损失函数，以最小化实际输出序列与目标序列之间的差
+句子位置向量的构建
 
-- 最大似然估计法（Maximum Likelihood Estimation，MLE）：MLE 的目标是找到使得似然函数取得最大值的参数值。从概率上说，它在寻找最有可能生成观测数据的参数值
-- Adam（Adaptive Moment Estimation）是一种广泛用于训练神经网络的优化算法：Adam 优化器是一种自适应的、基于一阶梯度的优化算法，其主要思想是**根据每个参数的历史梯度和梯度的平方来动态地调整学习率**
-- 交叉熵损失函数（Cross-Entropy Loss Function）是机器学习和深度学习中常用的一种损失函数，特别适用于分类问题。**它用于衡量模型预测值与真实标签之间的差异**
-
-如在二分类问题中，交叉熵损失函数可以定义为
+对于偶数位，有
 $$
-CE(y,\hat{y}) = -ylog(\hat{y})+(1-y)log(1-\hat{y})
+PE(pos,2i) = \sin\frac{pos}{10000^{\frac{2i}{d_model}}}
 $$
-实验结果表明，Transformer模型在WMT 2014英德翻译任务上取得了与现有最先进模型相媲美甚至更好的性能，同时大大减少了训练时间。Transformer模型的性能主要得益于其自注意力机制，能够更好地捕捉输入序列和输出序列之间的长距离依赖关系
+对于奇数位，有
+$$
+PE(pos,2i) = \cos\frac{pos}{10000^{\frac{2i}{d_model}}}
+$$
+代码实现
 
-但模型仍然存在一些局限性，如处理长序列时的计算开销较大
+```python
+# 创建矩阵
+pe = torch.zeros(seq_len, d_model)
+
+# 如何构建向量
+position = torch.arange(0, seq_len, dtype=torch.float).unsqueeze(1)
+div_term = torch.exp(torch.arange(0, d_model, 2).float) * (-math.log(10000.0) / d_model)
+
+# sin 函数对偶数处理
+pe[:, 0::2] = torch.sin(position * div_term)
+# cos 函数对奇数处理
+pe[:, 1::2] = torch.cos(position * div_term)
+pe = pe.unsqueeze(0)
+```
+
+#### 层归一化
+
+层归一化处理
+$$
+\hat{x_j}=\frac{x_j-\mu_j}{\sqrt{\sigma_j^2+\epsilon}}
+$$
+加一个 ε 防止 σ 过于贴近 0
+
+```python
+class LayerNormalization(nn.Module):
+
+    def __init__(self, eps: float = 10**-6) -> None:
+        super().__init__()
+        self.eps = eps
+        self.alpha = nn.Parameter(torch.ones(1))
+        self.bias == nn.Parameter(torch.zeros(1))
+
+    def forward(self, x):
+        mean = x.mean(dim = -1, keepdim = True)
+        std = x.std(dim = -1, keepdim = True)
+        return self.alpha * (x-mean) / (std + self.eps)
+```
+
+#### 前馈神经网络
+
+前馈模块：Position-wise Feed-Forward Networks
+$$
+FFN(x) = max(0,xW_1+b_1)W_2+b_2
+$$
+输入的`d(model) = 512`并且`d(ff) = 2048`，长度要从 512 构建到 2048
+
+```python
+class FeedFordwardBlock(nn.Module):
+    def __init__(self, d_model: int, d_ff: int, dropout: float) -> None
+        super().__init__()
+        self.linear_1 = nn.Linear(d_model, d_ff) # w1 和 b1
+        self.dropout = nn.Dropout(dropout)
+        self.linear_2 = nn.Linear(d_ff, d_model) # w2 和 b2
+    
+    def forward(self, x):
+        # 张量的转换：d_model -> d_ff -> d_model
+        return self.linear_2(self.dropout(torch.relu(self.linear_1(x))))
+```
+
+#### 多头自注意力
+
+> 最重要的模块，得到编码器的输入**并使用它三次**，分别为查询、键和值，对应之前提到的注意力公式中的三个重要参数
+>
+> 相当于相同的输入，应用了三次
+
+注意力公式
+$$
+Attention(Q,K,V) = softmax(\frac{QK^T}{\sqrt{d_k}})V
+$$
+头注意力计算
+$$
+head_i = Attention(QW_i^Q, KW_i^K, VW_i^V)
+$$
+代码
+
+```python
+class MultiHeadAttentionBlock(nn.Module):
+
+    def __init__(self, d_model: int, h: int, dropout: float) -> None:
+        super().init()
+        self.d_model = d_model
+        self.h = h
+        assert d_model % h == 0, "d_model is not divisible by h"
+
+        self.d_k = d_model // h
+        self.w_q = nn.Linear(d_model, d_model) # Wq 查询
+        self.w_k = nn.Linear(d_model, d_model) # Wk 键
+        self.w_v = nn.Linear(d_model, d_model) # Wv 值
+
+        self.w_o = nn.Linear(d_model, d_model) # Wo
+        self.dropout = nn.Dropout(dropout)
+
+
+    # 输出我们想要的注意力分数
+    @staticmethod
+    def attention(query, key, value, mask, dropout: nn.Dropout):
+        d_k = query.shape[-1]
+
+        attention_scores = (query @ key.transpose(-2, -1)) / math.sqrt(d_k)
+        if mask is not None:
+            attention_scores.masked_fill_(mask == 0, -1e9)
+        attention_scores = attention_scores.softmax(dim = -1)
+        if dropout is not None:
+            attention_scores = dropout(attention_scores)
+        
+        return (attention_scores @ value), attention_scores
+
+
+    def forward(self, q, k, v, mask):
+        query = self.w_q(q)
+        key = self.w_k(k)
+        value = self.w_v(v)
+
+        # 矩阵处理，令三个查询的矩阵和 d_k 相关
+        query = query.view(query.shape[0], query.shape[1], self.h, self.d_k).transpose(1, 2)
+        key = key.view(key.shape[0], key.shape[1], self.h, self.d_k).transpose(1, 2)
+        value = value.view(value.shape[0], value.shape[1], self.h, self.d_k).transpose(1, 2)
+
+        x, self.attention_scores = MultiHeadAttentionBlock.attention(query, key, value, mask, self.dropout)
+
+        # (batch, h, Seq_Len, d_k) --> (batch, Seq_Len, h, d_k) --> (batch, Seq_Len, d_model)
+        x = x.transpose(1, 2).contiguous().view(x.shape[0], -1, self.h * self.d_k)
+
+        return self.w_o(x)
+```
 
 <div style="page-break-after:always;"></div>
 
