@@ -12,10 +12,10 @@ date: 2022-08-17
         <span>canoer@cock.li</span>
         ·
 		<img src="./assets/github-brands.svg" style="width:17px; display:inline-block">
-        <span><a href="https://github.com/canoe95">GitHub</a></span>
+        <span><a href="https://github.com/canoe4">GitHub</a></span>
         ·
      	<img src="./assets/rss-solid.svg" style="width:17px; display:inline-block">
-        <span><a href="https://canoe95.github.io/">Blog</a></span>
+        <span><a href="https://canoe4.github.io/">Blog</a></span>
  	</div>
  </center>
 

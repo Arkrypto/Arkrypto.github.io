@@ -6,7 +6,7 @@ module.exports = [
        	text: 'Home',
 		items: [
 			{text: 'Home', link: '/'},
-			{text: 'Github', link: 'https://github.com/canoe95'},
+			{text: 'Github', link: 'https://github.com/canoe4'},
 			{text: 'About', link: '/blogs/about/'},
 			{text: 'Contact', link: 'https://t.me/canoe95'},
         ]
