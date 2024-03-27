@@ -76,7 +76,7 @@ module.exports = {
 		[ '@vuepress-reco/vuepress-plugin-bgm-player', {	//npm i @vuepress-reco/vuepress-plugin-bgm-player -D
 			"audios": [{
 				name: '白羊',
-				artist: 'canoe',
+				artist: 'canoer',
 				url: '/song/baiyang.mp3',
 				cover: '/img/error.jpg'
 			},{
