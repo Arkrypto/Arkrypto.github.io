@@ -1,5 +1,5 @@
 ---
-title: 离散数学 - 9151
+title: 离散数学
 date: 2023-12-29
 ---
 
@@ -51,11 +51,11 @@ $$
 
 蕴含等值式
 $$
-A\rightarrow B <=>\neg A∪B
+A\rightarrow B <=>\neg A\vee B
 $$
 等值公式：德摩根式（合取和析取的转化）
 $$
-\neg(A∩B)<=>\neg A ∪\neg B
+\neg(A\wedge B)<=>\neg A \vee\neg B
 $$
 化范式的常见步骤
 
