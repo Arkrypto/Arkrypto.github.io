@@ -2,7 +2,7 @@
 module.exports = [
 
 	{
-		title: '计算机组成原理 - 启航',
+		title: '计算机组成原理',
 		collapsable: true,
 		children: [
 			'./hang/co-outline',

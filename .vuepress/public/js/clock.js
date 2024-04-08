@@ -34,7 +34,7 @@ function countdown(date){
 	//alert(loc)
 	//console.log(loc)
 	
-	if(loc == "/docs/hack/lib/"){
+	if(loc == "/docs/lib/"){
 		let diff = getDiff(d)
 		document.getElementById("countdown").innerHTML = diff;	
 	}

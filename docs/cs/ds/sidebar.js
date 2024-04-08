@@ -2,7 +2,7 @@
 module.exports = [
 
 	{
-		title: '数据结构 - 王道',
+		title: '数据结构',
 		collapsable: true,
 		children: [
 			'./wang/data-structure-sequence',

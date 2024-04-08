@@ -2,7 +2,7 @@
 module.exports = [
 	
 	{
-		title: '操作系统 - 启航',
+		title: '操作系统',
 		collapsable: true,
 		children: [
 			'./hang/os-outline',

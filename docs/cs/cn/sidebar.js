@@ -2,7 +2,7 @@
 module.exports = [
 
 	{
-		title: '计算机网络 - 启航',
+		title: '计算机网络 Ⅰ',
 		collapsable: true,
 		children: [
 			'./hang/computer-network-outline',
@@ -15,7 +15,7 @@ module.exports = [
 	},
 
 	{
-		title: '计算机网络 - 王道',
+		title: '计算机网络 Ⅱ',
 		collapsable: true,
 		children: [
 			'./wang/computer-network-outline-physical',

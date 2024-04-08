@@ -1,5 +1,5 @@
 module.exports = {
-	title: "Canoe's Blog",
+	title: "Canoe's Docs",
 	description: 'one note&blog during my undergraduate period.',
 	dest: 'public',
 	head: [
@@ -137,7 +137,7 @@ module.exports = {
 	    [ "vuepress-plugin-code-copy", true ],
 		[ "cursor-effects", { // vuepress-plugin-cursor-effects
 			size: 2, // 粒子大小
-			shape: 'circle', // 粒子形状（可选 'star' 和 'circle'）
+			shape: 'star', // 粒子形状（可选 'star' 和 'circle'）
 			zIndex: 999999999,
 		}],
 		/*[ '@vuepress-reco/vuepress-plugin-bulletin-popover', {
