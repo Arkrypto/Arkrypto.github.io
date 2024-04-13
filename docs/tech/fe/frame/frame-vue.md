@@ -13,7 +13,7 @@ tags:
 
 ## Vue 基础
 
-### 第一个 vVe 程序
+### 第一个 Vue 程序
 
 > 七大对象，`el、data、methods、computed、template、render、watch`
 
