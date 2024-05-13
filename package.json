@@ -4,7 +4,7 @@
   "author": "canoe",
   "scripts": {
     "dev": "vuepress dev . --open --host \"localhost\"",
-    "build": "set NODE_OPTIONS=--openssl-legacy-provider && vuepress build ."
+    "build": "vuepress build ."
   },
   "devDependencies": {
     "@vuepress-reco/vuepress-plugin-bulletin-popover": "^1.6.16",

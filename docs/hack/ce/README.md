@@ -1,1 +1,1 @@
-XDU School of Cyber Engineering
+School of Cyber Engineering

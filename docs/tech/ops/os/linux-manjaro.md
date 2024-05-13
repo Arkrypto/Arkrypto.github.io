@@ -1,5 +1,5 @@
 ---
-title: Linux Local Dev
+title: Linux Local Develop
 date: 2022-4-12
 categories:
   - WebDevOps

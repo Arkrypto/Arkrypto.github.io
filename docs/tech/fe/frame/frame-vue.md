@@ -970,7 +970,7 @@ npm i element-ui -S
 
 ~~~shell
 npm install vue-router --save-dev
-cnpm intall sass-loader node-sass --save-dev
+npm install sass-loader node-sass --save-dev
 ~~~
 
 [Element - 中文文档](https://element.eleme.cn/#/zh-CN)

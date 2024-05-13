@@ -75,14 +75,19 @@ module.exports = {
 	plugins: [
 		[ '@vuepress-reco/vuepress-plugin-bgm-player', {	//npm i @vuepress-reco/vuepress-plugin-bgm-player -D
 			"audios": [{
+				name: 'Love and Mangoes',
+				artist: 'LiuShuiXiu',
+				url: '/song/Love&Mangoes.m4a',
+				cover: '/img/error.jpg'
+			},{
 				name: '白羊',
 				artist: 'canoe',
-				url: '/song/baiyang.mp3',
+				url: '/song/Aries.mp3',
 				cover: '/img/error.jpg'
 			},{
 				name: '水手',
 				artist: 'momo',
-				url: '/song/shuishou.m4a',
+				url: '/song/Mariner.m4a',
 				cover: '/img/error.jpg'
 			}],
 			// 是否默认缩小
