@@ -75,6 +75,11 @@ module.exports = {
 	plugins: [
 		[ '@vuepress-reco/vuepress-plugin-bgm-player', {	//npm i @vuepress-reco/vuepress-plugin-bgm-player -D
 			"audios": [{
+				name: '失忆蝴蝶',
+				artist: 'Eason',
+				url: '/song/AmnesiaButterfly.mp3',
+				cover: '/img/error.jpg'
+			},{
 				name: 'Love and Mangoes',
 				artist: 'LiuShuiXiu',
 				url: '/song/Love&Mangoes.m4a',

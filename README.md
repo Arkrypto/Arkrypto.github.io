@@ -1,7 +1,7 @@
 ---
 home: true
 heroText: null
-tagline: 这趟旅程若算开心
+tagline: 并未在一起亦无从离去
 heroImage: /img/titan.jpg
 heroImageStyle: {
   maxWidth: '550px',
