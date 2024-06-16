@@ -10,11 +10,10 @@ module.exports = [
 			{text: 'Library', link: '/docs/lib/'},
 			{text: 'Contact', link: 'https://t.me/canoe95'},
         ]
-	
     },
 	
     {
-		text: 'A Free XDUer', 
+		text: 'XDU CyberSec', 
 		items: [
 			{text: 'Machine Learning', link: '/docs/hack/ml/'},
 			{text: 'Mathematics', link: '/docs/hack/math/'},	
