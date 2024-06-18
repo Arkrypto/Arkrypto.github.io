@@ -1,0 +1,57 @@
+module.exports = [
+
+	{
+		title: '数论',
+		collapsable: true,
+		children: [
+			'./number/number-modular-arithmetic',
+			'./number/number-arithmetic-equation',
+			'./number/number-logarithm-ellipse',
+		]
+	},
+
+	{
+		title: '现代密码学',
+		collapsable: true,
+		children: [
+		    './crypto/crypto-outline-stream-cipher',
+			'./crypto/crypto-block-cipher',
+			'./crypto/crypto-public-key',
+			'./crypto/crypto-destribution-manage',
+			'./crypto/crypto-verify-hash',
+			'./crypto/crypto-digital-signature',
+		]
+	},
+
+	
+	{
+		title: '世界上最好的语言',
+		collapsable: true,
+		children: [
+			'./prog/php',
+			'./prog/c++',
+			'./prog/rust',
+		]
+	},
+	
+	{
+		title: 'XDU 9151',
+		collapsable: true,
+		children: [
+			'./9151/9151-c',
+			'./9151/9151-discrete',
+			'./9151/9151-os',
+			'./9151/9151-prep',
+		]
+	},	
+	
+	{
+		title: '基础攻防',
+		collapsable: true,
+		children: [
+			'./hack/ctf-wechall',
+			'./hack/ctf-hacker101',
+		]
+	},
+	
+]

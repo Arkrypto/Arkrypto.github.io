@@ -3,7 +3,7 @@
 module.exports = [
 
     {
-       	text: 'Home',
+       	text: 'Home Pages',
 		items: [
 			{text: 'Home', link: '/'},
 			{text: 'Github', link: 'https://github.com/canoe4'},
@@ -12,18 +12,27 @@ module.exports = [
         ]
     },
 	
-    {
-		text: 'XDU CyberSec', 
+	{
+       	text: '2084 Full Stack Dev',
 		items: [
-			{text: 'Machine Learning', link: '/docs/hack/ml/'},
-			{text: 'Mathematics', link: '/docs/hack/math/'},	
-			{text: 'Information Security', link: '/docs/hack/is/'},					
-			{text: 'Cyber Engineering', link: '/docs/hack/ce/'},			
+			{text: 'Algorithm', link: '/docs/dev/algo/'},
+			{text: 'Java', link: '/docs/dev/java/'},
+			{text: 'Operations', link: '/docs/dev/ops/'},
+			{text: 'Front End', link: '/docs/dev/fe/'},
+        ]
+    },	
+	
+    {
+		text: 'XDU Cyber Sec', 
+		items: [
+			{text: 'Machine Learning', link: '/docs/sec/ml/'},
+			{text: 'Mathematics', link: '/docs/sec/math/'},	
+			{text: 'CyberSpace Security', link: '/docs/sec/cs/'},	
 		]
     },
 	
 	{
-		text: 'NEUQ CS',
+		text: 'NEUQ Computer Sci',
 		items: [
 			{text: 'Computer Network', link: '/docs/cs/cn/'},
 			{text: 'Data Structure', link: '/docs/cs/ds/'},			
@@ -32,14 +41,6 @@ module.exports = [
 		]
     },
 
-	{
-       	text: '2084 DevOps',
-		items: [
-			{text: 'Algorithm', link: '/docs/tech/algo/'},
-			{text: 'Java', link: '/docs/tech/java/'},
-			{text: 'Operations', link: '/docs/tech/ops/'},
-			{text: 'Front End', link: '/docs/tech/fe/'},
-        ]
-    },	
+	
 
 ]
