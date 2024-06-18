@@ -25,23 +25,22 @@ module.exports = [
 
 	
 	{
-		title: '世界上最好的语言',
+		title: '语言基础',
 		collapsable: true,
 		children: [
-			'./prog/php',
-			'./prog/c++',
-			'./prog/rust',
+			'./lang/lang-php',
+			'./lang/lang-c++',
+			'./lang/lang-rust',
 		]
 	},
 	
 	{
-		title: 'XDU 9151',
+		title: '复试专业考察',
 		collapsable: true,
 		children: [
 			'./9151/9151-c',
 			'./9151/9151-discrete',
 			'./9151/9151-os',
-			'./9151/9151-prep',
 		]
 	},	
 	
