@@ -1,6 +1,6 @@
 module.exports = [
 	{
-		title: '洋文',
+		title: '英语',
 		collapsable: true,
 		children: [
 		    './en/cet',
@@ -10,20 +10,21 @@ module.exports = [
 	},
 	
 	{
-		title: '语文',
+		title: '文学',
 		collapsable: true,
 		children: [
-		    './cn/collect',
-			'./cn/marx',
+		    './cn/collect',	
 		]
 	},
 
 	{
-		title: '政治',
+		title: '思修',
 		collapsable: true,
-		children: [
-			'./po/marx-mao-deng',
+		children: [	
+			'./po/marx',
+			'./po/mao',
 			'./po/xi',
+			'./po/record',
 		]
 	},
 

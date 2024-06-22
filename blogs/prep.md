@@ -1,5 +1,5 @@
 ---
-title: 皓的学前考察
+title: 学前考察
 date: 2024-3-6
 ---
 
@@ -146,7 +146,6 @@ Transformer 模型由编码器和解码器组成，其中
 ```python
 # 输入器
 class InputEmbeddings(nn.Module):
-
     def __init__(self, d_model: int, vocab_size: int):
         super().__init__()
         self.d_model = d_model

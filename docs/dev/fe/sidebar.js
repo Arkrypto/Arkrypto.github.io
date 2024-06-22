@@ -1,13 +1,12 @@
 module.exports = [
 	{
-		title: '前端基础',
+		title: '基础',
 		collapsable: true,
 		children: [
 			'./basic/fe-html',
 			'./basic/fe-css',
 			'./basic/fe-js',
 			'./basic/fe-markdown',
-			
 		]
 	},
 

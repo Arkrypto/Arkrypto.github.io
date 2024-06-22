@@ -1,6 +1,6 @@
 module.exports = {
-	title: "Canoe's Docs",
-	description: 'one note&blog during my undergraduate period.',
+	title: "Northboat's Docs",
+	description: 'Docs&Blog Through My Student Period.',
 	dest: 'public',
 	head: [
 		['link', { rel: 'icon', href: '/img/boat.ico' }],
@@ -38,7 +38,7 @@ module.exports = {
 		// 最后更新时间
 		lastUpdated: 'Last Updated',
 		// 作者
-		author: 'canoe',
+		author: 'northboat',
 		// 作者头像
 		authorAvatar: '/img/boat.ico',
 		// 备案号

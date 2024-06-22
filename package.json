@@ -1,7 +1,7 @@
 {
-  "name": "canoe's yard",
+  "name": "northboat's yard",
   "version": "1.0.0",
-  "author": "canoe",
+  "author": "northboat",
   "scripts": {
     "dev": "vuepress dev . --open --host \"localhost\"",
     "build": "vuepress build ."
