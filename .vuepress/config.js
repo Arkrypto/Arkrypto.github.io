@@ -1,6 +1,6 @@
 module.exports = {
-	title: "Northboat Docs",
-	description: 'Docs&Blog Through My Student Period.',
+	title: "Northboat Docs & Blog",
+	description: 'Docs and Blog through My Student Period.',
 	dest: 'public',
 	head: [
 		['link', { rel: 'icon', href: '/img/boat.ico' }],
