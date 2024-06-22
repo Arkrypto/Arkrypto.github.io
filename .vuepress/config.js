@@ -1,5 +1,5 @@
 module.exports = {
-	title: "Northboat's Docs",
+	title: "Northboat Docs",
 	description: 'Docs&Blog Through My Student Period.',
 	dest: 'public',
 	head: [
