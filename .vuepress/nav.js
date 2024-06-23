@@ -3,7 +3,7 @@
 module.exports = [
 
     {
-       	text: 'Home Page',
+       	text: 'Home',
 		items: [
 			{text: 'Root', link: '/'},
 			{text: 'Library', link: '/docs/lib/'},
@@ -14,7 +14,7 @@ module.exports = [
     },
 	
 	{
-       	text: '2084 Team Dev',
+       	text: '2084 DevOps',
 		items: [
 			{text: 'Algorithm', link: '/docs/dev/algo/'},
 			{text: 'Java', link: '/docs/dev/java/'},
@@ -26,7 +26,7 @@ module.exports = [
     
 	
 	{
-		text: 'NEUQ CS',
+		text: 'NEU CS',
 		items: [
 			{text: 'Computer Network', link: '/docs/cs/cn/'},
 			{text: 'Data Structure', link: '/docs/cs/ds/'},			
@@ -36,11 +36,11 @@ module.exports = [
     },
 
 	{
-		text: 'XDU Cyber Sec', 
+		text: 'XDU Cyber Sec',
 		items: [
-			{text: 'Federated ML', link: '/docs/sec/fml/'},
-			{text: 'Math', link: '/docs/sec/math/'},	
 			{text: 'Cryptography', link: '/docs/sec/crypto/'},
+			{text: 'Math', link: '/docs/sec/math/'},	
+			{text: 'Federated ML', link: '/docs/sec/fml/'},
 			{text: 'Penetration', link: '/docs/sec/pen/'},
 		]
     },
