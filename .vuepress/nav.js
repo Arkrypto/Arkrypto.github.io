@@ -36,7 +36,7 @@ module.exports = [
     },
 
 	{
-		text: 'XDU Cyber Sec',
+		text: 'XDU CyberSec',
 		items: [
 			{text: 'Cryptography', link: '/docs/sec/crypto/'},
 			{text: 'Math', link: '/docs/sec/math/'},	
