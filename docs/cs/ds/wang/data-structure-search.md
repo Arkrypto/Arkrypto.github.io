@@ -1,6 +1,8 @@
 ---
 title: 查找
 date: 2023-6-2
+tags:
+  - DataStructure
 ---
 
 主要是一个计算 ASL（平均查找长度）的问题

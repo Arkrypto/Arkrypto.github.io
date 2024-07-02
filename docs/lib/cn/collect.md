@@ -1,6 +1,8 @@
 ---
 title: 摘抄
 date: 2021-5-3
+tags:
+  - Literature
 ---
 
 ## 2020

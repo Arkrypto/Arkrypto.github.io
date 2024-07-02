@@ -29,19 +29,19 @@ module.exports = [
 	},
 
 	{
-		title: '汇编设计与编译原理',
+		title: '编译原理与汇编程序',
 		collapsable: true,
 		children: [
-			'./asm/assembly-basic',
+			'./compile/assembly-basic',
 			{
 			    title: '汇编语言程序设计',
 			    collapsable: true,
 			    children: [
-					'./asm/assembly-branch',
-					'./asm/assembly-loop',
+					'./compile/assembly-branch',
+					'./compile/assembly-loop',
 			    ]
 			},
-			'./asm/compile-principle'
+			'./compile/compile-principle'
 		]
 	},
 	

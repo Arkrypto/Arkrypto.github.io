@@ -1,5 +1,3 @@
-
-
 <h2>倒计时</h2>
 
 <h1 id="countdown"></h1><br>

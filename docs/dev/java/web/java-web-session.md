@@ -1,6 +1,8 @@
 ---
 title: Session - JSP - MVC
 date: 2021-5-12
+categories:
+  - DevOps
 tags: 
   - Web
   - Java

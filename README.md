@@ -26,3 +26,7 @@ features:
 - title: 哦豁
   details: Years Month Week Day Day No Bug
 ---
+
+- node 版本：v14.21.3
+- npm 版本：9.6.4
+

@@ -1,6 +1,8 @@
 ---
 title: 模/数转换器0809实验
 date: 2023-3-29
+tags:
+  - ComputerInterface
 ---
 
 ## 目的及环境

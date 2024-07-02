@@ -3,10 +3,10 @@ module.exports = {
 	
 	'/docs/lib/': require('../docs/lib/sidebar'),
 	
-	'/docs/sec/fml/': require('../docs/sec/fml/sidebar'),
+	'/docs/sec/ml/': require('../docs/sec/ml/sidebar'),
 	'/docs/sec/math/': require('../docs/sec/math/sidebar'),
-	'/docs/sec/crypto/': require('../docs/sec/crypto/sidebar'),
-	'/docs/sec/pen/': require('../docs/sec/pen/sidebar'),
+	'/docs/sec/ce/': require('../docs/sec/ce/sidebar'),
+	'/docs/sec/auth/': require('../docs/sec/auth/sidebar'),
 		
 	'/docs/cs/ds/': require('../docs/cs/ds/sidebar'),
 	'/docs/cs/cn/': require('../docs/cs/cn/sidebar'),

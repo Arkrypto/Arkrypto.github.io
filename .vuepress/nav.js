@@ -7,7 +7,7 @@ module.exports = [
 		items: [
 			{text: 'Root', icon: 'reco-blog', link: '/'},
 			{text: 'Library', icon: 'reco-blog', link: '/docs/lib/'},
-			{text: 'Blog', icon: 'reco-blog', link: '/categories/Blog/'},
+			{text: 'Star', icon: 'reco-blog', link: '/tag/Star/'},
 			{text: 'Github', icon: 'reco-blog', link: 'https://github.com/northboat'},
 			
         ]
@@ -39,10 +39,10 @@ module.exports = [
 	{
 		text: 'XDU CyberSec', icon: 'reco-other',
 		items: [
-			{text: 'Federated ML', icon: 'reco-eye', link: '/docs/sec/fml/'},
-			{text: 'Math', icon: 'reco-eye', link: '/docs/sec/math/'},	
-			{text: 'Cryptography', icon: 'reco-eye', link: '/docs/sec/crypto/'},
-			{text: 'Penetration', icon: 'reco-eye', link: '/docs/sec/pen/'},
+			{text: 'Machine Learning', icon: 'reco-eye', link: '/docs/sec/ml/'},
+			{text: 'Mathematics', icon: 'reco-eye', link: '/docs/sec/math/'},
+			{text: 'Cyber Engineering', icon: 'reco-eye', link: '/docs/sec/ce/'},
+			{text: 'Authentication', icon: 'reco-eye', link: '/docs/sec/auth/'},			
 		]
     },
 

@@ -2,7 +2,7 @@
 title: Docker Basics
 date: 2021-5-8
 categories:
-  - WebDevOps
+  - DevOps
 tags:
   - Middleware
 ---

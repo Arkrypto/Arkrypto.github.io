@@ -1,6 +1,8 @@
 ---
 title: 计算机体系结构基础
 date: 2023-7-2
+tags:
+  - ComputerArch
 ---
 
 ## 计算机体系结构基础知识

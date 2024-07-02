@@ -1,6 +1,8 @@
 ---
 title: Servlet - Cookie
 date: 2021-5-4
+categories:
+  - DevOps
 tags: 
   - Web
   - Java

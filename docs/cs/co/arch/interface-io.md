@@ -1,6 +1,8 @@
 ---
 title: 8255并行I/O输入/输出实验
 date: 2023-3-29
+tags:
+  - ComputerInterface
 ---
 
 ## 目的及原理

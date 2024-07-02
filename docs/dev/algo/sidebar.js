@@ -3,9 +3,9 @@ module.exports = [
 		title: "算法设计与分析",
 		collapsable: true,
 		children: [
-			'./algo/algo-outline-recursive-divide',
-			'./algo/algo-dp-greedy',
-			'./algo/algo-backtracking-branchbound-lp-networkflow',
+			'./basic/algo-outline-recursive-divide',
+			'./basic/algo-dp-greedy',
+			'./basic/algo-backtracking-branchbound-lp-networkflow',
 		]
 	},
 	
@@ -13,12 +13,12 @@ module.exports = [
 		title: "力扣算法笔记",
 		collapsable: true,
 		children: [
-			'./leet/leetcode-modeling-hash-binary',
-			'./leet/leetcode-recursion-divide',
-			'./leet/leetcode-sort',
-			'./leet/leetcode-bfs-branching-boundary',
-			'./leet/leetcode-dfs-backtracking',
-			'./leet/leetcode-dp-greedy',
+			'./code/leetcode-modeling-hash-binary',
+			'./code/leetcode-recursion-divide',
+			'./code/leetcode-sort',
+			'./code/leetcode-bfs-branching-boundary',
+			'./code/leetcode-dfs-backtracking',
+			'./code/leetcode-dp-greedy',
 		]
 	},
 	

@@ -1,6 +1,8 @@
 ---
 title: Maven
 date: 2021-4-30
+categories:
+  - DevOps
 tags: 
   - Web
   - Java

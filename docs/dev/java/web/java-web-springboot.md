@@ -2,7 +2,7 @@
 title: SpringBoot
 date: 2021-11-13
 categories:
-  - WebDevOps
+  - DevOps
 tags:
   - Java
 ---

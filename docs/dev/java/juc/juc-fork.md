@@ -1,6 +1,8 @@
 ---
 title: Lambda - 流式 - 分治
 date: 2021-8-2
+categories:
+  - DevOps
 tags: 
   - JUC
   - Java

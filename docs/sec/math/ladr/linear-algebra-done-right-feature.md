@@ -2,7 +2,7 @@
 title: 本征值 - 本征向量 - 内积空间
 date: 2022-6-16
 tags:
-  - LinearAlgebra
+  - Math
 ---
 
 > 《Linear Algebra Done Right》第5-7章

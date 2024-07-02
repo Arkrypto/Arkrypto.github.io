@@ -1,6 +1,8 @@
 ---
 title: 软件工程实训
 date: 2023-7-8
+tags:
+  - SoftwareEngineering
 ---
 
 ## 跨职能业务流程图

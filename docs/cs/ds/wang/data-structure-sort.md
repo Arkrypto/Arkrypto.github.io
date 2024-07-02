@@ -1,6 +1,8 @@
 ---
 title: 排序
 date: 2023-6-5
+tags:
+  - DataStructure
 ---
 
 [排序算法 | Northboat Docs](https://northboat.netlify.app/dev/algo/design/sort.html)

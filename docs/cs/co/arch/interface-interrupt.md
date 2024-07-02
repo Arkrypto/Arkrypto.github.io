@@ -1,6 +1,8 @@
 ---
 title: 系统中断实验
 date: 2023-3-29
+tags:
+  - ComputerInterface
 ---
 
 <img src="./assets/logo.png">
