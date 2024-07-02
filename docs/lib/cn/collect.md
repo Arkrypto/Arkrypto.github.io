@@ -146,3 +146,7 @@ a man provides, and he does it even he is not appreciated, or respected, or even
 我向来不惮以最坏的恶意揣测中国人
 
 > —— 鲁迅《纪念刘和珍君》
+
+## 2024
+
+一群猴子爬树，向上看都是屁股，向下看都是笑脸，向左看都是爪牙，向右看都是耳目
