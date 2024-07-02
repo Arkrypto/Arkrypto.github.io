@@ -2,7 +2,7 @@
 title: 向量空间 - 线性映射 - 多项式
 date: 2022-5-27
 tags:
-  Math
+  - Math
 ---
 
 > 《Linear Algebra Done Right》第1-4章

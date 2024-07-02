@@ -1,3 +1,7 @@
+// node 版本：v14.21.3
+// npm 版本：9.6.4
+
+
 function encrypt(){
 	text = document.getElementById("crypto").value;
 	var code = document.getElementById('code');

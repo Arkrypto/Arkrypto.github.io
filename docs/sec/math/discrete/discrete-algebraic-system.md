@@ -2,7 +2,7 @@
 title: 代数系统
 date: 2023-12-29
 tags:
-  Math
+  - Math
 ---
 
 ## 二元运算和代数系统

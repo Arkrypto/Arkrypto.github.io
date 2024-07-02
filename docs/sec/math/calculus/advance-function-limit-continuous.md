@@ -2,7 +2,7 @@
 title: 函数、极限和连续
 date: 2023-1-14
 tags:
-  Math
+  - Math
 ---
 
 ## 函数

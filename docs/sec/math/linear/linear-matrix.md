@@ -2,7 +2,7 @@
 title: 矩阵
 date: 2023-3-22
 tags:
-  Math
+  - Math
 ---
 
 ## 矩阵的概念及计算

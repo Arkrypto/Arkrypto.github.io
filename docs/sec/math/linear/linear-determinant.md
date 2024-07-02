@@ -2,7 +2,7 @@
 title: 行列式
 date: 2023-3-22
 tags:
-  Math
+  - Math
 ---
 
 ## 行列式概念及性质

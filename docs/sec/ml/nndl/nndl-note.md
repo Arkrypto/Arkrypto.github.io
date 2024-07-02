@@ -1,6 +1,8 @@
 ---
 title: 神经网络与深度学习
 date: 2023-6-7
+tags:
+  - MachineLearning
 ---
 
 ## 概述

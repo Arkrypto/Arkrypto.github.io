@@ -2,7 +2,7 @@
 title: 多元函数积分学
 date: 2023-3-16
 tags:
-  Math
+  - Math
 ---
 
 ## 重积分

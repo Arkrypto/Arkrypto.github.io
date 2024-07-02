@@ -2,7 +2,7 @@
 title: 集合论
 date: 2023-12-29
 tags:
-  Math
+  - Math
 ---
 
 ## 集合

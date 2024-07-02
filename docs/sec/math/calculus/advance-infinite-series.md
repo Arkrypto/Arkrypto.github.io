@@ -2,7 +2,7 @@
 title: 无穷级数
 date: 2023-6-5
 tags:
-  Math
+  - Math
 ---
 
 ## 常数项级数

@@ -2,7 +2,7 @@
 title: 向量代数和空间解析几何
 date: 2023-5-3
 tags:
-  Math
+  - Math
 ---
 
 ## 向量代数

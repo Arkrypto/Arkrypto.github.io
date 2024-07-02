@@ -1,6 +1,9 @@
 ---
 title: 数据结构实现
 date: 2021-8-24
+tags:
+  - DataStructure
+  - Algorithm
 ---
 
 > 是手撸的哦

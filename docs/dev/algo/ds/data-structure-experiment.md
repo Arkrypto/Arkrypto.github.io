@@ -1,6 +1,9 @@
 ---
 title: 数据结构算法
 date: 2021-11-24
+tags:
+  - DataStructure
+  - Algorithm
 ---
 
 ## 链表

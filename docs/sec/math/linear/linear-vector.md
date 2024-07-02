@@ -2,7 +2,7 @@
 title: 向量
 date: 2023-4-6
 tags:
-  Math
+  - Math
 ---
 
 ## 向量及向量组概念

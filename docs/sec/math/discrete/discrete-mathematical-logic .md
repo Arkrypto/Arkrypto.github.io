@@ -2,7 +2,7 @@
 title: 数理逻辑
 date: 2023-12-29
 tags:
-  Math
+  - Math
 ---
 
 > 试试你东b的离散书，very good，离散总览

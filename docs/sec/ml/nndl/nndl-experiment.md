@@ -1,6 +1,8 @@
 ---
 title: 机器学习导论实验
 date: 2023-5-15
+tags:
+  - MachineLearning
 ---
 
 > 下载安装 pytorch：[pytorch.org](https://pytorch.org/get-started/locally/)

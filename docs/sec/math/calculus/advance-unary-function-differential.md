@@ -2,7 +2,7 @@
 title: 一元函数微分学
 date: 2023-1-19
 tags:
-  Math
+  - Math
 ---
 
 ## 导数和微分概念

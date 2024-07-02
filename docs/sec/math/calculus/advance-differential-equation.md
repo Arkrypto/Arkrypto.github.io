@@ -2,7 +2,7 @@
 title: 微分方程
 date: 2023-3-17
 tags:
-  Math
+  - Math
 ---
 
 ## 一阶微分方程

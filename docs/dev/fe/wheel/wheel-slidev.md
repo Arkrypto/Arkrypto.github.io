@@ -1,6 +1,9 @@
 ---
 title: Slidev
 date: 2022-2-14
+tags:
+  - Wheel
+  - FrontEnd
 ---
 
 > Slidev 是可以让我们用 Markdown 写 PPT 的一个工具库，基于 Node.js、Vue.js

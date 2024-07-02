@@ -2,7 +2,7 @@
 title: 一元函数积分学
 date: 2023-1-19
 tags:
-  Math
+  - Math
 ---
 
 

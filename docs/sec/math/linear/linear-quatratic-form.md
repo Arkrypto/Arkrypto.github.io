@@ -2,7 +2,7 @@
 title: 二次型
 date: 2023-5-3
 tags:
-  Math
+  - Math
 ---
 
 ## 二次型及其标准型
