@@ -1,5 +1,5 @@
 ---
-title: "USBKEY - 一种安全的 2FA 实现方案"
+title: "UKEY - 一种安全的 2FA 实现方案"
 date: 2024-6-22
 tags:
   - Authentication
