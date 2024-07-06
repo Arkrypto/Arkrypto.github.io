@@ -1,6 +1,6 @@
 ---
 title: "TOTP - GitHub 的 2FA 实现方案"
-date: 2024-6-22
+date: 2024-7-4
 tags:
   - Authentication
   - Star

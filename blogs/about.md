@@ -7,22 +7,22 @@ date: 2022-08-17
      <h1>熊舟桐 - 后端开发</h1>
      <div>
          <span>
-             <img src="assets/phone-solid.svg" width="18px">
+             <img src="./assets/phone-solid.svg" width="18px">
              18630338418
          </span>
          ·
          <span>
-             <img src="assets/envelope-solid.svg" width="18px">
+             <img src="./assets/envelope-solid.svg" width="18px">
              northboat@163.com
          </span>
          ·
          <span>
-             <img src="assets/github-brands.svg" width="18px">
+             <img src="./assets/github-brands.svg" width="18px">
              <a href="https://github.com/northboat">GitHub</a>
          </span>
          ·
          <span>
-             <img src="assets/rss-solid.svg" width="18px">
+             <img src="./assets/rss-solid.svg" width="18px">
              <a href="https://northboat.github.io/">Blog</a>
          </span>
      </div>
