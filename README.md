@@ -15,7 +15,7 @@ tagline: 并未在一起亦无从离去
 bgImage: /img/titan.jpg
 bgImageStyle: {
   width: 100%,
-  height: 700px
+  height: 720px
 }
 isShowTitleInHome: true
 actionText: Nothing
