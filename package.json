@@ -20,6 +20,7 @@
   "dependencies": {
     "@vuepress-reco/vuepress-plugin-bgm-player": "^1.1.4",
     "katex": "^0.16.9",
-    "markdown-it-texmath": "^1.0.0"
+    "markdown-it-texmath": "^1.0.0",
+    "vuepress-plugin-posts-encrypt": "^0.1.0"
   }
 }

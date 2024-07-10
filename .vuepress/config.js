@@ -134,7 +134,7 @@ module.exports = {
 			ribbonShow: false, //  点击彩带  true显示  false为不显示
 			ribbonAnimationShow: true  // 滑动彩带
 		}],
-		[ "sakura", {	//npm install vuepress-plugin-sakura -D
+		[ "sakura", {	// npm install vuepress-plugin-sakura -D
 			num: 2,  // 默认数量
 			show: true, //  是否显示
 			zIndex: 99,   // 层级
@@ -149,6 +149,12 @@ module.exports = {
 			size: 2, // 粒子大小
 			shape: 'star', // 粒子形状（可选 'star' 和 'circle'）
 			zIndex: 999999999,
+		}],
+		[ 'posts-encrypt', { // 文章加密 npm install -d vuepress-plugin-posts-encrypt
+			route: '/auth',
+			passwd: '123456',
+			encryptInDev: true,
+			expires: 1000*60
 		}],
 		/*[ '@vuepress-reco/vuepress-plugin-bulletin-popover', {
 			width: '240px', // 默认 260px
