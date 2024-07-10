@@ -150,12 +150,12 @@ module.exports = {
 			shape: 'star', // 粒子形状（可选 'star' 和 'circle'）
 			zIndex: 999999999,
 		}],
-		[ 'posts-encrypt', { // 文章加密 npm install -d vuepress-plugin-posts-encrypt
+		/*[ 'posts-encrypt', { 失败的加密尝试
 			route: '/auth',
 			passwd: '123456',
 			encryptInDev: true,
-			expires: 1000*60
-		}],
+			expires: 1000  * 60
+		}],*/
 		/*[ '@vuepress-reco/vuepress-plugin-bulletin-popover', {
 			width: '240px', // 默认 260px
 			title: '待到山花烂漫时',

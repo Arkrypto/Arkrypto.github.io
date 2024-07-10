@@ -8,6 +8,9 @@
   },
   "devDependencies": {
     "@vuepress-reco/vuepress-plugin-bulletin-popover": "^1.6.16",
+    "autoprefixer": "^10.4.19",
+    "browserslist": "^4.23.2",
+    "caniuse-lite": "^1.0.30001641",
     "vuepress": "1.9.7",
     "vuepress-plugin-cat": "^1.0.3",
     "vuepress-plugin-code-copy": "^1.0.6",
@@ -20,7 +23,6 @@
   "dependencies": {
     "@vuepress-reco/vuepress-plugin-bgm-player": "^1.1.4",
     "katex": "^0.16.9",
-    "markdown-it-texmath": "^1.0.0",
-    "vuepress-plugin-posts-encrypt": "^0.1.0"
+    "markdown-it-texmath": "^1.0.0"
   }
 }
