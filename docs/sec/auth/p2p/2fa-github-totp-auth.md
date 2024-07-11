@@ -1,5 +1,5 @@
 ---
-title: "TOTP - GitHub 的 2FA 实现方案"
+title: "TOTP - GitHub 的 2FA 方案"
 date: 2024-7-4
 tags:
   - Authentication

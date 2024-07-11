@@ -1,5 +1,5 @@
 ---
-title: 软件工程基础
+title: 软件工程原理与应用
 date: 2023-7-8
 tags:
   - SoftwareEngineering
