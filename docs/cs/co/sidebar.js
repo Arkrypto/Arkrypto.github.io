@@ -30,6 +30,7 @@ module.exports = [
 		title: '体系结构与接口',
 		collapsable: true,
 		children: [
+			'./arch/architecture-basic',
 			{
 				title: "计算机接口实验",
 				collapsable: true,
@@ -40,7 +41,6 @@ module.exports = [
 					'./arch/interface-adc',
 				]
 			},
-			'./arch/architecture-basic',
 		]
 	},
 

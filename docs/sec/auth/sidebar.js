@@ -1,10 +1,28 @@
 module.exports = [	
 	{
-		title: '双向认证',
+		title: '双因素认证',
 		collapsable: true,
 		children: [
-			'./p2p/2fa-bank-ukey-auth',
-			'./p2p/2fa-github-totp-auth',
+			'./2fa/2fa-bank-ukey-auth',
+			'./2fa/2fa-github-totp-auth',
 		]
 	},
+	
+	/*{
+		title: '端到端认证',
+		collapsable: true,
+		children: [
+			'./p2p/',
+		]
+	},
+	
+	{
+		title: 'RFID 认证',
+		collapsable: true,
+		children: [
+			'./rfid/',
+		]
+	},*/
+	
+	
 ]
