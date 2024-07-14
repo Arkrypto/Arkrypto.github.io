@@ -27,7 +27,7 @@ module.exports = [
     
 	
 	{
-		text: 'NEUQ CS', icon: 'reco-document',
+		text: 'NEU CS', icon: 'reco-document',
 		items: [
 			{text: 'Computer Network', icon: 'reco-category', link: '/docs/cs/cn/'},
 			{text: 'Data Structure', icon: 'reco-category', link: '/docs/cs/ds/'},			
