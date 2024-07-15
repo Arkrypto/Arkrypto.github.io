@@ -34,7 +34,7 @@ function countdown(date){
 	//alert(loc)
 	//console.log(loc)
 	
-	if(loc == "/docs/lib/"){
+	if(loc == "/docs/xdu/math/"){
 		let diff = getDiff(d)
 		document.getElementById("countdown").innerHTML = diff;	
 	}

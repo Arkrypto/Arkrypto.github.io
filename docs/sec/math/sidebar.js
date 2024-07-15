@@ -14,7 +14,6 @@ module.exports = [
 			'./calculus/advance-infinite-series',
 		]
 	},
-	
 	{
 		title: 'Linear Algebra Done Right',
 		collapsable: true,
@@ -24,10 +23,12 @@ module.exports = [
 		]
 	},
 	
+	
 	{
 		title: '线性代数',
 		collapsable: true,
 		children: [
+			
 			'./linear/linear-determinant',
 			'./linear/linear-matrix',
 			'./linear/linear-vector',
@@ -51,7 +52,7 @@ module.exports = [
 			'./probability/probability-estimate-assume',
 		]
 	},
-
+	
 	{
 		title: '离散数学',
 		collapsable: true,

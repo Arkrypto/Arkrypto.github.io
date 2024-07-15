@@ -23,6 +23,7 @@ module.exports = {
 	],
 	theme: 'reco',
 	themeConfig: {
+		mode: 'dark',
 		nav: require("./nav.js"),
 		sidebar: require("./sidebar.js"),
 		// 子侧边栏
@@ -45,6 +46,7 @@ module.exports = {
 		//record: 'xxxx',
 		// 项目开始时间
 		startYear: '2021'
+		
 		/**
 		* 密钥 (if your blog is private)
 		*/

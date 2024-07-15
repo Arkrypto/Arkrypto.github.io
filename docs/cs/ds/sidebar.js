@@ -13,25 +13,68 @@ module.exports = [
 			'./wang/data-structure-sort',
 		]
 	},
-
 	
+
 	{
-		title: '数据库系统概论',
+		title: '人工智能导论',
 		collapsable: true,
 		children: [
-		    './db/database-outline',
-		    './db/database-sql',
-		    './db/database-design',
+			'./cs188/cs188-search-csp-game',
+			'./cs188/cs188-mdp-rl',
+			'./cs188/cs188-probabilistic-reasoning',
+			'./cs188/cs188-hmm-ml',
 		]
 	},
 	
-	
 	{
-		title: '软件工程',
+		title: '机器学习导论',
 		collapsable: true,
 		children: [
-			'./se/software-engineering-basic',
-			'./se/software-engineering-experiment',
+			'./nndl/nndl-note',
+			'./nndl/nndl-experiment',
+		]
+	},
+	
+	{
+		title: 'Python3',
+		collapsable: true,
+		children: [
+			'./py/python-basic',
+		    {
+				title: "Python Hundred",
+		        collapsable: true,
+				children: [
+		            './py/python-first',
+		            './py/python-second',
+			    	'./py/python-third',		
+				]
+		    },
+		]
+	},
+	
+	{
+		title: '深度学习库 & 框架',
+		collapsable: true,
+		children: [
+			'./lib/pytorch-basic',
+			{
+				title: '数据科学库',
+				collapsable: true,
+				children: [
+					'./lib/pylib-numpy',
+					'./lib/pylib-pandas',
+					'./lib/pylib-scipy',
+					'./lib/pylib-matplotlib',
+				]
+			},
+			{
+				title: 'Scikit Learn',
+				collapsable: true,
+				children: [
+					'./lib/sklearn-classifier',
+					'./lib/sklearn-optimize',
+				]
+			},
 		]
 	},
 	

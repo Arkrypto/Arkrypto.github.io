@@ -1,5 +1,5 @@
 ---
-title: Linux Kernel Analyse
+title: Linux 内核分析
 date: 2023-3-1
 tags:
   - Linux

@@ -1,8 +1,8 @@
 ---
-title: Linux Local Develop
+title: Linux 本地开发
 date: 2022-4-12
 categories:
-  - DevOps
+  - devops
 tags:
   - Linux
 ---

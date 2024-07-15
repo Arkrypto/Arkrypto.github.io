@@ -2,7 +2,7 @@
 title: CSS
 date: 2021-10-21
 categories:
-  - DevOps
+  - devops
 tags:
   - FrontEnd
 ---

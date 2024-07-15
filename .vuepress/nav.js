@@ -2,48 +2,33 @@
 
 module.exports = [
 
-    {
-       	text: 'Home', icon: 'reco-home',
-		items: [
-			{text: 'Root', icon: 'reco-blog', link: '/'},
-			{text: 'Library', icon: 'reco-blog', link: '/docs/lib/'},
-			{text: 'Star', icon: 'reco-blog', link: '/tag/Star/'},
-			{text: 'Github', icon: 'reco-blog', link: 'https://github.com/northboat'},
-			
-        ]
-    },
+    { text: '主页', icon: 'reco-home', link: '/' },
 
-
-	{
-       	text: '2084 DevOps', icon: 'reco-github',
-		items: [
-			{text: 'Algorithm', icon: 'reco-bokeyuan', link: '/docs/dev/algo/'},
-			{text: 'Java', icon: 'reco-bokeyuan', link: '/docs/dev/java/'},
-			{text: 'Operations', icon: 'reco-bokeyuan', link: '/docs/dev/op/'},
-			{text: 'Front End', icon: 'reco-bokeyuan', link: '/docs/dev/fe/'},
-        ]
-    },	
+	{ text: '博客', icon: 'reco-blog', link: '/categories/blog/' },
 	
-    
+	{ text: '计算机科学与技术', icon: 'reco-document', items: [
+		{text: '计算机网络', link: '/docs/cs/cn/'},
+		{text: '数据结构', link: '/docs/cs/ds/'},			
+		{text: '计算机组成原理', link: '/docs/cs/co/'},
+		{text: '操作系统', link: '/docs/cs/os/'},
+	]},
 	
-	{
-		text: 'NEU CS', icon: 'reco-document',
-		items: [
-			{text: 'Computer Network', icon: 'reco-category', link: '/docs/cs/cn/'},
-			{text: 'Data Structure', icon: 'reco-category', link: '/docs/cs/ds/'},			
-			{text: 'Computer Organization', icon: 'reco-category', link: '/docs/cs/co/'},
-			{text: 'Operating System', icon: 'reco-category', link: '/docs/cs/os/'},
-		]
-    },
-
-	{
-		text: 'XDU CyberSec', icon: 'reco-other',
-		items: [
-			{text: 'Machine Learning', icon: 'reco-eye', link: '/docs/sec/ml/'},
-			{text: 'Mathematics', icon: 'reco-eye', link: '/docs/sec/math/'},
-			{text: 'Cyber Engineering', icon: 'reco-eye', link: '/docs/sec/ce/'},
-			{text: 'Authentication', icon: 'reco-eye', link: '/docs/sec/auth/'},			
-		]
-    },
+	{ text: '开发与运维', icon: 'reco-bokeyuan', items: [ 
+		{text: '后端开发', link: '/docs/dev/be/'},
+		{text: '算法', link: '/docs/dev/algo/'},
+		{text: '服务器运维', link: '/docs/dev/op/'},
+		{text: '前端开发', link: '/docs/dev/fe/'},
+	]},
+	
+	{ text: '网络与信息安全', icon: 'reco-eye', items: [
+		{text: '文科', link: '/docs/sec/lib/'},
+		{text: '安全认证', link: '/docs/sec/auth/'},
+		{text: '数学', link: '/docs/sec/math/'},
+		{text: '网络工程', link: '/docs/sec/ce/'},
+	]},
+	
+	
+	
+	{ text: 'Github', icon: 'reco-github', link: 'https://github.com/northboat' },
 
 ]

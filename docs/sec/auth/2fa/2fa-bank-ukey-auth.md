@@ -3,7 +3,6 @@ title: "UKEY - 常见安全的 2FA 实现"
 date: 2024-6-22
 tags:
   - Authentication
-  - Star
 ---
 
 ## 原理

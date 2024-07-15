@@ -2,7 +2,7 @@
 title: Electron
 date: 2023-4-14
 categories:
-  - DevOps
+  - devops
 tags:
   - FrontEnd
 ---

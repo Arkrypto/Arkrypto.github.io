@@ -3,14 +3,14 @@ title: "TOTP - GitHub 的 2FA 方案"
 date: 2024-7-4
 tags:
   - Authentication
-  - Star
 ---
 
 ## 原理
 
-[双因素认证（2FA）教程 - 阮一峰的网络日志 (ruanyifeng.com)](https://ruanyifeng.com/blog/2017/11/2fa-tutorial.html)
+> [双因素认证（2FA）教程 - 阮一峰的网络日志 (ruanyifeng.com)](https://ruanyifeng.com/blog/2017/11/2fa-tutorial.html)
+>
 
-上文有提到：USBKEY 的身份认证（密码 + 某件个人物品）安全但不方便（用户不可能随时携带 UKEY）
+上文 [UKEY - 常见安全的 2FA 实现 ](/docs/sec/auth/2fa/2fa-bank-ukey-auth)中有提到：USBKEY 的身份认证（密码 + 某件个人物品）安全但不方便（用户不可能随时携带 UKEY）
 
 相对而言，手机才是最好的替代品。密码 + 手机是当下最佳的双因素认证方案。国内的很多网站要求，用户输入密码时，还要提供短消息发送的验证码，以证明用户确实拥有该手机。但是，短消息是不安全的，容易被拦截和伪造，SIM 卡也可以克隆。已经有[案例](http://media.people.com.cn/n/2014/0227/c40606-24477072.html)，先伪造身份证，再申请一模一样的手机号码，把钱转走
 

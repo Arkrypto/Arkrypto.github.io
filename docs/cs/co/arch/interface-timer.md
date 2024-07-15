@@ -1,5 +1,5 @@
 ---
-title: 8253定时器计数器实验
+title: 8253 定时器计数器实验
 date: 2023-3-29
 tags:
   - ComputerInterface

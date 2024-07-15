@@ -5,7 +5,7 @@ tags:
   - DataBase
   - Middleware
 categories:
-  - DevOps
+  - devops
 ---
 
 > Key-Value型数据库

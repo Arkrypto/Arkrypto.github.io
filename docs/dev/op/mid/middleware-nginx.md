@@ -2,7 +2,7 @@
 title: Nginx
 date: 2022-5-1
 categories:
-  - DevOps
+  - devops
 tags:
   - Middleware
 ---

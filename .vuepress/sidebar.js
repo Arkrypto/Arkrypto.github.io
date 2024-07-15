@@ -1,9 +1,7 @@
 //对侧边栏的主管控
 module.exports = {
-	
-	'/docs/lib/': require('../docs/lib/sidebar'),
-	
-	'/docs/sec/ml/': require('../docs/sec/ml/sidebar'),
+		
+	'/docs/sec/lib/': require('../docs/sec/lib/sidebar'),
 	'/docs/sec/math/': require('../docs/sec/math/sidebar'),
 	'/docs/sec/ce/': require('../docs/sec/ce/sidebar'),
 	'/docs/sec/auth/': require('../docs/sec/auth/sidebar'),
@@ -15,6 +13,6 @@ module.exports = {
 	
 	'/docs/dev/algo/': require('../docs/dev/algo/sidebar'),
 	'/docs/dev/fe/': require('../docs/dev/fe/sidebar'),
-	'/docs/dev/java/': require('../docs/dev/java/sidebar'),
+	'/docs/dev/be/': require('../docs/dev/be/sidebar'),
 	'/docs/dev/op/': require('../docs/dev/op/sidebar'),
 }	

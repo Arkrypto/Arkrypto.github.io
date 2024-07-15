@@ -1,8 +1,8 @@
 ---
-title: Linux Server Deploy
+title: Linux 服务器运维
 date: 2021-5-4
 categories:
-  - DevOps
+  - devops
 tags:
   - Linux
 ---
