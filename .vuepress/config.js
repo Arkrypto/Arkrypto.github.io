@@ -23,7 +23,7 @@ module.exports = {
 	],
 	theme: 'reco',
 	themeConfig: {
-		mode: 'dark',
+		mode: 'auto',
 		nav: require("./nav.js"),
 		sidebar: require("./sidebar.js"),
 		// 子侧边栏
@@ -45,26 +45,24 @@ module.exports = {
 		// 备案号
 		//record: 'xxxx',
 		// 项目开始时间
-		startYear: '2021'
+		startYear: '2021',
 		
 		/**
 		* 密钥 (if your blog is private)
 		*/
-
-		// keyPage: {
-		//   keys: ['your password'],
-		//   color: '#42b983',
-		//   lineColor: '#42b983'
-		// },
+		//keyPage: {
+		  //keys: ['e10adc3949ba59abbe56e057f20f883e'],
+		  //color: '#42b983',
+		  //lineColor: '#42b983'
+		//},
 
 		/**
 		* valine 设置 (if you need valine comment )
 		*/
-
-		// valineConfig: {
-		//   appId: '...',// your appId
-		//   appKey: '...', // your appKey
-		// }
+		//valineConfig: {
+		//  appId: '...',// your appId
+		//  appKey: '...', // your appKey
+		//}
 	},
 	markdown: {
 		lineNumbers: true,

@@ -1,7 +1,8 @@
 ---
 home: true
-heroText: null
-tagline: 并未在一起亦无从离去
+heroText:
+tagline: 窗花不可幽禁落霞
+
 #heroImage: /img/titan.jpg
 #heroImageStyle: {
   #maxWidth: '100%',
@@ -12,14 +13,16 @@ tagline: 并未在一起亦无从离去
   #background: '#fff',
   #borderRadius: '1rem',
 #}
+
 bgImage: /img/titan.jpg
 bgImageStyle: {
   width: 100%,
-  height: 720px
+  height: 740px
 }
-isShowTitleInHome: true
-actionText: Nothing
-actionLink: https://northboat.netlify.app/music
+
+isShowTitleInHome: false
+actionText:
+actionLink:
 features:
 - title: 啊哈
   details: Python JAVA C++ Line Line So Easy

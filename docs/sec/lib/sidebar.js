@@ -21,7 +21,7 @@ module.exports = [
 	},
 	
 	{
-		title: '洋文积累',
+		title: '英语积累',
 		collapsable: true,
 		children: [
 		    './en/cet',

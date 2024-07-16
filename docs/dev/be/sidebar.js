@@ -1,28 +1,24 @@
 //java的侧边栏
 module.exports = [
 
-
-
 	{
 		title: 'Java 基础',
 		collapsable: true,
 		children: [
-			'./se/java-se-class',
-			'./se/java-se-collection',
-			'./se/java-se-io'
+			'./javase/java-se-class',
+			'./javase/java-se-collection',
+			'./javase/java-se-io'
 		]
 	},
 	
 	{
-		title: 'Web 开发',
+		title: 'Java Web 基础',
 		collapsable: true,
 		children: [
 			'./web/java-web-tomcat',
 			'./web/java-web-maven',
 			'./web/java-web-servlet',
 			'./web/java-web-session',
-			'./web/java-web-springboot',
-			'./web/python-flask',
 		]
 	},
 
@@ -38,6 +34,13 @@ module.exports = [
 		]
 	},
 	
-
+	{
+		title: 'Web 后端框架',
+		collapsable: true,
+		children: [
+			'./frame/java-springboot',
+			'./frame/python-flask',
+		]
+	},
 	
 ]

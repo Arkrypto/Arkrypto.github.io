@@ -5,9 +5,9 @@ module.exports = [
 		title: 'Linux',
 		collapsable: true,
 		children: [
-			'./linux/linux-experiment',
-			'./linux/linux-centos',
-			'./linux/linux-manjaro',
+			'./basic/linux-experiment',
+			'./basic/linux-centos',
+			'./basic/linux-manjaro',
 		]
 	},
 

@@ -21,14 +21,14 @@ module.exports = [
 	]},
 	
 	{ text: '网络与信息安全', icon: 'reco-eye', items: [
-		{text: '文科', link: '/docs/sec/lib/'},
-		{text: '安全认证', link: '/docs/sec/auth/'},
+		{text: '信息库', link: '/docs/sec/lib/'},
 		{text: '数学', link: '/docs/sec/math/'},
+		{text: '安全与认证', link: '/docs/sec/auth/'},
 		{text: '网络工程', link: '/docs/sec/ce/'},
 	]},
 	
 	
 	
-	{ text: 'Github', icon: 'reco-github', link: 'https://github.com/northboat' },
+	{ text: 'GitHub', icon: 'reco-github', link: 'https://github.com/northboat' },
 
 ]
