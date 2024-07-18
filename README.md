@@ -17,7 +17,7 @@ tagline: 窗花不可幽禁落霞
 bgImage: /img/titan.jpg
 bgImageStyle: {
   width: 100%,
-  height: 740px
+  height: 720px
 }
 
 isShowTitleInHome: false
