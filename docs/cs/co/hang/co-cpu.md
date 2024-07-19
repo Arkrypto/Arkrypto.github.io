@@ -3,6 +3,8 @@ title: CPU 系统
 date: 2022-10-5
 tags:
   - ComputerOrganization
+categories:
+  - 408
 ---
 
 > 控制器和运算器，五星重点，408最难的一部分，出过三种大题

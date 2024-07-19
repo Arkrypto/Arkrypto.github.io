@@ -3,6 +3,8 @@ title: 受限表
 date: 2023-5-23
 tags:
   - DataStructure
+categories:
+  - 408
 ---
 
 ## 栈和队列的定义

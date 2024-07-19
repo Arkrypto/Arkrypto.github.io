@@ -3,6 +3,8 @@ title: 主存储器
 date: 2022-9-21
 tags:
   - ComputerOrganization
+categories:
+  - 408
 ---
 
 > 主存储器基本概念

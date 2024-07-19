@@ -3,6 +3,8 @@ title: 总线系统
 date: 2022-10-11
 tags:
   - ComputerOrganization
+categories:
+  - 408
 ---
 
 > 重点考察总线如何进行通信以及性能指标

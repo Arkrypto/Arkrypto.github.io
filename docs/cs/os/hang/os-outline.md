@@ -3,6 +3,8 @@ title: 操作系统绪论
 date: 2022-10-5
 tags:
   - OperatingSystem
+categories:
+  - 408
 ---
 
 ## 操作系统的概念、特征和功能

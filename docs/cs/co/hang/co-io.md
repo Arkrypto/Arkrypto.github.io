@@ -3,6 +3,8 @@ title: I/O 系统
 date: 2022-10-12
 tags:
   - ComputerOrganization
+categories:
+  - 408
 ---
 
 > 四星重点，考频较高，难度较小

@@ -3,6 +3,8 @@ title: 死锁
 date: 2022-10-24
 tags:
   - OperatingSystem
+categories:
+  - 408
 ---
 
 ## 死锁概念

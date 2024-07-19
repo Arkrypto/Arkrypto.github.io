@@ -3,6 +3,8 @@ title: 实存
 date: 2022-10-27
 tags:
   - OperatingSystem
+categories:
+  - 408
 ---
 
 > 内存管理，又称实存管理

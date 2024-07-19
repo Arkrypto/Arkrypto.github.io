@@ -3,6 +3,8 @@ title: 同步与互斥
 date: 2022-10-24
 tags:
   - OperatingSystem
+categories:
+  - 408
 ---
 
 > 同步和互斥，极重要的概念，参考 [JUC 编程](https://northboat-docs.netlify.app/dev/java/juc/lock.html)

@@ -3,6 +3,8 @@ title: 局域网和广域网
 date: 2023-6-12
 tags:
   - Network
+categories:
+  - 408
 ---
 
 IEEE（美国电气电子工程师协会）的经典贡献：有关局域网的 802 系列协议

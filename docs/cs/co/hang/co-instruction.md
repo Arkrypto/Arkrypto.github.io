@@ -3,6 +3,8 @@ title: 指令系统
 date: 2022-10-5
 tags:
   - ComputerOrganization
+categories:
+  - 408
 ---
 
 ## 机器指令

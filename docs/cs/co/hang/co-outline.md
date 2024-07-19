@@ -3,6 +3,8 @@ title: 组原概述
 date: 2022-9-9
 tags:
   - ComputerOrganization
+categories:
+  - 408
 ---
 
 ## 计算机系统组成

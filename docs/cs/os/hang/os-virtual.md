@@ -3,6 +3,8 @@ title: 虚存
 date: 2022-11-3
 tags:
   - OperatingSystem
+categories:
+  - 408
 ---
 
 > 实存管理，要求作业一次性装入内存

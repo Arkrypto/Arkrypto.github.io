@@ -3,6 +3,8 @@ title: 绪论和线性表
 data: 2023-4-28
 tags:
   - DataStructure
+categories:
+  - 408
 ---
 
 顺序表：14

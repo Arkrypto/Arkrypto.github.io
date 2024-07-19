@@ -3,6 +3,8 @@ title: 进程与线程
 date: 2022-10-19
 tags:
   - OperatingSystem
+categories:
+  - 408
 ---
 
 > 进程管理，又称 CPU 管理，包括了两章内容，内容非常之多

@@ -3,6 +3,8 @@ title: 传输层和应用层
 date: 2023-7-2
 tags:
   - Network
+categories:
+  - 408
 ---
 
 ## 传输层功能

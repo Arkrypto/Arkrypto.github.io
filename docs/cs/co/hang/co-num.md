@@ -3,6 +3,8 @@ title: 数值系统
 date: 2022-9-9
 tags:
   - ComputerOrganization
+categories:
+  - 408
 ---
 
 ## 进制系统

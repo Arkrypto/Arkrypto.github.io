@@ -3,6 +3,8 @@ title: 文件管理
 date: 2022-11-6
 tags:
   - OperatingSystem
+categories:
+  - 408
 ---
 
 ## 文件

@@ -3,6 +3,8 @@ title: 处理机调度
 date: 2022-10-21 
 tags:
   - OperatingSystem
+categories:
+  - 408
 ---
 
 ## 调度的基本概念
