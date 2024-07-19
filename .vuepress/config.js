@@ -75,6 +75,11 @@ module.exports = {
 	plugins: [
 		[ '@vuepress-reco/vuepress-plugin-bgm-player', {	//npm i @vuepress-reco/vuepress-plugin-bgm-player -D
 			"audios": [{
+				name: 'Lalala',
+				artist: '孤高曼波',
+				url: '/song/Lalala.mp3',
+				cover: '/img/error.jpg'
+			},{
 				name: '失忆蝴蝶',
 				artist: 'Eason',
 				url: '/song/AmnesiaButterfly.mp3',
