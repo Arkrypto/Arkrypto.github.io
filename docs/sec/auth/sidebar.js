@@ -24,23 +24,14 @@ module.exports = [
 			'./rfid/basic', //《RFID原理及应用》
 		]
 	},*/
+
 	
 	{
-		title: '代码审计',
+		title: 'Web 安全',
 		collapsable: true,
 		children: [
-			'./lang/lang-php',
-			'./lang/lang-c++',
-			'./lang/lang-rust',
-		]
-	},
-	
-	{
-		title: '基础渗透',
-		collapsable: true,
-		children: [
-			'./hack/hack-hacker101',
-			'./hack/hack-wechall',
+			'./hack/hack-basic',
+			'./hack/hack-penetration-testing',
 		]
 	},		
 ]

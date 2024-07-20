@@ -23,7 +23,6 @@ module.exports = [
 		]
 	},
 
-
 	
 	{
 		title: '操作系统',
@@ -36,5 +35,14 @@ module.exports = [
 	},
 
 	
+	{
+		title: '语言基础',
+		collapsable: true,
+		children: [
+			'./lang/lang-php',
+			'./lang/lang-c++',
+			'./lang/lang-rust',
+		]
+	},
 	
 ]

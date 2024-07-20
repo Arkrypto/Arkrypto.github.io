@@ -38,8 +38,9 @@ module.exports = [
 		title: 'Web 后端框架',
 		collapsable: true,
 		children: [
-			'./frame/java-springboot',
+			'./frame/java-spring-boot',
 			'./frame/python-flask',
+			'./frame/java-spring-security',
 		]
 	},
 	

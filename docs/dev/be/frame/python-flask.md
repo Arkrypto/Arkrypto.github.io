@@ -7,9 +7,7 @@ tags:
   - Python
 ---
 
-> [服务端](https://northboat.netlify.app/dev/java/project/aides.html)
-
-## 命令行
+## I/O 和 Bash
 
 ### I/O 流处理
 
