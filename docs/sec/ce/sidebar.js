@@ -45,4 +45,13 @@ module.exports = [
 		]
 	},
 	
+	
+	{
+		title: '网络安全',
+		collapsable: true,
+		children: [
+			'./hack/hack-basic',
+			'./hack/hack-penetration-testing',
+		]
+	},	
 ]

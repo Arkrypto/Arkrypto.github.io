@@ -8,6 +8,14 @@ module.exports = [
 		]
 	},
 	
+	{
+		title: '可搜索加密',
+		collapsable: true,
+		children: [
+			'./se/se-emulation',
+		]
+	},
+	
 	/*{
 		title: '端到端认证',
 		collapsable: true,
@@ -26,12 +34,5 @@ module.exports = [
 	},*/
 
 	
-	{
-		title: 'Web 安全',
-		collapsable: true,
-		children: [
-			'./hack/hack-basic',
-			'./hack/hack-penetration-testing',
-		]
-	},		
+	
 ]
