@@ -9,11 +9,14 @@ tags:
 
 ## JPBC
 
-### 基本使用
+外部 jar 包导入`jpbc-api-2.0.0.jar`以及`jpbc-plaf-2.0.0.jar`，在项目根目录下复制进加密参数配置`a.properties`
 
-外部 jar 包导入`jpbc-api-2.0.0.jar`以及`jpbc-plaf-2.0.0.jar`，在项目根目录下导入加密参数配置文件`a.properties`
+### 双线性验证
 
-双线性验证
+验证
+$$
+e(u^a, v^b)=e(u, v)^{ab}
+$$
 
 ```java
 Pairing bp = PairingFactory.getPairing("a.properties");
@@ -47,3 +50,40 @@ if (left.isEqual(right)) {
 }
 ```
 
+### 哈希嵌入
+
+将哈希值`byte[]`嵌入到群 G1 中
+
+```java
+try{
+    byte[] md5 = DigestUtils.md5Digest(left.toBytes());
+    Element hash = G1.newElement().setFromHash(md5, 0, md5.length);
+    System.out.println(hash);
+}catch (Exception e){
+    e.printStackTrace();
+}
+```
+
+其中 MD5 哈希调用 spring 内置的工具类
+
+```java
+import org.springframework.util.DigestUtils;
+```
+
+### 双线性群的运算
+
+乘方、乘、加法以及配对运算
+
+## 算法实现
+
+### 系统初始化
+
+### 身份双向认证
+
+### 索引构建
+
+### 陷门生成
+
+### 密文检索
+
+### 密文解密

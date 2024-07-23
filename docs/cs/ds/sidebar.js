@@ -58,6 +58,14 @@ module.exports = [
 		children: [
 			'./lib/pytorch-basic',
 			{
+				title: 'Scikit Learn',
+				collapsable: true,
+				children: [
+					'./lib/sklearn-classifier',
+					'./lib/sklearn-optimize',
+				]
+			},
+			{
 				title: '数据科学库',
 				collapsable: true,
 				children: [
@@ -67,14 +75,7 @@ module.exports = [
 					'./lib/pylib-matplotlib',
 				]
 			},
-			{
-				title: 'Scikit Learn',
-				collapsable: true,
-				children: [
-					'./lib/sklearn-classifier',
-					'./lib/sklearn-optimize',
-				]
-			},
+			
 		]
 	},
 	

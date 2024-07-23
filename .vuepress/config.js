@@ -23,7 +23,7 @@ module.exports = {
 	],
 	theme: 'reco',
 	themeConfig: {
-		mode: 'auto',
+		mode: 'dark',
 		nav: require("./nav.js"),
 		sidebar: require("./sidebar.js"),
 		// 子侧边栏

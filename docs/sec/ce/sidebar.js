@@ -33,25 +33,23 @@ module.exports = [
 			'./os/os-file',
 		]
 	},
-
-	
-	{
-		title: '语言基础',
-		collapsable: true,
-		children: [
-			'./lang/lang-php',
-			'./lang/lang-c++',
-			'./lang/lang-rust',
-		]
-	},
 	
 	
 	{
 		title: '网络安全',
 		collapsable: true,
 		children: [
-			'./hack/hack-basic',
-			'./hack/hack-penetration-testing',
+			'./hack/hack-sec-basic',
+			{
+				title: '语言基础',
+				collapsable: true,
+				children: [
+					'./hack/lang-php',
+					'./hack/lang-c++',
+					'./hack/lang-rust',
+				]
+			},
+			'./hack/hack-pen-testing',
 		]
 	},	
 ]
