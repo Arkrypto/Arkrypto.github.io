@@ -24,7 +24,7 @@ module.exports = [
 		{text: '信息', link: '/docs/sec/lib/'},
 		{text: '网络工程', link: '/docs/sec/ce/'},
 		{text: '数学', link: '/docs/sec/math/'},
-		{text: '密码应用', link: '/docs/sec/auth/'},
+		{text: '密码应用', link: '/docs/sec/crypto/'},
 	]},
 	
 	

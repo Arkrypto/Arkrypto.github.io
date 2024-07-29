@@ -53,7 +53,7 @@ module.exports = [
 	},
 	
 	{
-		title: '深度学习库 & 框架',
+		title: '深度学习库框架',
 		collapsable: true,
 		children: [
 			'./lib/pytorch-basic',
