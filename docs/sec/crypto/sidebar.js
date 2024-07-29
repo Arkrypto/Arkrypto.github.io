@@ -1,4 +1,18 @@
 module.exports = [	
+
+	{
+		title: '现代密码学',
+		collapsable: true,
+		children: [
+		    './basic/crypto-outline-stream-cipher',
+			'./basic/crypto-block-cipher',
+			'./basic/crypto-public-key',
+			'./basic/crypto-destribution-manage',
+			'./basic/crypto-verify-hash',
+			'./basic/crypto-digital-signature',
+		]
+	},
+	
 	{
 		title: '双因素认证',
 		collapsable: true,
