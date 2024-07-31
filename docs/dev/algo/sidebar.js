@@ -1,6 +1,6 @@
 module.exports = [
 	{
-		title: "算法设计与分析",
+		title: "算法设计与分析基础",
 		collapsable: true,
 		children: [
 			'./basic/algo-outline-recursive-divide',
@@ -10,7 +10,7 @@ module.exports = [
 	},
 	
 	{
-		title: "力扣算法笔记",
+		title: "LeetCode 算法笔记",
 		collapsable: true,
 		children: [
 			'./code/leetcode-modeling-hash-binary',
