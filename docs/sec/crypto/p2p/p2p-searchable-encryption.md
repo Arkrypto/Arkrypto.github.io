@@ -5,8 +5,6 @@ tags:
   - SearchableEncryption
 ---
 
-臭打工的
-
 ## JPBC 基础
 
 外部 jar 包导入`jpbc-api-2.0.0.jar`以及`jpbc-plaf-2.0.0.jar`，在项目根目录下复制进加密参数配置`a.properties`
@@ -195,9 +193,7 @@ private static KeyPair ao, au;
 public static void authKeyInit(){
     id_o = Zr.newRandomElement().getImmutable();
     id_u = Zr.newRandomElement().getImmutable();
-
     Element x = Zr.newRandomElement();
-
     ao = new KeyPair(hash(id_o.toBytes()).powZn(x).getImmutable(), hash(id_o.toBytes()));
     au = new KeyPair(hash(id_u.toBytes()).powZn(x).getImmutable(), hash(id_u.toBytes()));
 
@@ -283,7 +279,7 @@ BM25(q,d_j) = \sum_{i=1}^nR_{ij}
 $$
 其中 Rij 为
 $$
-R_{ij} = IDF(q_i)\frac{f(q_i,d_j)\times(k_1+1)}{f(q_i,d_j)+k_1\times(1-b+\frac{|d_j|}{d_{avg}})}\frac{f(q_i,d_j)\times(k_3+1)}{k_3+f(q_i,d_j)}
+R_{ij} = IDF(q_i)\,\frac{f(q_i,d_j)\times(k_1+1)}{f(q_i,d_j)+k_1\times(1-b+\frac{|d_j|}{d_{avg}})}\,\frac{f(q_i,d_j)\times(k_3+1)}{k_3+f(q_i,d_j)}
 $$
 显然，这个 BM25 公式求出的是某一次查询 q 对于文档 dj 的得分，我们在这个索引矩阵中需要存储的值，即为这里的 R 值，为什么要这么存呢？
 
@@ -318,22 +314,310 @@ $$
 f(q_i,d)\Rightarrow(f(q_i,d)+a)\quad a\geq0
 $$
 
-### 索引加密
+接下来从代码层面分解上述操作
 
-这里主要是涉及索引矩阵的加密、关键词序列的加密以及文档 ID 序列的加密
+#### 文档读入
+
+首先是读入文档，通过维护的一个文档名的序列，从本地读入文件字符串
+
+```java
+private static List<String> names = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5"));
+```
+
+读入的文件用 Map 存放
+
+```java
+private static Map<String, String> docs;
+```
+
+同时记录文档 ID 以及初始化各 ID 在索引矩阵 matrix 中的下标（列坐标）
+
+```java
+Map<String, Integer> id = new HashMap<>();
+```
+
+读入文档
+
+```java
+int count = 0;
+for(String name: names){
+    // 从文件中读入文档
+    docs.put(name, IOUtil.readDocs(name));
+    // 记录文档并且规定其在矩阵 matrix 中对应的下标
+    id.put(name, count++);
+}
+```
+
+I/O 方法如下
+
+```java
+public class IOUtil {
+    public static String readDocs(String path) {
+        // 如何相对路径读取捏
+        File file = new File("E:\\File\\XDU\\项目\\可搜索加密算法仿真\\se-emulation\\src\\main\\resources\\"+path);
+        String docs = null;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            // 接收文件内容 stringBuffer线程安全
+            StringBuilder stringBuilder = new StringBuilder();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+            docs = stringBuilder.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // 关闭流
+        return docs;
+    }
+}
+```
+
+同时记录文档个数 N，用一个向量 d 记录各个文档的词总数（通过空格分割），并且计算文档集的平均次数
+
+```java
+int N = id.size();
+
+int[] d = new int[id.size()];
+for(String name: id.keySet()){
+    // 遍历文档 ID，从 Map id 里拿 id 对应的下标
+    int index = id.get(name);
+    // 记录各个文档的词汇总数，index 为 id 表中的值
+    // 取的时候一定要注意，先从 id 表中通过文档名取出下标，然后再通过下标去操作 d 数组或 matrix 数组
+    d[index] = docs.get(name).split(" ").length;
+}
+// 求文档包含的平均词数
+int avg = Arrays.stream(d).sum() / N;
+```
+
+#### 关键词提取
+
+通过下述包进行分词
+
+```xml
+<dependency>
+    <groupId>com.hankcs</groupId>
+    <artifactId>hanlp</artifactId>
+    <version>portable-1.7.6</version>
+</dependency>
+```
+
+具体代码见 DocsUtil.java 提供的 getKeyword() 方法
+
+对刚刚读入的文档们进行分词，将提取的关键词存入 Map 中，第一是为了去重，第二，和 ID 一样，用 Map 的值存储其在 matrix 中的索引下标，即对应的行
+
+```java
+count = 0;
+// 从 docs 表中取出文档内容
+// 通过分词算法提取关键词并存入 keyword 表，值为其在二维数组 matrix 中的下标
+for(String content: docs.values()){
+    List<String> l = DocsUtil.getKeyword("", content);
+    for(String s: l){
+        if(!keyword.containsKey(s)){
+            // 放入关键词，同时规定关键词在矩阵 matrix 中的下标
+            keyword.put(s, count++);
+            // 统计关键词在文档中出现次数
+            n.put(s, 1);
+        } else {
+            // 更新关键词在各文档中的出现次数
+            n.put(s, n.get(s)+1);
+        }
+    }
+}
+```
+
+其中 Map<String, Integer> n 是在记录关键词被文档包含的次数，用于后续 BM25 计算
+
+#### 构建 matrix
+
+至此行列齐全，公式中的 n、d 也都准备好，可以计算构建索引矩阵
+
+```java
+matrix = new String[keyword.size()][id.size()];
+for(String q: keyword.keySet()){
+    // matrix 行
+    int i = keyword.get(q);
+    for(String s: id.keySet()){
+        // matrix 列
+        int j = id.get(s);
+        // 计算 R
+        double idf = Math.log((N + 1) / (n.get(q) + 0.5));
+        // 计算第 i 个关键词在第 j 个文档中的出现频率
+        int f = DocsUtil.getMatch(q, docs.get(s));
+        // 若为长文档，需要额外处理 f，加一个常数 a=1
+        if(d[j] > 400){
+            f += a;
+        }
+        double R = (idf * (f * (k1+1) / (f + k1 * (1 - b + b * d[j] / avg))) * (f * (k3 + 1) / (k3 + f)));
+        // 加密存储
+        String encode = VFEPlusUtil.encode((int)R);
+        matrix[i][j] = encode;
+    }
+}
+```
+
+这里在对评分 R 进行存储时，采用 VFE-Plus 算法进行加密，将整型转换为一个八进制的字符串进行存储，至此索引矩阵构建完毕
+
+### 序列加密
+
+这里主要是关键词序列的加密以及文档 ID 序列的加密
 
 - 文档 ID 采用对称加密算法 AES
 - 关键词序列采用公钥加密
-- 索引矩阵值加密采用置换加密
+
+对文档 ID 进行 AES 加密
+
+```java
+// 初始化分组加密参数
+secretKey = AESUtil.generateKey();
+iv = AESUtil.genIV();
+ID = new String[id.size()];
+for(String s: id.keySet()){
+    String c = AESUtil.encrypt(s, secretKey, iv);
+    int index = id.get(s);
+    ID[index] = c;
+}
+System.out.println("文档 ID 序列（AES 加密后）: " + Arrays.toString(ID));
+```
+
+对关键词进行公钥加密，公式如下
+$$
+C_w=pk_{svr}^{sk_{co}\cdot h_2(h_1(k,w),pk_{co})}
+$$
+其中，w 是关键词，`pk_{svr}`是系统初始化时搜索服务器的公钥，`sk_{co}`和`pk_{co}`分别是用户的私钥和公钥，h2 和 h1 是两个哈希函数，一定要注意在经过 h2 的嵌入后，哈希值需要映射到整数群 Zr 上（才能进行幂运算），和之前的哈希嵌入（映射到 G1 上）不一样
+
+```java
+KEYWORD = new Element[keyword.size()];
+// 在 keyword 表中加密关键词，得到最终加密后的关键词表 KEYWORD
+for(String w: keyword.keySet()){
+    Element h1 = hashZ(ByteUtil.joinByteArray(k.toBytes(), w.getBytes()));
+    Element h2 = hashZ(ByteUtil.joinByteArray(h1.toBytes(), co.getPk().toBytes()));
+    Element x = co.getSk().mul(h2).getImmutable();
+    Element c = svr.getPk().powZn(x).getImmutable();
+    int index = keyword.get(w);
+    KEYWORD[index] = c;
+}
+```
+
+这里为了简便 h1 = h2，至此加密完毕
 
 ### 加密搜索
 
+#### 关键词匹配
+
 陷门生成：计算所要搜索的关键词的哈希值，并嵌入到循环群 Zr 中，用于后续的公钥加密，对加密后的关键词序列进行匹配
 
+还记得刚刚的关键词加密吗，采用的公式为
+$$
+C_w=pk_{svr}^{sk_{co}\cdot h_2(h_1(k,w),pk_{co})}
+$$
+所以我们在进行关键词匹配之前，同样要经过这一计算，例如，现在要匹配关键词 w'，那么受限我们计算陷门
+$$
+T_{w'}=h_1(k,w')
+$$
 
+```java
+public static Element getT(String w){
+    return hashZ(ByteUtil.joinByteArray(k.toBytes(), w.getBytes()));
+}
+```
 
-密文检索
+再以陷门为参数计算
+$$
+C_{w'}=pk_{svr}^{sk_{co}\cdot h_2(T_{w'},pk_{co})}
+$$
+在刚刚生成的 KEYWORD 数组中，采取遍历的方式去匹配这一加密值，若一样则匹配成功，返回其在 KEYWORD 中的下标 i
 
-相关性评分计算
+```java
+public static int find(String str){
+    // 计算陷门
+    Element t = getT(str);
+    // 计算密文
+    Element word = svr.getPk().powZn(co.getSk().mul(hashZ(ByteUtil.joinByteArray(t.toBytes(), co.getPk().toBytes()))));
+    // 在关键词序列中匹配密文
+    for(int i = 0; i < KEYWORD.length; i++){
+        Element w = KEYWORD[i];
+        if(w.isEqual(word)){
+            return i;
+        }
+    }
+    return -1;
+}
+```
 
-返回相关文档 ID
+#### 查询向量生成
+
+在匹配关键词的基础上，对一连串的字符串查询进行匹配，返回一个长度为 KEYWORD.length 的向量，匹配成功的位置置 1，否则为 0
+
+```java
+// 获取查询向量，在 words 与 KEYWORD 匹配的地方置 1，否则置 0
+public static List<Integer> getQuery(List<String> words){
+    List<Integer> query = new ArrayList<>();
+    // 初始化查询向量
+    for(int i = 0; i < KEYWORD.length; i++){
+        query.add(0);
+    }
+    // 匹配成功置 1
+    for(String w: words){
+        int index = find(w);
+        if(index >= 0){
+            query.set(index, 1);
+        }
+    }
+    return query;
+}
+```
+
+#### 相关性评分计算
+
+将查询向量与索引矩阵做内积，即可得到各个文档关于本次查询的相关性评分
+
+```java
+// 获取各个文档的 BM25 分数，通过查询向量和索引矩阵的每列（代表每个文档）做内积得到
+public static List<Integer> getBM25(List<String> words){
+    System.out.println("查询包含的关键词: " + words);
+    // 获取查询向量，长度为 KEYWORD.length
+    List<Integer> query = getQuery(words);
+    System.out.println("对应的查询向量: " + query);
+    // 每个文档的 BM25 分数
+    // 初始化相关性评分
+    List<Integer> bm25 = new ArrayList<>();
+    for(int j = 0; j < ID.length; j++){
+        int grade = 0;
+        for (int i = 0; i < KEYWORD.length; i++) {
+            int decode = VFEPlusUtil.decode(matrix[i][j]);
+            grade += decode * query.get(i);
+        }
+        bm25.add(grade);
+    }
+    return bm25;
+}
+```
+
+## 测试
+
+测试代码
+
+```java
+public static void main(String[] args) {
+    systemInit();
+    authTest();
+    try{
+        matrixInit();
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+    List<String> words = new ArrayList<>();
+    words.add("K"); words.add("Mon"); words.add("May"); words.add("Phillip"); words.add("Belden"); words.add("PDT"); words.add("From"); words.add("phillip");
+    
+    System.out.println("BM25 分数: " + getBM25(words));
+
+}
+```
+
+输出结果
+
+```bash
+BM25 分数: [4, 1, 0, 0, 0]
+```
+
