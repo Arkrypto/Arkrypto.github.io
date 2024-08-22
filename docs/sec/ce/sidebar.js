@@ -36,17 +36,9 @@ module.exports = [
 		title: '网络安全',
 		collapsable: true,
 		children: [
-			'./hack/hack-sec-basic',
-			{
-				title: '语言基础',
-				collapsable: true,
-				children: [
-					'./hack/lang-php',
-					'./hack/lang-c++',
-					'./hack/lang-rust',
-				]
-			},
-			'./hack/hack-pen-testing',
+			'./hack/hack-lang',
+			'./hack/hack-basic',
+			'./hack/hack-test',
 		]
 	},	
 ]

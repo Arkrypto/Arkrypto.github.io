@@ -3,6 +3,7 @@ module.exports = [
 		title: "算法设计与分析基础",
 		collapsable: true,
 		children: [
+			'./basic/algo-lang-c',
 			'./basic/algo-outline-recursive-divide',
 			'./basic/algo-dp-greedy',
 			'./basic/algo-backtracking-branchbound-lp-networkflow',
