@@ -5,6 +5,8 @@ categories:
   - blog
 tags:
   - Authentication
+categories:
+  - sec
 ---
 
 ## 什么是 TOTP？

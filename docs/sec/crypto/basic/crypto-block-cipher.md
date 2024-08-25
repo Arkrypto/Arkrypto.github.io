@@ -3,6 +3,8 @@ title: 分组密码体制
 date: 2023-8-13
 tags:
   - Cryptography
+categories:
+  - sec
 ---
 
 ## 分组密码概述

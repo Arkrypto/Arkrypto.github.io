@@ -3,6 +3,8 @@ title: 公钥密码
 date: 2023-8-21
 tags:
   - Cryptography
+categories:
+  - sec
 ---
 
 非对称加密，加密使用公钥，解密使用私钥

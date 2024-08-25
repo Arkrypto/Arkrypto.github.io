@@ -3,6 +3,8 @@ title: 密钥协商与分割
 date: 2023-8-22
 tags:
   - Cryptography
+categories:
+  - sec
 ---
 
 卧槽，被骗了，这章不考，狗逼现代密码学

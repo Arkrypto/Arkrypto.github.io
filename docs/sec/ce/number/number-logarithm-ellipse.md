@@ -3,6 +3,8 @@ title: 离散对数和椭圆曲线
 date: 2023-6-15
 tags:
   - NumberTheory
+categories:
+  - sec
 ---
 
 ## 阶和原根

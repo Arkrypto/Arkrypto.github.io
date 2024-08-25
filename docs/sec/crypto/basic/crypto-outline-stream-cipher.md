@@ -3,6 +3,8 @@ title: 密码学概述和流密码
 date: 2023-04-26
 tags:
   - Cryptography
+categories:
+  - sec
 ---
 
 ## 网络安全概述

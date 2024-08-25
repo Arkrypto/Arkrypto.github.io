@@ -3,6 +3,8 @@ title: 可搜索加密算法仿真 in JPBC
 date: 2024-7-23
 tags:
   - SearchableEncryption
+categories:
+  - sec
 ---
 
 ## JPBC 基础
