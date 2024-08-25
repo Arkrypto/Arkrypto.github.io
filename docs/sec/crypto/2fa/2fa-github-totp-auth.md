@@ -2,11 +2,10 @@
 title: "TOTP - GitHub 的 2FA 方案"
 date: 2024-7-4
 categories:
+  - sec
   - blog
 tags:
-  - Authentication
-categories:
-  - sec
+  - Authentication  
 ---
 
 ## 什么是 TOTP？
