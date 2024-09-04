@@ -1,5 +1,5 @@
 ---
-title: BM25/BM25L 可搜索加密仿真
+title: BM25 可搜索加密仿真
 date: 2024-7-23
 tags:
   - SearchableEncryption

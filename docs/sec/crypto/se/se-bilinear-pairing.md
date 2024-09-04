@@ -52,12 +52,12 @@ $$
 
 在项目根目录新建目录 lib，将`jpbc-api-2.0.0.jar`和`jpbc-plaf-2.0.0.jar`放入，然后在 IDEA 添加外部包`File -> Project Structure -> Libraries`，点击 + 号，选择 Java，将 lib 目录添加，即可
 
-### Setup
+### 系统初始化
 
-### Enc
+### 关键词加密
 
-### KeyGen
+### 陷门生成
 
-### Dec
+### 双线性验证
 
 ## 测试
