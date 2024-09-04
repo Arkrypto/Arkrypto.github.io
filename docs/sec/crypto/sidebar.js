@@ -23,15 +23,23 @@ module.exports = [
 	},
 	
 	{
+		title: '可搜索加密',
+		collapsable: true,
+		children: [
+			'./se/se-best-matching-25',
+			'./se/se-bilinear-pairing',
+		]
+	},
+	
+	/*
+	{
 		title: '端到端加密',
 		collapsable: true,
 		children: [
-			'./p2p/p2p-searchable-encryption',
 			//'./p2p/https',
 			//'./p2p/websocket',
 		]
 	},
-	/*
 	{
 		title: 'RFID 认证',
 		collapsable: true,
