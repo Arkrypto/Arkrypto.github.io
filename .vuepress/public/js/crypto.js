@@ -1,15 +1,14 @@
 // node 版本：v14.21.3
 // npm 版本：9.6.4
 
-
 function printRtn(type, rtn){
 	if(type == 1){
 		document.getElementById("rtn").innerHTML = "加密结果：" + rtn;
 	} else {
 		document.getElementById('rtn').innerHTML = "解密结果：" + rtn;
-	}
-	
+	}	
 }
+
 
 // window.prompt(code[id].innerHTML + "\n\n加密形式：y=ax+b\n\n请键入参数 a 和 b，使用 \'/\' 分隔开");
 // window.prompt(code[id].innerHTML + "\n\n解密形式：x=a^{-1}(y-b)\n\n请键入参数 a 和 b，使用 \'/\' 分隔开");
@@ -19,11 +18,13 @@ function encrypt(){
 	var id = code.selectedIndex;
 	switch(id){
 		case 0: 
-			printRtn(1, MD5(text));
+			// md5 是隔壁 md5.js 里暴露的函数
+			printRtn(1, md5(text));
 			break;//凯撒密码
 		case 1: 
-			printRtn(1, "我是懒狗，还没写");
-			break;//凯撒密码
+		    // 使用 node 环境自带的加解密方法
+			printRtn(1, window.btoa(unescape(encodeURIComponent(text))));
+			break;//Base64
 		case 2: 
 			printRtn(1, "我是懒狗，还没写");
 			break;//维吉尼亚密码
@@ -36,9 +37,6 @@ function encrypt(){
 		case 5: 
 			printRtn(1, "我是懒狗，还没写");
 			break;//扩展欧几里得算法
-		case 6: 
-			printRtn(1, "我是懒狗，还没写");
-			break;//孙子定理
 	}
 }
 
@@ -53,8 +51,8 @@ function decrypt(){
 			printRtn(2, "仅支持MD5加密");
 			break;//凯撒密码
 		case 1: 
-			printRtn(2, "我是懒狗，还没写");
-			break;//凯撒密码
+			printRtn(2, decodeURIComponent(escape(window.atob(text))));
+			break;//Base64
 		case 2: 
 			printRtn(2, "我是懒狗，还没写");
 			break;//维吉尼亚密码
@@ -67,9 +65,6 @@ function decrypt(){
 		case 5: 
 			printRtn(2, "我是懒狗，还没写");
 			break;//扩展欧几里得算法
-		case 6: 
-			printRtn(2, "我是懒狗，还没写");
-			break;//孙子定理
 	}
 }
 
