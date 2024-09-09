@@ -1,9 +1,9 @@
 ---
 home: true
 heroText:
-tagline: 窗花不可幽禁落霞
+tagline:
 
-#heroImage: /img/titan.jpg
+#heroImage: /img/people.webp
 #heroImageStyle: {
   #maxWidth: '100%',
   #height: '100%',
@@ -14,7 +14,7 @@ tagline: 窗花不可幽禁落霞
   #borderRadius: '1rem',
 #}
 
-bgImage: /img/titan.jpg
+bgImage: /img/people.webp
 bgImageStyle: {
   width: 100%,
   height: 720px

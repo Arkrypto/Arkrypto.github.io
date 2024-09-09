@@ -13,7 +13,7 @@ module.exports = {
 		['script',{src: '/js/jquery1.9.1.min.js'}],
 		
 		// 翻译接口、加密解密接口
-		['script',{ src: '/js/api.js' }],
+		['script',{ src: '/js/translation.js' }],
 		['script',{ src: '/js/crypto.js' }],
 		['script',{ src: '/js/md5.js' }],
 		['script',{ src: '/js/clock.js' }],
@@ -75,14 +75,14 @@ module.exports = {
 	plugins: [
 		[ '@vuepress-reco/vuepress-plugin-bgm-player', {	//npm i @vuepress-reco/vuepress-plugin-bgm-player -D
 			"audios": [{
-				name: 'Lalala',
-				artist: '孤高曼波',
-				url: '/song/Lalala.mp3',
+				name: '妖风过海',
+				artist: '刘森',
+				url: '/song/妖风过海.mp3',
 				cover: '/img/error.jpg'
 			},{
 				name: '失忆蝴蝶',
 				artist: 'Eason',
-				url: '/song/AmnesiaButterfly.mp3',
+				url: '/song/失忆蝴蝶.mp3',
 				cover: '/img/error.jpg'
 			},{
 				name: 'Love and Mangoes',
@@ -91,17 +91,19 @@ module.exports = {
 				cover: '/img/error.jpg'
 			},{
 				name: '白羊',
-				artist: 'canoe',
-				url: '/song/Aries.mp3',
+				artist: 'Northboat',
+				url: '/song/白羊.mp3',
 				cover: '/img/error.jpg'
 			},{
 				name: '水手',
-				artist: 'momo',
-				url: '/song/Mariner.m4a',
+				artist: 'Momo',
+				url: '/song/水手.m4a',
 				cover: '/img/error.jpg'
 			}],
+			// 默认播放
+			//"autoplay": true,
 			// 是否默认缩小
-			"autoShrink": true ,
+			"autoShrink": true,
 			// 缩小时缩为哪种模式
 			"shrinkMode": 'float',
 			// 悬浮方位
