@@ -9,7 +9,7 @@ tags:
 
 ## Spring Date
 
-### MySQL
+### JDBC
 
 application.yml 配置 mysql：密码是数字要加双引号
 
@@ -682,3 +682,5 @@ Spring Security 基于过滤器链的概念，可以轻松地集成到任何基�
 ## Spring Session
 
 利用 Redis 对分布式场景下的用户 Session 进行统一管理
+
+还记得 Redis 的妙用吗
