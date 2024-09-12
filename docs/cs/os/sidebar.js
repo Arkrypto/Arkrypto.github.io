@@ -2,7 +2,7 @@
 module.exports = [
 	
 	{
-		title: '操作系统',
+		title: '操作系统 - 启航',
 		collapsable: true,
 		children: [
 			'./hang/os-outline',
@@ -25,6 +25,16 @@ module.exports = [
 			    ]
 			},
 			'./hang/os-file',			
+		]
+	},
+	
+	{
+		title: '操作系统 - 王道',
+		collapsable: true,
+		children: [
+			'./wang/os-cpu',
+			'./wang/os-memory',
+			'./wang/os-file',
 		]
 	},
 

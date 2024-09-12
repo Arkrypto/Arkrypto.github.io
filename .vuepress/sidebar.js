@@ -3,8 +3,8 @@ module.exports = {
 		
 	'/docs/sec/lib/': require('../docs/sec/lib/sidebar'),
 	'/docs/sec/math/': require('../docs/sec/math/sidebar'),
-	'/docs/sec/ce/': require('../docs/sec/ce/sidebar'),
 	'/docs/sec/crypto/': require('../docs/sec/crypto/sidebar'),
+	'/docs/sec/net/': require('../docs/sec/net/sidebar'),
 		
 	'/docs/cs/ds/': require('../docs/cs/ds/sidebar'),
 	'/docs/cs/cn/': require('../docs/cs/cn/sidebar'),

@@ -1,4 +1,4 @@
-module.exports = [	
+module.exports = [
 
 	{
 		title: '现代密码学',
@@ -14,11 +14,11 @@ module.exports = [
 	},
 	
 	{
-		title: '双因素认证',
+		title: '端到端认证',
 		collapsable: true,
 		children: [
-			'./2fa/2fa-bank-ukey-auth',
-			'./2fa/2fa-github-totp-auth',
+			'./p2p/2fa-bank-ukey-auth',
+			'./p2p/2fa-github-totp-auth',
 		]
 	},
 	
@@ -31,22 +31,13 @@ module.exports = [
 		]
 	},
 	
-	/*
-	{
-		title: '端到端加密',
-		collapsable: true,
-		children: [
-			//'./p2p/https',
-			//'./p2p/websocket',
-		]
-	},
 	{
 		title: 'RFID 认证',
 		collapsable: true,
 		children: [
-			'./rfid/basic', //《RFID原理及应用》
+			'./rfid/basic',
 		]
-	},*/
+	},
 
 	
 	

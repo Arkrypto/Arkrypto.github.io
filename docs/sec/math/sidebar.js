@@ -53,5 +53,26 @@ module.exports = [
 			'./probability/probability-estimate-assume',
 		]
 	},
+	
+	{
+		title: '数论',
+		collapsable: true,
+		children: [
+			'./number/number-modular-arithmetic',
+			'./number/number-arithmetic-equation',
+			'./number/number-logarithm-ellipse',
+		]
+	},
+
+	{
+		title: '离散数学',
+		collapsable: true,
+		children: [
+			'./discrete/discrete-mathematical-logic ',
+			'./discrete/discrete-set-theory',
+			'./discrete/discrete-algebraic-system',
+			'./discrete/discrete-graph-theory',
+		]
+	},
 
 ]

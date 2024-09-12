@@ -5,9 +5,9 @@ module.exports = [
 		title: 'Java 基础',
 		collapsable: true,
 		children: [
-			'./javase/java-se-class',
-			'./javase/java-se-collection',
-			'./javase/java-se-io'
+			'./basic/java-se-class',
+			'./basic/java-se-collection',
+			'./basic/java-se-io'
 		]
 	},
 	
@@ -35,12 +35,12 @@ module.exports = [
 	},
 	
 	{
-		title: 'Web 后端框架',
+		title: 'Web 后端开发',
 		collapsable: true,
 		children: [
-			'./frame/java-spring-boot',
-			'./frame/python-flask',
-			'./frame/java-spring-security',
+			'./cloud/java-spring-basic',
+			'./cloud/python-restful-api',
+			'./cloud/java-spring-advance',
 		]
 	},
 	

@@ -1,5 +1,4 @@
 //主管控导航栏
-
 module.exports = [
 
     { text: '主页', icon: 'reco-home', link: '/' },
@@ -21,10 +20,10 @@ module.exports = [
 	]},
 	
 	{ text: '网络与信息安全', icon: 'reco-eye', items: [
-		{text: '信息', link: '/docs/sec/lib/'},
-		{text: '网络工程', link: '/docs/sec/ce/'},
+		{text: '密码工程', link: '/docs/sec/crypto/'},
 		{text: '数学', link: '/docs/sec/math/'},
-		{text: '密码应用', link: '/docs/sec/crypto/'},
+		{text: '文学与政治', link: '/docs/sec/lib/'},
+		{text: '网络安全', link: '/docs/sec/net/'},
 	]},
 	
 	
