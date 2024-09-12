@@ -14,7 +14,7 @@ tagline:
   #borderRadius: '1rem',
 #}
 
-bgImage: /img/people.webp
+bgImage: /img/people.jpg
 bgImageStyle: {
   width: 100%,
   height: 720px
