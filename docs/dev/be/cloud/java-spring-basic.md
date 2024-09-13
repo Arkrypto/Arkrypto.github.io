@@ -11,40 +11,83 @@ tags:
 
 通过类名（字符串）去构建类本身，并且调用类中函数，这是一个反向构造的过程，在 Spring 中多用注解的形式，对所有的对象进行一个反向构造和统一管理，即 IoC 的实现
 
-通过 invoke 函数对对象进行创建
+一个正向构造的例子
+
+```java
+Apple apple = new Apple(); //直接初始化，「正射」
+apple.setPrice(4);
+```
+
+通过 JDK 提供的反射 API 进行构建
+
+```java
+Class clz = Class.forName("com.northboat.reflect.Apple");
+Method method = clz.getMethod("setPrice", int.class);
+Constructor constructor = clz.getConstructor();
+Object object = constructor.newInstance();
+method.invoke(object, 4);
+```
+
+最终是通过 Method 类的 invoke 函数对对象进行创建，其具体实现方式在内部有两种，一种是 native 原生的实现，一种是 Java 实现，这两种各有千秋。为了最大化性能优势，JDK 源码使用了**代理的设计模式**去实现最大化性能
+
+- Native 版本一开始启动快，但是随着运行时间边长，速度变慢。Java 版本一开始加载慢，但是随着运行时间边长，速度变快。正是因为两种存在这些问题，所以第一次加载的时候我们会发现使用的是 NativeMethodAccessorImpl 的实现，而当反射调用次数超过 15 次之后，则使用 MethodAccessorGenerator 生成的 MethodAccessorImpl 对象去实现反射
 
 ## IoC
 
 > 控制反转，目的用于解耦，底层使用的技术是反射 + 工厂模式
 
-### 注册 Bean
+### 什么是 IoC
 
-@Bean
+bean 是 Spring 统一管理的对象，我们的 Spring 程序由一个个 bean 组成，bean 由 Spring 中的 IoC 进行管理
+
+Inversion of Control，简称 IoC，即控制反转，通过 DI 依赖注入（Dependency Injection）的方式（如 @Autowired 注入）实现对象之间的松耦合关系。程序运行时，依赖对象由辅助程序动态生成并注入到被依赖对象中，动态绑定两者的使用关系
+
+Spring IoC 容器就是这样的辅助程序，它负责对象的生成和依赖的注入，然后再交由程序员使用，故而在 Spring 中，你不需要自己创建对象，你只需要告诉 Spring，哪些类我需要创建出对象，然后在启动项目的时候 Spring 就会自动帮你创建出该对象，并且只存在一个类的实例。这个类的实例在 Spring 中被称为 Bean。而这种模式，我们称之为**单例模式**
+
+通常，我们使用 Java 注解配置来实现 Bean 的注册和使用（通过反射机制）
+
+### Bean 的声明和注入
+
+Java 注解配置声明 Bean
 
 - @Component
 - @Service
 - @Repository
 - @Controller
 
+以上四种声明方式效果完全一致，使用不同的关键词是为了给阅读的人能够快速了解该类属于哪一层
+
+此外，@Bean 一般和 @Component 或者 @Configuration 一起使用，创建一些 Bean
+
+```java
 @Configuration
+public class ByService{
+    public MyService(){
+        System.out.println("nmsl");
+    }
+    
+    @Bean
+    public String strObj(){
+        return "wdnmd";
+    }
+    
+    @public Integer intObj(){
+        return 2084;
+    }
+}
+```
 
-@RestController = @Controller + @ResponseBody
+这样 Spring 中就会存在两个叫做 strObj 和 intObj 的对象，其值分别为 "wdnmd" 和 2084
 
-@RequestMapping
+@Configuration 和 @Component 注解的区别：@Configuration 注解可以让 @Bean 注解对象依赖于当前配置类的其它 Bean
 
-- @PathVariable
-- @RequestParam
+注入 Bean
 
-@GetMapping
+- @Autowired
+- @Inject
+- @Resource
 
-junit 单元测试
-
-- @SpringBootTest
-- @Test
-
-### 使用 Bean
-
-@Autowired 在类中注入 Bean 对象，进行后续使用
+在具体注入时，又有三种注入方式，以 @Autowired 为例
 
 变量注入（不推荐）
 
@@ -64,7 +107,7 @@ public UserServiceImpl(UserDao userDao) {
 }
 ~~~
 
-set方法注入
+set 方法注入
 
 ~~~java
 //set方法注入
@@ -75,6 +118,26 @@ public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
 }
 ~~~
 
+### 其他注解
+
+注解 @ResponseBody，使用在控制层（controller）的方法上
+
+作用：将方法的返回值，以特定的格式写入到 response 的 body 区域，进而将数据返回给客户端。当方法上面没有写 ResponseBody ，底层会将方法的返回值封装为 ModelAndView 对象。如果返回值是字符串，那么直接将字符串写到客户端；如果是一个对象，会将对象转化为 json 串，然后写到客户端
+
+- @RestController = @Controller + @ResponseBody
+
+@RequestMapping
+
+- @PathVariable
+- @RequestParam
+
+@GetMapping
+
+单元测试（junit）
+
+- @Test
+- @SpringBootTest
+
 ## AOP
 
 面向切面编程，Aspect Oriented Programming
@@ -82,6 +145,56 @@ public void setJdbcTemplate(JdbcTemplate jdbcTemplate){
 ## 设计模式
 
 在 Spring 的框架下，应用程序将被天然的设计为一个 MVC 架构，在架构之上，我们可以对软件、应用、编码的设计模式进行一定的考量
+
+常见的设计模式有
+
+- 创建型模式（共五种）：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式
+- 结构型模式（共七种）：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式
+- 行为型模式（共十一种）：策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式
+
+Spring 中的 Bean 采用的便是单例模式（创建型），Java 的反射机制采用的便是代理模式（结构型）
+
+## 中间件
+
+通过 Maven 可以在 Spring 中轻松的集成各种中间件来实现事务
+
+### Mail
+
+邮件发送
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-mail</artifactId>
+</dependency>
+```
+
+### WebSocket
+
+websocket 通信
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-websocket</artifactId>
+</dependency>
+```
+
+### RabbitMQ
+
+消息队列
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-amqp</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.amqp</groupId>
+    <artifactId>spring-rabbit-test</artifactId>
+    <scope>test</scope>
+</dependency>
+```
 
 ## 模板引擎
 
@@ -132,43 +245,4 @@ spring:
 <a th:href="@{/drop/}+${p.getMail().getNum()}" class="card-more" data-toggle="read" data-id="1"><i class="ion-ios-arrow-left"></i>删除<i class="ion-ios-arrow-right"></i></a>
 ~~~
 
-## 中间件集成
-
-### Mail
-
-邮件发送
-
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-mail</artifactId>
-</dependency>
-```
-
-### WebSocket
-
-websocket 通信
-
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-websocket</artifactId>
-</dependency>
-```
-
-### RabbitMQ
-
-消息队列
-
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-amqp</artifactId>
-</dependency>
-<dependency>
-    <groupId>org.springframework.amqp</groupId>
-    <artifactId>spring-rabbit-test</artifactId>
-    <scope>test</scope>
-</dependency>
-```
-
+## 

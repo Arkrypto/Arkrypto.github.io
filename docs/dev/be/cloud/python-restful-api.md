@@ -1,6 +1,6 @@
 ---
 title: Python Restful API 的简易开发
-date: 2023-2-21
+date: 2024-9-13
 categories:
   - devops
 tags:

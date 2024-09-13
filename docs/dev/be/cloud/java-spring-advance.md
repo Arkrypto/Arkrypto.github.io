@@ -684,3 +684,7 @@ Spring Security 基于过滤器链的概念，可以轻松地集成到任何基�
 利用 Redis 对分布式场景下的用户 Session 进行统一管理
 
 还记得 Redis 的妙用吗
+
+- 键值库
+- 分布式锁
+- 分布式 Session

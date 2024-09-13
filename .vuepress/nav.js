@@ -15,7 +15,7 @@ module.exports = [
 	{ text: '开发与运维', icon: 'reco-bokeyuan', items: [ 
 		{text: '后端开发', link: '/docs/dev/be/'},
 		{text: '算法', link: '/docs/dev/algo/'},
-		{text: '服务器运维', link: '/docs/dev/op/'},
+		{text: '服务器运维', link: '/docs/dev/ops/'},
 		{text: '前端开发', link: '/docs/dev/fe/'},
 	]},
 	
@@ -23,7 +23,7 @@ module.exports = [
 		{text: '密码工程', link: '/docs/sec/crypto/'},
 		{text: '数学', link: '/docs/sec/math/'},
 		{text: '文学与政治', link: '/docs/sec/lib/'},
-		{text: '网络安全', link: '/docs/sec/net/'},
+		{text: '网络安全', link: '/docs/sec/cs/'},
 	]},
 	
 	
