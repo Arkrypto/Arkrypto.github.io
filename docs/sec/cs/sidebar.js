@@ -1,7 +1,7 @@
 module.exports = [
 	
 	{
-		title: '基础渗透',
+		title: '渗透基础',
 		collapsable: true,
 		children: [
 			'./hack/hack-lang',

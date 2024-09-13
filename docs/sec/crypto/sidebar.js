@@ -19,6 +19,7 @@ module.exports = [
 		children: [
 			'./p2p/2fa-bank-ukey-auth',
 			'./p2p/2fa-github-totp-auth',
+			'./p2p/p2p-websocket',
 		]
 	},
 	

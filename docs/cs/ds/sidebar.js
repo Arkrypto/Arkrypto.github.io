@@ -56,26 +56,18 @@ module.exports = [
 		title: '深度学习库框架',
 		collapsable: true,
 		children: [
-			'./lib/pytorch-basic',
+			'./lib/pylib-numpy',
+			'./lib/pylib-pandas',
+			'./lib/pylib-scipy',
+			'./lib/pylib-matplotlib',
 			{
-				title: 'Scikit Learn',
+				title: 'SKLearn',
 				collapsable: true,
 				children: [
 					'./lib/sklearn-classifier',
 					'./lib/sklearn-optimize',
 				]
-			},
-			{
-				title: '数据科学库',
-				collapsable: true,
-				children: [
-					'./lib/pylib-numpy',
-					'./lib/pylib-pandas',
-					'./lib/pylib-scipy',
-					'./lib/pylib-matplotlib',
-				]
-			},
-			
+			},			
 		]
 	},
 	
