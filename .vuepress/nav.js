@@ -6,9 +6,9 @@ module.exports = [
 	{ text: '博客', icon: 'reco-blog', link: '/categories/blog/' },
 	
 	{ text: '计算机科学与技术', icon: 'reco-document', items: [
+		{text: '数据结构', link: '/docs/cs/ds/'},
+		{text: '组原', link: '/docs/cs/co/'},
 		{text: '计算机网络', link: '/docs/cs/cn/'},
-		{text: '数据结构', link: '/docs/cs/ds/'},			
-		{text: '计算机组成原理', link: '/docs/cs/co/'},
 		{text: '操作系统', link: '/docs/cs/os/'},
 	]},
 	
