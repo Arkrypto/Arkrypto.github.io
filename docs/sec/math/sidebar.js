@@ -45,12 +45,12 @@ module.exports = [
 		title: '概率论与数理统计',
 		collapsable: true,
 		children: [
-			'./probability/probability-discrete-variable',
-			'./probability/probability-continuous-variable',
-			'./probability/probability-numerical-characteristics',
-			'./probability/probability-laws-central-limit-theory',
-			'./probability/probability-statistics',
-			'./probability/probability-estimate-assume',
+			'./prob/probability-discrete-variable',
+			'./prob/probability-continuous-variable',
+			'./prob/probability-numerical-characteristics',
+			'./prob/probability-laws-central-limit-theory',
+			'./prob/probability-statistics',
+			'./prob/probability-estimate-assume',
 		]
 	},
 	

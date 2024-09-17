@@ -35,12 +35,12 @@ module.exports = [
 	},
 	
 	{
-		title: 'Web 后端开发',
+		title: '分布式 Restful API 开发',
 		collapsable: true,
 		children: [
-			'./cloud/java-spring-basic',
-			'./cloud/python-restful-api',
-			'./cloud/java-spring-advance',
+			'./api/api-java-spring-basic',
+			'./api/api-python-restful',
+			'./api/api-java-spring-advance',
 		]
 	},
 	

@@ -31,7 +31,7 @@ module.exports = [
 		collapsable: true,
 		children: [
 			'./nndl/nndl-note',
-			'./nndl/nndl-experiment',
+			'./nndl/nndl-algo',
 		]
 	},
 	

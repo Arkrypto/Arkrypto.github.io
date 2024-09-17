@@ -26,8 +26,8 @@ module.exports = [
 		title: '框架',
 		collapsable: true,
 		children: [
-			'./frame/frame-vue',
-			'./frame/frame-electron',
+			'./fw/framework-vue',
+			'./fw/framework-electron',
 		]
 	},
 	

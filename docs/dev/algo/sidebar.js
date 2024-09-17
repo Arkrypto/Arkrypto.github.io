@@ -1,6 +1,6 @@
 module.exports = [
 	{
-		title: "算法设计与分析基础",
+		title: "基础算法设计与分析",
 		collapsable: true,
 		children: [
 			'./basic/algo-lang-c',
@@ -11,7 +11,7 @@ module.exports = [
 	},
 	
 	{
-		title: "LeetCode 算法笔记",
+		title: "LeetCode 笔记",
 		collapsable: true,
 		children: [
 			'./code/leetcode-modeling-hash-binary',
@@ -24,7 +24,7 @@ module.exports = [
 	},
 	
 	{
-		title: "CS188 算法笔记",
+		title: "CS188 笔记",
 		collapsable: true,
 		children: [
 			'./ai/ai-grid-world',
@@ -37,7 +37,7 @@ module.exports = [
 		collapsable: true,
 		children: [
 			'./ds/data-structure-design',
-			'./ds/data-structure-experiment',
+			'./ds/data-structure-algo',
 		]
 	},
 

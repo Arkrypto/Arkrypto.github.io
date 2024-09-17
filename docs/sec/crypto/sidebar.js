@@ -4,12 +4,12 @@ module.exports = [
 		title: '现代密码学',
 		collapsable: true,
 		children: [
-		    './basic/crypto-outline-stream-cipher',
-			'./basic/crypto-block-cipher',
-			'./basic/crypto-public-key',
-			'./basic/crypto-destribution-manage',
-			'./basic/crypto-verify-hash',
-			'./basic/crypto-digital-signature',
+		    './cip/cipher-outline-stream-cipher',
+			'./cip/cipher-block-cipher',
+			'./cip/cipher-public-key',
+			'./cip/cipher-destribution-manage',
+			'./cip/cipher-verify-hash',
+			'./cip/cipher-digital-signature',
 		]
 	},
 	
@@ -17,8 +17,8 @@ module.exports = [
 		title: '端到端认证',
 		collapsable: true,
 		children: [
-			'./p2p/2fa-bank-ukey-auth',
-			'./p2p/2fa-github-totp-auth',
+			'./p2p/p2p-2fa-bank-ukey',
+			'./p2p/p2p-2fa-github-totp',
 			'./p2p/p2p-websocket',
 		]
 	},
@@ -33,10 +33,11 @@ module.exports = [
 	},
 	
 	{
-		title: '射频识别',
+		title: '射频识别认证',
 		collapsable: true,
 		children: [
-			'./rfid/basic',
+			'./rfid/rfid-tech-app',
+			'./rfid/rfid-overview',
 		]
 	},
 

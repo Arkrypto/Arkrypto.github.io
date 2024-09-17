@@ -1,12 +1,10 @@
 ---
-title: 数据结构实现
+title: 手撸数据结构
 date: 2021-8-24
 tags:
   - DataStructure
   - Algorithm
 ---
-
-> 是手撸的哦
 
 ## 一般线性表
 

@@ -42,16 +42,16 @@ module.exports = [
 		title: '编译原理与汇编程序',
 		collapsable: true,
 		children: [
-			'./compile/assembly-basic',
+			'./comp/assembly-basic',
 			{
 			    title: '汇编语言程序设计',
 			    collapsable: true,
 			    children: [
-					'./compile/assembly-branch',
-					'./compile/assembly-loop',
+					'./comp/assembly-branch',
+					'./comp/assembly-loop',
 			    ]
 			},
-			'./compile/compile-principle'
+			'./comp/compile-principle'
 		]
 	},
 	
