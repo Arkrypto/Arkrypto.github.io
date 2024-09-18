@@ -1,5 +1,5 @@
 ---
-title: Manjaro 配置
+title: Linux 开发
 date: 2022-4-12
 categories:
   - devops

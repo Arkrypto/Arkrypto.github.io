@@ -1,5 +1,5 @@
 ---
-title: 运维基础
+title: Linux 基础
 date: 2021-5-4
 categories:
   - devops

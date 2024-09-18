@@ -38,9 +38,10 @@ module.exports = [
 		title: '分布式 Restful API 开发',
 		collapsable: true,
 		children: [
+			'./api/api-python-flask',
 			'./api/api-java-spring-basic',
-			'./api/api-python-restful',
 			'./api/api-java-spring-advance',
+			'./api/api-distributed-system',
 		]
 	},
 	

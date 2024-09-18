@@ -2,7 +2,7 @@
 module.exports = [
 
 	{
-		title: 'Linux',
+		title: '运维基础',
 		collapsable: true,
 		children: [
 			'./basic/linux-ops',

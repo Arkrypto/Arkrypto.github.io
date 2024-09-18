@@ -36,26 +36,10 @@ module.exports = [
 	},
 	
 	{
-		title: 'Python3',
+		title: '深度学习库',
 		collapsable: true,
 		children: [
-			'./py/python-basic',
-		    {
-				title: "Python Hundred",
-		        collapsable: true,
-				children: [
-		            './py/python-first',
-		            './py/python-second',
-			    	'./py/python-third',		
-				]
-		    },
-		]
-	},
-	
-	{
-		title: '深度学习库框架',
-		collapsable: true,
-		children: [
+			'./lib/python-basic',
 			'./lib/pylib-numpy',
 			'./lib/pylib-pandas',
 			'./lib/pylib-scipy',

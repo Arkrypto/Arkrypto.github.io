@@ -33,7 +33,7 @@ module.exports = [
 	},
 	
 	{
-		title: '射频识别认证',
+		title: 'RFID 认证',
 		collapsable: true,
 		children: [
 			'./rfid/rfid-tech-app',

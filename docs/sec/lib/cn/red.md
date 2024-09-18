@@ -1,5 +1,5 @@
 ---
-title: 有关共产的一些抄录
+title: 有关社会的抄录
 date: 2023-12-10
 tags:
   - Marx
