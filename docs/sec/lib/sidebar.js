@@ -4,29 +4,22 @@ module.exports = [
 		title: '摘抄',
 		collapsable: true,
 		children: [
-		    './cn/collect',
-			'./cn/red',
+		    './extract/sentence',
+			'./extract/mao',
+			'./extract/constitution',
+			//'./extract/ramblings',
 		]
 	},
 	
 	{
-		title: '思想道德修养',
+		title: '思想与道德修养',
 		collapsable: true,
 		children: [	
-			'./po/marx',
-			'./po/mao',
-			'./po/xi',
-			
+			'./politics/marx-history',
+			'./politics/mao-deng',
+			'./politics/xi-morality-law',
 		]
 	},
 	
-	{
-		title: '英语积累',
-		collapsable: true,
-		children: [
-		    './en/cet',
-		    './en/word',
-			'./en/wr',
-		]
-	},
+
 ]

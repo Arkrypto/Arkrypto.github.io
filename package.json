@@ -1,6 +1,6 @@
 {
-  "name": "northboat's house",
-  "version": "1.0.0",
+  "name": "northboat's dock",
+  "version": "2.0.0",
   "author": "northboat",
   "scripts": {
     "dev": "vuepress dev . --open --host \"localhost\"",
