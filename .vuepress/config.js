@@ -158,7 +158,7 @@ module.exports = {
 			shape: 'star', // 粒子形状（可选 'star' 和 'circle'）
 			zIndex: 999999999,
 		}],
-		/*[ 'posts-encrypt', { 失败的加密尝试
+		/*[ 'posts-encrypt', { 失败的加密尝试，reco 自带加密
 			route: '/auth',
 			passwd: '123456',
 			encryptInDev: true,
