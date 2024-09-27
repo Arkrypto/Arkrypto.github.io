@@ -28,7 +28,6 @@ module.exports = [
 		title: '认证',
 		collapsable: true,
 		children: [
-			'./auth/auth-rfid',
 			'./auth/auth-survey',
 			{
 				title: '双因素认证',
