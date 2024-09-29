@@ -1,5 +1,5 @@
 ---
-title: 软件工程实训
+title: 软工实训
 date: 2023-7-9
 tags:
   - SoftwareEngineering

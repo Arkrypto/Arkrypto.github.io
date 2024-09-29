@@ -1,5 +1,5 @@
 ---
-title: 双线性配对的可搜索加密
+title: 基于双线性配对的可搜索加密
 date: 2024-9-4
 tags:
   - SearchableEncryption

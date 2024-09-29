@@ -1,5 +1,5 @@
 ---
-title: BM25 可搜索加密仿真
+title: 基于 BM25 的可搜索加密索引
 date: 2024-7-23
 tags:
   - SearchableEncryption
