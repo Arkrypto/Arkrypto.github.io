@@ -1,6 +1,8 @@
 ---
 title: WebSocket 的鉴权验权
 date: 2024-9-13
+tags:
+  - Authentication
 ---
 
 [websocket之四：WebSocket 的鉴权授权方案 - duanxz - 博客园 (cnblogs.com)](https://www.cnblogs.com/duanxz/p/5440716.html)
