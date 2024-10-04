@@ -4,7 +4,7 @@ date: 2023-04-26
 tags:
   - Cryptography
 categories:
-  - sec
+  - Crypto
 ---
 
 ## 网络安全概述

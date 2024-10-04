@@ -2,8 +2,8 @@
 title: "TOTP - GitHub 的登录认证方案"
 date: 2024-7-4
 categories:
-  - sec
-  - blog
+  - Crypto
+  - Blogs
 tags:
   - Authentication  
 ---

@@ -4,7 +4,8 @@ date: 2024-7-23
 tags:
   - SearchableEncryption
 categories:
-  - sec
+  - Blogs
+  - Crypto
 ---
 
 ## JPBC 基础

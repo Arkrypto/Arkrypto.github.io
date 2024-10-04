@@ -4,7 +4,7 @@ date: 2024-6-22
 tags:
   - Authentication
 categories:
-  - sec
+  - Crypto
 ---
 
 ## 什么是 2FA？

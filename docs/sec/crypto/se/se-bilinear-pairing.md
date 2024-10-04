@@ -4,7 +4,7 @@ date: 2024-9-4
 tags:
   - SearchableEncryption
 categories:
-  - sec
+  - Crypto
 ---
 
 ## 前置工作

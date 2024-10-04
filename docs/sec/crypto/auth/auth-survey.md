@@ -3,6 +3,8 @@ title: 综述
 date: 2024-9-17
 tags:
   - Authentication
+categories:
+  - Crypto
 ---
 
 ## 轻量认证

@@ -4,7 +4,7 @@ date: 2023-8-13
 tags:
   - Cryptography
 categories:
-  - sec
+  - Crypto
 ---
 
 ## 分组密码概述

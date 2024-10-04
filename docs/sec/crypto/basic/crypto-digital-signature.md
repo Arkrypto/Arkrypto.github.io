@@ -4,7 +4,7 @@ date: 2023-8-22
 tags:
   - Cryptography
 categories:
-  - sec
+  - Crypto
 ---
 
 ## 消息认证和数字签名

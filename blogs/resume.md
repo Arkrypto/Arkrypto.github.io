@@ -2,7 +2,7 @@
 title: 简历
 date: 2022-08-17
 categories:
-  - blog
+  - Blogs
 keys:
   - "e10adc3949ba59abbe56e057f20f883e"
 ---
