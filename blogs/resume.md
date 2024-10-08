@@ -7,6 +7,20 @@ keys:
   - "e10adc3949ba59abbe56e057f20f883e"
 ---
 
+::: danger
+
+一个简单的解密：ZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2U=（[你可能会用到这个👉](http://localhost:8080/docs/sec/crypto/)）
+
+
+
+:::
+
+<!-- tip/warning/danger-->
+
+<!-- more -->
+
+
+
  <center>
      <h1>熊舟桐 - 后端开发</h1>
      <div>
@@ -35,12 +49,12 @@ keys:
 
 <h2 style="width:86%"><img src="./assets/info-circle-solid.svg" align="left" width="15px">&nbsp;个人信息</h2>
 
-- 出生年月：2001.10 | 性别：男 | 民族：汉族 | 政治面貌：共青团员
-- 联系电话：(+86) 186-9239-0562
+- 出生年月：2001.10 | 性别：男
+- 民族：汉族 | 政治面貌：共青团员
 
 <h2><img src="./assets/graduation-cap-solid.svg" align="left" width="30px">&nbsp;教育经历</h2>
 
-- 硕士，西安电子科技大学，网络与信息安全专业，2024.9~至今
+- 硕士，西安电子科技大学，网络与信息安全专业，密码学、身份认证方向，2024.9~至今
 - 学士，东北大学，计算机科学与技术专业，2020.9~2024.6
 - 通过 CET4/6 英语等级考试
 

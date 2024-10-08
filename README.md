@@ -1,7 +1,7 @@
 ---
 home: true
 heroText:
-tagline:
+tagline: 遍地是重庆，何处寻延安
 
 #heroImage: /img/titan.jpg
 #heroImageStyle: {
