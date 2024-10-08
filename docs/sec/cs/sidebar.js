@@ -1,11 +1,11 @@
 module.exports = [
 	
 	{
-		title: '渗透基础',
+		title: '网安基础',
 		collapsable: true,
 		children: [
-			'./hack/hack-lang',
-			'./hack/hack-test',
+			'./basic/hack-code-audit',
+			'./basic/hack-penetration-testing',
 		]
 	},
 

@@ -1,6 +1,6 @@
 module.exports = [
 	{
-		title: "基础算法设计与分析",
+		title: "算法设计与分析",
 		collapsable: true,
 		children: [
 			'./basic/algo-lang-c',

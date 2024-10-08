@@ -13,7 +13,15 @@ module.exports = [
 		]
 	},
 	
-
+	{
+		title: '密码应用',
+		collapsable: true,
+		children: [
+			'./app/app-2fa-bank-ukey',
+			'./app/app-2fa-github-totp',
+			'./app/app-websocket-auth',
+		]
+	},
 	
 	{
 		title: '可搜索加密',
@@ -25,24 +33,14 @@ module.exports = [
 	},
 	
 	{
-		title: '认证',
+		title: 'RFID/双向认证',
 		collapsable: true,
 		children: [
 			{
-				title: '认证综述',
+				title: '综述',
 				collapsable: true,
 				children: [
-					'./auth/auth-rfid',
-				]
-			},
-			
-			{
-				title: '多因素认证',
-				collapsable: true,
-				children: [
-					'./auth/2fa-bank-ukey',
-					'./auth/2fa-github-totp',
-					'./auth/2fa-websocket-auth',
+					'./auth/survey-rfid',
 				]
 			},
 		]

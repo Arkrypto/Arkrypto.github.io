@@ -147,4 +147,4 @@ a man provides, and he does it even he is not appreciated, or respected, or even
 
 ## 2024
 
-一群猴子爬树，向上看都是屁股，向下看都是笑脸，向左看都是爪牙，向右看都是耳目
+一群猴子爬树，向上看都是屁股，向下看都是笑脸，左右看都是耳目
