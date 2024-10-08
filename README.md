@@ -14,7 +14,7 @@ tagline:
   #borderRadius: '1rem',
 #}
 
-bgImage: /img/people.jpg
+bgImage: /img/titan.jpg
 bgImageStyle: {
   width: 100%,
   height: 720px
