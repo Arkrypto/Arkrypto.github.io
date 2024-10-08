@@ -8,22 +8,22 @@ module.exports = [
 	{ text: '计算机科学与技术', icon: 'reco-document', items: [
 		{text: '数据结构', link: '/docs/cs/ds/'},
 		{text: '计网', link: '/docs/cs/cn/'},
-		{text: '组成原理', link: '/docs/cs/co/'},
 		{text: '操作系统', link: '/docs/cs/os/'},
+		{text: '组成原理', link: '/docs/cs/co/'},
 	]},
 	
 	{ text: '开发与运维', icon: 'reco-bokeyuan', items: [ 
 		{text: '后端开发', link: '/docs/devops/be/'},
 		{text: '算法', link: '/docs/devops/algo/'},
-		{text: '运行维护', link: '/docs/devops/ops/'},
 		{text: '前端开发', link: '/docs/devops/fe/'},
+		{text: '运行维护', link: '/docs/devops/ops/'},
 	]},
 	
 	{ text: '网络与信息安全', icon: 'reco-eye', items: [
 		{text: '密码工程', link: '/docs/sec/crypto/'},
 		{text: '数学', link: '/docs/sec/math/'},
-		{text: '联邦学习', link: '/docs/sec/fml/'},
 		{text: '网络安全', link: '/docs/sec/cs/'},
+		{text: '联邦学习', link: '/docs/sec/fml/'},
 	]},
 	
 	
