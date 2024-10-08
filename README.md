@@ -3,7 +3,7 @@ home: true
 heroText:
 tagline:
 
-#heroImage: /img/people.webp
+#heroImage: /img/titan.jpg
 #heroImageStyle: {
   #maxWidth: '100%',
   #height: '100%',
