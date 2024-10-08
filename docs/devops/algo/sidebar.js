@@ -24,7 +24,7 @@ module.exports = [
 	},
 	
 	{
-		title: "CS188 笔记",
+		title: "人工智能算法",
 		collapsable: true,
 		children: [
 			'./ai/ai-grid-world',

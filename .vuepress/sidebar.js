@@ -3,7 +3,7 @@ module.exports = {
 
 	'/docs/sec/crypto/': require('../docs/sec/crypto/sidebar'),
 	'/docs/sec/cs/': require('../docs/sec/cs/sidebar'),
-	'/docs/sec/lib/': require('../docs/sec/lib/sidebar'),
+	'/docs/sec/fml/': require('../docs/sec/fml/sidebar'),
 	'/docs/sec/math/': require('../docs/sec/math/sidebar'),
 	
 	'/docs/cs/cn/': require('../docs/cs/cn/sidebar'),
@@ -15,5 +15,7 @@ module.exports = {
 	'/docs/devops/be/': require('../docs/devops/be/sidebar'),
 	'/docs/devops/fe/': require('../docs/devops/fe/sidebar'),
 	'/docs/devops/ops/': require('../docs/devops/ops/sidebar'),
+	
+	'/blogs/lib/': require('../blogs/lib/sidebar'),
 	
 }	

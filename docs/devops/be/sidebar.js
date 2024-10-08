@@ -12,7 +12,7 @@ module.exports = [
 	},
 	
 	{
-		title: 'Java Web 基础',
+		title: 'Java Web',
 		collapsable: true,
 		children: [
 			'./web/java-web-tomcat',
@@ -33,6 +33,17 @@ module.exports = [
 			'./juc/juc-single',
 		]
 	},
+
+	
+	{
+		title: '软工基础',
+		collapsable: true,
+		children: [
+			'./se/software-engineering-basic',
+			'./se/software-engineering-experiment',
+		]
+	},
+	
 	
 	{
 		title: '分布式开发',

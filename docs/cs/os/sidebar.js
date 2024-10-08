@@ -54,25 +54,6 @@ module.exports = [
 			'./comp/compile-principle'
 		]
 	},
-	
-	{
-		title: '数据库系统概论',
-		collapsable: true,
-		children: [
-		    './db/database-outline',
-		    './db/database-sql',
-		    './db/database-design',
-		]
-	},
-	
-	
-	{
-		title: '软件工程',
-		collapsable: true,
-		children: [
-			'./se/software-engineering-basic',
-			'./se/software-engineering-experiment',
-		]
-	},
+
 	
 ]
