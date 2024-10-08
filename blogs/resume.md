@@ -9,9 +9,7 @@ keys:
 
 ::: danger
 
-一个简单的解密：ZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2U=（[你可能会用到这个👉](http://localhost:8080/docs/sec/crypto/)）
-
-
+一个简单的解密：ZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2U=（你可能会用到这个👉[小工具](https://northboat.github.io/docs/sec/crypto/)）
 
 :::
 

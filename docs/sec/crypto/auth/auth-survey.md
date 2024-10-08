@@ -6,9 +6,18 @@ tags:
 categories:
   - Crypto
 ---
-## RFID 认证
+物联网环境下，由于资源受限，认证协议按照复杂度高低大致分为以下几种
 
-轻量认证用于资源有限或对认证时间有较高要求的设备，如 RFID 认证和车辆的快速认证
+- 完备协议
+  - ECC 非对称加密
+  - AES、XTEA 对称加密
+- 简单协议：基于 Hash 函数
+- 轻量协议：主要包括循环冗余校验（Cyclic Redundancy Check, CRC）和随机数生成器（Random Number Generator，RNG）等
+- 超轻量协议：如 LAMP、HB 协议族，多为按位运算
+
+其中超轻量协议多用于 RFID 系统，简单协议和完备协议用于算力更高的场景，如车联网、无人机认证
+
+## RFID 认证
 
 如下图为 RFID 系统的一般结构，由标签、读头、应用系统组成
 
@@ -24,16 +33,11 @@ categories:
 
 那么和所有的登录验证一样，在传输过程存在一定的安全问题（需要加密传输），并且认证中存在一定的算力限制，因为标签存储的数据量是有限的，密文不能过长、计算量不能过大
 
-类比常见的 Web 协议，如果把 RFID 视作一个 HTTP 的表单提交（他自身是一个很轻量的协议，半双工、不具备安全性、没有状态维护等等），我们的工作大概就是需要在其上再套一层协议，如同把 SSL、WebSocket 套在 HTTP 上，实现较高的安全性
+类比常见的 Web 协议，如果把 RFID 视作一个 HTTP 的表单提交（他自身是一个很轻量的协议，半双工、不具备安全性、没有状态维护等等），我们的工作大概就是需要在其上再套一层用于实现安全性的协议，如同把 SSL、TSL 套在 HTTP 上（这种类比似乎适用于所有的认证场景）
 
-区别在于硬件资源受限，通常标签的存储空间在几字节到几千字节不等，RFID 中采用的加密算法和协议仅限于低成本实现，按照复杂程度从高到低分为
+对于 RFID 而言，主要区别在于硬件资源严重受限，通常标签的存储空间在几字节到几千字节不等，故其采用的加密算法和协议仅限于低成本实现，超轻量协议被广泛应用于 RFID 系统（随着算力提高，有的系统也采用哈希的方式进行认证）
 
-- 完备协议
-  - ECC 非对称加密
-  - AES、XTEA 对称加密
-- 简单协议：基于 Hash 函数
-- 轻量协议：主要包括循环冗余校验（Cyclic Redundancy Check, CRC）和随机数生成器（Random Number Generator，RNG）等
-- 超轻量协议：如 LAMP、HB 协议族，多为按位运算（模 2 运算）
+以下介绍几种典型的超轻量协议
 
 ### HB 协议族
 
@@ -105,9 +109,11 @@ GRS（一种针对 RFID 系统的中间人攻击）攻击的步骤：
 
 常见的抵抗中间人攻击的方式是基于 HB 协议实现双向认证，这样可以很大程度避免中间人攻击，同时采用距离边界协议
 
-### UMAPs
+### UMAP 协议族
 
 > Ultralightweight Mutual Authentication Protocol，由 Lopez 等人提出，其中包含 MMAP（Minimalist Mutual Authentication Protocol）、LMAP（Lightweight Mutual Authentication Protocol）和 EMAP（Efficient Mutual Authentication Protocol）三个子协议
+
+### SASI 协议
 
 ## 匿名认证
 
