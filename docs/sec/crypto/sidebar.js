@@ -40,7 +40,7 @@ module.exports = [
 				title: '综述',
 				collapsable: true,
 				children: [
-					'./auth/survey-rfid',
+					'./auth/survey-rfid-auth',
 				]
 			},
 		]
