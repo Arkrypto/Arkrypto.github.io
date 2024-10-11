@@ -9,7 +9,7 @@ keys:
 
 ::: danger
 
-一个简单的解密：ZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2U=（你可能会用到这个👉[小工具](https://northboat.github.io/docs/sec/crypto/)）
+ZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2U=
 
 :::
 

@@ -53,47 +53,13 @@ LPN 的向量元素均为二进制，即 LPN 系统是为模 2 的，其轻量�
 形式化描述
 
 - 设有秘密向量 s，和一组长度为 n 的随机生成的向量 ai
-- 对于每个 i，我们计算 s · ai，即 s 和 ai 的内积，并且在计算结果上加入某种噪声 ei，其中 ei 是一个服从某个噪声分布（常为伯努利分布）（通常是以一定概率为 1，即翻转）的随机变量
+- 我们计算 s · ai（s 和 ai 的内积），并且在计算结果上加入某种噪声 ei，其中 ei 是一个服从某个噪声分布（常为伯努利分布）（通常以微小概率为 1）的随机变量
 
 基于此，我们可以获得一些观测值
 $$
 y_i=a_i\cdot s+e_i
 $$
-其中 yi 是一组长度为 n 的带有噪声的观测值，破解的目标是通过这些观测值 yi，恢复出秘密向量 s
-
-在具体的密码系统中，s 作为发送 / 接收方共享的密钥，ai 是一组公开的随机向量，对于明文 m，常与观测值 yi 中的一项如 y1 进行异或（模 2 加法），构成本次传输的密文 c（将明文 m 嵌入有噪声的观测值 y 中）
-$$
-c = (y_0,\hat{y}，y_2,...,y_n)
-$$
-其中
-$$
-\hat{y}=y_1\oplus m
-$$
-接收方收到密文后，由于已知 s 和 ai，可以还原出没有噪声的观测值
-$$
-y_i'=a_i\cdot s
-$$
-根据这个未经噪声的观测值 y' 与密文 c，对 y1' 与 ŷ 进行比对，就能够得到明文 m，我想想
-$$
-y_1'\oplus \hat{y}=y_1'\oplus y_1\oplus m = (a_1\cdot s)\oplus(a_1\cdot s+e_1)\oplus m
-$$
-
-- 若 e1 为 0 向量，则前两项异或为 0，与 m 异或为 m
-- 若 e1 为 1 向量，则前两项异或为 1，与 m 异或为 m’（m 的非）
-
-该如何分辨解出来的到底是 m 还是 m‘ 呢？核心思想为：通过其他观测值或校验机制验证 m 是否正确，确定 m 还是 m' 更符合实际情况
-
-- 结合实际应用的上下文或先验知识进行试探
-- 在一些协议中，可能会使用错误修正码来纠正噪声带来的错误
-- 在某些协议中，密文可能包含额外的校验信息（如校验和、哈希值等），用来验证解密结果的正确性
-
-还有个疑问，那这样 y2 到 yn 是不是都是冗余计算了，还是作为迷惑信息存在
-
-- 正如猜测，主要是为了增加系统的安全性，这样的冗余显然能够增加破解难度
-- LPN 系统的安全性部分来自噪声的随机性，这样的随机性需要向量来实现
-- 单个加密中没用到，在整个系统中或许有用，比如用于多用户的认证、验证数据完整性
-
-HB 族协议主要包括 HB、HB+ 和 HB#
+其中 yi 是一个比特值，当执行 n 轮后，一组观测值蕴含的噪声将符合某种概率分布，而破解的目标是通过这些观测值 yi，恢复出秘密向量 s
 
 #### HB+ 协议
 
@@ -108,7 +74,7 @@ HB 族协议主要包括 HB、HB+ 和 HB#
    - 标签计算`z = ax+by+r`，并将 z 发回读写器
    - 读写器通过解出`r = ax+by+z`（这样的认证将进行 k 轮），最后对 k 长的噪声 R 进行检验，以判断标签是否合法
 
-显然这是一个读写器对标签的单向认证
+显然这是一个读写器对标签的单向认证，标签并不具备识别合法读写器的能力（而且，这里标签需要具有生成随机向量的算力，资源是否有限要画个问号）
 
 #### GRS 攻击
 
@@ -126,6 +92,17 @@ GRS（一种针对 RFID 系统的中间人攻击）攻击的步骤：
 
 常见的抵抗中间人攻击的方式是基于 HB 协议实现双向认证，这样可以很大程度避免中间人攻击，同时采用距离边界协议
 
+#### 前沿研究
+
+> An Ultra-Lightweight Mutual Authentication Protocol Based on LPN Problem with Distance Fraud Resistant
+
+2021 年提出的一个基于 HB 协议族、LPN 问题的一个双向认证方案（发表在 Springer 上），结合 DB 协议（距离边界协议）工作，抗 GRS 攻击
+
+- 对称密钥体系，共享密钥矩阵 X
+- 其双向认证过程很像 TCP 三次握手，响应的同时挑战
+
+这是一个**发起挑战 → 明文1加密、发起挑战 → 解密密文1、明文2加密 → 解密密文2**的认证过程
+
 ### UMAP 协议族
 
 > Ultralightweight Mutual Authentication Protocol，由 Lopez 等人提出，包括 MMAP（Minimalist Mutual Authentication Protocol）、LMAP（Lightweight Mutual Authentication Protocol）和 EMAP（Efficient Mutual Authentication Protocol）三个协议
@@ -136,9 +113,31 @@ GRS（一种针对 RFID 系统的中间人攻击）攻击的步骤：
 
 > LMAP: A real lightweight mutual authentication protocol
 
-HB 协议在 05 年提出，而这篇论文在 06 年，并且在第一种绪论中有提到：这种最具有前途的协议 (HB, HB+) 的安全性与噪声问题 (LNP) 的学习奇偶校验有关，其对随机实例的难度仍然仍然是一个悬而未决的问题
+HB 协议在 05 年提出，而这篇论文在 06 年，并且在第一种绪论中有提到 HB 协议族：这种最具有前途的协议 (HB, HB+) 的安全性与噪声问题 (LNP) 的学习奇偶校验有关，但其在随机实例上的困难性仍然是一个悬而未决的问题
 
-Our protocol is based on the use of pseudonyms, concretely on index-pseudonyms (IDSs)
+在 LMAP 协议中，标签将维护一个长度为 96 位的 IDS 和一个长度为 96 位的密钥 K，K 被均分为 4 份（K1、K2、K3、K4）。为了 IDS 和 K 的更新（新旧各一份），共需 480 位的空间
+
+高成本的计算，如随机数的生成将在读写器端执行；对应的，标签端仅有按位异或、逐位或、逐位并、有限模加法这样简单的操作
+
+通过 IDS 的限制，只有拥有权限的 Reader 才能够访问标签的密钥 K，认证过程
+
+- 标签识别：读写器向标签 say hello，而后标签将其 IDS 发给读写器，若读写器合法，则可获得标签的密钥 K
+- 双向认证
+  1. 读写器生成随机数 n1、n2，结合 IDS 和密钥 K 计算密文 A、B、C 并发送给标签
+  2. 标签接收密文 A、B、C，通过 IDS 和 K 解出随机数 n1、n2，最后通过 n1、n2 计算密文 D 发送回读写器
+- 最后由读写器判断 D 是否合法
+
+显然这是一个基于双轮对称密钥的认证协议，通过相同的密钥 K 和明文 n1、n2 进行加解密认证
+
+<img src="./assets/image-20241011155745302.png">
+
+其中 + 为模 2^m 的加法运算
+
+在双向认证成功后，标签对应的 IDS 和密钥 K 将进行更新（这可以有效防止中间人攻击），更新策略如下
+
+<img src="./assets/image-20241011164221959.png">
+
+至此完成一次完整的认证：这是一个**提交 → 明文加密 → 密文解密、重新加密 → 解密**的认证过程
 
 #### EMAP
 
@@ -146,7 +145,7 @@ Our protocol is based on the use of pseudonyms, concretely on index-pseudonyms (
 
 #### MMAP
 
-> M2AP A Minimalist Mutual-Authentication Protocol for Low-Cost RFID Tags
+> M2AP: A Minimalist Mutual-Authentication Protocol for Low-Cost RFID Tags
 
 ### SASI 协议
 
@@ -155,7 +154,3 @@ Our protocol is based on the use of pseudonyms, concretely on index-pseudonyms (
 ## 简单协议
 
 ## 完备协议
-
-## 前沿研究
-
-基于 HB 协议族、LPN 问题的一个双向认证方案（抗 GRS 攻击）：An Ultra-Lightweight Mutual Authentication Protocol Based on LPN Problem with Distance Fraud Resistant（2021）
