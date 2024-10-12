@@ -52,7 +52,7 @@ ZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2U=
 
 <h2><img src="./assets/graduation-cap-solid.svg" align="left" width="30px">&nbsp;教育经历</h2>
 
-- 硕士，西安电子科技大学，网络与信息安全专业，密码学、身份认证方向，2024.9~至今
+- 硕士，西安电子科技大学，网络与信息安全专业，密码学、双向认证方向，2024.9~至今
 - 学士，东北大学，计算机科学与技术专业，2020.9~2024.6
 - 通过 CET4/6 英语等级考试
 

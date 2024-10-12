@@ -96,12 +96,12 @@ GRS（一种针对 RFID 系统的中间人攻击）攻击的步骤：
 
 > An Ultra-Lightweight Mutual Authentication Protocol Based on LPN Problem with Distance Fraud Resistant
 
-2021 年提出的一个基于 HB 协议族、LPN 问题的一个双向认证方案（发表在 Springer 上），结合 DB 协议（距离边界协议）工作，抗 GRS 攻击
+2021 年提出的一个基于 HB 协议族、LPN 问题的一个双向认证方案（发表在 Springer 上），结合 DB 协议（距离边界协议）工作，以抗 GRS 攻击
 
 - 对称密钥体系，共享密钥矩阵 X
 - 其双向认证过程很像 TCP 三次握手，响应的同时挑战
 
-这是一个**发起挑战 → 明文1加密、发起挑战 → 解密密文1、明文2加密 → 解密密文2**的认证过程
+这是一个**发起挑战 → 明文加密、发起挑战 → 解密密文（读写器一次认证）、明文加密 → 解密密文（标签二次认证）**的认证过程
 
 ### UMAP 协议族
 
@@ -115,41 +115,84 @@ GRS（一种针对 RFID 系统的中间人攻击）攻击的步骤：
 
 HB 协议在 05 年提出，而这篇论文在 06 年，并且在第一种绪论中有提到 HB 协议族：这种最具有前途的协议 (HB, HB+) 的安全性与噪声问题 (LNP) 的学习奇偶校验有关，但其在随机实例上的困难性仍然是一个悬而未决的问题
 
-在 LMAP 协议中，标签将维护一个长度为 96 位的 IDS 和一个长度为 96 位的密钥 K，K 被均分为 4 份（K1、K2、K3、K4）。为了 IDS 和 K 的更新（新旧各一份），共需 480 位的空间
+在 LMAP 协议中，标签将维护一个长度为 96 位的 IDS 和一个长度为 96 位的密钥 K，K 被均分为 4 份（K1、K2、K3、K4）。为了 IDS 和 K 的更新（新旧各一份），共需 480 位的空间。此外，每个标签还需要 96 位的空间去存储它的静态标识符 ID
 
 高成本的计算，如随机数的生成将在读写器端执行；对应的，标签端仅有按位异或、逐位或、逐位并、有限模加法这样简单的操作
 
 通过 IDS 的限制，只有拥有权限的 Reader 才能够访问标签的密钥 K，认证过程
 
-- 标签识别：读写器向标签 say hello，而后标签将其 IDS 发给读写器，若读写器合法，则可获得标签的密钥 K
+- 标签识别：读写器向标签 say hello，而后标签将其 IDS 发给读写器，若读写器合法，才可获得标签的密钥 K，这是一次认证（标签认证读写器）
 - 双向认证
   1. 读写器生成随机数 n1、n2，结合 IDS 和密钥 K 计算密文 A、B、C 并发送给标签
   2. 标签接收密文 A、B、C，通过 IDS 和 K 解出随机数 n1、n2，最后通过 n1、n2 计算密文 D 发送回读写器
-- 最后由读写器判断 D 是否合法
+- 最后由读写器判断 D 是否能解出标签的静态标识符 ID 来认证响应，是为第二次认证（读写器认证标签），由于 n1、n2 和 IDS 的混淆，标签的静态标识符 ID 是被安全传输的
 
-显然这是一个基于双轮对称密钥的认证协议，通过相同的密钥 K 和明文 n1、n2 进行加解密认证
+显然这是一个基于对称密钥的双向认证协议，通过 IDS 对密钥进行混淆，使用相同的密钥 K 和明文 n1、n2 进行多种加解密，在加解密的过程中实现认证（通过解出的明文是否相同来判断）
 
 <img src="./assets/image-20241011155745302.png">
 
 其中 + 为模 2^m 的加法运算
 
-在双向认证成功后，标签对应的 IDS 和密钥 K 将进行更新（这可以有效防止中间人攻击），更新策略如下
+在双向认证成功后，标签对应的 IDS 和密钥 K 将进行更新（这可以有效防止中间人攻击），更新策略如下（通过每次的随机明文 n1、n2 以及标签的静态标识符 ID 进行更新）
 
 <img src="./assets/image-20241011164221959.png">
 
-至此完成一次完整的认证：这是一个**提交 → 明文加密 → 密文解密、重新加密 → 解密**的认证过程
+至此完成一次完整的认证，这是一个**提交 → 明文加密 → 密文解密（标签一次认证）、重新加密 → 解密（读写器二次认证）**的认证过程
 
 #### EMAP
 
 > EMAP: An Efficient Mutual-Authentication Protocol for Low-Cost RFID Tags
 
+和 LMAP 的认证过程基本一样，一个 96 位的 IDS 和一个被分为四份的 96 位的密钥 K，进行如下认证
+
+<img src="./assets/image-20241012142701252.png">
+
+可以看到，这个认证过程和 LMAP 是基本一致的，区别在于
+
+- 密文的计算方法不一样，在 EMAP 协议中并没有采用模 2^m 加法
+- 标签的响应分成两部分 D 和 E，其中
+  - D 用于认证，读写器通过判断是否能从 D 中解出期望的 n2 来认证响应是否合法
+  - E 用于传递标签的静态标识符 ID，通过 IDS、n1、n2 以及 K 的混淆实现安全传输
+
+认证成功后，IDS 的更新策略如下
+
+<img src="./assets/image-20241012144151335.png">
+
+密钥更新的策略如下
+
+<img src="./assets/image-20241012144427539.png">
+
+其中 Fp 是一个奇偶校验函数，KI 为 96 位，奇/偶数位 48 位
+$$
+F_p(K3^{n}_{tag(i)}||F_p(K1^{n}_{tag(i)}||ID_{tag(i)}(49:96))
+$$
+三个数以某种规则拼接为一个 96 位的数
+
+引用自：T. Dimitriou. A lightweight RFID protocol to protect against traceability and cloning attacks. In Proc. of SECURECOMM'05, 2005.
+
 #### MMAP
 
-> M2AP: A Minimalist Mutual-Authentication Protocol for Low-Cost RFID Tags
+> M^2AP: A Minimalist Mutual-Authentication Protocol for Low-Cost RFID Tags
+
+认证过程与 EMAP 类似，读写器发送给标签 A、B、C，标签响应 D、E
+
+<img src="./assets/image-20241012151827460.png">
+
+IDS 更新
+
+<img src="./assets/image-20241012152052738.png">
+
+密钥更新
+
+<img src="./assets/image-20241012152115790.png">
 
 ### SASI 协议
 
 > SASI: A New Ultralightweight RFID Authentication Protocol Providing Strong Authentication and Strong Integrity
+
+认证过程
+
+<img src="./assets/image-20241012152328404.png">
 
 ## 简单协议
 
