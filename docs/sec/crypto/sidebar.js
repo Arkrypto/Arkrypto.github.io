@@ -27,8 +27,8 @@ module.exports = [
 		title: '可搜索加密',
 		collapsable: true,
 		children: [
-			'./se/se-best-matching-25',
-			'./se/se-bilinear-pairing',
+			'./se/se-bm25',
+			'./se/se-spwse',
 		]
 	},
 	
