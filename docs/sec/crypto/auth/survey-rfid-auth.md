@@ -33,7 +33,7 @@ categories:
 - 轻量协议：主要包括循环冗余校验（Cyclic Redundancy Check, CRC）和随机数生成器（Random Number Generator，RNG）等
 - 超轻量协议：如 LAMP、HB 协议族，多为按位运算
 
-由于超轻量为 RFID 系统的独有特点
+师姐建议我的研究重点放在较为重量的协议上
 
 ## 超轻量协议
 
@@ -115,7 +115,7 @@ GRS（一种针对 RFID 系统的中间人攻击）攻击的步骤：
 
 HB 协议在 05 年提出，而这篇论文在 06 年，并且在第一种绪论中有提到 HB 协议族：这种最具有前途的协议 (HB, HB+) 的安全性与噪声问题 (LNP) 的学习奇偶校验有关，但其在随机实例上的困难性仍然是一个悬而未决的问题
 
-在 LMAP 协议中，标签将维护一个长度为 96 位的 IDS 和一个长度为 96 位的密钥 K，K 被均分为 4 份（K1、K2、K3、K4）。为了 IDS 和 K 的更新（新旧各一份），共需 480 位的空间。此外，每个标签还需要 96 位的空间去存储它的静态标识符 ID
+在 LMAP 协议中，标签将维护一个长度为 96 位的 IDS 和一个长度为 96 位的密钥 K，K 被均分为 4 份（K1、K2、K3、K4）。为了 IDS 和 K 的更新（新旧各一份），共需 384 位的空间。此外，每个标签还需要 96 位的空间去存储它的静态标识符 ID，故标签所需存储空间为 480bit
 
 高成本的计算，如随机数的生成将在读写器端执行；对应的，标签端仅有按位异或、逐位或、逐位并、有限模加法这样简单的操作
 
@@ -127,17 +127,17 @@ HB 协议在 05 年提出，而这篇论文在 06 年，并且在第一种绪论
   2. 标签接收密文 A、B、C，通过 IDS 和 K 解出随机数 n1、n2，最后通过 n1、n2 计算密文 D 发送回读写器
 - 最后由读写器判断 D 是否能解出标签的静态标识符 ID 来认证响应，是为第二次认证（读写器认证标签），由于 n1、n2 和 IDS 的混淆，标签的静态标识符 ID 是被安全传输的
 
-显然这是一个基于对称密钥的双向认证协议，通过 IDS 对密钥进行混淆，使用相同的密钥 K 和明文 n1、n2 进行多种加解密，在加解密的过程中实现认证（通过解出的明文是否相同来判断）
+显然这是一个基于对称密钥的双向认证协议，通过 IDS 对密钥进行混淆，使用相同的密钥 K 和明文 n1、n2 进行多种加解密，在加解密的过程中实现认证（通过解出的明文是否相同来判断），其中 + 为模 2^m 的加法运算
 
 <img src="./assets/image-20241011155745302.png">
 
-其中 + 为模 2^m 的加法运算
+有一个疑问是，最后 Reader 如何通过 D 来进行认证？实际上，这里除了阅读器和标签，还有一个应用系统，阅读器可以通过合法的 IDS 查询到标签的 K 和 ID，即对于阅读器而言，ID 是已知的，于是在 D 中可以通过 IDS、n1、n2 解出对应的 ID 并和已知的 ID 进行比对，完成认证。在后面的 EMAP 和 MMAP 中最后一步 ID 的认证也都如此
 
 在双向认证成功后，标签对应的 IDS 和密钥 K 将进行更新（这可以有效防止中间人攻击），更新策略如下（通过每次的随机明文 n1、n2 以及标签的静态标识符 ID 进行更新）
 
 <img src="./assets/image-20241011164221959.png">
 
-至此完成一次完整的认证，这是一个**提交 → 明文加密 → 密文解密（标签一次认证）、重新加密 → 解密（读写器二次认证）**的认证过程
+至此完成一次完整的认证，这是一个提交 → 明文加密 → 密文解密（标签一次认证）、重新加密 → 解密（读写器二次认证）的认证过程
 
 #### EMAP
 
@@ -190,10 +190,77 @@ IDS 更新
 
 > SASI: A New Ultralightweight RFID Authentication Protocol Providing Strong Authentication and Strong Integrity
 
-认证过程
+认证过程，和 UMAP 协议族一样，合法的读写器将可以通过标签的 IDS 从系统中获取该标签的密钥 K 和静态标识符 ID
 
 <img src="./assets/image-20241012152328404.png">
 
+与 UMAP 一个明显的差异是
+
+- 这里引入了 Rot 运算，对密钥 K1、K2 旋转进行加密和密钥更新
+- 这里用到两个密钥 K1 和 K2，均为 96 位，并且为了抵抗可能的去同步攻击，对于 IDS、K1、K2 均需要存储新旧两份，故标签的容量为 96 x 3 x 2 + 96 = 672 位
+
+SASI 和 UMAP 协议族的对比
+
+<img src="./assets/image-20241017170813948.png">
+
+## 轻量协议
+
+> 摘自 SASI: A New Ultralightweight RFID Authentication Protocol Providing Strong Authentication and Strong Integrity，作者认为 HB 协议族并非超轻量，认为 UMAP 协议族为超轻量
+>
+> The lightweight RFID authentication protocols do not require hashing function on tags; for example, the EPCglobal Class-1 Gen-2 RFID tag [8] supports Pseudo-Random Number Generator (PRNG) and Cyclic Redundancy Code (CRC) checksum but not hashing function. The protocols [7], [12], [15] belong to this class, where the scheme [12] did not take the eavesdropping and privacy issues into consideration, and Chien and Chen [5] had reported the DOS attack, replay attack, tracking attack and spoofing tag problem on the schemes [7], [15], respectively. The HB-series [3], [9], [11], [14], [21], [26] can also be classified into this class, since they demand the support of random number function but not hash function on tags. Hopper and Blum [11], based on the LPN problem, first proposed the HB protocol to defect the passive attacker. Later, the HB protocol was successively attacked and improved by its sister works [3], [9], [14], [21], [26]. Actually, the HB-series cannot be regarded as complete, since these protocols only consider the authentication of tags. They neglected the issue of the authentication of the readers, the tracking problem, and the anonymity issue, and even the privacy of the tag identification.
+
+[8] EPCglobal, http://www.epcglobalinc.org/, 2007.
+
+[7] D.N. Duc, J. Park, H. Lee, and K. Kim, "Enhancing Security of EPCglobal Gen-2 RFID Tag against Traceability and Cloning," Proc. 2006 Symp. Cryptography and Information Security, 2006.
+
+[12] A. Juels, "Strengthening EPC Tag against Cloning," Proc. ACM Workshop Wireless Security (WiSe '05), pp. 67-76, 2005.
+
+[15] S. Karthikeyan and M. Nesterenko, "RFID Security without Extensive Cryptography," Proc. Third ACM Workshop Security of Ad Hoc and Sensor Networks, pp. 63-67, 2005.
+
+[3] J. Bringer, H. Chabanne, and E. Dottax, "HB++: A Lightweight Authentication Protocol Secure against Some Attacks," Proc. IEEE Int'l Conf. Pervasive Service, Workshop Security, Privacy and Trust in Pervasive and Ubiquitous Computing, 2006.
+
+[9] H. Gilbert, M. Robshaw, and H. Sibert, "An Active Attack against HB+-A Provably Secure Lightweight Authentication Protocol," Cryptology ePrint Archive, Report 2005/237, 2005.
+
+[11] N.J. Hopper and M. Blum, "Secure Human Identification Protocols," Proc. Seventh Int'l Conf. Theory and Application of Cryptology and Information Security, pp. 52-66, 2001.
+
+[14] A. Juels and S.A. Weis, "Authenticating Pervasive Devices with Human Protocols," Proc. 25th Ann. Int'l Cryptology Conf. (CRYPTO '05), pp. 293-308, 2005.
+
+[21] J. Munilla and A. Peinado, "HB-MP: A Further Step in the HB-Family of Lightweight Authentication Protocols," Computer Networks, doi:10.1016/ j.comnet.2007.01.011, 2007.
+
+[26] J. Munilla and A. Peinado, "HB-MP: A Further Step in the HB-Family of Lightweight Authentication Protocols," Computer Networks, doi:10.1016/ j.comnet.2007.01.011, 2007.
+
 ## 简单协议
 
+> 摘自 SASI: A New Ultralightweight RFID Authentication Protocol Providing Strong Authentication and Strong Integrity
+>
+> The tags in the protocols of the simple class should support random number function and hash functions but not encryption functions/public key algorithms. Examples are like [4], [10], [20], [22], [27], [28], [29], [30], [31], where Chien [4] had reported the secret key disclosure problem and the violation of anonymity in Weis [28] and Weis et al. [29], Avoine et al. [1] had reported the weakness of Ohkubo et al.'s scheme [22], and the weaknesses of the schemes [10], [20], [27], [30], [31] have been reported.
+
+[4] H.-Y. Chien, "Secure Access Control Schemes for RFID Systems with Anonymity," Proc. 2006 Int'l Workshop Future Mobile and Ubiquitous Information Technologies (FMUIT '06), 2006.
+
+[10] A.D. Henrici and P. Ma ̈uller, "Hash-Based Enhancement of Location Privacy for Radio-Frequency Identification Devices Using Varying Identifiers," Proc. Second IEEE Ann. Conf. Pervasive Computing and Comm. Workshops, pp. 149-153 2004.
+
+[20] D. Molnar and D. Wagner, "Privacy and Security in Library RFID: Issues, Practices, and Architectures," Proc. Conf. Computer and Comm. Security (CCS '04), pp. 210-219, 2004.
+
+[22] M. Ohkubo, K. Suzki, and S. Kinoshita, "Cryptographic Approach to 'Privacy-Friendly' Tags," Proc. RFID Privacy Workshop, 2003.
+
+[27] K. Rhee, J. Kwak, S. Kim, and D. Won, "Challenge-Response Based RFID Authentication Protocol for Distributed Database Environment," Proc. Int'l Conf. Security in Pervasive Computing (SPC '05), pp. 70-84, 2005.
+
+[28] S.A. Weis, "Security and Privacy in Radio-Frequency Identification Devices," master's thesis, MIT, 2003.
+
+[29] S.A. Weis, S.E. Sarma, R.L. Rivest, and D.W. Engels, "Security and Privacy Aspects of Low-Cost Radio Frequency Identification Systems," Security in Pervasive Computing, pp. 201-212, Springer, 2004.
+
+[30] J. Yang, J. Park, H. Lee, K. Ren, and K. Kim, "Mutual Authentication Protocol for Low-Cost RFID," Proc. Ecrypt Workshop RFID and Lightweight Crypto, 2005.
+
+[31] J. Yang, K. Ren, and K. Kim, "Security and Privacy on Authentication Protocol for Low-Cost Radio," Proc. 2005 Symp. Cryptography and Information Security, 2005.
+
 ## 完备协议
+
+> 摘自 SASI: A New Ultralightweight RFID Authentication Protocol Providing Strong Authentication and Strong Integrity
+>
+> The protocols [13], [16], [17] belonging to the full-fledged class support cryptographic functions like hashing, encryption, and even public key algorithms on tags. One of the main applications of these full-fledged protocols is E-passport [13].
+
+[13] A. Juels, D. Molner, and D. Wagner, "Security and Privacy Issues in EPassports," Proc. First Int'l Conf. Security and Privacy for Emerging Areas in Comm. Networks (SecureComm '05), 2005.
+
+[16] S. Kinoshita, M. Ohkubo, F. Hoshino, G. Morohashi, O. Shionoiri, and A. Kanai, "Privacy Enhanced Active RFID Tag," Proc. Int'l Workshop Exploiting Context Histories in Smart Environments, May 2005.
+
+[17] S.S. Kumar and C. Paar, "Are Standards Compliant Elliptic Curve Cryptosystems Feasible on RFID?" Proc. Workshop RFID Security, July 2006.

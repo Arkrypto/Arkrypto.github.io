@@ -1,5 +1,5 @@
 ---
-title: Spring 的一些拓展
+title: Spring 拓展
 date: 2024-9-13
 categories:
   - Dev
