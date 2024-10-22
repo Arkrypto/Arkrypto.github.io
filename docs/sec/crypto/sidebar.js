@@ -36,13 +36,7 @@ module.exports = [
 		title: 'RFID/双向认证',
 		collapsable: true,
 		children: [
-			{
-				title: '综述',
-				collapsable: true,
-				children: [
-					'./auth/survey-rfid-auth',
-				]
-			},
+			'./auth/survey-rfid-auth'
 		]
 	},
 

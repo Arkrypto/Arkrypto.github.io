@@ -1,12 +1,16 @@
 ---
-title: RFID 认证
+title: RFID 认证综述
 date: 2024-9-17
 tags:
   - Authentication
 categories:
   - Crypto
 ---
+CIA：Confidentiality（数据机密性）、Integrity（完整性）、Availability（有效性）
+
 ## RFID 概述
+
+### 简介
 
 下图为 RFID 系统的一般结构，由标签、读头、应用系统组成
 
@@ -35,7 +39,26 @@ categories:
 
 师姐建议我的研究重点放在较为重量的协议上
 
-## 超轻量协议
+### 针对 RFID 系统的攻击
+
+假冒和欺骗攻击
+
+- 攻击者通过截获合法读写器与电子标签的访问 消息（或者直接攻击物理电子标签），来获得标签的身份信息并对其进行克隆。利用这些非法的克隆标签，攻击者可以伪装成合法的标签访问 RFID 系统
+- 类似的， 攻击者同样可以通过窃听等手段获取合法读写器的隐私信息，从而伪装成合法的 读写器进入 RFID 系统
+
+位置与跟踪攻击
+
+- RFID 标签的设计要求规定，电子标签在工作状态下必须要对读写器的访问做 出响应，通过从不同的位置发送查询命令并从标签获得对应的响应，便可确定目标电子标签当前所处的位置（RFID 系统中标签的通信范围有限）。如果不采取有效的安全措施，攻击者同样可以通过上述方法对合法电子标签进行非法跟踪和定位
+
+密码破译攻击
+
+- 为了保证数据与通信安全，RFID 系统中通常采用加密技术来保证传递信息的 机密性和完整性，因此针对加密算法的攻击是安全系统最常见的攻击方式之一
+
+拒绝服务（DoS）攻击
+
+- 在 RFID 系统中，攻击者通过 阻断读写器读取标签信息的方式发动 DoS 攻击
+
+## 超轻量级协议
 
 ### HB 协议族
 
@@ -203,64 +226,73 @@ SASI 和 UMAP 协议族的对比
 
 <img src="./assets/image-20241017170813948.png">
 
-## 轻量协议
+### RCIA / RRAP
 
-> 摘自 SASI: A New Ultralightweight RFID Authentication Protocol Providing Strong Authentication and Strong Integrity，作者认为 HB 协议族并非超轻量，认为 UMAP 协议族为超轻量
->
-> The lightweight RFID authentication protocols do not require hashing function on tags; for example, the EPCglobal Class-1 Gen-2 RFID tag [8] supports Pseudo-Random Number Generator (PRNG) and Cyclic Redundancy Code (CRC) checksum but not hashing function. The protocols [7], [12], [15] belong to this class, where the scheme [12] did not take the eavesdropping and privacy issues into consideration, and Chien and Chen [5] had reported the DOS attack, replay attack, tracking attack and spoofing tag problem on the schemes [7], [15], respectively. The HB-series [3], [9], [11], [14], [21], [26] can also be classified into this class, since they demand the support of random number function but not hash function on tags. Hopper and Blum [11], based on the LPN problem, first proposed the HB protocol to defect the passive attacker. Later, the HB protocol was successively attacked and improved by its sister works [3], [9], [14], [21], [26]. Actually, the HB-series cannot be regarded as complete, since these protocols only consider the authentication of tags. They neglected the issue of the authentication of the readers, the tracking problem, and the anonymity issue, and even the privacy of the tag identification.
+> RobustConfiden-tiality,Integrity,and Authentication && Reconstructionbased RFID Authentication Protocol
 
-[8] EPCglobal, http://www.epcglobalinc.org/, 2007.
+基于置换的两类安全认证协议，可抵抗去同步攻击，前文的 UMAPs 和 SASI 无法抵抗
 
-[7] D.N. Duc, J. Park, H. Lee, and K. Kim, "Enhancing Security of EPCglobal Gen-2 RFID Tag against Traceability and Cloning," Proc. 2006 Symp. Cryptography and Information Security, 2006.
+## 轻量级协议
 
-[12] A. Juels, "Strengthening EPC Tag against Cloning," Proc. ACM Workshop Wireless Security (WiSe '05), pp. 67-76, 2005.
+> 多数轻量级安全认证协议是为了满足 ISO/IEC18000(EPC C1Gen2) 标准而提出的，EPC C1G2 (Class-1 Gen-2)类型安全认证协议多使用符合相关标准的简单加密手段，主要包括循环冗余校验（Cyclic Redundancy Check, CRC）和随机数生成器（Random Number Generator，RNG）等
 
-[15] S. Karthikeyan and M. Nesterenko, "RFID Security without Extensive Cryptography," Proc. Third ACM Workshop Security of Ad Hoc and Sensor Networks, pp. 63-67, 2005.
+现存的较为经典的轻量级 RFID 安全协议主要包括 Juels 提出的首个适用于  EPC C1Gen2 的安全协议 [1]，Duc 等人提出的基于 CRC 和 PRNG 的安全协议 [2] ，Chien 等人的 CC 协议 [3] 以及其相应的改进协议 [4-6] 等
 
-[3] J. Bringer, H. Chabanne, and E. Dottax, "HB++: A Lightweight Authentication Protocol Secure against Some Attacks," Proc. IEEE Int'l Conf. Pervasive Service, Workshop Security, Privacy and Trust in Pervasive and Ubiquitous Computing, 2006.
+- [1] A. Juels. Strengthening EPC tags against cloning[C]. Proceedings of the 4th ACM workshop on Wireless security, 2005, 67-76
+- [2] D. DUC. Enhancing security of EPCglobal gen-2 RFID tag against traceability and cloning[J]. SCIS, IEICE 2006, 2006:
+- [3] H.-Y. Chien, C.-H. Chen. Mutual authentication protocol for RFID conforming to EPC Class 1 Generation 2 standards[J]. Computer Standards & Interfaces, 2007, 29, (2): 254-259
+- [4] N.-W. Lo, K.-H. Yeh. An efficient mutual authentication scheme for EPCglobal class-1 generation-2 RFID system[C]. International Conference on Embedded and Ubiquitous Computing, 2007, 43-56
+- [5] P. Peris-Lopez, J. C. Hernandez-Castro, J. M. Estevez-Tapiador, et al. Cryptanalysis of a novel authentication protocol conforming to EPC-C1G2 standard[J]. Computer Standards & Interfaces, 2009, 31, (2): 372-380
+- [6] T.-C. Yeh, Y.-J. Wang, T.-C. Kuo, et al. Securing RFID systems conforming to EPC Class 1 Generation 2 standard[J]. Expert Systems with Applications, 2010, 37, (12): 7678-7683
 
-[9] H. Gilbert, M. Robshaw, and H. Sibert, "An Active Attack against HB+-A Provably Secure Lightweight Authentication Protocol," Cryptology ePrint Archive, Report 2005/237, 2005.
+## 中量级协议
 
-[11] N.J. Hopper and M. Blum, "Secure Human Identification Protocols," Proc. Seventh Int'l Conf. Theory and Application of Cryptology and Information Security, pp. 52-66, 2001.
+> 中量级安全认证协议相较于前 2 种量级的安全认证协议，由于采用了部分经过轻量化的密码算法且基于单向散列函数，安全性要高于前 2 种协议的，最明显的特征是此类安全认证协议研究的重点是双向认证
 
-[14] A. Juels and S.A. Weis, "Authenticating Pervasive Devices with Human Protocols," Proc. 25th Ann. Int'l Cryptology Conf. (CRYPTO '05), pp. 293-308, 2005.
+比较经典的安全认证协议包括基于单向散列函数的 Hash-Lock 协议、改进的随机 Hash-Lock 协议、Hash 链协议、David 数字图书馆协议 [1-4] 和可抵抗追踪攻击的 YA-TRAP 协议 [5] 等
 
-[21] J. Munilla and A. Peinado, "HB-MP: A Further Step in the HB-Family of Lightweight Authentication Protocols," Computer Networks, doi:10.1016/ j.comnet.2007.01.011, 2007.
+- [1] SarmaSE,WeisS A,EngelsD W.RFID systems and security and privacy implications[C]∥Proc of International Workshopon Cryptographic Hardwareand EmbeddedSys-tems,2002:454-469
+- [2] WeisS A,SarmaSE,RivestR L,etal.Security and privacy aspects of low-cost radio frequency identification systems[C]∥Procof the 1st International Conference on Security in Pervasive Computing,2004:201-212.
+- [3] Ohkubo M, Suzuki K, Kinoshita S.Hash-chain based forward-secure privacy protection scheme for lowcost RFID[C]∥Procof 2004 Symposium on Cryptography and Information Security,2004:719-724.
+- [4] MolnarD,WagnerD.Privacy and security in library RFID: Issues,practices,and architectures[C]∥Proc ofthe 11th ACM  Conferenceon Computerand Communications Security,2004:210-219.
+- [5] G. Tsudik. YA-TRAP: Yet another trivial RFID authentication protocol[C]. Fourth Annual IEEE International Conference on Pervasive Computing and Communications Workshops (PERCOMW'06), 2006, 4 pp.-643
 
-[26] J. Munilla and A. Peinado, "HB-MP: A Further Step in the HB-Family of Lightweight Authentication Protocols," Computer Networks, doi:10.1016/ j.comnet.2007.01.011, 2007.
+## 重量级协议
 
-## 简单协议
+> 重量级安全认证协议也被部分文献命名为完备 RFID 安全认证协议，主要分为对称加密算法和非对称加密算法
 
-> 摘自 SASI: A New Ultralightweight RFID Authentication Protocol Providing Strong Authentication and Strong Integrity
->
-> The tags in the protocols of the simple class should support random number function and hash functions but not encryption functions/public key algorithms. Examples are like [4], [10], [20], [22], [27], [28], [29], [30], [31], where Chien [4] had reported the secret key disclosure problem and the violation of anonymity in Weis [28] and Weis et al. [29], Avoine et al. [1] had reported the weakness of Ohkubo et al.'s scheme [22], and the weaknesses of the schemes [10], [20], [27], [30], [31] have been reported.
+目前基于非对称算法的 RFID协议主要采用椭圆曲线密码体制（Elliptic Curve Cryptography, ECC）[1-4] 。与 RSA（Rivent-Shamir-Adleman）密码体制相比，ECC 算法速度更快、体积更小、功耗更低，因此更适合于 RFID 系统
 
-[4] H.-Y. Chien, "Secure Access Control Schemes for RFID Systems with Anonymity," Proc. 2006 Int'l Workshop Future Mobile and Ubiquitous Information Technologies (FMUIT '06), 2006.
+- [1] Y.-P. Liao, C.-M. Hsiao. A secure ECC-based RFID authentication scheme integrated with ID-verifier transfer protocol[J]. Ad Hoc Networks, 2014, 18: 133-146
+- [2] J. Chou. A secure RFID authentication protocol to enhance patient medication safety using elliptic curve cryptography[J]. J. Supercomput, 2014:
+- [3] C. Jin, C. Xu, X. Zhang, et al. A secure RFID mutual authentication protocol for healthcare environments using elliptic curve cryptography[J]. Journal of medical systems, 2015, 39, (3): 24
+- [4] M. S. Farash, O. Nawaz, K. Mahmood, et al. A provably secure RFID authentication protocol based on elliptic curve for healthcare environments[J]. Journal of medical systems, 2016, 40, (7): 165
 
-[10] A.D. Henrici and P. Ma ̈uller, "Hash-Based Enhancement of Location Privacy for Radio-Frequency Identification Devices Using Varying Identifiers," Proc. Second IEEE Ann. Conf. Pervasive Computing and Comm. Workshops, pp. 149-153 2004.
+不同研究人员利用 ECC 为 RFID 认证提供服务，并采用了不同的加密和认证方法。大多数研究表明，只使用一 种 ECC 算法的安全认证协议只能提供单向认证，且整个系统容易受到攻击。随着第 2 个 ECC 算法的安全认证协议的加入，双向认证达成，为系统整体提供了更好的安全性。2 个 ECC 安全认证协议耦合的不同导致各个安全认证协议的效率与安全性有差异
 
-[20] D. Molnar and D. Wagner, "Privacy and Security in Library RFID: Issues, Practices, and Architectures," Proc. Conf. Computer and Comm. Security (CCS '04), pp. 210-219, 2004.
+虽然 ECC 在计算速度与功耗等方面在非对称密 码体制中具有明显的优势，但将其应用于资源受限的 RFID 系统中仍然显得比较勉 强。于是安全性稍弱但功耗与计算速度具有明显优势的对称加密算法被引入 RFID安全协议中，其中典型的方案有 Feldhofer 等人提出的基于 AES（Advance Encryption Standard）的协议 [5] 和 Kaps 提出的基于 XTEA（Extended Tiny Encryption Algorithm） 的协议 [6] 等
 
-[22] M. Ohkubo, K. Suzki, and S. Kinoshita, "Cryptographic Approach to 'Privacy-Friendly' Tags," Proc. RFID Privacy Workshop, 2003.
+- [5] M. Feldhofer, S. Dominikus, J. Wolkerstorfer. Strong authentication for RFID systems using the AES algorithm[C]. International Workshop on Cryptographic Hardware and Embedded Systems, 2004, 357-370
+- [6] J.-P. Kaps. Chai-tea, cryptographic hardware implementations of xtea[C]. International Conference on Cryptology in India, 2008, 363-375
 
-[27] K. Rhee, J. Kwak, S. Kim, and D. Won, "Challenge-Response Based RFID Authentication Protocol for Distributed Database Environment," Proc. Int'l Conf. Security in Pervasive Computing (SPC '05), pp. 70-84, 2005.
+### 非对称加密
 
-[28] S.A. Weis, "Security and Privacy in Radio-Frequency Identification Devices," master's thesis, MIT, 2003.
+### 对称加密
 
-[29] S.A. Weis, S.E. Sarma, R.L. Rivest, and D.W. Engels, "Security and Privacy Aspects of Low-Cost Radio Frequency Identification Systems," Security in Pervasive Computing, pp. 201-212, Springer, 2004.
+## 发展与展望
 
-[30] J. Yang, J. Park, H. Lee, K. Ren, and K. Kim, "Mutual Authentication Protocol for Low-Cost RFID," Proc. Ecrypt Workshop RFID and Lightweight Crypto, 2005.
+近年已有研究人员将基于 ECC 算法的安全认证协议门电路控制在轻量级的水平。目前，在现有技术条件下，RFID 安全认证协议主要有 2 个方向，一个是在前人研究基础上针对部分安全性漏洞进行修补并进行安全性的提升，另一个是保障安全性的基础上对现有协议的效率与通信开销进行优化
 
-[31] J. Yang, K. Ren, and K. Kim, "Security and Privacy on Authentication Protocol for Low-Cost Radio," Proc. 2005 Symp. Cryptography and Information Security, 2005.
+同时，有众多研究人员将重心放在 RFID 安全认证协议的防碰撞性研究 [1-3] 上，通常将防碰撞协议与安全协议作为单独的两部分考虑，也有人提出防碰撞的安全认证协议 [4]，利用防碰撞协议的模型可以在判断碰撞的同时嵌入认证协议，能同时实现门电路的优化与认证手段的革新
 
-## 完备协议
+引入区块链技术也可能给 RFID 带来的变革和影响 [5-9]，将区块链的去中心化思想引入到基于散列的中量级安全认证协议中，将验证计算转移至阅读器和区块链节点中，可以有效降低标签的计算成本
 
-> 摘自 SASI: A New Ultralightweight RFID Authentication Protocol Providing Strong Authentication and Strong Integrity
->
-> The protocols [13], [16], [17] belonging to the full-fledged class support cryptographic functions like hashing, encryption, and even public key algorithms on tags. One of the main applications of these full-fledged protocols is E-passport [13].
-
-[13] A. Juels, D. Molner, and D. Wagner, "Security and Privacy Issues in EPassports," Proc. First Int'l Conf. Security and Privacy for Emerging Areas in Comm. Networks (SecureComm '05), 2005.
-
-[16] S. Kinoshita, M. Ohkubo, F. Hoshino, G. Morohashi, O. Shionoiri, and A. Kanai, "Privacy Enhanced Active RFID Tag," Proc. Int'l Workshop Exploiting Context Histories in Smart Environments, May 2005.
-
-[17] S.S. Kumar and C. Paar, "Are Standards Compliant Elliptic Curve Cryptosystems Feasible on RFID?" Proc. Workshop RFID Security, July 2006.
+- [1] SuJ,ShengZ,LeungV C M,etal.Energy efficient tag identification algorithms for RFID: Survey,motivation and new design[J].IEEE Wireless Communications,2019,26(3):118-124.
+- [2] SuJ,ShengZ,LiuA X,etal.A group-based binary splitting algorithm for UHF RFID anti-collision systems[J].IEEETransactionson Communications,2019,68(2):998-1012.
+- [3] SuJ,ShengZ,XieL,etal.Fast splitting-based tag identification algorithm for anti-collision in UHF RFID system[J].IEEE Transactionson Communications,2018,67(3):2527-2538.
+- [4] MbackeA A,Mitton N,Rivano H.A survey of RFID readers anticollision protocols[J].IEEE Journalof Radio Frequency Identification,2018,2(1):38-48.
+- [5] RahmanF,Ahamed SI.Efficient detection of counterfeit products in large-scale RFID systems using batch authentication protocols[J].Personaland Ubiquitous Computing,2014,18(1):177-188.
+- [6] YueK Q,SunL L,QinY,etal.Designofanti-collisioninte-grated security mechanism based on chaotic sequence in UHF RFID system [J].China Communication,2014,11:137-147.
+- [7] LiPeng,Zheng Tian-tian,Xu He,etal.RFID securityau-thentication protocolbased on block chain technology[J].NetinfoSecurity,2021,21(5):1-11.(inChinese)
+- [8] Sidorov M,Ong M,Sridharan R,et al.Ultralight-weight mutual authentication RFID protocol for block chain enabled supply chains[J].IEEE Access,2019,19(7):7273-7285.
+- [9] JangiralaS,Das A,Vasilakos A.Designing secure light-weightblockchain-enabled RFID-based authentication protocol for supply chains in 5G mobile edge computing environment[J].IEEE Transactions on Industrial Informatics,2019,16(11):7081-7093.
