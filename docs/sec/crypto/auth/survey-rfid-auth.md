@@ -252,21 +252,22 @@ SASI 和 UMAP 协议族的对比
 比较经典的安全认证协议包括基于单向散列函数的 Hash-Lock 协议、改进的随机 Hash-Lock 协议、Hash 链协议、David 数字图书馆协议 [1-4] 和可抵抗追踪攻击的 YA-TRAP 协议 [5] 等
 
 - [1] SarmaSE,WeisS A,EngelsD W.RFID systems and security and privacy implications[C]∥Proc of International Workshopon Cryptographic Hardwareand EmbeddedSys-tems,2002:454-469
-- [2] WeisS A,SarmaSE,RivestR L,etal.Security and privacy aspects of low-cost radio frequency identification systems[C]∥Procof the 1st International Conference on Security in Pervasive Computing,2004:201-212.
-- [3] Ohkubo M, Suzuki K, Kinoshita S.Hash-chain based forward-secure privacy protection scheme for lowcost RFID[C]∥Procof 2004 Symposium on Cryptography and Information Security,2004:719-724.
-- [4] MolnarD,WagnerD.Privacy and security in library RFID: Issues,practices,and architectures[C]∥Proc ofthe 11th ACM  Conferenceon Computerand Communications Security,2004:210-219.
+- [2] WeisS A,SarmaSE,RivestR L,etal.Security and privacy aspects of low-cost radio frequency identification systems[C]∥Proc of the 1st International Conference on Security in Pervasive Computing,2004:201-212.
+- [3] Ohkubo M, Suzuki K, Kinoshita S.Hash-chain based forward-secure privacy protection scheme for lowcost RFID[C]∥Proc of 2004 Symposium on Cryptography and Information Security,2004:719-724.
+- [4] MolnarD,WagnerD.Privacy and security in library RFID: Issues,practices,and architectures[C]∥Proc of the 11th ACM  Conferenceon Computerand Communications Security,2004:210-219.
 - [5] G. Tsudik. YA-TRAP: Yet another trivial RFID authentication protocol[C]. Fourth Annual IEEE International Conference on Pervasive Computing and Communications Workshops (PERCOMW'06), 2006, 4 pp.-643
 
 ## 重量级协议
 
 > 重量级安全认证协议也被部分文献命名为完备 RFID 安全认证协议，主要分为对称加密算法和非对称加密算法
 
-目前基于非对称算法的 RFID协议主要采用椭圆曲线密码体制（Elliptic Curve Cryptography, ECC）[1-4] 。与 RSA（Rivent-Shamir-Adleman）密码体制相比，ECC 算法速度更快、体积更小、功耗更低，因此更适合于 RFID 系统
+目前基于非对称算法的 RFID协议主要采用椭圆曲线密码体制（Elliptic Curve Cryptography, ECC）[1-4] 。与 RSA [5] 密码体制相比，ECC 算法速度更快、体积更小、功耗更低，因此更适合于 RFID 系统
 
 - [1] Y.-P. Liao, C.-M. Hsiao. A secure ECC-based RFID authentication scheme integrated with ID-verifier transfer protocol[J]. Ad Hoc Networks, 2014, 18: 133-146
 - [2] J. Chou. A secure RFID authentication protocol to enhance patient medication safety using elliptic curve cryptography[J]. J. Supercomput, 2014:
 - [3] C. Jin, C. Xu, X. Zhang, et al. A secure RFID mutual authentication protocol for healthcare environments using elliptic curve cryptography[J]. Journal of medical systems, 2015, 39, (3): 24
 - [4] M. S. Farash, O. Nawaz, K. Mahmood, et al. A provably secure RFID authentication protocol based on elliptic curve for healthcare environments[J]. Journal of medical systems, 2016, 40, (7): 165
+- GolleP,Jakobsson M,JuelsA,etal.Universalre-encryptionformixnets[C]∥Proc of Cryptographers' Trackatthe RSA Conference,2004:163-178
 
 不同研究人员利用 ECC 为 RFID 认证提供服务，并采用了不同的加密和认证方法。大多数研究表明，只使用一 种 ECC 算法的安全认证协议只能提供单向认证，且整个系统容易受到攻击。随着第 2 个 ECC 算法的安全认证协议的加入，双向认证达成，为系统整体提供了更好的安全性。2 个 ECC 安全认证协议耦合的不同导致各个安全认证协议的效率与安全性有差异
 
@@ -288,7 +289,7 @@ SASI 和 UMAP 协议族的对比
 引入区块链技术也可能给 RFID 带来的变革和影响 [5-9]，将区块链的去中心化思想引入到基于散列的中量级安全认证协议中，将验证计算转移至阅读器和区块链节点中，可以有效降低标签的计算成本
 
 - [1] SuJ,ShengZ,LeungV C M,etal.Energy efficient tag identification algorithms for RFID: Survey,motivation and new design[J].IEEE Wireless Communications,2019,26(3):118-124.
-- [2] SuJ,ShengZ,LiuA X,etal.A group-based binary splitting algorithm for UHF RFID anti-collision systems[J].IEEETransactionson Communications,2019,68(2):998-1012.
+- [2] SuJ,ShengZ,LiuA X,etal.A group-based binary splitting algorithm for UHF RFID anti-collision systems[J].IEEE Transactionson Communications,2019,68(2):998-1012.
 - [3] SuJ,ShengZ,XieL,etal.Fast splitting-based tag identification algorithm for anti-collision in UHF RFID system[J].IEEE Transactionson Communications,2018,67(3):2527-2538.
 - [4] MbackeA A,Mitton N,Rivano H.A survey of RFID readers anticollision protocols[J].IEEE Journalof Radio Frequency Identification,2018,2(1):38-48.
 - [5] RahmanF,Ahamed SI.Efficient detection of counterfeit products in large-scale RFID systems using batch authentication protocols[J].Personaland Ubiquitous Computing,2014,18(1):177-188.
