@@ -17,7 +17,7 @@ ZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2U=
 
 <!-- more -->
 
-
+---
 
  <center>
      <h1>熊舟桐 - 后端开发</h1>
@@ -89,3 +89,13 @@ ZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2U=
 <h2><img src="./assets/comment.svg" align="left" width="30px">&nbsp;自我评价</h2>
 
 - 对代码有热情，思维活跃，抗压能力强，具备较强的学习能力和积极的生活态度
+
+---
+
+<center><h1>Biography</h1></center>
+
+Xiong Zhoutong is a graduate student at the State Key Laboratory of Integrated Service Networks at Xidian University, where he is pursuing his M.S. degree in Cybersecurity. He received his B.S. degree in Computer Science from Northeastern University, Qinhuangdao, China, in 2024. His research interests include IoT security and RFID authentication.
+
+Xiong Zhoutong is with the State Key Laboratory of Integrated Service Networks, Xidian University, Xi'an Shaanxi, 710126, China.
+
+E-mail: northboat@163.com
