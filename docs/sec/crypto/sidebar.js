@@ -33,7 +33,7 @@ module.exports = [
 	},
 	
 	{
-		title: 'RFID/双向认证',
+		title: '身份认证',
 		collapsable: true,
 		children: [
 			'./auth/survey-rfid-auth'
