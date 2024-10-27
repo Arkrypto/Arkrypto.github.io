@@ -204,7 +204,7 @@ IDS 更新
 
 > SASI: A New Ultralightweight RFID Authentication Protocol Providing Strong Authentication and Strong Integrity
 
-认证过程，和 UMAP 协议族一样，合法的读写器将可以通过标签的 IDS 从系统中获取该标签的密钥 K 和静态标识符 ID
+认证过程，和 UMAP 协议族一样，合法的读写器将可以通过标签的 IDS 从可信系统 V 中获取该标签的密钥 K 和静态标识符 ID
 
 <img src="./assets/image-20241012152328404.png">
 
@@ -239,11 +239,61 @@ SASI 和 UMAP 协议族的对比
 
 ### EPC C1Gen2 标准
 
-EPC C1Gen2 标准（即 EPC Class 1 Generation 2，简称 C1G2）是电子产品代码（EPC）体系中的第二代无线射频识别（RFID）标准，用于管理和识别物品的全球统一标识。该标准由 GS1 和 EPC global 组织发布，广泛应用于供应链、仓储、物流和零售等领域。它定义了超高频（UHF）RFID标签和读写器之间的通信协议，旨在提高物品跟踪和识别的效率和准确性
+> Strengthening EPC tags against cloning
+
+EPC，Electronic Product Code，一种 RFID 设备（RFID 技术的一种应用产品），专注于产品的唯一识别和追踪，最早的轻量协议用于在这种设备中
+
+EPCGlobal Class1 Genration2 UHF 标准（简称 C1Gen2 或 EPCglobal）是 EPC 体系中的第二代无线射频识别（RFID）标准，用于管理和识别物品的全球统一标识。该标准由 GS1 和 EPC global 组织发布，广泛应用于供应链、仓储、物流和零售等领域。它定义了超高频（UHF）RFID 标签和读写器之间的通信协议，旨在提高物品跟踪和识别的效率和准确性
+
+克隆攻击
+
+- **捕获数据**：攻击者使用 RFID 读写器读取合法标签的数据，包括 EPC 编码、权限等信息
+- **制作克隆标签**：攻击者将捕获的数据写入到新的RFID标签上，使其具有与原标签相同的身份和功能
+- **利用克隆标签**：攻击者可以使用克隆的标签进入某些场所或进行未授权的交易，而不会被检测到
+
+基本的 EPC 标签只有一个安全功能，即 kill 命令。当 EPC 标签接收到这个命令时，它进行自我破坏，标签会基于一个 32 位的 PIN 码对读者进行认证，验证 kill 命令的合法性
+
+但注意，读者无法单独判断标签是否合法，他是查询标识符是否在系统中来进行判断（和超轻量协议**所谓**的双向认证一样），在一个简单的认证中
+
+<img src="./assets/image-20241027205749327.png">
+
+存在这样的问题，读者作为一个简单的设备，没有严格的时序划分，那么我他妈一直给他发 1，读者就会认为当前标签一直合法，从而失去正确性的判断
+
+于是有修正的一版协议
+
+<img src="./assets/image-20241027210133878.png">
+
+在 BasicTagAuth 协议中引入了**伪造的 PIN 码（spurious PINs）**去测试标签（钓鱼），读者将发送一组 Pin 码给标签，其中只有下标为 j 的为其对应合法的 PIN 码，标签合法当且仅当 P[j] 响应 1 而其余均响应 0
+
+- 也就是说，如果标签对不属于他的 PIN 码响应了 1，说明这 b 在乱答，于是认为他非法
+
+文中还提到了一种加强的认证，将 32 位的 PIN 码二分为 16 位的 A 和 K，分两步进行认证
+
+<img src="./assets/image-20241027220010680.png">
+
+最后，由于读写器并不总是可信（中间人攻击），作者引入第三方可信系统 V 存储有效的 Pin 码信息，读写器 R 仅作为传输者，剩余部分与 BasicTagAuth 的思路基本保持一致
+
+<img src="./assets/image-20241027220649841.png">
+
+并且由于 V 的引入，它可以同时检测 R 的合法性，由于 T 由 R 发送给 V，V 可以对判断其是否具备对 T 的访问权限，从而决定后续的认证
+
+- 通过上述协议，还提出了一种分布式的 RFID 认证方案，叫做 Fulfillment-Conditional PIN Distribution (FCPD)，即令可信中心 V 作为结点，读写器 R 作为分布设备向其请求服务，从而对 T 进行认证
+
+这基本定义了 EPCGlobal G2 标准下的一般认证模型
 
 ### CRC 和 PRNG
 
+> Enhancing security of EPCglobal gen-2 RFID tag against traceability and cloning
+
+EPCGlobal Class-1 Gen-2 标准的 RFID 标签仅支持简单的密码原语，如伪随机数生成器 (PRNG) 和循环冗余代码 (CRC)，该文基于此提出一种安全的协议，能够防止克隆的标签冒充和恶意的读者滥用合法标签
+
+
+
 ### CC 协议
+
+> Mutual authentication protocol for RFID conforming to EPC Class 1 Generation 2 standards
+
+
 
 ## 中量级协议
 
