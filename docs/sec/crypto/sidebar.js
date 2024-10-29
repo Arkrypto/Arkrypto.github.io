@@ -29,6 +29,7 @@ module.exports = [
 		children: [
 			'./se/se-bm25',
 			'./se/se-spwse',
+			'./se/se-bp',
 		]
 	},
 	

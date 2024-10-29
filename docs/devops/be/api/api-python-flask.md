@@ -1,5 +1,5 @@
 ---
-title: Flask 简易 API 开发
+title: Flask 简单 API 开发
 date: 2024-9-13
 categories:
   - Dev
