@@ -5,49 +5,7 @@ date: 2024-10-29
 
 [Searchable-Encryption-Simulation/BP/simulation/src/main/java/cia/northboat/sim at main · northboat/Searchable-Encryption-Simulation](https://github.com/northboat/Searchable-Encryption-Simulation/tree/main/BP/simulation/src/main/java/cia/northboat/sim)
 
-## PAUKS
-
-<img src="./assets/image-20241029213309019.png">
-
-<img src="./assets/image-20241029213405008.png">
-
-<img src="./assets/image-20241029213538150.png">
-
-<img src="./assets/image-20241029213716462.png">
-
-<img src="./assets/image-20241029213749343.png">
-
-<img src="./assets/image-20241029213815143.png">
-
-
-
-## SA-PAEAK
-
-<img src="./assets/image-20241029213918091.png">
-
-<img src="./assets/image-20241029214003368.png">
-
-<img src="./assets/image-20241029214042021.png">
-
-## dIBAEKS
-
-<img src="./assets/image-20241029214144804.png">
-
-## pMatch
-
-<img src="./assets/image-20241029214235147.png">
-
-<img src="./assets/image-20241029214457453.png">
-
-## CR-IMA
-
-<img src="./assets/image-20241029214607714.png">
-
-<img src="./assets/image-20241029214634975.png">
-
-<img src="./assets/image-20241029214727720.png">
-
-## 工具类
+## Utils
 
 ### AES
 
@@ -368,3 +326,44 @@ public class HashUtil {
 }
 ```
 
+## PAUKS
+
+<img src="./assets/image-20241029213309019.png">
+
+<img src="./assets/image-20241029213405008.png">
+
+<img src="./assets/image-20241029213538150.png">
+
+<img src="./assets/image-20241029213716462.png">
+
+<img src="./assets/image-20241029213749343.png">
+
+<img src="./assets/image-20241029213815143.png">
+
+
+
+## SA-PAEAK
+
+<img src="./assets/image-20241029213918091.png">
+
+<img src="./assets/image-20241029214003368.png">
+
+<img src="./assets/image-20241029214042021.png">
+
+## dIBAEKS
+
+<img src="./assets/image-20241029214144804.png">
+
+## pMatch
+
+<img src="./assets/image-20241029214235147.png">
+
+<img src="./assets/image-20241029214457453.png">
+
+## CR-IMA
+
+<img src="./assets/image-20241029214607714.png">
+
+<img src="./assets/image-20241029214634975.png">
+
+<img src="./assets/image-20241029214727720.png">
