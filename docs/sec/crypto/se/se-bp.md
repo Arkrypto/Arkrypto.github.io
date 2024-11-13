@@ -1,13 +1,13 @@
 ---
-title: 一系列基于双线性配对的 SE 仿真
+title: 基于双线性配对的 SE 仿真
 date: 2024-10-29
 ---
 
 [Searchable-Encryption-Simulation/BP/simulation/src/main/java/cia/northboat/sim at main · northboat/Searchable-Encryption-Simulation](https://github.com/northboat/Searchable-Encryption-Simulation/tree/main/BP/simulation/src/main/java/cia/northboat/sim)
 
-## Utils
+## 工具类
 
-### AES
+### AES 加密
 
 AESUtil.java 128 位密钥生成、加解密
 
@@ -49,106 +49,6 @@ public class AESUtil {
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
         return cipher.doFinal(data);
-    }
-}
-```
-
-### 矩阵运算
-
-MatrixUtil.java 矩阵求逆、乘法
-
-```java
-import it.unisa.dia.gas.jpbc.Field;
-import java.math.BigInteger;
-
-public class MatrixUtil {
-
-    public static BigInteger[] getOneVector(int n){
-        BigInteger[] b = new BigInteger[n];
-        for(int i = 0; i < n; i++){
-            b[i] = new BigInteger("1");
-        }
-        return b;
-    }
-
-    public static BigInteger determinant(BigInteger[][] matrix) {
-        int n = matrix.length;
-        if (n == 1) {
-            return matrix[0][0];
-        }
-        BigInteger det = BigInteger.ZERO;
-        BigInteger sign = BigInteger.ONE;
-        for (int i = 0; i < n; i++) {
-            BigInteger[][] subMatrix = getSubMatrix(matrix, 0, i);
-            det = det.add(sign.multiply(matrix[0][i]).multiply(determinant(subMatrix)));
-            sign = sign.negate();
-        }
-        return det;
-    }
-
-
-    public static BigInteger[][] getSubMatrix(BigInteger[][] matrix, int excludingRow, int excludingCol) {
-        int n = matrix.length;
-        BigInteger[][] subMatrix = new BigInteger[n - 1][n - 1];
-        int r = -1;
-        for (int i = 0; i < n; i++) {
-            if (i == excludingRow) continue;
-            r++;
-            int c = -1;
-            for (int j = 0; j < n; j++) {
-                if (j == excludingCol) continue;
-                subMatrix[r][++c] = matrix[i][j];
-            }
-        }
-        return subMatrix;
-    }
-
-    // 方法：计算伴随矩阵
-    public static BigInteger[][] adjugate(BigInteger[][] matrix) {
-        int n = matrix.length;
-        BigInteger[][] adj = new BigInteger[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                BigInteger[][] subMatrix = getSubMatrix(matrix, i, j);
-                adj[j][i] = ((i + j) % 2 == 0 ? BigInteger.ONE : BigInteger.ONE.negate())
-                        .multiply(determinant(subMatrix));
-            }
-        }
-        return adj;
-    }
-
-
-    // 方法：计算逆矩阵
-    public static BigInteger[][] inverse(Field Zr, BigInteger[][] matrix) {
-        BigInteger det = determinant(matrix);
-        det = det.mod(Zr.getOrder());
-        System.out.println(det);
-        System.out.println();
-        if (det.equals(BigInteger.ZERO)) {
-            throw new ArithmeticException("Matrix is not invertible.");
-        }
-        BigInteger[][] adj = adjugate(matrix);
-        BigInteger[][] inv = new BigInteger[matrix.length][matrix[0].length];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                inv[i][j] = adj[i][j].divide(det);
-//                System.out.println(adj[i][j].divide(det));
-            }
-        }
-        return inv;
-    }
-
-    public static BigInteger[] mul(BigInteger[][] matrix, BigInteger[] vector){
-        int n = matrix.length, m = vector.length;
-        BigInteger[] res = new BigInteger[n];
-        for(int i = 0; i < n; i++){
-            BigInteger row = new BigInteger("0");
-            for(int j = 0; j < m; j++){
-                row = row.add(matrix[i][j].multiply(vector[j]));
-            }
-            res[i] = row;
-        }
-        return res;
     }
 }
 ```
@@ -221,7 +121,7 @@ public class BitUtil {
 }
 ```
 
-### 映射
+### 群映射
 
 HashUtil.java 在循环群 G、GT、Zr 之间相互映射
 
@@ -328,25 +228,39 @@ public class HashUtil {
 
 ## PAUKS
 
+### 初始化和密钥生成
+
 <img src="./assets/image-20241029213309019.png">
 
 <img src="./assets/image-20241029213405008.png">
 
+### 关键词加密与陷门计算
+
 <img src="./assets/image-20241029213538150.png">
+
+### 匹配与密钥更新
 
 <img src="./assets/image-20241029213716462.png">
 
+### 二次关键词加密与陷门生产
+
 <img src="./assets/image-20241029213749343.png">
+
+### 二次匹配
 
 <img src="./assets/image-20241029213815143.png">
 
-
-
 ## SA-PAEAK
+
+### 初始化和密钥生成
 
 <img src="./assets/image-20241029213918091.png">
 
+### 关键词加密
+
 <img src="./assets/image-20241029214003368.png">
+
+### 陷门计算和匹配
 
 <img src="./assets/image-20241029214042021.png">
 
@@ -356,14 +270,84 @@ public class HashUtil {
 
 ## pMatch
 
+### 系统初始化
+
 <img src="./assets/image-20241029214235147.png">
+
+### 密钥生成与加密搜索
 
 <img src="./assets/image-20241029214457453.png">
 
 ## CR-IMA
 
+### 初始化和密钥生成
+
 <img src="./assets/image-20241029214607714.png">
+
+### 关键词加密
 
 <img src="./assets/image-20241029214634975.png">
 
+### 陷门生成和匹配
+
 <img src="./assets/image-20241029214727720.png">
+
+## TuCR
+
+这里为了方便将很多参数写死了
+
+### 初始化和密钥生成
+
+<img src="./assets/image-20241113112942916.png">
+
+<img src="./assets/image-20241113113036527.png">
+
+### 关键词加密和本地匹配
+
+<img src="./assets/image-20241113113221466.png">
+
+### 用户认证与授权
+
+<img src="./assets/image-20241113113317301.png">
+
+<img src="./assets/image-20241113113350186.png">
+
+<img src="./assets/image-20241113113418203.png">
+
+<img src="./assets/image-20241113113817740.png">
+
+<img src="./assets/image-20241113113847693.png">
+
+### 联合陷门计算与匹配
+
+<img src="./assets/image-20241113113915563.png">
+
+<img src="./assets/image-20241113113938740.png">
+
+<img src="./assets/image-20241113113959991.png">
+
+## Tu2CKS
+
+### 初始化和密钥生成
+
+<img src="./assets/image-20241113114131885.png">
+
+<img src="./assets/image-20241113114234145.png">
+
+用户 u2、u3 的计算同理
+
+### 关键词加密
+
+<img src="./assets/image-20241113114308223.png">
+
+### 陷门计算和匹配
+
+由于矩阵运算有问题，图方便把 B 写死为 {-5, 11, -6, 1}
+
+<img src="./assets/image-20241113114438367.png">
+
+用户 u2、u3 的陷门计算同理
+
+<img src="./assets/image-20241113114520098.png">
+
+<img src="./assets/image-20241113114543059.png">

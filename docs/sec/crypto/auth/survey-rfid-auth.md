@@ -54,6 +54,10 @@ CIA：Confidentiality（数据机密性）、Integrity（完整性）、Availabi
 
 拒绝服务（DoS）攻击：在 RFID 系统中，攻击者通过 阻断读写器读取标签信息的方式发动 DoS 攻击
 
+### RFID 安全协议量级分类
+
+<img src="./assets/image-20241113125409323.png">
+
 ## 超轻量级协议
 
 ### UMAP 协议族
@@ -266,7 +270,7 @@ EPCGlobal Class1 Genration2 UHF 标准（简称 C1Gen2 或 EPCglobal）是 EPC �
 
 <img src="./assets/image-20241027220010680.png">
 
-最后，由于读写器并不总是可信（中间人攻击），作者引入第三方可信系统 V 存储 PIN 码，读写器 R 仅作为传输者，剩余部分与 BasicTagAuth 的思路基本保持一致
+由于读写器并不总是可信（中间人攻击），作者引入第三方可信系统 V 存储 PIN 码，读写器 R 仅作为传输者，剩余部分与 BasicTagAuth 的思路基本保持一致
 
 - 没有安全的身份验证导致向**恶意读者**透露 EPC，称为略读攻击（skimming attack）
 
@@ -392,30 +396,76 @@ Key updating protocol：认证一轮后，标签和服务器将进行密钥更�
 
 比较经典的安全认证协议包括基于单向散列函数的 Hash-Lock 协议、改进的随机 Hash-Lock 协议、Hash 链协议、David 数字图书馆协议 [1-4] 和抗追踪攻击的 YA-TRAP 协议 [5] 等
 
-- [1] SarmaSE,WeisS A,EngelsD W.RFID systems and security and privacy implications[C]∥Proc of International Workshopon Cryptographic Hardwareand EmbeddedSys-tems,2002:454-469
-- [2] WeisS A,SarmaSE,RivestR L,etal.Security and privacy aspects of low-cost radio frequency identification systems[C]∥Proc of the 1st International Conference on Security in Pervasive Computing,2004:201-212.
+- [1] Sarma S E,Weis S A,Engels D W. RFID systems and security and privacy implications[C]∥Proc of International Workshopon Cryptographic Hardwareand EmbeddedSys-tems,2002:454-469
+- [2] Weis S A,Sarma S E,Rivest R L,et al. Security and privacy aspects of low-cost radio frequency identification systems[C]∥Proc of the 1st International Conference on Security in Pervasive Computing,2004:201-212.
 - [3] Ohkubo M, Suzuki K, Kinoshita S.Hash-chain based forward-secure privacy protection scheme for lowcost RFID[C]∥Proc of 2004 Symposium on Cryptography and Information Security,2004:719-724.
-- [4] MolnarD,WagnerD.Privacy and security in library RFID: Issues,practices,and architectures[C]∥Proc of the 11th ACM  Conferenceon Computerand Communications Security,2004:210-219.
+- [4] Molnar D,Wagner D. Privacy and security in library RFID: Issues,practices,and architectures[C]∥Proc of the 11th ACM  Conferenceon Computerand Communications Security,2004:210-219.
 - [5] G. Tsudik. YA-TRAP: Yet another trivial RFID authentication protocol[C]. Fourth Annual IEEE International Conference on Pervasive Computing and Communications Workshops (PERCOMW'06), 2006, 4 pp.-643
+
+[1-4] 的安全性比较
+
+| 协议 | 可追踪性攻击 | 重放攻击 | 欺骗攻击 | 去同步攻击 | 双向认证 | 密钥更新 |
+| ---- | ------------ | -------- | -------- | ---------- | -------- | -------- |
+| [1]  | ×            | ×        | ×        | ×          | √        | ×        |
+| [2]  | √            | ×        | ×        | ×          | √        | √        |
+| [3]  | √            | √        | √        | √          | ×        | ×        |
+| [4]  | √            | √        | √        | √          | √        | ×        |
+
+
 
 ## 重量级协议
 
 > 重量级安全认证协议也被部分文献命名为完备 RFID 安全认证协议，主要分为对称加密算法和非对称加密算法
 
-目前基于非对称算法的 RFID 协议主要采用椭圆曲线密码体制（Elliptic Curve Cryptography, ECC）[1-4] 。与 RSA [5] 密码体制相比，ECC 算法速度更快、体积更小、功耗更低，因此更适合于 RFID 系统
+目前基于非对称算法的 RFID 协议主要采用椭圆曲线密码体制（Elliptic Curve Cryptography, ECC）[1-3] 。与 RSA [4] 密码体制相比，ECC 算法速度更快、体积更小、功耗更低，因此更适合于 RFID 系统
 
 - [1] Y.-P. Liao, C.-M. Hsiao. A secure ECC-based RFID authentication scheme integrated with ID-verifier transfer protocol[J]. Ad Hoc Networks, 2014, 18: 133-146
-- [2] J. Chou. A secure RFID authentication protocol to enhance patient medication safety using elliptic curve cryptography[J]. J. Supercomput, 2014:
-- [3] C. Jin, C. Xu, X. Zhang, et al. A secure RFID mutual authentication protocol for healthcare environments using elliptic curve cryptography[J]. Journal of medical systems, 2015, 39, (3): 24
-- [4] M. S. Farash, O. Nawaz, K. Mahmood, et al. A provably secure RFID authentication protocol based on elliptic curve for healthcare environments[J]. Journal of medical systems, 2016, 40, (7): 165
-- GolleP,Jakobsson M,JuelsA,etal.Universal reencryption for mix nets[C]∥Proc of Cryptographers' Track at the RSA Conference,2004:163-178
+- [2] C. Jin, C. Xu, X. Zhang, et al. A secure RFID mutual authentication protocol for healthcare environments using elliptic curve cryptography[J]. Journal of medical systems, 2015, 39, (3): 24
+- [3] M. S. Farash, O. Nawaz, K. Mahmood, et al. A provably secure RFID authentication protocol based on elliptic curve for healthcare environments[J]. Journal of medical systems, 2016, 40, (7): 165
+- [4] Golle P,Jakobsson M,Juels A,et al.Universal re-encryption for mixnets[C]∥Proc of Cryptographers' Track at the RSA Conference,2004:163-178
 
 不同研究人员利用 ECC 为 RFID 认证提供服务，并采用了不同的加密和认证方法。大多数研究表明，只使用一 种 ECC 算法的安全认证协议只能提供单向认证，且整个系统容易受到攻击。随着第 2 个 ECC 算法的安全认证协议的加入，双向认证达成，为系统整体提供了更好的安全性。2 个 ECC 安全认证协议耦合的不同导致各个安全认证协议的效率与安全性有差异
 
-虽然 ECC 在计算速度与功耗等方面在非对称密 码体制中具有明显的优势，但将其应用于资源受限的 RFID 系统中仍然显得比较勉 强。于是安全性稍弱但功耗与计算速度具有明显优势的对称加密算法被引入 RFID安全协议中，其中典型的方案有 Feldhofer 等人提出的基于 AES（Advance Encryption Standard）的协议 [5] 和 Kaps 提出的基于 XTEA（Extended Tiny Encryption Algorithm） 的协议 [6] 等
+虽然 ECC 在计算速度与功耗等方面在非对称密 码体制中具有明显的优势，但将其应用于资源受限的 RFID 系统中仍然显得比较勉 强。于是安全性稍弱但功耗与计算速度具有明显优势的对称加密算法被引入 RFID 安全协议中，其中典型的方案有 Feldhofer 等人提出的基于 AES（Advance Encryption Standard）的协议 [5] 和 Kaps 提出的基于 XTEA（Extended Tiny Encryption Algorithm） 的协议 [6] 等
 
 - [5] M. Feldhofer, S. Dominikus, J. Wolkerstorfer. Strong authentication for RFID systems using the AES algorithm[C]. International Workshop on Cryptographic Hardware and Embedded Systems, 2004, 357-370
 - [6] J.-P. Kaps. Chai-tea, cryptographic hardware implementations of xtea[C]. International Conference on Cryptology in India, 2008, 363-375
+
+### Liao & Hsiao Scheme
+
+> A secure ECC-based RFID authentication scheme integrated with ID-verifier transfer protocol
+
+文章先对以往的一些 ECC 认证协议进行了分析
+
+Schnorr Protocol
+
+<img src="./assets/image-20241113130344973.png">
+
+结果表明，攻击者可以使用 ZT 来跟踪目标标签。换句话说，Tuyls 等人的方案容易受到位置跟踪攻击。此外，攻击者获取特定标签的交换消息 {X, e, y} 和公钥 ZT
+
+Okamoto Protocol，双密钥结构
+
+<img src="./assets/image-20241113130455425.png">
+
+双密钥增强了安全性，但仍可计算得到公钥 Zt，导致标签可追踪。同时，Batina 等人的方案也存在可扩展性问题和前向保密
+
+EC-RAC Protocol，改进的双密钥
+
+<img src="./assets/image-20241113130837274.png">
+
+由于相应结果可以是特定标签的固定值，因此攻击者可以跟踪标签。此外， Bringer 等人展示了如何跟踪如果攻击者两次拦截相同的标签，并且如果标签被被动窃听三次，则可以冒充标签。同样，他们的协议只考虑标签到读者的身份验证，不包括读者到标签身份验证。这使得标签容易受到恶意查询的影响
+
+- 如果没有双向认证，恶意查询是可行的
+
+ECDLP Protocol，对 EC-RAC 的改进，多引入了一个随机数
+
+<img src="./assets/image-20241113131346350.png">
+
+在这种方案下，即使攻击者知道 r3 和 xT'P，他们仍然无法获得关于 xT 的任何信息。此外，当随机 r3 时，攻击者也无法跟踪 ZT'。但随着认证添加到更新数据库中，这种动作会随着后台服务器的消耗而增加。在这种情况下，Zhang 等人的方案会导致可扩展性问题。此外，Zhang等人的方案也缺乏双向认证
+
+本文方案
+
+<img src="./assets/image-20241113132314815.png">
 
 ## 双向认证
 
@@ -423,10 +473,9 @@ Key updating protocol：认证一轮后，标签和服务器将进行密钥更�
 
 ### 超轻量级认证
 
-> An Ultra-Lightweight Mutual Authentication Protocol Based on LPN Problem with Distance Fraud Resistant，一篇四区的论文
->
+> An Ultra-Lightweight Mutual Authentication Protocol Based on LPN Problem with Distance Fraud Resistant
 
-2021 年提出的一个基于 HB 协议族、LPN 问题的一个双向认证方案（发表在 Springer 上），结合 DB 协议（距离边界协议）工作，以抗 GRS 攻击
+一篇三区的论文，21 年提出的一个基于 HB 协议族、LPN 问题的一个双向认证方案，结合 DB 协议（距离边界协议）工作，以抗 GRS 攻击
 
 - 对称密钥体系，共享密钥矩阵 X
 - 其双向认证过程很像 TCP 三次握手，响应的同时挑战
