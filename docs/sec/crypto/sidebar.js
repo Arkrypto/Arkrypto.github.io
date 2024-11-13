@@ -34,10 +34,10 @@ module.exports = [
 	},
 	
 	{
-		title: '身份认证',
+		title: '轻量认证',
 		collapsable: true,
 		children: [
-			'./auth/survey-rfid-auth'
+			'./auth/survey-on-rfid-auth'
 		]
 	},
 
