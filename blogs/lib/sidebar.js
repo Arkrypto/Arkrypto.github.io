@@ -4,10 +4,10 @@ module.exports = [
 		title: '摘抄',
 		collapsable: true,
 		children: [
-		    './extract/sentence',
-			'./extract/mao',
-			'./extract/constitution',
-			//'./extract/ramblings',
+		    './rw/sentence',
+			'./rw/mao',
+			'./rw/constitution',
+			//'./rw/ramblings',
 		]
 	},
 	
@@ -15,9 +15,9 @@ module.exports = [
 		title: '政治',
 		collapsable: true,
 		children: [	
-			'./politics/marx-history',
-			'./politics/mao-deng',
-			'./politics/xi-morality-law',
+			'./po/marx-history',
+			'./po/mao-deng',
+			'./po/xi-morality-law',
 		]
 	},
 	
@@ -25,9 +25,9 @@ module.exports = [
 		title: '英语',
 		collapsable: true,
 		children: [
-		    './english/prefix-root',
-		    './english/dictionary',
-			'./english/read-write',
+		    './en/prefix-root',
+		    './en/dictionary',
+			'./en/read-write',
 		]
 	},
 
