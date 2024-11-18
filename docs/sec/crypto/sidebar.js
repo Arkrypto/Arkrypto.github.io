@@ -30,6 +30,7 @@ module.exports = [
 			'./se/se-bm25',
 			'./se/se-spwse',
 			'./se/se-bp',
+			'./se/se-ipfe',
 		]
 	},
 	

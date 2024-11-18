@@ -2,9 +2,9 @@
 module.exports = {
 
 	'/docs/sec/crypto/': require('../docs/sec/crypto/sidebar'),
-	'/docs/sec/cs/': require('../docs/sec/cs/sidebar'),
 	'/docs/sec/fml/': require('../docs/sec/fml/sidebar'),
 	'/docs/sec/math/': require('../docs/sec/math/sidebar'),
+	'/docs/sec/soc/': require('../docs/sec/soc/sidebar'),
 	
 	'/docs/cs/cn/': require('../docs/cs/cn/sidebar'),
 	'/docs/cs/co/': require('../docs/cs/co/sidebar'),

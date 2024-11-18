@@ -23,7 +23,7 @@ module.exports = [
 		{text: '密码工程', link: '/docs/sec/crypto/'},
 		{text: '数学', link: '/docs/sec/math/'},
 		{text: '机器学习', link: '/docs/sec/fml/'},
-		{text: '网络安全', link: '/docs/sec/cs/'},
+		{text: '社会工程', link: '/docs/sec/soc/'},
 	]},
 	
 	
