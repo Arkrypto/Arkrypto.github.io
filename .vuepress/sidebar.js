@@ -14,8 +14,5 @@ module.exports = {
 	'/docs/devops/algo/': require('../docs/devops/algo/sidebar'),
 	'/docs/devops/be/': require('../docs/devops/be/sidebar'),
 	'/docs/devops/fe/': require('../docs/devops/fe/sidebar'),
-	'/docs/devops/ops/': require('../docs/devops/ops/sidebar'),
-	
-	'/blogs/lib/': require('../blogs/lib/sidebar'),
-	
+	'/docs/devops/ops/': require('../docs/devops/ops/sidebar'),	
 }	

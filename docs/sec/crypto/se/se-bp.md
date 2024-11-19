@@ -1,6 +1,10 @@
 ---
 title: 基于双线性配对的 SE 仿真
 date: 2024-10-29
+tags:
+  - SearchableEncryption
+categories:
+  - Crypto
 ---
 
 [Searchable-Encryption-Simulation/BP/simulation/src/main/java/cia/northboat/sim at main · northboat/Searchable-Encryption-Simulation](https://github.com/northboat/Searchable-Encryption-Simulation/tree/main/BP/simulation/src/main/java/cia/northboat/sim)

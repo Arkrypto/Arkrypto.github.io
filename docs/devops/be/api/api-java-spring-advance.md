@@ -155,6 +155,99 @@ public class JDBCController {
 }
 ~~~
 
+### Jpa
+
+依赖
+
+```xml
+<!-- Spring Boot Starter Data JPA for working with JPA -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <scope>runtime</scope>
+</dependency>
+```
+
+直接继承 JpaRepository 类，自动实现 CRUD 功能，需要将 Pojo 类，如这里是 User 传入，并且声明为 Entity
+
+```java
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findById(String id);
+}
+```
+
+查看源码，发现自带了常见的 CRDU 方法
+
+- flush
+- save
+- delete
+- get
+- find
+
+```java
+public interface JpaRepository<T, ID> extends ListCrudRepository<T, ID>, ListPagingAndSortingRepository<T, ID>, QueryByExampleExecutor<T> {
+    void flush();
+
+    <S extends T> S saveAndFlush(S entity);
+
+    <S extends T> List<S> saveAllAndFlush(Iterable<S> entities);
+
+    /** @deprecated */
+    @Deprecated
+    default void deleteInBatch(Iterable<T> entities) {
+        this.deleteAllInBatch(entities);
+    }
+
+    void deleteAllInBatch(Iterable<T> entities);
+
+    void deleteAllByIdInBatch(Iterable<ID> ids);
+
+    void deleteAllInBatch();
+
+    /** @deprecated */
+    @Deprecated
+    T getOne(ID id);
+
+    /** @deprecated */
+    @Deprecated
+    T getById(ID id);
+
+    T getReferenceById(ID id);
+
+    <S extends T> List<S> findAll(Example<S> example);
+
+    <S extends T> List<S> findAll(Example<S> example, Sort sort);
+}
+```
+
+在 Service 直接用就行
+
+```java
+@Service
+public class UserService implements UserDetailsService {
+    private final UserRepository userRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
+
+
+    public User findById(String id){
+        User user = userRepository.findById(id);
+        if(user == null){
+            throw new RuntimeException("User not found");
+        }
+        return user;
+    }
+}
+```
+
 ### MyBatis
 
 > MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射，并且免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作，转而通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录
@@ -673,11 +766,194 @@ public class RedisUtil {
 
 ## Spring Security
 
-Spring Security 是一个用于保护应用程序的安全性 Java 框架，提供了一套全面的安全解决方案，包括身份验证、授权、防止攻击等功能
+什么是 Spring Security
 
-Spring Security 基于过滤器链的概念，可以轻松地集成到任何基于 Spring 的应用程序中，并且支持多种身份验证选项和授权策略，开发人员可以根据需要选择适合的方式
+- Spring Security 是一个用于保护应用程序的安全性 Java 框架，提供了一套全面的安全解决方案，包括身份验证、授权、防止攻击等功能
+- Spring Security 基于过滤器链的概念，可以轻松地集成到任何基于 Spring 的应用程序中，并且支持多种身份验证选项和授权策略，开发人员可以根据需要选择适合的方式
+- 此外，Spring Security 还提供了一些附加功能，如集成第三方身份验证提供商和单点登录，以及会话管理和密码编码等
 
-此外，Spring Security 还提供了一些附加功能，如集成第三方身份验证提供商和单点登录，以及会话管理和密码编码等
+Maven 依赖
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+
+在 Spring Boot 3.x 之后，Spring Security 6 废弃了之前继承 WebSecurityConfigurerAdapter 写配置的写法，转而使用基于组件的安全配置，此外，还删除了 `authorizeRequests()` 并代之以 `authorizeHttpRequests()` 来定义授权规则（Authorization Rule）
+
+通过数据库表 User 进行登陆权限认证
+
+### UserDetails & UserService
+
+pojo，需要声明为 Entity
+
+```java
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+public class User {
+    @Id
+    private String id;
+    private String pwd;
+}
+```
+
+dao，继承 JpaRepository
+
+```java
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findById(String id);
+}
+
+```
+
+security，自定义 UserDetails
+
+```java
+public class CustomUserDetails implements UserDetails {
+    private String id;
+    private String pwd;
+    private Collection<? extends GrantedAuthority> authorities;
+
+    // 构造函数
+    public CustomUserDetails(String id, String pwd, Collection<? extends GrantedAuthority> authorities) {
+        this.id = id;
+        this.pwd = pwd;
+        this.authorities = authorities;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    @Override
+    public String getPassword() {
+        return pwd;
+    }
+
+    @Override
+    public String getUsername() {
+        return id;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true; // 账号是否过期
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true; // 账号是否被锁定
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true; // 密码是否过期
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true; // 账号是否可用
+    }
+}
+```
+
+Service，继承 UserDetailsService，实现 loadUserByUsername 方法，返回一个 UserDetails 类
+
+```java
+@Service
+public class UserService implements UserDetailsService {
+    private final UserRepository userRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
+        // 从数据库获取用户
+        User user = userRepository.findById(id); // 你可以根据id来查找用户
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+
+        // 这里你可以根据需要设置权限，暂时设置一个默认角色
+        return new CustomUserDetails(user.getId(), user.getPwd(), Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
+    }
+}
+```
+
+### SecurityConfig
+
+Config，在配置类中 @Bean 通过 authenticationManager 方法注入
+
+```java
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    private UserService userService;
+
+    @Autowired
+    public SecurityConfig(UserService userService){
+        this.userService = userService;
+    }
+
+    // 规定单向编码方式
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    // 用户权限拦截
+    @Bean
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+        AuthenticationManagerBuilder authenticationManagerBuilder =
+                http.getSharedObject(AuthenticationManagerBuilder.class);
+        authenticationManagerBuilder.userDetailsService(userService)
+                .passwordEncoder(passwordEncoder());  // 配置 UserDetailsService 和密码编码器
+        return authenticationManagerBuilder.build();
+    }
+}
+```
+
+常规的页面拦截，同样 @Bean 通过 securityFilterChain 方法链式注入
+
+```java
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .authorizeHttpRequests()
+            .requestMatchers("/login").permitAll()
+            .anyRequest().authenticated()
+            .and()
+            
+            .formLogin()
+            .loginPage("/login")
+            .loginProcessingUrl("/customLogin")
+            .defaultSuccessUrl("/home")  // 登录成功后跳转到主页
+            .failureUrl("/login?error=true")  // 登录失败后跳转回登录页面
+            .permitAll()
+            .and()
+            
+            .logout()
+            .logoutUrl("/logout")
+            .logoutSuccessUrl("/login?logout=true")
+            .invalidateHttpSession(true)  // 注销时使HTTP会话失效
+            .clearAuthentication(true)  // 清除认证信息
+            .deleteCookies("JSESSIONID");  // 删除会话中的cookie（比如JSESSIONID）
+
+        return http.build();
+    }
+```
 
 ## Spring Session
 
