@@ -1,7 +1,7 @@
 module.exports = [
 	
 	{
-		title: '网安基础',
+		title: '保安基础',
 		collapsable: true,
 		children: [
 			'./cs/cyber-security-code-audit',
@@ -20,7 +20,7 @@ module.exports = [
 	},
 
 	{
-		title: '摘抄',
+		title: '随便抄抄咯',
 		collapsable: true,
 		children: [
 		    './rw/sentence',
@@ -30,7 +30,7 @@ module.exports = [
 	},
 	
 	{
-		title: '学点洋文',
+		title: '师夷长技',
 		collapsable: true,
 		children: [
 		    './en/prefix-root',

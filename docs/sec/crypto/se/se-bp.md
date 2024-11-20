@@ -7,7 +7,7 @@ categories:
   - Crypto
 ---
 
-[Searchable-Encryption-Simulation/BP/simulation/src/main/java/cia/northboat/sim at main · northboat/Searchable-Encryption-Simulation](https://github.com/northboat/Searchable-Encryption-Simulation/tree/main/BP/simulation/src/main/java/cia/northboat/sim)
+[Searchable-Encryption-Simulation/BP/simulation/src/main/java/cia/northboat/sim at main · northboat/Searchable-Encryption-Simulation](https://github.com/northboat/Searchable-Encryption-Simulation/tree/main/BP/sim/src/main/java/cia/northboat/sim)
 
 ## 工具类
 

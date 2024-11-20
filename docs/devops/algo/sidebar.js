@@ -11,15 +11,28 @@ module.exports = [
 	},
 	
 	{
-		title: "LeetCode 笔记",
+		title: "算法笔记",
 		collapsable: true,
 		children: [
-			'./code/leetcode-modeling-hash-binary',
-			'./code/leetcode-recursion-divide',
-			'./code/leetcode-sort',
-			'./code/leetcode-bfs-branching-boundary',
-			'./code/leetcode-dfs-backtracking',
-			'./code/leetcode-dp-greedy',
+			{
+				title: "NEUQ",
+				collapsable: true,
+				children: [
+					'./code/leetcode-modeling-hash-binary',
+					'./code/leetcode-recursion-divide',
+					'./code/leetcode-sort',
+					'./code/leetcode-bfs-branching-boundary',
+					'./code/leetcode-dfs-backtracking',
+					'./code/leetcode-dp-greedy',
+				]
+			},
+			{
+				title: "XDU",
+				collapsable: true,
+				children: [
+					'./code/leetcode-job',
+				]
+			}
 		]
 	},
 	
