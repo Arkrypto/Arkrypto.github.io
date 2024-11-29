@@ -247,6 +247,17 @@ GRS（一种针对 RFID 系统的中间人攻击）攻击的步骤：
 
 常见的抵抗中间人攻击的方式是基于 HB 协议实现双向认证，这样可以很大程度避免中间人攻击，同时采用距离边界协议
 
+#### 双向认证
+
+> An Ultra-Lightweight Mutual Authentication Protocol Based on LPN Problem with Distance Fraud Resistant
+
+一篇三区的论文，21 年提出的一个基于 HB 协议族、LPN 问题的一个双向认证方案，结合 DB 协议（距离边界协议）工作，以抗 GRS 攻击
+
+- 对称密钥体系，共享密钥矩阵 X
+- 其双向认证过程很像 TCP 三次握手，响应的同时挑战
+
+这是一个发起挑战 → 明文加密、发起挑战 → 解密密文（读写器一次认证）、明文加密 → 解密密文（标签二次认证）的认证过程
+
 ## 轻量级协议
 
 > 多数轻量级安全认证协议是为了满足 ISO/IEC18000(EPC C1Gen2) 标准而提出的，EPC C1G2 (Class-1 Gen-2) 类型安全认证协议多使用符合相关标准的简单加密手段，主要包括循环冗余校验（Cyclic Redundancy Check, CRC）和随机数生成器（Random Number Generator，RNG）等
@@ -696,43 +707,23 @@ Elliptic Curve Cryptography 是一种基于椭圆曲线数学结构的密码学�
 
 <img src="./assets/image-20241113132314815.png">
 
-## 双向认证
-
-> 找一些前沿论文看看，各重量级下的双向认证
-
-### 超轻量级认证
-
-> An Ultra-Lightweight Mutual Authentication Protocol Based on LPN Problem with Distance Fraud Resistant
-
-一篇三区的论文，21 年提出的一个基于 HB 协议族、LPN 问题的一个双向认证方案，结合 DB 协议（距离边界协议）工作，以抗 GRS 攻击
-
-- 对称密钥体系，共享密钥矩阵 X
-- 其双向认证过程很像 TCP 三次握手，响应的同时挑战
-
-这是一个发起挑战 → 明文加密、发起挑战 → 解密密文（读写器一次认证）、明文加密 → 解密密文（标签二次认证）的认证过程
-
-### 基于哈希
-
-### 基于异构 ECC
-
-
-
 ## 发展与展望
 
-近年已有研究人员将基于 ECC 算法的安全认证协议门电路控制在轻量级的水平。目前，在现有技术条件下，RFID 安全认证协议主要有 2 个方向，一个是在前人研究基础上针对部分安全性漏洞进行修补并进行安全性的提升，另一个是保障安全性的基础上对现有协议的效率与通信开销进行优化
+安全性分析
 
-同时，有众多研究人员将重心放在 RFID 安全认证协议的防碰撞性研究 [1-3] 上，通常将防碰撞协议与安全协议作为单独的两部分考虑，也有人提出防碰撞的安全认证协议 [4]，利用防碰撞协议的模型可以在判断碰撞的同时嵌入认证协议，能同时实现门电路的优化与认证手段的革新
+- 隐私性：数据加密传输
+- 匿名性/抗追踪：是否引入随机数产生响应
+- 重放攻击
+- 中间人攻击
+- 拒绝服务攻击
+- 双向认证：与认证轮数有关
+- 前向保密：密钥更新策略是否单向
+- 去同步攻击：密钥更新是否有保险措施
 
-引入区块链技术也可能给 RFID 带来的变革和影响 [5-9]，将区块链的去中心化思想引入到基于散列的中量级安全认证协议中，将验证计算转移至阅读器和区块链节点中，可以有效降低标签的计算成本
+对在格上的轻量加密，如 LPN 问题、LWE 问题、同态加密等，比较感兴趣
 
-- [1] SuJ,ShengZ,LeungV C M,etal.Energy efficient tag identification algorithms for RFID: Survey,motivation and new design[J].IEEE Wireless Communications,2019,26(3):118-124.
-- [2] SuJ,ShengZ,LiuA X,etal.A group-based binary splitting algorithm for UHF RFID anti-collision systems[J].IEEE Transactionson Communications,2019,68(2):998-1012.
-- [3] SuJ,ShengZ,XieL,etal.Fast splitting-based tag identification algorithm for anti-collision in UHF RFID system[J].IEEE Transactionson Communications,2018,67(3):2527-2538.
-- [4] MbackeA A,Mitton N,Rivano H.A survey of RFID readers anticollision protocols[J].IEEE Journalof Radio Frequency Identification,2018,2(1):38-48.
-- [5] RahmanF,Ahamed SI.Efficient detection of counterfeit products in large-scale RFID systems using batch authentication protocols[J].Personaland Ubiquitous Computing,2014,18(1):177-188.
-- [6] YueK Q,SunL L,QinY,etal.Designofanti-collisioninte-grated security mechanism based on chaotic sequence in UHF RFID system [J].China Communication,2014,11:137-147.
-- [7] LiPeng,Zheng Tian-tian,Xu He,etal.RFID securityau-thentication protocolbased on block chain technology[J].NetinfoSecurity,2021,21(5):1-11.(inChinese)
-- [8] Sidorov M,Ong M,Sridharan R,et al.Ultralight-weight mutual authentication RFID protocol for block chain enabled supply chains[J].IEEE Access,2019,19(7):7273-7285.
-- [9] JangiralaS,Das A,Vasilakos A.Designing secure light-weightblockchain-enabled RFID-based authentication protocol for supply chains in 5G mobile edge computing environment[J].IEEE Transactions on Industrial Informatics,2019,16(11):7081-7093.
+- 与区块链技术的结合，不管是去中心化的思想还是加密方式，都可以借鉴
 
-另外，与 PUF 结合的认证也得到一定的关注
+在轻量加密中，与 PUF 的结合有一定的讨论价值
+
+然后是常见的哈希、ECC 加密、双线性配对等

@@ -1,5 +1,5 @@
 ---
-title: "UKEY - 常见安全的 2FA 实现"
+title: "UKEY - 常见的 2FA 登录"
 date: 2024-6-22
 tags:
   - Authentication
