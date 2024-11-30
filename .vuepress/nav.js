@@ -22,11 +22,9 @@ module.exports = [
 	{ text: '网络与信息安全', icon: 'reco-eye', items: [
 		{text: '密码工程', link: '/docs/sec/crypto/'},
 		{text: '数学', link: '/docs/sec/math/'},
-		{text: '机器学习', link: '/docs/sec/fml/'},
+		{text: '机器学习', link: '/docs/sec/ai/'},
 		{text: '社会工程', link: '/docs/sec/soc/'},
 	]},
-	
-	
 	
 	{ text: 'GitHub', icon: 'reco-github', link: 'https://github.com/northboat' },
 
