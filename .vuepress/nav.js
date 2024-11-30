@@ -13,9 +13,9 @@ module.exports = [
 	]},
 	
 	{ text: '开发与运维', icon: 'reco-bokeyuan', items: [ 
-		{text: '后端开发', link: '/docs/devops/be/'},
+		{text: '后端开发', link: '/docs/devops/back/'},
 		{text: '算法', link: '/docs/devops/algo/'},
-		{text: '前端开发', link: '/docs/devops/fe/'},
+		{text: '前端开发', link: '/docs/devops/front/'},
 		{text: '运行维护', link: '/docs/devops/ops/'},
 	]},
 	
