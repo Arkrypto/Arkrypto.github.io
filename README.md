@@ -1,24 +1,27 @@
 ---
 home: true
-heroText:
-tagline: 遍地是重庆，何处寻延安
+heroText: 
+tagline: 
 
-#heroImage: /img/titan.jpg
-#heroImageStyle: {
-  #maxWidth: '100%',
-  #height: '100%',
-  #width: '100%',
-  #display: block,
-  #margin: '2rem auto 2rem',
-  #background: '#fff',
-  #borderRadius: '1rem',
-#}
-
-bgImage: /img/titan.jpg
-bgImageStyle: {
-  width: 100%,
-  height: 720px
+heroImage: /img/Ekko&Powder.png
+heroImageStyle: {
+  maxWidth: '70%',
+  height: '100%',
+  width: '100%',
+  display: block,
+  margin: '0% auto 2rem',
+  background: '#fff',
+  borderRadius: '1rem',
 }
+
+#bgImage: /img/Ekko&Powder.png
+#bgImageStyle: {
+  #width: 100%,
+  #height: 100%,
+  #overflow: hidden,
+  #margin: 0,
+  #padding: 0
+#}
 
 isShowTitleInHome: false
 actionText:
