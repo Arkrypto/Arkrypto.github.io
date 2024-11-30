@@ -1,5 +1,5 @@
 ---
-title: 基于 BM25 的可搜索加密索引
+title: 基于 BM25 的可搜索加密系统
 date: 2024-7-23
 tags:
   - SearchableEncryption
