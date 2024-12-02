@@ -3,7 +3,7 @@ home: true
 heroText: 
 tagline: 
 
-heroImage: http://43.156.105.197:8080/image
+heroImage: https://43.156.105.197:8443/image
 heroImageStyle: {
   maxWidth: '70%',
   height: '100%',
