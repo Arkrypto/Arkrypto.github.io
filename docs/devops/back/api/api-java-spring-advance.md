@@ -173,7 +173,18 @@ public class JDBCController {
 </dependency>
 ```
 
-直接继承 JpaRepository 类，自动实现 CRUD 功能，需要将 Pojo 类，如这里是 User 传入，并且声明为 Entity
+直接继承 JpaRepository 类，自动实现 CRUD 功能，需要将 Pojo 类注解为 Entity，主键注解为 Id 传入（如这里的 User）
+
+```java
+@Entity
+public class User{
+    @Id
+    String id;
+    String pwd;
+}
+```
+
+
 
 ```java
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -262,6 +273,8 @@ public class UserService implements UserDetailsService {
     <version>2.1.1</version>
 </dependency>
 ~~~
+
+#### XML
 
 @Mapper
 
@@ -401,6 +414,33 @@ maven 导出资源问题
 </mappers>
 ~~~
 
+#### 注解
+
+可以直接使用注解对相应方法进行映射，如
+
+```java
+@Mapper
+@Repository
+public interface UserMapper {
+
+    /*获取用户列表*/
+    @Select("select `name` from `user`")
+    List<String> getAllUsersName();
+
+    /*添加用户*/
+    @Insert("insert into `user`(`account`, `name`, `password`, `root`, `level`) values(#{account}, #{name}, #{password}, #{root}, #{level})")
+    void addUser(User user);
+
+    /*查询用户*/
+    //根据昵称查询用户
+    @Select("select * from `user` where `name`=#{name}")
+    User getUserByName(String name);
+    //根据账号查询用户
+    @Select("select * from `user` where `account`=#{account}")
+    User getUserByAccount(String account);
+}
+```
+
 ### Redis
 
 引入依赖
@@ -413,7 +453,7 @@ maven 导出资源问题
 </dependency>
 ```
 
-redis 配置
+Redis 服务器配置
 
 ```yaml
 spring:
@@ -421,15 +461,12 @@ spring:
     redis:
       host: localhost
       port: 6379
-      password: "011026"
+      password: "123456"
 ```
 
-编写自己的 redis template：RedisConfig.java
+编写自己的 Redis Template，即 Redis 配置（RedisConfig.java）
 
 ```java
-package com.northboat.remotecontrollerserver.config;
-
-
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -446,8 +483,8 @@ import java.net.UnknownHostException;
 @Configuration
 public class RedisConfig {
 
-    //一个固定的模板，在企业中可以直接使用，几乎包含了所有场景
-    //编写我们自己的RedisTemplate
+    // 一个固定的模板，在工作中可以直接使用，几乎包含了所有场景
+    // 编写我们自己的RedisTemplate
     @Bean
     @SuppressWarnings("all")
     public RedisTemplate<String, Object> myRedisTemplate(RedisConnectionFactory redisConnectionFactory) throws UnknownHostException {
@@ -479,290 +516,7 @@ public class RedisConfig {
 }
 ```
 
-RedisUtil.java
-
-```java
-package com.northboat.shadow.utils;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
-
-// 待完善
-@Component
-@SuppressWarnings("all")
-public class RedisUtil {
-
-    private RedisTemplate myRedisTemplate;
-    @Autowired
-    public void setMyRedisTemplate(RedisTemplate myRedisTemplate){
-        this.myRedisTemplate = myRedisTemplate;
-    }
-
-
-    //设置有效时间，单位秒
-    public boolean expire(String key, long time){
-        try{
-            if(time > 0){
-                myRedisTemplate.expire(key, time, TimeUnit.SECONDS);
-            }
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    //获取剩余有效时间
-    public long getExpire(String key){
-        return myRedisTemplate.getExpire(key);
-    }
-
-    //判断键是否存在
-    public boolean hasKey(String key){
-        try{
-            return myRedisTemplate.hasKey(key);
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    //批量删除键
-    public void del(String... key){
-        if(key != null && key.length > 0){
-            if(key.length == 1){
-                myRedisTemplate.delete(key[0]);
-            } else {
-                myRedisTemplate.delete(CollectionUtils.arrayToList(key));
-            }
-        }
-    }
-
-    //获取普通值
-    public Object get(String key){
-        return key == null ? null : myRedisTemplate.opsForValue().get(key);
-    }
-
-    //放入普通值
-    public boolean set(String key, Object val){
-        try{
-            myRedisTemplate.opsForValue().set(key, val);
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    //放入普通缓存并设置时间
-    public boolean set(String key, Object val, long time){
-        try{
-            if(time > 0){
-                myRedisTemplate.opsForValue().set(key, val, time, TimeUnit.SECONDS);
-            } else { // 若时间小于零直接调用普通设置的方法放入
-                this.set(key, val);
-            }
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-
-    //值增
-    public long incr(String key, long delta){
-        if(delta < 0){
-            throw new RuntimeException("递增因子必须大于零");
-        }
-        return myRedisTemplate.opsForValue().increment(key, delta);
-    }
-
-
-
-
-    //============Map=============
-
-    // 获取key表中itme对应的值
-    public Object hget(String key, String item){
-        return myRedisTemplate.opsForHash().get(key, item);
-    }
-
-    // 获取整个Hash表
-    public Map hmget(String key){
-        return myRedisTemplate.opsForHash().entries(key);
-    }
-
-    // 简单设置一个Hash
-    public boolean hmset(String key, Map<String, Object> map){
-        try{
-            myRedisTemplate.opsForHash().putAll(key, map);
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    // 设置一个Hash，并设置生效时间，调用上面的设置key生效时间的方法
-    public boolean hmset(String key, Map<String, Object> map, long time){
-        try{
-            myRedisTemplate.opsForHash().putAll(key, map);
-            if(time > 0){
-                this.expire(key, time);
-            }
-            return true;
-        }catch (Exception e){
-            return false;
-        }
-    }
-
-
-    // 像一张Hash表中添加键值，若表不存在将创建
-    public boolean hset(String key, String item, Object val){
-        try{
-            myRedisTemplate.opsForHash().put(key, item, val);
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    //=================List==============
-    public boolean lpush(String key, Object val){
-        try{
-            myRedisTemplate.opsForList().leftPush(key, val);
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public boolean rpush(String key, Object val){
-        try{
-            myRedisTemplate.opsForList().rightPush(key, val);
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-
-    public List lget(String key){
-        try{
-            Long length = myRedisTemplate.opsForList().size(key);
-            List list = myRedisTemplate.opsForList().range(key, 0, length);
-            return list;
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public boolean lldel(String key, String val){
-        try{
-            myRedisTemplate.opsForList().remove(key, 1, val);
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    // 弹出list第一个元素
-    public Object lpop(String key){
-        try{
-            return key == null ? null : myRedisTemplate.opsForList().leftPop(key);
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    // 弹出list最后一个元素
-    public Object rpop(String key){
-        try{
-            return key == null ? null : myRedisTemplate.opsForList().rightPop(key);
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    // 删除list所有元素
-    public boolean ldel(String key){
-        try{
-            myRedisTemplate.opsForList().trim(key, 1, 0);
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    // 从list最右边开始检索val
-    public boolean lrget(String key, String val){
-        try{
-            myRedisTemplate.opsForList().remove(key, -1, val);
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    //=================Set=================
-    // 添加
-    public boolean sadd(String key, String val){
-        try{
-            myRedisTemplate.opsForSet().add(key, val);
-            return true;
-        } catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-    // 删除
-    public boolean srem(String key, String val){
-        try{
-            myRedisTemplate.opsForSet().remove(key, val);
-            return true;
-        } catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-    // 判存
-    public boolean sexist(String key, String val){
-        try{
-            return myRedisTemplate.opsForSet().isMember(key, val);
-        } catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-    // 返回集合
-    public Set sget(String key){
-        try{
-            return myRedisTemplate.opsForSet().members(key);
-        } catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
-    }
-}
-```
+Redis 工具类：[Bears-OJ | Redis Util](https://github.com/northboat/Bears-OJ/blob/master/backend/src/main/java/com/oj/neuqoj/utils/RedisUtil.java)
 
 ## Spring Security
 
@@ -922,7 +676,9 @@ public class SecurityConfig {
 }
 ```
 
-常规的页面拦截，同样 @Bean 通过 securityFilterChain 方法链式注入
+页面拦截和资源放行，同样 @Bean 通过 securityFilterChain 方法链式注入
+
+- 注意，通常要把 css、js 等资源放行，可能会出现难以复现的重定向问题
 
 ```java
 @Configuration
@@ -931,28 +687,27 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests()
-            .requestMatchers("/login").permitAll()
-            .anyRequest().authenticated()
-            .and()
-            
-            .formLogin()
-            .loginPage("/login")
-            .loginProcessingUrl("/customLogin")
-            .defaultSuccessUrl("/home")  // 登录成功后跳转到主页
-            .failureUrl("/login?error=true")  // 登录失败后跳转回登录页面
-            .permitAll()
-            .and()
-            
-            .logout()
-            .logoutUrl("/logout")
-            .logoutSuccessUrl("/login?logout=true")
-            .invalidateHttpSession(true)  // 注销时使HTTP会话失效
-            .clearAuthentication(true)  // 清除认证信息
-            .deleteCookies("JSESSIONID");  // 删除会话中的cookie（比如JSESSIONID）
+                .authorizeHttpRequests()
+                        .requestMatchers("/login", "/image", "/assets/**", "/images/**").permitAll()
+                    .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                    .loginPage("/login")
+                    .loginProcessingUrl("/customLogin")
+                    .defaultSuccessUrl("/home")  // 登录成功后跳转到主页
+                    .failureUrl("/login?error=true")  // 登录失败后跳转回登录页面
+                    .permitAll()
+                .and()
+                .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login?logout=true")
+                    .invalidateHttpSession(true)  // 注销时使HTTP会话失效
+                    .clearAuthentication(true)  // 清除认证信息
+                    .deleteCookies("JSESSIONID");  // 删除会话中的cookie（比如JSESSIONID）
 
         return http.build();
     }
+}
 ```
 
 ## Spring Session
