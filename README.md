@@ -3,7 +3,7 @@ home: true
 heroText: 
 tagline: 
 
-heroImage: https://43.156.105.197:8443/image
+heroImage: /img/Ekko&Powder.png
 heroImageStyle: {
   maxWidth: '70%',
   height: '100%',
