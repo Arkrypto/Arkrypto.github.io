@@ -200,11 +200,7 @@ websocket 通信
 
 > Thymeleaf，耦合前端
 
-引入
-
-```html
-<html lang="en" xmlns:th="http://www.thymeleaf.org"></html>
-```
+### 引入
 
 ~~~xml
 <!--thymeleaf依赖  -->
@@ -239,10 +235,25 @@ spring:
 <div th:replace="${commons/commons.html:topbar}"></div>
 ~~~
 
-传值
+### 交互
 
-~~~html
-<a th:href="@{/drop/}+${p.getMail().getNum()}" class="card-more" data-toggle="read" data-id="1"><i class="ion-ios-arrow-left"></i>删除<i class="ion-ios-arrow-right"></i></a>
-~~~
+前端：通过`<input>`标签`name`标识
 
-## 
+```html
+<form th:action="@{/submit}" method="post">
+    <input type="text" name="key1" placeholder="Enter value for key1" />
+    <input type="text" name="key2" placeholder="Enter value for key2" />
+    <button type="submit">Submit</button>
+</form>
+```
+
+后端：通过`@RequestParam`进行取值，前端传来的参数将根据`<name, value>`自动封装为 map
+
+```java
+@RequestMapping("/auth/protocol")
+public ResultUtil auth(@RequestParam Map<String, String> params){
+    Map<String, String> data = authService.auth(params);
+    return ResultUtil.success(data);
+}
+```
+

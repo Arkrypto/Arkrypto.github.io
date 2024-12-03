@@ -3,7 +3,7 @@ home: true
 heroText: 
 tagline: 
 
-heroImage: /img/Ekko&Powder.png
+heroImage: /img/timebomb.png
 heroImageStyle: {
   maxWidth: '70%',
   height: '100%',
