@@ -13,16 +13,16 @@ module.exports = [
 	]},
 	
 	{ text: '开发与运维', icon: 'reco-bokeyuan', items: [ 
-		{text: '后端开发', link: '/docs/devops/back/'},
-		{text: '算法', link: '/docs/devops/algo/'},
-		{text: '前端开发', link: '/docs/devops/front/'},
-		{text: '运行维护', link: '/docs/devops/ops/'},
+		{text: '后端开发', link: '/docs/dev/be/'},
+		{text: '算法', link: '/docs/dev/algo/'},
+		{text: '前端开发', link: '/docs/dev/front/'},
+		{text: '运行维护', link: '/docs/dev/op/'},
 	]},
 	
 	{ text: '网络与信息安全', icon: 'reco-eye', items: [
-		{text: '密码工程', link: '/docs/sec/crypto/'},
+		{text: '密码工程', link: '/docs/sec/cry/'},
 		{text: '数学', link: '/docs/sec/math/'},
-		{text: '机器学习', link: '/docs/sec/ai/'},
+		{text: '机器学习', link: '/docs/sec/ml/'},
 		{text: '社会工程', link: '/docs/sec/soc/'},
 	]},
 	

@@ -1,7 +1,8 @@
 ---
 home: true
 heroText: 
-tagline: 
+# 窗花不可幽禁落霞
+tagline: Sometimes taking a leap forward means leaving a few things behind
 
 heroImage: /img/timebomb.png
 heroImageStyle: {
@@ -9,12 +10,12 @@ heroImageStyle: {
   height: '100%',
   width: '100%',
   display: block,
-  margin: '0% auto 2rem',
+  margin: 'auto',
   background: '#fff',
   borderRadius: '1rem',
 }
 
-#bgImage: /img/Ekko&Powder.png
+#bgImage: /img/
 #bgImageStyle: {
   #width: 100%,
   #height: 100%,

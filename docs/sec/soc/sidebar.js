@@ -1,11 +1,10 @@
 module.exports = [
 	
 	{
-		title: '保安基础',
+		title: '赛博保安',
 		collapsable: true,
 		children: [
-			'./cs/cyber-security-code-audit',
-			'./cs/cyber-security-penetration-testing',
+			'./cs/cyber-security-basic',
 		]
 	},
 
@@ -20,7 +19,7 @@ module.exports = [
 	},
 
 	{
-		title: '随便抄抄咯',
+		title: '瞎几把抄',
 		collapsable: true,
 		children: [
 		    './rw/sentence',
