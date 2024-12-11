@@ -202,7 +202,7 @@ PHP 服务器组件：Windows 系统可以使用 WampServer，下载地址：htt
 
 下载完成后，启动 wampmanager.exe，这时将启动一系列服务
 
-<img src="E:\Repo\current\northboat.github.io\docs\sec\soc\cs\assets\image-20230625022124638.png">
+<img src="./assets/image-20230625022124638.png">
 
 通过`localhost/index.php`将可以访问到 wamp 根目录 www 目录下的动态 html 文件（php 文件通过 apache 服务器渲染结果）
 
@@ -210,7 +210,7 @@ IDE：PhpStorm，下载地址：http://www.jetbrains.com/phpstorm/download/，�
 
 或者用 VSCode，相关插件
 
-<img src="E:\Repo\current\northboat.github.io\docs\sec\soc\cs\assets\image-20230625021940301.png">
+<img src="./assets/image-20230625021940301.png">
 
 它甚至内置了 MySQL，是不是意味着我根本不需要再装了？我 Java 也用这个数据库就是了，这么舒服？
 
@@ -242,7 +242,7 @@ $mysqli->close();
 ?>
 ```
 
-<img src="E:\Repo\current\northboat.github.io\docs\sec\soc\cs\assets\image-20230625022837052.png">
+<img src="./assets/image-20230625022837052.png">
 
 #### WebShell
 

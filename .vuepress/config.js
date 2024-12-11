@@ -24,7 +24,7 @@ module.exports = {
 	theme: 'reco',
 	themeConfig: {
 		mode: 'dark',
-		modePicker: false, // 默认 true，false 不显示模式调节按钮，true 则显示
+		modePicker: true, // 默认 true，false 不显示模式调节按钮，true 则显示
 		nav: require("./nav.js"),
 		sidebar: require("./sidebar.js"),
 		// 子侧边栏
