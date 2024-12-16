@@ -5,9 +5,9 @@ module.exports = [
 		title: '数论',
 		collapsable: true,
 		children: [
-			'./num/number-modular-arithmetic',
-			'./num/number-arithmetic-equation',
-			'./num/number-logarithm-ellipse',
+			'./num/number-modular',
+			'./num/number-equation',
+			'./num/number-ellipse',
 		]
 	},
 	
@@ -50,8 +50,9 @@ module.exports = [
 		title: '轻量加密',
 		collapsable: true,
 		children: [
-			'./light/survey-on-rfid-auth',
-			'./light/p2p-encryption'
+			'./light/rfid-auth-survey',
+			'./light/p2p-light-auth',
+			'./light/post-quantum-signature',
 		]
 	},
 

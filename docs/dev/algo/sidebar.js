@@ -7,7 +7,6 @@ module.exports = [
 			'./basic/algo-outline-recursive-divide',
 			'./basic/algo-dp-greedy',
 			'./basic/algo-backtracking-branchbound-lp-networkflow',
-			'./basic/algo-post-quantum-signature',
 		]
 	},
 	
