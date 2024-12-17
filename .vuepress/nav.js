@@ -26,8 +26,9 @@ module.exports = [
 		{text: '社会工程', link: '/docs/sec/soc/'},
 	]},
 	
-	{ text: 'GitHub', icon: 'reco-github', link: 'https://github.com/northboat' },
 	
 	{ text: 'TimeLine', icon: 'reco-date', link: '/timeline/' },
+	
+	{ text: 'GitHub', icon: 'reco-github', link: 'https://github.com/northboat' },
 
 ]

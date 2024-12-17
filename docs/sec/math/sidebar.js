@@ -54,6 +54,16 @@ module.exports = [
 		]
 	},
 
+	
+	{
+		title: '数论',
+		collapsable: true,
+		children: [
+			'./num/number-modular',
+			'./num/number-equation',
+			'./num/number-ellipse',
+		]
+	},
 
 	{
 		title: '离散数学',
