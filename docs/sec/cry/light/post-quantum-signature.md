@@ -1,5 +1,5 @@
 ---
-title: 基于格的数字签名算法
+title: 基于格的数字签名
 date: 2024-12-16
 tags:
   - LightweightEncryption
@@ -100,7 +100,7 @@ SIS 问题的困难性在于
 1. 寻找短整数解：我们必须在可能的解空间中寻找一个具有小值的解，这使得问题非常难以解决。
 2. 矩阵的规模：类似于 LWE，SIS 问题通常涉及到高维度的矩阵，因此解决这个问题需要耗费大量计算资源
 
-### 基于 LWE 问题的一般签名形式
+### LWE 问题的一般签名形式
 
 > [An Improved Compression Technique for Signatures Based on Learning with Errors](https://link.springer.com/chapter/10.1007/978-3-319-04852-9_2)
 

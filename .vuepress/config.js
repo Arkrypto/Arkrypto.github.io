@@ -156,7 +156,7 @@ module.exports = {
 		[ "cursor-effects", { // vuepress-plugin-cursor-effects
 			size: 2, // 粒子大小
 			shape: 'star', // 粒子形状（可选 'star' 和 'circle'）
-			zIndex: 999999999,
+			zIndex: 99,
 		}],
 		/*[ '@vuepress-reco/vuepress-plugin-bulletin-popover', {
 			width: '240px', // 默认 260px

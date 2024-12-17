@@ -27,5 +27,7 @@ module.exports = [
 	]},
 	
 	{ text: 'GitHub', icon: 'reco-github', link: 'https://github.com/northboat' },
+	
+	{ text: 'TimeLine', icon: 'reco-date', link: '/timeline/' },
 
 ]
