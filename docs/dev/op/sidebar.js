@@ -16,6 +16,7 @@ module.exports = [
 		collapsable: true,
 		children: [
 		    './tool/tool-git',
+			'./tool/tool-zotero',
 		]
 	},
 
