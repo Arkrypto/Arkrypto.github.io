@@ -26,6 +26,7 @@ module.exports = [
 		collapsable: true,
 		children: [
 			'./lib/python-basic',
+			'./lib/python-flask',
 			'./lib/pylib-numpy',
 			'./lib/pylib-pandas',
 			'./lib/pylib-scipy',

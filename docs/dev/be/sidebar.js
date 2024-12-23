@@ -46,10 +46,9 @@ module.exports = [
 	
 	
 	{
-		title: '分布式开发',
+		title: '中阶开发',
 		collapsable: true,
 		children: [
-			'./api/api-python-flask',
 			'./api/api-java-spring-basic',
 			'./api/api-java-spring-advance',
 			'./api/api-distributed-system',
