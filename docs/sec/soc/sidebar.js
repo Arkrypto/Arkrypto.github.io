@@ -22,9 +22,9 @@ module.exports = [
 		title: '瞎几把抄',
 		collapsable: true,
 		children: [
-		    './rw/sentence',
-			'./rw/mao',
-			'./rw/constitution',
+		    './cn/sentence',
+			'./cn/mao',
+			'./cn/constitution',
 		]
 	},
 	
