@@ -21,22 +21,30 @@ module.exports = [
 		]
 	},
 	
+	
+	{
+		title: 'Python 基础',
+		collapsable: true,
+		children: [
+			'./py/python-basic',
+			'./py/python-flask',
+		]
+	},
+	
 	{
 		title: '机器学习库/框架',
 		collapsable: true,
 		children: [
-			'./lib/python-basic',
-			'./lib/python-flask',
-			'./lib/pylib-numpy',
-			'./lib/pylib-pandas',
-			'./lib/pylib-scipy',
-			'./lib/pylib-matplotlib',
+			'./lib/lib-numpy',
+			'./lib/lib-pandas',
+			'./lib/lib-scipy',
+			'./lib/lib-matplotlib',
 			{
 				title: 'SKLearn',
 				collapsable: true,
 				children: [
-					'./lib/sklearn-classifier',
-					'./lib/sklearn-optimize',
+					'./lib/lib-sklearn-classifier',
+					'./lib/lib-sklearn-optimize',
 				]
 			},			
 		]

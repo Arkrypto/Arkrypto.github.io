@@ -26,4 +26,14 @@ module.exports = [
 		]
 	},
 	
+	
+	{
+		title: '软件工程原理',
+		collapsable: true,
+		children: [
+			'./se/software-engineering-basic',
+			'./se/software-engineering-experiment',
+		]
+	},
+	
 ]

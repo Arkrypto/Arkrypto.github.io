@@ -33,16 +33,6 @@ module.exports = [
 			'./juc/juc-single',
 		]
 	},
-
-	
-	{
-		title: '软工基础',
-		collapsable: true,
-		children: [
-			'./se/software-engineering-basic',
-			'./se/software-engineering-experiment',
-		]
-	},
 	
 	
 	{
