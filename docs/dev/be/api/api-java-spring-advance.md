@@ -852,13 +852,3 @@ server:
 ```
 
 打包上传部署，通过`ip:8443`进行访问，成功，经测试 GitHub Page 同样允许自编译的 SSL 证书
-
-## Spring Session
-
-利用 Redis 对分布式场景下的用户 Session 进行统一管理
-
-还记得 Redis 的妙用吗
-
-- 键值库
-- 分布式锁
-- 分布式 Session

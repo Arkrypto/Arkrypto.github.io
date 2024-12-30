@@ -15,10 +15,10 @@ function getDiff(dist) {
 	var minutes = parseInt((diff % (1000 * 60 * 60)) / (1000 * 60));
 	var seconds = ((diff % (1000 * 60)) / 1000).toFixed(0);
 
-	if(days < 10) { days = "0" + days; }
-	if(hours < 10) { hours = "0" + hours; }
-	if(minutes < 10) { minutes = "0" + minutes; }
-	if(seconds < 10) { seconds = "0" + seconds; }
+	if(days < 10 && days >= 0) { days = "0" + days; }
+	if(hours < 10 && hours >= 0) { hours = "0" + hours; }
+	if(minutes < 10 && minutes >= 0) { minutes = "0" + minutes; }
+	if(seconds < 10 && seconds >= 0) { seconds = "0" + seconds; }
 
 	return days + " 天 " + hours + " 小时 " + minutes + " 分钟 " + seconds + " 秒";
 }
