@@ -194,7 +194,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     extendFrontmatter: {
       author: {
         name: 'northboat',
-        link: 'https://github.com/northboat'
+        link: 'https://github.com/northboat',
       }
     },
 
@@ -342,7 +342,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 
   markdown: {
     lineNumbers: true,
-    extractHeaders: ['h2', 'h3', 'h4', 'h5', 'h6'], // 提取标题到侧边栏的级别，默认['h2', 'h3']
+    extractHeaders: ['h2', 'h3'], // 提取标题到侧边栏的级别，默认['h2', 'h3']
 	externalLinks: { target: '_blank', rel: 'nofollow noopener noreferrer' },
 	plugins: [
       'markdown-it-mathjax3'
