@@ -8,8 +8,8 @@ echo	4.pull
 
 set /p n=enter the operation number: 
 
-if "%n%"=="1"	npm run dev
-if "%n%"=="2"	npm run build
+if "%n%"=="1"	npm run dev:win
+if "%n%"=="2"	npm run build:win
 if "%n%"=="3"	call :1
 if "%n%"=="4"	git pull
 
