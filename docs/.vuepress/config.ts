@@ -50,12 +50,12 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 	},
 
   
-	bodyBgImg: 
+	bodyBgImg: // 你的图片路径(必须位于 public 下)，可以是 URL
 	[	
-		"/img/timebomb.png",
-		"/img/titan.jpg",
 		"/img/bg.png",
-	],// 你的图片路径(必须位于 public 下)，可以是 URL
+		// "/img/timebomb.png",
+		// "/img/titan.jpg",
+	],
 	bodyBgImgOpacity: 1, // body 背景图透明度，选值 0 ~ 1.0, 默认0.5
 	indexImg: {
 		navColor: 2,    // 导航栏左侧名字、中间搜索框、右侧字体的颜色，1 是黑色，2 是白色。默认是 1
