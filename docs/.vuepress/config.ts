@@ -5,11 +5,10 @@ import { resolve } from 'path'
 import { defineConfig4CustomTheme, UserPlugins } from 'vuepress/config'
 import { VdoingThemeConfig } from 'vuepress-theme-vdoing/types'
 import dayjs from 'dayjs'
-import baiduCode from './config/baiduCode' // 百度统计hm码
 import htmlModules from './config/htmlModules' // 自定义插入的html块
 
-const DOMAIN_NAME = 'xugaoyi.com' // 域名 (不带https)
-const WEB_SITE = `https://${DOMAIN_NAME}` // 网址
+const DOMAIN_NAME = 'northboat.github.io' // 域名 (不带https)
+const WEB_SITE = `https://northboat.github.io` // 网址
 
 export default defineConfig4CustomTheme<VdoingThemeConfig>({
   // theme: 'vdoing', // 使用npm主题包
@@ -103,7 +102,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     ],
     sidebarDepth: 2, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
     logo: '/img/logo.png', // 导航栏logo
-    repo: 'northboat/northboat.github.io', // 导航栏右侧生成Github链接
+    repo: 'northboat', // 导航栏右侧生成Github链接
     searchMaxSuggestions: 10, // 搜索结果显示最大数
     lastUpdated: '上次更新', // 开启更新时间，并配置前缀文字   string | boolean (取值为git提交时间)
     docsDir: 'docs', // 编辑的文件夹
@@ -199,7 +198,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     },
 
     // 自定义hmtl(广告)模块
-    //htmlModules
+    // htmlModules
   },
 
   // 注入到页面<head>中的标签，格式[tagName, { attrName: attrValue }, innerHTML?]
@@ -207,23 +206,8 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     ['link', { rel: 'icon', href: '/img/favicon.ico' }], //favicons，资源放在public文件夹
 	['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_3129839_xft6cqs5gc.css' }], // 阿里在线图标
     ['noscript', {}, '<meta http-equiv="refresh" content="0; url=https://www.youngkbt.cn/noscript/"><style>.theme-vdoing-content { display:none }'],
-	[
-      'meta',
-      {
-        name: 'keywords',
-        content: 'Blog, northboat, DevOps, Computer Science, Crypt, Cyber Security',
-      },
-    ],
-    ['meta', { name: 'baidu-site-verification', content: '7F55weZDDc' }], // 百度统计的站长验证（你可以去掉）
+	['meta', { name: 'keywords', content: 'Blog, northboat, DevOps, Computer Science, Crypt, Cyber Security' }],
     ['meta', { name: 'theme-color', content: '#11a8cd' }], // 移动浏览器主题颜色
-    // [
-    //   'script',
-    //   {
-    //     'data-ad-client': 'ca-pub-7828333725993554',
-    //     async: 'async',
-    //     src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
-    //   },
-    // ], // 网站关联Google AdSense 与 html格式广告支持（你可以去掉）
   ],
 
 
@@ -235,19 +219,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         hostname: WEB_SITE,
       },
     ],
-
-    'vuepress-plugin-baidu-autopush', // 百度自动推送
-
-    [
-      'vuepress-plugin-baidu-tongji', // 百度统计
-      {
-        hm: baiduCode,
-      },
-    ],
-
-    // 全文搜索。 ⚠️注意：此插件会在打开网站时多加载部分js文件用于搜索，导致初次访问网站变慢。如在意初次访问速度的话可以不使用此插件！（推荐：vuepress-plugin-thirdparty-search）
-    // 'fulltext-search',
-
+	
     // 可以添加第三方搜索链接的搜索框（继承原官方搜索框的配置参数）
     [
       'thirdparty-search',
@@ -287,20 +259,6 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         showInMobile: false, // whether to display on the mobile side, default: false.
       },
     ],
-
-    [
-      'demo-block', // demo演示模块 https://github.com/xiguaxigua/vuepress-plugin-demo-block
-      {
-        settings: {
-          // jsLib: ['http://xxx'], // 在线示例(jsfiddle, codepen)中的js依赖
-          // cssLib: ['http://xxx'], // 在线示例中的css依赖
-          // vue: 'https://jsd.cdn.zzko.cn/npm/vue/dist/vue.min.js', // 在线示例中的vue依赖
-          jsfiddle: false, // 是否显示 jsfiddle 链接
-          codepen: true, // 是否显示 codepen 链接
-          horizontal: false, // 是否展示为横向样式
-        },
-      },
-    ],
     [
       'vuepress-plugin-zooming', // 放大图片
       {
@@ -310,26 +268,6 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         },
       },
     ],
-    /*[
-      'vuepress-plugin-comment', // 评论
-      {
-        choosen: 'gitalk',
-        options: {
-          clientID: 'a6e1355287947096b88b',
-          clientSecret: 'f0e77d070fabfcd5af95bebb82b2d574d7248d71',
-          repo: 'blog-gitalk-comment', // GitHub 仓库
-          owner: 'xugaoyi', // GitHub仓库所有者
-          admin: ['xugaoyi'], // 对仓库有写权限的人
-          // distractionFreeMode: true,
-          pagerDirection: 'last', // 'first'正序 | 'last'倒序
-          id: '<%- (frontmatter.permalink || frontmatter.to.path).slice(-16) %>', //  页面的唯一标识,长度不能超过50
-          title: '「评论」<%- frontmatter.title %>', // GitHub issue 的标题
-          labels: ['Gitalk', 'Comment'], // GitHub issue 的标签
-          body:
-            '页面：<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>', // GitHub issue 的内容
-        },
-      },
-    ],*/
     [
       '@vuepress/last-updated', // "上次更新"时间格式
       {
