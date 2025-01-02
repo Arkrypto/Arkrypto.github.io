@@ -1,7 +1,7 @@
 ---
 home: true
-# heroImage: /img/web.png
-heroText: Northboat's Space
+# heroImage: /img/bg.png
+heroText: Northboat Cyberspace
 tagline: 太阳照常升起
 # actionText: 立刻进入 →
 # actionLink: /web/

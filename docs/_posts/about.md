@@ -9,7 +9,7 @@ author:
   link: https://github.com/northboat
 ---
 
-## 📚Blog
+## 📚 Blog
 这是一个知识库兼博客的个人网站 🥰
 
 :::tip
@@ -22,7 +22,7 @@ author:
 </div> -->
 
 
-## 🐼Biography
+## 🐼 Biography
 A graduate student at the State Key Laboratory of Integrated Service Networks at Xidian University, where he is pursuing his M.S. degree in Cybersecurity. He received his B.S. degree in Computer Science from Northeastern University, Qinhuangdao, China, in 2024. His research interests include IoT security and RFID authentication.
 
 Xiong Zhoutong is with the State Key Laboratory of Integrated Service Networks, School of Cyber Engineering, Xidian University, Xi'an Shaanxi, 710126, China.
@@ -39,14 +39,15 @@ E-mail: northboat@163.com
 
 - WeChat or QQ: <a :href="qqUrl" class='qq'>{{ QQ }}</a>
 - Email:  <a href="mailto:northboat@163.com">northboat@163.com</a>
-- GitHub: <https://github.com/northboat>
-- Vdoing主题文档：<https://doc.xugaoyi.com>
+- GitHub: <https://github.com/northboat
 
-## 🎨Theme
+## 🎨 Theme
 
 [<img src="https://github-readme-stats.vercel.app/api/pin/?username=xugaoyi&amp;repo=vuepress-theme-vdoing" alt="ReadMe Card" class="no-zoom">](https://github.com/xugaoyi/vuepress-theme-vdoing)
 
 本站主题是 [`Vdoing`](https://github.com/xugaoyi/vuepress-theme-vdoing)，这是一款简洁高效的VuePress 知识管理&博客 主题。旨在轻松打造一个`结构化`与`碎片化`并存的个人在线知识库&博客，让你的知识海洋像一本本书一样清晰易读。配合多维索引，让每一个知识点都可以快速定位！ [Github地址](https://github.com/xugaoyi/vuepress-theme-vdoing) | [在线vscode预览源码](https://github1s.com/xugaoyi/vuepress-theme-vdoing)
+
+- Vdoing主题文档：https://doc.xugaoyi.com
 
 <script>
   export default {
