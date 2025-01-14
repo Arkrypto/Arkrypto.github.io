@@ -66,8 +66,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 		descFade: true,   // 是否开启图片中间描述的淡入效果，默认为 false
 		desc: // 多个描述，如果填写则覆盖 config.js 的 description，不填写默认读取 config.js 的 description，descFade 为 true 生效
 		[
-			// "阶砖不会拒绝磨蚀，窗花不可幽禁落霞",
-			// "大海航行靠舵手，万物生长靠太阳",
+			"大海航行靠舵手，万物生长靠太阳",
 			"孩儿立志出乡关，学不成名誓不还",
 			"问苍茫大地，谁主沉浮？",
 			"唤起工农千百万，用心干，不周山下红旗乱",
@@ -97,7 +96,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 	  { text: '网络与信息安全', link: '/sec/' },
       {
         text: '更多',
-        //link: '/pages/star/',
+        link: '/more/',
         items: [
            { text: '收藏', link: '/pages/star/' },
            { text: '关于', link: '/pages/about/' },
