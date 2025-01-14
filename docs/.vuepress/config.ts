@@ -17,7 +17,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: "Northboat Cyberspace",
+      title: "北船",
       description: '我的知识库',
     }
   },
