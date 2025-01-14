@@ -67,14 +67,18 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 		desc: // 多个描述，如果填写则覆盖 config.js 的 description，不填写默认读取 config.js 的 description，descFade 为 true 生效
 		[
 			// "阶砖不会拒绝磨蚀，窗花不可幽禁落霞",
-			"大海航行靠舵手，万物生长靠太阳",
+			// "大海航行靠舵手，万物生长靠太阳",
 			"孩儿立志出乡关，学不成名誓不还",
+			"问苍茫大地，谁主沉浮？",
 			"唤起工农千百万，用心干，不周山下红旗乱",
-			"雄关漫道真如铁，而今迈步从头越",
 			"今日长缨在手, 何时缚住苍龙?",
+			"雄关漫道真如铁，而今迈步从头越",
+			"数风流人物，还看今朝",
 			"萧瑟秋风今又是，换了人间",
+			"为有牺牲多壮志，敢叫日月换新天",
+			"待到山花烂漫时，她在丛中笑",
 			"今日欢呼孙大圣，只缘妖雾又重来",
-			
+			"人民胜利今何在，满路新贵满目衰",
 		],
 		descFontSize: '1.4rem',   // desc 的字体大小，默认 1.4rem。提示：原主题是 1.1rem
 		descFadeInTime: 200,  // 描述的淡入效果持续时间，descFade 为 true 生效，默认 200 毫秒
@@ -91,15 +95,17 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 	  { text: '计算机科学与技术', link: '/cs/' },
 	  { text: '开发与运维', link: '/dev/' },
 	  { text: '网络与信息安全', link: '/sec/' },
-      { text: '关于', link: '/about/' },
       {
-        text: '收藏',
-        link: '/pages/star/',
-        // items: [
-        //   { text: '网站', link: '/pages/beb6c0bd8a66cea6/' },
-        //   { text: '资源', link: '/pages/eee83a9211a70f9d/' },
-        //   { text: 'Vue资源', link: '/pages/12df8ace52d493f6/' },
-        // ],
+        text: '更多',
+        //link: '/pages/star/',
+        items: [
+           { text: '收藏', link: '/pages/star/' },
+           { text: '关于', link: '/pages/about/' },
+        ],
+		items: [
+           { text: '收藏', link: '/pages/star/' },
+           { text: '关于', link: '/pages/about/' },
+        ],
       },
       { text: '归档', link: '/archives/', },
     ],
