@@ -96,12 +96,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 	  { text: '网络与信息安全', link: '/sec/' },
       {
         text: '更多',
-        link: '/more/',
         items: [
-           { text: '收藏', link: '/pages/star/' },
-           { text: '关于', link: '/pages/about/' },
-        ],
-		items: [
            { text: '收藏', link: '/pages/star/' },
            { text: '关于', link: '/pages/about/' },
         ],
