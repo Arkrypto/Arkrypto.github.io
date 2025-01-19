@@ -233,7 +233,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 			{
 				name: 'Love and Mangoes',
 				artist: '刘水秀',
-				url: '/song/Love&Mangoes.m4a',
+				url: '/song/Love and Mangoes.m4a',
 				cover: '/img/error.jpg'
 			},
 			{
