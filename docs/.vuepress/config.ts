@@ -51,8 +51,8 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
   
 	bodyBgImg: // 你的图片路径(必须位于 public 下)，可以是 URL
 	[	
-		"/img/bg.png",
-		// "/img/timebomb.png",
+		// "/img/bg.png",
+		"/img/timebomb.png",
 		// "/img/titan.jpg",
 	],
 	bodyBgImgOpacity: 1, // body 背景图透明度，选值 0 ~ 1.0, 默认0.5
