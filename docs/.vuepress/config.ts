@@ -160,7 +160,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     blogger: {
 		avatar: '/img/avatar.gif',
 		name: 'northboat',
-		slogan: '卷密码',
+		slogan: '我学密码',
     },
 
     // 社交图标 (显示于博主信息栏和页脚栏。内置图标：https://doc.xugaoyi.com/pages/a20ce8/#social)
@@ -247,11 +247,11 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 			// 是否默认缩小
 			"autoShrink": true,
 			// 缩小时缩为哪种模式
-			"shrinkMode": 'float',
+			"shrinkMode": 'float', // mini/float
 			// 悬浮方位
 			"floatPosition": 'left',
 			// 悬浮窗样式
-			"floatStyle":{ "bottom": "44px", "z-index": "999999" },
+			"floatStyle":{ "bottom": "10px", "z-index": "999999" },
 	}],
   
     [
