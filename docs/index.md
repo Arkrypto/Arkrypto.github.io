@@ -3,7 +3,7 @@ home: true
 
 # heroImage: /img/bg.png
 
-heroText: 北船の窝💖
+heroText: 北船の坞💖
 tagline: 太阳照常升起
 
 # actionText: 立刻进入 →
