@@ -97,8 +97,8 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
       {
         text: '更多',
         items: [
-           { text: '收藏', link: '/pages/star/' },
-		   { text: '歌单', link: '/pages/music/' },
+           { text: '收藏', link: '/pages/study/' },
+		   { text: '歌单', link: '/pages/song/' },
 		   { text: '关于', link: '/pages/about/' },
         ],
       },
