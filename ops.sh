@@ -7,23 +7,42 @@ function push_function() {
     git push
 }
 
-echo "========================================"
-echo "[The Operations of This Dir]:"
-echo "1.dev"
-echo "2.build"
-echo "3.push"
-echo "4.pull"
+function print_menu() {
+	# clear  # 清屏使界面更清爽（可选）
+    echo -e "\033[34m===================================\033[0m"
+	echo -e "\033[32m[The Operations of This Repository]:\033[0m"
+    echo "1.dev"
+    echo "2.build"
+    echo "3.push"
+    echo "4.pull"
+    echo -e "\033[34m===================================\033[0m"
+}
 
-read -p "enter the operation number: " n
 
-if [ "$n" = "1" ]; then
-    npm run dev:win
-elif [ "$n" = "2" ]; then
-    npm run build:win
-elif [ "$n" = "3" ]; then
-    push_function
-elif [ "$n" = "4" ]; then
-    git pull
-fi
+while true; do
+    
+	print_menu
+    
+    read -p "enter the operation number (1-4, or c to exit): " n
 
-read -p "Press enter to continue..."
+    case $n in
+        1) 
+			echo "Running the Project..."
+			npm run dev:win
+			;;
+        2)
+			echo "Building the Project..."
+			npm run build:win
+			;;
+        3) push_function ;;
+        4) 
+			read -p "确认要从远程拉取更新吗？(y/n) " confirm
+			[[ $confirm == [yY] ]] && git pull || echo "已取消"
+			;;
+		c) echo "Exiting..."; exit 0 ;;
+        *) echo "无效输入，请重试"; sleep 1; continue ;;
+    esac
+
+    # 操作完成后暂停1秒（可选）
+    # sleep 1
+done
