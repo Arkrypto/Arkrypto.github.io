@@ -23,7 +23,7 @@ while true; do
     
 	print_menu
     
-    read -p "enter the operation number (1-4, or c to exit): " n
+    read -p "enter the operation (1-4, or c to exit): " n
 
     case $n in
         1) 
@@ -34,13 +34,16 @@ while true; do
 			echo "Building the Project..."
 			npm run build:win
 			;;
-        3) push_function ;;
+        3)
+			push_function ;;
         4) 
 			read -p "确认要从远程拉取更新吗？(y/n) " confirm
 			[[ $confirm == [yY] ]] && git pull || echo "已取消"
 			;;
-		c) echo "Exiting..."; exit 0 ;;
-        *) echo "无效输入，请重试"; sleep 1; continue ;;
+		c)
+			echo "Exiting..."; exit 0 ;;
+        *)
+			echo "无效输入，请重试"; sleep 1; continue ;;
     esac
 
     # 操作完成后暂停1秒（可选）

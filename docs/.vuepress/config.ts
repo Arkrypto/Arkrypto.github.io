@@ -161,7 +161,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     blogger: {
 		avatar: '/img/avatar.gif',
 		name: 'northboat',
-		slogan: '我学密码',
+		slogan: '太阳照常升起',
     },
 
     // 社交图标 (显示于博主信息栏和页脚栏。内置图标：https://doc.xugaoyi.com/pages/a20ce8/#social)
