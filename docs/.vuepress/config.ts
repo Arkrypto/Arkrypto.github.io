@@ -99,6 +99,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         items: [
            { text: '收藏', link: '/pages/study/' },
 		   { text: 'Band', link: '/pages/song/' },
+		   { text: '摘抄', link: '/pages/db03d7/' },
 		   { text: '关于', link: '/pages/about/' },
         ],
       },
