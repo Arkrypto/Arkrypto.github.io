@@ -94,7 +94,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 	  { text: '计算机科学与技术', link: '/cs/' },
 	  { text: '开发与运维', link: '/dev/' },
 	  { text: '网络与信息安全', link: '/sec/' },
-      { text: '更多', link: '/more/' },
+      { text: '我的', link: '/mine/' },
       { text: '归档', link: '/archives/', },
     ],
     sidebarDepth: 2, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
