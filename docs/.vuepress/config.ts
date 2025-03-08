@@ -17,7 +17,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: "北船",
+      title: "北船の坞",
       description: '我的知识库',
     }
   },
@@ -66,7 +66,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 		descFade: true,   // 是否开启图片中间描述的淡入效果，默认为 false
 		desc: // 多个描述，如果填写则覆盖 config.js 的 description，不填写默认读取 config.js 的 description，descFade 为 true 生效
 		[
-			"大海航行靠舵手，万物生长靠太阳",
+			// "大海航行靠舵手，万物生长靠太阳",
 			"孩儿立志出乡关，学不成名誓不还",
 			"问苍茫大地，谁主沉浮？",
 			"唤起工农千百万，用心干，不周山下红旗乱！",
@@ -153,8 +153,9 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     // 博主信息 (显示在首页侧边栏)
     blogger: {
 		avatar: '/img/avatar.gif',
-		name: 'northboat',
-		slogan: '太阳照常升起',
+		title: '可爱捏',
+		name: '北船',
+		slogan: '就在坚冰还盖着北海的时候，我看到了怒放的梅花',
     },
 
     // 社交图标 (显示于博主信息栏和页脚栏。内置图标：https://doc.xugaoyi.com/pages/a20ce8/#social)
@@ -163,7 +164,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 		icons: [
 		{
 			iconClass: 'icon-youjian',
-			title: '发邮件',
+			title: '邮件',
 			link: 'mailto:northboat@163.com',
 		},
 		{
@@ -173,7 +174,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 		},
 		{
 			iconClass: 'icon-erji',
-			title: '听音乐',
+			title: '音乐',
 			link: 'https://music.163.com/#/my/m/music/playlist?id=5123040741',
         },],
     },
