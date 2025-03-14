@@ -14,7 +14,8 @@ function print_menu() {
     echo "1.dev"
     echo "2.build"
     echo "3.push"
-    echo "4.pull"
+	echo "4.push again"
+    echo "5.pull"
     echo -e "\033[34m===================================\033[0m"
 }
 
@@ -36,7 +37,9 @@ while true; do
 			;;
         3)
 			push_function ;;
-        4) 
+		4)
+			git push ;;
+        5) 
 			read -p "确认要从远程拉取更新吗？(y/n) " confirm
 			[[ $confirm == [yY] ]] && git pull || echo "已取消"
 			;;
