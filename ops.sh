@@ -42,7 +42,7 @@ exit_animation() {
             echo "$line"
         done
         echo ""
-        echo "    miao~miao~miao"
+        echo "   miao~miao~miao~"
         sleep 2 # 停留 2 秒
 
         clear
@@ -51,7 +51,7 @@ exit_animation() {
             echo "$line"
         done
         echo ""
-        echo "  see you next time!"
+        echo " see you next tomorrow!"
         sleep 2  # 停留 2 秒
     done
 
