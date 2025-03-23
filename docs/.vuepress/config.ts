@@ -67,10 +67,10 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 		desc: // 多个描述，如果填写则覆盖 config.js 的 description，不填写默认读取 config.js 的 description，descFade 为 true 生效
 		[
 			// "大海航行靠舵手，万物生长靠太阳",
-			"孩儿立志出乡关，学不成名誓不还",
-			"问苍茫大地，谁主沉浮？",
-			"唤起工农千百万，用心干，不周山下红旗乱！",
-			"今日长缨在手, 何时缚住苍龙?",
+			// "孩儿立志出乡关，学不成名誓不还",
+			// "问苍茫大地，谁主沉浮？",
+			// "唤起工农千百万，用心干，不周山下红旗乱！",
+			// "今日长缨在手, 何时缚住苍龙?",
 			"雄关漫道真如铁，而今迈步从头越",
 			"数风流人物，还看今朝",
 			"萧瑟秋风今又是，换了人间",
@@ -213,16 +213,22 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 	[
 		'@vuepress-reco/vuepress-plugin-bgm-player', {	//npm i @vuepress-reco/vuepress-plugin-bgm-player -D
 			"audios": [
+			//{
+				//name: '白羊',
+				//artist: '北船',
+				//url: '/song/白羊.mp3',
+				//cover: '/img/error.jpg'
+			//},
 			{
-				name: '妖风过海',
-				artist: '刘森',
-				url: '/song/妖风过海.mp3',
+				name: '枫',
+				artist: '常颖杰',
+				url: '/song/枫.mp3',
 				cover: '/img/error.jpg'
 			},
 			{
-				name: '失忆蝴蝶',
-				artist: '陈奕迅',
-				url: '/song/失忆蝴蝶.mp3',
+				name: '嘉宾',
+				artist: '常颖杰',
+				url: '/song/嘉宾.mp3',
 				cover: '/img/error.jpg'
 			},
 			{
@@ -230,13 +236,8 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 				artist: '刘水秀',
 				url: '/song/Love and Mangoes.m4a',
 				cover: '/img/error.jpg'
-			},
-			{
-				name: '白羊',
-				artist: '北船',
-				url: '/song/白羊.mp3',
-				cover: '/img/error.jpg'
 			},],
+
 			// 默认播放
 			//"autoplay": true,
 			// 是否默认缩小
