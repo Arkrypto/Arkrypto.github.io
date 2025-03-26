@@ -51,7 +51,7 @@ exit_animation() {
             echo "$line"
         done
         echo ""
-        echo " see you next tomorrow!"
+        echo "   see you next day!"
         sleep 2  # 停留 2 秒
     done
 
