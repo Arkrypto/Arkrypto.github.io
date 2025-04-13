@@ -7,8 +7,8 @@ import { VdoingThemeConfig } from 'vuepress-theme-vdoing/types'
 import dayjs from 'dayjs'
 import htmlModules from './config/htmlModules' // 自定义插入的html块
 
-const DOMAIN_NAME = 'northboat.github.io' // 域名 (不带https)
-const WEB_SITE = `https://northboat.github.io` // 网址
+const DOMAIN_NAME = 'arkrypto.github.io' // 域名 (不带https)
+const WEB_SITE = `https://arkrypto.github.io` // 网址
 
 export default defineConfig4CustomTheme<VdoingThemeConfig>({
   // theme: 'vdoing', // 使用npm主题包
@@ -17,8 +17,8 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: "北船の坞",
-      description: '我的知识库',
+      title: "Arkrypto's Wiki",
+      description: 'My Wiki',
     }
   },
   // base: '/', // 默认'/'。如果你想将你的网站部署到如 https://foo.github.io/bar/，那么 base 应该被设置成 "/bar/",（否则页面将失去样式等文件）
@@ -29,10 +29,10 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 	// 私密文章配置
 	privatePage: {
 		openPrivate: true, // 开启私密文章验证，默认开启（true），如果不开启（false），则下面配置都失效
-		username: "northboat", // 管理员用户名
+		username: "Arkrypto", // 管理员用户名
 		password: "011026", // 管理员密码
 		expire: "1d", // 登录过期时间：1d 代表 1 天，1h 代表 1 小时，仅支持这两个单位，不加单位代表秒。过期后访问私密文章重新输入用户名和密码。默认一天
-		loginPath: "/northboat/login/", // 引用登录组件的 md 文章的 permalink（必须），无默认值
+		loginPath: "/login/", // 引用登录组件的 md 文章的 permalink（必须），无默认值
 		loginKey: "vdoing_manager", // 存储用户名信息的 key，默认是 vdoing_manager。系统通过该 key 验证是否登录、是否过期
 		loginSession: false, // 开启是否在网页关闭或刷新后，清除登录状态，这样再次访问网页，需要重新登录，默认为 false（不开启）
 		firstLogin: 0, // 第一次进入网站需要验证。用于封锁整个网站，默认为 0（不开启），1 和 2 都代表开启，区别：1 代表虽然进入网站成功，但是网站内的私密文章仍需要单独验证，2 代表进入网站成功，网站内的私密文章不需要单独验证，也就是网站内的私密文章和普通文章一样可以访问
@@ -99,7 +99,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     ],
     sidebarDepth: 2, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
     logo: '/img/logo.png', // 导航栏logo
-    repo: 'northboat', // 导航栏右侧生成Github链接
+    repo: 'Arkrypto', // 导航栏右侧生成Github链接
     searchMaxSuggestions: 10, // 搜索结果显示最大数
     lastUpdated: '上次更新', // 开启更新时间，并配置前缀文字   string | boolean (取值为git提交时间)
     docsDir: 'docs', // 编辑的文件夹
@@ -154,7 +154,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     blogger: {
 		avatar: '/img/avatar.gif',
 		title: '可爱捏',
-		name: '北船',
+		name: 'Arkrypto',
 		slogan: '就在坚冰还盖着北海的时候，我看到了怒放的梅花',
     },
 
@@ -215,7 +215,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 			"audios": [
 			//{
 				//name: '白羊',
-				//artist: '北船',
+				//artist: 'Arkrypto',
 				//url: '/song/白羊.mp3',
 				//cover: '/img/error.jpg'
 			//},

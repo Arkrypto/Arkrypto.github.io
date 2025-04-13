@@ -1,7 +1,7 @@
 ---
 title: 私密文章登录
 date: 2024-12-31 14:26:04
-permalink: /northboat/login/
+permalink: /login/
 sidebar: false
 article: false
 comment: false
