@@ -146,8 +146,8 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 
     // 文章默认的作者信息，(可在md文件中单独配置此信息) string | {name: string, link?: string}
     author: {
-		name: 'northboat', // 必需
-		link: 'https://github.com/northboat', // 可选的
+		name: 'Arkrypto', // 必需
+		link: 'https://github.com/Arkrypto', // 可选的
     },
 
     // 博主信息 (显示在首页侧边栏)
@@ -165,12 +165,12 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 		{
 			iconClass: 'icon-youjian',
 			title: '邮件',
-			link: 'mailto:northboat@163.com',
+			link: 'mailto:Arkrypto@qq.com',
 		},
 		{
 			iconClass: 'icon-github',
 			title: 'GitHub',
-			link: 'https://github.com/northboat',
+			link: 'https://github.com/Arkrypto',
 		},
 		{
 			iconClass: 'icon-erji',
@@ -183,14 +183,14 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     footer: {
 		createYear: 2021, // 博客创建年份
 		copyrightInfo:
-			'Northboat | <a href="https://github.com/xugaoyi/vuepress-theme-vdoing/blob/master/LICENSE" target="_blank">MIT License</a>', // 博客版权信息、备案信息等，支持a标签或换行标签</br>
+			'Arkrypto | <a href="https://github.com/xugaoyi/vuepress-theme-vdoing/blob/master/LICENSE" target="_blank">MIT License</a>', // 博客版权信息、备案信息等，支持a标签或换行标签</br>
     },
 
     // 扩展自动生成frontmatter（当md文件的frontmatter不存在相应的字段时将自动添加。不会覆盖已有的数据。）
     extendFrontmatter: {
 		author: {
-			name: 'northboat',
-			link: 'https://github.com/northboat',
+			name: 'Arkrypto',
+			link: 'https://github.com/Arkrypto',
 		}
     },
 
@@ -203,7 +203,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     ['link', { rel: 'icon', href: '/img/favicon.ico' }], //favicons，资源放在public文件夹
 	['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_3129839_xft6cqs5gc.css' }], // 阿里在线图标
     ['noscript', {}, '<meta http-equiv="refresh" content="0; url=https://www.youngkbt.cn/noscript/"><style>.theme-vdoing-content { display:none }'],
-	['meta', { name: 'keywords', content: 'Blog, northboat, DevOps, Computer Science, Crypt, Cyber Security' }],
+	['meta', { name: 'keywords', content: 'Arkrypto, ComputerScience, DevOps, Crypto' }],
     ['meta', { name: 'theme-color', content: '#11a8cd' }], // 移动浏览器主题颜色
   ],
 
