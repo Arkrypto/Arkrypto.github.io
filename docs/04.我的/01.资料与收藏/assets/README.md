@@ -2,6 +2,7 @@
 title: README
 date: 2024-12-31 20:30:55
 permalink: /pages/84d763/
+article: false
 author: 
   name: Arkrypto
   link: https://github.com/Arkrypto

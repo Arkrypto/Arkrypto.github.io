@@ -2,6 +2,7 @@
 title: PLAN
 date: 2025-02-18 10:53:36
 permalink: /pages/67e33e/
+article: false
 author: 
   name: Arkrypto
   link: https://github.com/Arkrypto
