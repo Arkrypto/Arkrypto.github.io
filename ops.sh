@@ -51,12 +51,11 @@ exit_animation() {
             echo "$line"
         done
         echo ""
-        echo "  see you next day!"
+        echo "  see you next day~"
         sleep 2  # 停留 2 秒
     done
 
     sleep 1  # 最后停留1秒
-    exit 0  # 退出脚本
 }
 
 
@@ -84,7 +83,10 @@ while true; do
 			[[ $confirm == [yY] ]] && git pull || echo "已取消"
 			;;
 		0)
-			exit_animation ;;
+			exit_animation 
+			read -p "是否需要关机呢？(y/n) " confirm
+			[[ $confirm == [yY] ]] && shutdown -s -t 10 && echo "将在十秒后关机" || exit 0  # 退出脚本
+			;;
         *)
 			echo "无效输入，请重试"; sleep 1; continue ;;
     esac
