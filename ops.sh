@@ -11,9 +11,10 @@ function print_menu() {
 	# clear  # 清屏使界面更清爽（可选）
     echo -e "\033[34m===================================\033[0m"
 	echo -e "\033[32m[The Operations of This Repository]:\033[0m"
+	echo "0.exit 0"
     echo "1.npm run dev"
     echo "2.npm run build"
-    echo "3.git add && commit && push"
+    echo "3.git add→commit→push"
 	echo "4.git push"
     echo "5.git pull"
     echo -e "\033[34m===================================\033[0m"

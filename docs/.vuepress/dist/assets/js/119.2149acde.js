@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[119],{1417:function(t,s,n){"use strict";n.r(s);var e=n(4),i=Object(e.a)({},(function(){var t=this._self._c;return t("ContentSlotsDistributor",{attrs:{"slot-key":this.$parent.slotKey}},[t("center",[t("h4",[this._v("我学密码")])]),this._v(" "),t("p",[this._v("额贼你嘛，开➗")])],1)}),[],!1,null,null,null);s.default=i.exports}}]);
