@@ -17,7 +17,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: "Arkrypto's Wiki",
+      title: "Arkrypto",
       description: 'My Wiki',
     }
   },

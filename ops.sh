@@ -17,6 +17,7 @@ function print_menu() {
     echo "3.git add→commit→push"
 	echo "4.git push"
     echo "5.git pull"
+	echo "6.git gc"
     echo -e "\033[34m===================================\033[0m"
 }
 
@@ -59,7 +60,7 @@ while true; do
     
 	print_menu
     
-    read -p "enter the operation (1-5, or 0 to exit): " n
+    read -p "enter the operation (1-6, or 0 to exit): " n
 
     case $n in
         1) 
@@ -78,11 +79,15 @@ while true; do
 			read -p "确认要从远程拉取更新吗？(y/n) " confirm
 			[[ $confirm == [yY] ]] && git pull || echo "已取消"
 			;;
+		6)
+			echo "Cleaning the .git"
+			git gc --aggressive --prune=now
+			;;
 		0)
 			exit_animation
 			echo ""
 			read -p "		        需要大肥猫帮你关机吗(y/n) " confirm
-			[[ $confirm == [yY] ]] && shutdown -s -t 10 && echo "将在十秒后关机" || exit 0  # 退出脚本
+			[[ $confirm == [yY] ]] && shutdown -s -t 10 && echo "将在十秒后关机" && sleep 4 && print_cat || exit 0  # 退出脚本
 			;;
         *)
 			echo "无效输入，请重试"; sleep 1; continue ;;
