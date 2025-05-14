@@ -3,7 +3,7 @@ home: true
 
 # heroImage: /img/bg.png
 
-heroText: God Only Knows
+heroText: 无相则真
 tagline: 太阳照常升起
 
 # actionText: 立刻进入 →

@@ -220,15 +220,9 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 				//cover: '/img/error.jpg'
 			//},
 			{
-				name: '枫',
-				artist: '常颖杰',
-				url: '/song/枫.mp3',
-				cover: '/img/error.jpg'
-			},
-			{
-				name: '嘉宾',
-				artist: '常颖杰',
-				url: '/song/嘉宾.mp3',
+				name: '太阳照常升起',
+				artist: '久石譲',
+				url: '/song/The Sun Also Rises.mp3',
 				cover: '/img/error.jpg'
 			},
 			{
