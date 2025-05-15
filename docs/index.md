@@ -3,7 +3,7 @@ home: true
 
 # heroImage: /img/bg.png
 
-heroText: 无相则真
+heroText: 少则得，多则惑
 tagline: 太阳照常升起
 
 # actionText: 立刻进入 →
