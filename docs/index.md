@@ -3,8 +3,8 @@ home: true
 
 # heroImage: /img/bg.png
 
-heroText: 少则得，多则惑
-tagline: 太阳照常升起
+heroText: Arkrypto's Blog
+tagline: 少则得，多则惑，无相则真
 
 # actionText: 立刻进入 →
 # actionLink: /web/
